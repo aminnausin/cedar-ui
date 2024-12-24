@@ -1,6 +1,19 @@
-# Vue-Pines-UI
+# Vue Pines UI Library
 
-This template should help get you started developing with Vue 3 in Vite.
+<img src="src/assets/cover.jpg" alt="cover"/>
+
+This is a WIP Vue.js port for the Open Source <a href="https://devdojo.com/pines" target="_blank">Pines UI Library</a>.
+
+1. Download the contents of the GitHub repo and store it in a folder.
+2. Make sure you have <a href="https://nodejs.org/" target="_blank">NodeJS</a> installed along with the <a href="https://www.npmjs.com/package/http-server" target="_blank">http-server</a> package.
+3. CD into your folder and run `http-serve`
+4. Visit the localhost URL to see PinesUI
+
+Be sure to visit <a href="https://devdojo.com/questions" target="_blank">DevDojo discussions</a> section to ask questions and get assistance.
+
+## License
+
+The Pines UI Library is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Recommended IDE Setup
 
