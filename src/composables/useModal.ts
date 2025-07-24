@@ -1,5 +1,7 @@
 import { reactive, ref } from 'vue';
 
+// Old Way
+
 export interface ModalProps {
     title?: string;
     submitText?: string;

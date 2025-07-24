@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { RouterLink } from 'vue-router';
 const props = defineProps(['label', 'colour', 'URL', 'active']);
 const activeColour = `bg-neutral-300 dark:bg-violet-700`;

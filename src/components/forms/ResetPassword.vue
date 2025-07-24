@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/types';
+import type { FormField } from '@/types/cedar-ui.ts';
 
 import { useRoute, useRouter } from 'vue-router';
-import { resetPassword } from '@/service/authAPI';
 import { toast } from '@/service/toaster/toastService';
 import { ref } from 'vue';
 
@@ -55,7 +54,7 @@ const form = useForm({
 const handleSubmit = async () => {
     form.submit(
         async (fields) => {
-            return resetPassword(fields);
+            //return resetPassword(fields);
         },
         {
             onSuccess: (response) => {
@@ -78,7 +77,15 @@ const handleSubmit = async () => {
         </FormItem>
 
         <template #footer>
-            <ButtonForm variant="auth" type="button" @click="handleSubmit" :disabled="form.processing" class="!justify-center !capitalize w-full">Reset Password</ButtonForm>
+            <ButtonForm
+                variant="auth"
+                type="button"
+                @click="handleSubmit"
+                :disabled="form.processing"
+                class="!justify-center !capitalize w-full"
+            >
+                Reset Password
+            </ButtonForm>
         </template>
     </BaseForm>
 </template>

@@ -1,7 +1,6 @@
 import { reactive, watch } from 'vue';
 
-import cloneDeep from 'lodash.clonedeep';
-import isEqual from 'lodash.isequal';
+import deepEqual from 'fast-deep-equal';
 
 export type FormFieldValue = string | number | boolean | Array<any> | null;
 type FormFields<T> = T & { [key: string]: FormFieldValue };
@@ -32,7 +31,7 @@ export default function useForm<T extends Record<string, any>>(fields: FormField
     let recentlySuccessfulTimeoutId: number;
 
     const form = reactive<FormState<T>>({
-        fields: cloneDeep(fields),
+        fields: structuredClone(fields),
         errors: {},
         dirty: false,
         hasErrors: false,
@@ -63,7 +62,7 @@ export default function useForm<T extends Record<string, any>>(fields: FormField
 
                     if (hooks.onSuccess) await hooks.onSuccess(response);
 
-                    defaults = cloneDeep(this.fields);
+                    defaults = structuredClone(this.fields);
                 },
                 onError: async (error: any) => {
                     this.hasErrors = true;
@@ -97,7 +96,7 @@ export default function useForm<T extends Record<string, any>>(fields: FormField
             }
         },
         reset(...fields) {
-            const clonedDefaults = cloneDeep(defaults);
+            const clonedDefaults = structuredClone(defaults);
 
             if (fields.length === 0) {
                 this.fields = clonedDefaults;
@@ -127,7 +126,7 @@ export default function useForm<T extends Record<string, any>>(fields: FormField
     watch(
         () => form.fields,
         () => {
-            form.dirty = !isEqual(form.fields, defaults);
+            form.dirty = !deepEqual(form.fields, defaults);
         },
         { immediate: true, deep: true },
     );

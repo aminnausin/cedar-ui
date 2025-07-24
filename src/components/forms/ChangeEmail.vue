@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import type { ChangeEmailRequest } from '@/types/requests';
-import type { FormField } from '@/types/types';
+import type { FormField } from '@/types/cedar-ui.ts';
 
-import { changeEmail } from '@/service/authAPI';
 import { reactive } from 'vue';
 import { toast } from '@/service/toaster/toastService';
 
-import SettingsHeader from '@/components/settings/SettingsHeader.vue';
+import SettingsHeader from '@/components/headers/SettingsHeader.vue';
 import FormInputLabel from '@/components/labels/FormInputLabel.vue';
 import FormErrorList from '@/components/labels/FormErrorList.vue';
 import SettingsCard from '@/components/cards/SettingsCard.vue';
 import ButtonForm from '@/components/inputs/ButtonForm.vue';
 import FormInput from '@/components/inputs/FormInput.vue';
 import useForm from '@/composables/useForm';
+
+defineProps<{
+    onSubmit: (fields: any) => Promise<any>;
+}>();
 
 const fields = reactive<FormField[]>([
     {
@@ -37,7 +39,7 @@ const fields = reactive<FormField[]>([
     },
 ]);
 
-const form = useForm<ChangeEmailRequest>({
+const form = useForm({
     email: '',
     password: '',
 });
@@ -45,7 +47,7 @@ const form = useForm<ChangeEmailRequest>({
 const handleSubmit = async () => {
     form.submit(
         async (fields) => {
-            return changeEmail(fields);
+            // return changeEmail(fields); -> replace with your change email function
         },
         {
             onSuccess: () => {
@@ -76,12 +78,18 @@ const handleSubmit = async () => {
             <form class="flex flex-col sm:flex-row sm:justify-between flex-wrap gap-4 w-full max-w-xl" @submit.prevent="handleSubmit">
                 <div v-for="(field, index) in fields.filter((field) => !field.disabled)" :key="index" class="w-full" :class="field.class">
                     <FormInputLabel :field="field" />
-                    <FormInput v-model="form.fields[field.name]" :field="field" :class="'dark:bg-primary-dark-900/70 bg-white ring-neutral-300 dark:ring-neutral-800'" />
+                    <FormInput
+                        v-model="form.fields[field.name]"
+                        :field="field"
+                        :class="'dark:bg-primary-dark-900/70 bg-white ring-neutral-300 dark:ring-neutral-800'"
+                    />
                     <FormErrorList :errors="form.errors" :field-name="field.name" />
                 </div>
 
                 <div class="relative flex flex-col-reverse sm:flex-row sm:justify-end gap-2 w-full">
-                    <ButtonForm @click="form.reset(...Object.keys(form.fields))" type="button" variant="reset" :disabled="form.processing"> Cancel </ButtonForm>
+                    <ButtonForm @click="form.reset(...Object.keys(form.fields))" type="button" variant="reset" :disabled="form.processing">
+                        Cancel
+                    </ButtonForm>
                     <ButtonForm @click="handleSubmit" type="button" variant="submit" :disabled="form.processing"> Save Email </ButtonForm>
                 </div>
             </form>

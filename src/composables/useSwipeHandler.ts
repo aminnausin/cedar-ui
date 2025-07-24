@@ -1,4 +1,4 @@
-import type { SwipeDirection } from '@/types/pinesTypes';
+import type { SwipeDirection } from '@/types/cedar-ui.ts';
 
 import { ref, type Ref } from 'vue';
 

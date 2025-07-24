@@ -1,6 +1,9 @@
 <script setup lang="ts">
 // This is so bad lol pls fix
-import type { Message, ToastControllerProps, ToastLayout, ToastPostion, ToastToDismiss } from '@/types/pinesTypes';
+import type { Message, ToastControllerProps, ToastLayout, ToastPostion, ToastToDismiss } from '@/types/cedar-ui.ts';
+
+import { nextTick, onMounted, ref, watch, watchEffect } from 'vue';
+import { ToastState } from '@/service/toaster/toastService';
 
 import {
     DEFAULT_GAP,
@@ -12,8 +15,6 @@ import {
     Y_OFFSET_STEP,
     Z_STEP,
 } from '@/service/toaster/constants';
-import { nextTick, onMounted, ref, watch, watchEffect } from 'vue';
-import { ToastState } from '@/service/toaster/toastService';
 
 import ToastNotification from '@/components/core/ToastNotification.vue';
 

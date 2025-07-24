@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import type { UserResource } from '@/types/resources';
-import type { FormField } from '@/types/types';
+import type { FormField } from '@/types/cedar-ui.ts';
 
 import { useRouter, useRoute, RouterLink } from 'vue-router';
-import { useAuthStore } from '@/stores/AuthStore';
-import { storeToRefs } from 'pinia';
-import { login } from '@/service/authAPI';
 import { ref } from 'vue';
 
 import FormInputLabel from '@/components/labels/FormInputLabel.vue';
@@ -16,7 +12,7 @@ import BaseForm from '@/components/forms/BaseForm.vue';
 import FormItem from '@/components/forms/FormItem.vue';
 import useForm from '@/composables/useForm';
 
-const { userData } = storeToRefs(useAuthStore());
+const userData = ref({});
 const router = useRouter();
 const route = useRoute();
 
@@ -34,10 +30,10 @@ const form = useForm({
 const handleLogin = async () => {
     form.submit(
         async (fields) => {
-            return await login(fields);
+            // return await login(fields); -> replace with your login function
         },
         {
-            onSuccess: (response: { data: { token: string; user: UserResource } }) => {
+            onSuccess: (response: { data: { token: string; user: any } }) => {
                 localStorage.setItem('auth-token', response.data.token);
                 userData.value = response.data.user;
                 router.push(route.query.redirect ? route.query.redirect.toString() : '/');

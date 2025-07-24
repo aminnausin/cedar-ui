@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SwipeDirection, ToastProps } from '@/types/pinesTypes';
+import type { SwipeDirection, ToastProps } from '@/types/cedar-ui.ts';
 
 import { SWIPE_THRESHOLD, TOAST_LIFE, VISIBLE_TOASTS_AMOUNT } from '@/service/toaster/constants';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
@@ -51,7 +51,11 @@ const stackTimeout = ref<null | number>(null);
 const toastHovered = ref(false);
 const isMounted = ref(false);
 
-const { offset, isSwiping, onPointerDown, onPointerMove, onPointerUp } = useSwipeHandler({ directions: swipeDirections, threshold: SWIPE_THRESHOLD, onSwipeOut: onClose });
+const { offset, isSwiping, onPointerDown, onPointerMove, onPointerUp } = useSwipeHandler({
+    directions: swipeDirections,
+    threshold: SWIPE_THRESHOLD,
+    onSwipeOut: onClose,
+});
 
 const { cancel: cancelToastTimer } = useToastTimer({
     duration: props.life || TOAST_LIFE,
@@ -170,7 +174,13 @@ onBeforeUnmount(() => {
                         'dark:text-neutral-100 text-gray-800': props.type === 'default',
                     }"
                 >
-                    <svg v-show="props.type === 'success'" class="w-[18px] h-[18px] mr-1.5 -ml-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                        v-show="props.type === 'success'"
+                        class="w-[18px] h-[18px] mr-1.5 -ml-1"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
                         <path
                             fill-rule="evenodd"
                             clip-rule="evenodd"
@@ -178,7 +188,13 @@ onBeforeUnmount(() => {
                             fill="currentColor"
                         ></path>
                     </svg>
-                    <svg v-show="props.type === 'info'" class="w-[18px] h-[18px] mr-1.5 -ml-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                        v-show="props.type === 'info'"
+                        class="w-[18px] h-[18px] mr-1.5 -ml-1"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
                         <path
                             fill-rule="evenodd"
                             clip-rule="evenodd"
@@ -186,7 +202,13 @@ onBeforeUnmount(() => {
                             fill="currentColor"
                         ></path>
                     </svg>
-                    <svg v-show="props.type === 'warning'" class="w-[18px] h-[18px] mr-1.5 -ml-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                        v-show="props.type === 'warning'"
+                        class="w-[18px] h-[18px] mr-1.5 -ml-1"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
                         <path
                             fill-rule="evenodd"
                             clip-rule="evenodd"
@@ -194,7 +216,13 @@ onBeforeUnmount(() => {
                             fill="currentColor"
                         ></path>
                     </svg>
-                    <svg v-show="props.type === 'danger'" class="w-[18px] h-[18px] mr-1.5 -ml-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                        v-show="props.type === 'danger'"
+                        class="w-[18px] h-[18px] mr-1.5 -ml-1"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
                         <path
                             fill-rule="evenodd"
                             clip-rule="evenodd"

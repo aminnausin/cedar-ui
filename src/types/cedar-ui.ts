@@ -1,4 +1,4 @@
-import type { Component } from 'vue';
+import type { Component, DefineComponent } from 'vue';
 
 export type ToastType = 'success' | 'info' | 'warning' | 'danger' | 'default' | 'loading';
 export type ToastPostion = 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';
@@ -136,7 +136,7 @@ export interface TableProps<T> {
     clickAction?: (id: number, ...args: any[]) => void;
     otherAction?: (...args: any[]) => void;
     sortAction?: (sortKey: keyof T, direction: 1 | -1) => void;
-    sortingOptions?: SortOption[];
+    sortingOptions?: TableSortOption[];
     itemsPerPage?: number;
     itemName?: string;
     searchQuery?: string;
@@ -184,3 +184,9 @@ export interface PopoverItem {
     icon?: Component;
     selectedIcon?: Component;
 }
+
+export declare type TableSortOption = {
+    title: string;
+    value: string;
+    disabled?: boolean;
+};

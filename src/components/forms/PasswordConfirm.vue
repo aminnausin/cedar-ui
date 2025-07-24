@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { PasswordRequest } from '@/types/requests';
-import type { AxiosResponse } from 'axios';
-import type { FormField } from '@/types/types';
+import type { FormField } from '@/types/cedar-ui.ts';
 
 import { toast } from '@/service/toaster/toastService';
 
@@ -17,8 +15,8 @@ const emit = defineEmits(['confirm', 'cancel']);
 
 const props = withDefaults(
     defineProps<{
-        action: (fields: PasswordRequest) => Promise<AxiosResponse<any>>;
-        successAction?: (response: AxiosResponse<any>) => void;
+        action: (fields: any) => Promise<any>;
+        successAction?: (response: any) => void;
         successMessage?: string;
         confirmText?: string;
         cancelText?: string;
@@ -43,7 +41,7 @@ const fields: FormField[] = [
     },
 ];
 
-const form = useForm<PasswordRequest>({
+const form = useForm<{ password: string }>({
     password: '',
 });
 
@@ -74,8 +72,16 @@ const handleSubmit = async () => {
         </FormItem>
 
         <template #footer>
-            <ButtonForm variant="reset" type="button" :disabled="form.processing" class="!capitalize" @click="$emit('cancel')">{{ cancelText }}</ButtonForm>
-            <ButtonForm variant="submit" type="button" @click="handleSubmit" :disabled="form.processing" class="!capitalize !bg-rose-600 hover:!bg-rose-500">
+            <ButtonForm variant="reset" type="button" :disabled="form.processing" class="!capitalize" @click="$emit('cancel')">{{
+                cancelText
+            }}</ButtonForm>
+            <ButtonForm
+                variant="submit"
+                type="button"
+                @click="handleSubmit"
+                :disabled="form.processing"
+                class="!capitalize !bg-rose-600 hover:!bg-rose-500"
+            >
                 {{ confirmText }}
             </ButtonForm>
         </template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { createModalCore } from '@/composables/useModalCore';
 import { OnClickOutside } from '@vueuse/components';
-import { useModalStore } from '@/stores/ModalStore';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
 
-const modalStore = useModalStore();
+const modalStore = createModalCore();
 </script>
 <template>
     <Teleport to="body">
@@ -33,7 +33,10 @@ const modalStore = useModalStore();
                 leave-from-class="opacity-100 sm:scale-100"
                 leave-to-class="opacity-0 sm:scale-95"
             >
-                <UseFocusTrap v-if="modalStore.isOpen" class="relative w-full px-6 py-10 sm:py-6 max-h-screen h-full overflow-y-scroll scrollbar-hide flex items-center">
+                <UseFocusTrap
+                    v-if="modalStore.isOpen"
+                    class="relative w-full px-6 py-10 sm:py-6 max-h-screen h-full overflow-y-scroll scrollbar-hide flex items-center"
+                >
                     <OnClickOutside
                         @trigger="modalStore.close"
                         @keydown.esc="modalStore.close"

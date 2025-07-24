@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/types';
+import type { FormField } from '@/types/cedar-ui.ts';
 
 import { onMounted, useTemplateRef } from 'vue';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BreadCrumbItem } from '@/types/cedar-ui';
+import type { BreadCrumbItem } from '@/types/cedar-ui.ts';
 
 withDefaults(defineProps<{ breadCrumbs: BreadCrumbItem[] }>(), { breadCrumbs: () => [] });
 </script>

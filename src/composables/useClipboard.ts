@@ -3,12 +3,6 @@ import type { Ref } from 'vue';
 import { toast } from '@/service/toaster/toastService';
 import { ref } from 'vue';
 
-interface UseClipboard {
-    copyText: string;
-    copyNotification: boolean;
-    copyToClipboard: () => void;
-}
-
 export default function useClipboard(copyText: Ref<string>) {
     const copyNotification = ref(false);
 

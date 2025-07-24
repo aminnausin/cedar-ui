@@ -2,7 +2,6 @@
 import { ref, useTemplateRef, watch } from 'vue';
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
-import { useAppStore } from '@/stores/AppStore';
 
 import ButtonCorner from '@/components/inputs/ButtonCorner.vue';
 import ButtonForm from '@/components/inputs/ButtonForm.vue';
@@ -21,7 +20,6 @@ const props = withDefaults(
     },
 );
 
-const { setScrollLock } = useAppStore();
 const title = useTemplateRef('modalTitle');
 // Should not be part of the modal
 const processing = ref(false);
@@ -40,7 +38,6 @@ watch(
     () => props.modalData.isAnimating,
     (value) => {
         if ((props.modalData.modalOpen && value) || !value) {
-            setScrollLock(props.modalData.modalOpen);
             title.value?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     },
@@ -74,7 +71,10 @@ watch(
                 leave-from-class="opacity-100 sm:scale-100"
                 leave-to-class="opacity-0 sm:scale-95"
             >
-                <UseFocusTrap v-if="modalData.modalOpen" class="relative w-full px-6 py-10 sm:py-6 max-h-screen h-full overflow-y-scroll scrollbar-hide flex items-center">
+                <UseFocusTrap
+                    v-if="modalData.modalOpen"
+                    class="relative w-full px-6 py-10 sm:py-6 max-h-screen h-full overflow-y-scroll scrollbar-hide flex items-center"
+                >
                     <OnClickOutside
                         @trigger="closeModal"
                         @keydown.esc="closeModal"
@@ -82,16 +82,24 @@ watch(
                         tabindex="-1"
                     >
                         <section class="flex flex-wrap gap-2 items-center">
-                            <h3 ref="modalTitle" id="modalTitle" class="text-xl font-semibold scroll-mt-16 sm:scroll-mt-12 flex-1">{{ modalData?.title ?? 'Modal Title' }}</h3>
+                            <h3 ref="modalTitle" id="modalTitle" class="text-xl font-semibold scroll-mt-16 sm:scroll-mt-12 flex-1">
+                                {{ modalData?.title ?? 'Modal Title' }}
+                            </h3>
                             <ButtonCorner @click="closeModal" class="!m-0 !static" />
-                            <p class="text-neutral-500 dark:text-neutral-400 text-sm w-full" v-if="$slots.description" id="modalDescription">
+                            <p
+                                class="text-neutral-500 dark:text-neutral-400 text-sm w-full"
+                                v-if="$slots.description"
+                                id="modalDescription"
+                            >
                                 <slot name="description"> </slot>
                             </p>
                         </section>
                         <slot name="content"> </slot>
                         <slot v-if="useControls" name="controls">
                             <section class="relative flex flex-col-reverse sm:flex-row sm:justify-end gap-2">
-                                <ButtonForm type="button" variant="reset" @click="closeModal" :disabled="processing || isProcessing"> Cancel </ButtonForm>
+                                <ButtonForm type="button" variant="reset" @click="closeModal" :disabled="processing || isProcessing">
+                                    Cancel
+                                </ButtonForm>
                                 <ButtonForm type="button" variant="submit" @click="submitModal()" :disabled="processing || isProcessing">
                                     {{ modalData.submitText }}
                                 </ButtonForm>

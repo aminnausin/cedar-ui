@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ContextMenu } from '@/types/cedar-ui';
+import type { ContextMenu } from '@/types/cedar-ui.ts';
 
 import { nextTick, onMounted, onUnmounted, ref, Teleport, useTemplateRef } from 'vue';
 import { useMouseInElement } from '@vueuse/core';

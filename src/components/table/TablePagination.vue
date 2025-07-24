@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue';
 
-import TablePaginationButton from '@/components/table/TablePaginationButton.vue';
+import { ProiconsChevronRight, ProiconsChevronLeft } from '@/components/icons';
 
-import ProiconsChevronRight from '~icons/proicons/chevron-right';
-import ProiconsChevronLeft from '~icons/proicons/chevron-left';
+import TablePaginationButton from '@/components/table/TablePaginationButton.vue';
 
 const props = withDefaults(
     defineProps<{
@@ -92,7 +91,13 @@ const handleSetPage = async (page: number) => {
 
             <!-- Diff between start and current page is greater than 2 -->
             <template v-if="pageCount > props.maxVisiblePages && props.currentPage > Math.max(props.maxVisiblePages - 2, 2)">
-                <TablePaginationButton :pageNumber="1" :currentPage="props.currentPage" @click="handleSetPage(1)" :sticky="true" v-if="maxVisiblePages > 3" />
+                <TablePaginationButton
+                    :pageNumber="1"
+                    :currentPage="props.currentPage"
+                    @click="handleSetPage(1)"
+                    :sticky="true"
+                    v-if="maxVisiblePages > 3"
+                />
                 <TablePaginationButton
                     :pageNumber="-1"
                     :text="'...'"
@@ -102,7 +107,14 @@ const handleSetPage = async (page: number) => {
                 />
             </template>
 
-            <TablePaginationButton v-for="page in pageRange" :key="page" :pageNumber="page" :currentPage="props.currentPage" @click="handleSetPage(page)" :title="`Page ${page}`" />
+            <TablePaginationButton
+                v-for="page in pageRange"
+                :key="page"
+                :pageNumber="page"
+                :currentPage="props.currentPage"
+                @click="handleSetPage(page)"
+                :title="`Page ${page}`"
+            />
 
             <template v-if="pageCount > props.maxVisiblePages && pageCount - props.currentPage > Math.max(props.maxVisiblePages - 3, 1)">
                 <TablePaginationButton
@@ -112,7 +124,13 @@ const handleSetPage = async (page: number) => {
                     @click="handleSetPage(Math.floor((pageCount - currentPage) / 2 + currentPage))"
                     :underline="true"
                 />
-                <TablePaginationButton :pageNumber="pageCount" :currentPage="props.currentPage" @click="handleSetPage(pageCount)" :sticky="true" v-if="maxVisiblePages > 3" />
+                <TablePaginationButton
+                    :pageNumber="pageCount"
+                    :currentPage="props.currentPage"
+                    @click="handleSetPage(pageCount)"
+                    :sticky="true"
+                    v-if="maxVisiblePages > 3"
+                />
             </template>
 
             <TablePaginationButton

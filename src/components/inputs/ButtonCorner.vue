@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconDelete from '@/components/icons/IconDelete.vue';
+import { CedarDelete } from '@/components/icons';
 
 const props = defineProps(['positionClasses', 'colourClasses', 'textClasses', 'to', 'label', 'disabled']);
 </script>
@@ -15,7 +15,7 @@ const props = defineProps(['positionClasses', 'colourClasses', 'textClasses', 't
         :aria-disabled="disabled"
     >
         <slot name="icon">
-            <IconDelete />
+            <CedarDelete />
         </slot>
     </router-link>
     <button
@@ -28,7 +28,7 @@ const props = defineProps(['positionClasses', 'colourClasses', 'textClasses', 't
         type="button"
     >
         <slot name="icon">
-            <IconDelete />
+            <CedarDelete />
         </slot>
     </button>
 </template>

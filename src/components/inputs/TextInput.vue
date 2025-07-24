@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const model = defineModel();
 const { placeholder, id, minlength, maxlength } = defineProps(['placeholder', 'id', 'minlength', 'maxlength']);
 </script>

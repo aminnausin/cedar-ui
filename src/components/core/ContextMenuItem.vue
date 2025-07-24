@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ContextMenuItem } from '@/types/types';
+import type { ContextMenuItem } from '@/types/cedar-ui.ts';
 
 import { RouterLink } from 'vue-router';
 const props = withDefaults(defineProps<ContextMenuItem>(), {});

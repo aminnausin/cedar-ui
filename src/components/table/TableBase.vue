@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T">
-import type { SortOption, TableProps } from '@/types/types';
+import type { TableSortOption, TableProps } from '@/types/cedar-ui.ts';
 
+import { PhSortDescendingLight, PhSortAscendingLight, SvgSpinners90RingWithBg } from '@/components/icons';
 import { onMounted, ref } from 'vue';
 
 import TextInputLabelled from '@/components/inputs/TextInputLabelled.vue';
@@ -8,10 +9,6 @@ import TablePagination from '@/components/table/TablePagination.vue';
 import InputSelect from '@/components/core/InputSelect.vue';
 import ButtonIcon from '@/components/inputs/ButtonIcon.vue';
 import useTable from '@/composables/useTable.ts';
-
-import SvgSpinners90RingWithBg from '~icons/svg-spinners/90-ring-with-bg';
-import PhSortDescendingLight from '~icons/ph/sort-descending-light';
-import PhSortAscendingLight from '~icons/ph/sort-ascending-light';
 
 const props = withDefaults(defineProps<TableProps<T>>(), {
     useToolbar: true,
@@ -40,7 +37,7 @@ defineSlots<{
     row(props: { row: T; index: number; selectedID: any }): any;
 }>();
 
-const handleSortChange = (sortKey?: SortOption) => {
+const handleSortChange = (sortKey?: TableSortOption) => {
     if (sortKey?.value) {
         lastSortKey.value = sortKey.value;
     }

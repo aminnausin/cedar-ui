@@ -1,12 +1,12 @@
-<script setup>
-import FormInputLabel from '../labels/FormInputLabel.vue';
+<script setup lang="ts">
+import FormInputLabel from '@/components/labels/FormInputLabel.vue';
 
 const model = defineModel();
 const { text, placeholder, id } = defineProps(['text', 'placeholder', 'id']);
 </script>
 <template>
     <div class="flex flex-col justify-center gap-2 text-sm">
-        <FormInputLabel :field="{ name: id, text }" />
+        <FormInputLabel :field="{ name: id, text, type: 'text' }" />
         <input
             type="text"
             v-model="model"

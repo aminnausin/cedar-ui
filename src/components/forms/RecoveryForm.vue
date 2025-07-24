@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/types';
+import type { FormField } from '@/types/cedar-ui.ts';
 
-import { recoverAccount } from '@/service/authAPI';
 import { RouterLink } from 'vue-router';
 import { toast } from '@/service/toaster/toastService';
 import { ref } from 'vue';
@@ -14,7 +13,9 @@ import BaseForm from '@/components/forms/BaseForm.vue';
 import FormItem from '@/components/forms/FormItem.vue';
 import useForm from '@/composables/useForm';
 
-const fields = ref<FormField[]>([{ name: 'email', text: 'Email', type: 'text', required: true, autocomplete: 'email', placeholder: 'email@example.ca' }]);
+const fields = ref<FormField[]>([
+    { name: 'email', text: 'Email', type: 'text', required: true, autocomplete: 'email', placeholder: 'email@example.ca' },
+]);
 
 const form = useForm<{ email: string }>({
     email: '',
@@ -23,7 +24,7 @@ const form = useForm<{ email: string }>({
 const handleSubmit = async () => {
     form.submit(
         async (fields) => {
-            return recoverAccount(fields);
+            // return recoverAccount(fields); -> Replace with your recovery function
         },
         {
             onSuccess: (response) => {
@@ -45,7 +46,14 @@ const handleSubmit = async () => {
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>
 
-        <ButtonForm variant="auth" type="button" @click="handleSubmit" :disabled="form.processing" class="!justify-center !capitalize w-full">Email password reset link</ButtonForm>
+        <ButtonForm
+            variant="auth"
+            type="button"
+            @click="handleSubmit"
+            :disabled="form.processing"
+            class="!justify-center !capitalize w-full"
+            >Email password reset link</ButtonForm
+        >
     </BaseForm>
     <span class="mx-auto text-gray-600 dark:text-gray-400">
         Or, return to

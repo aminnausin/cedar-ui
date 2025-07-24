@@ -3,6 +3,7 @@ import { computed, onMounted, ref, useTemplateRef, watch } from 'vue';
 import { isInputLikeElement } from '@/service/util';
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component.mjs';
+import { MdiLightPlus } from '@/components/icons';
 import { toast } from '@/service/toaster/toastService';
 
 import useMultiSelect from '@/composables/useMultiSelect';
@@ -10,8 +11,7 @@ import ButtonIcon from '@/components/inputs/ButtonIcon.vue';
 import TextInput from '@/components/inputs/TextInput.vue';
 import ChipTag from '@/components/labels/ChipTag.vue';
 
-import MdiLightPlus from '~icons/mdi-light/plus';
-
+// Why are there three of them :D
 interface SelectItem {
     id: number;
     name: string;

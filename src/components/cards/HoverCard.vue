@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 
+import { ProiconsCommentExclamation } from '@/components/icons';
 import { ref, watch } from 'vue';
-import { Icon } from '@iconify/vue';
 
 const props = withDefaults(
     defineProps<{
@@ -25,6 +25,7 @@ const props = withDefaults(
         paddingLeft: 0,
         scrollContainer: 'body',
         disabled: false,
+        icon: ProiconsCommentExclamation,
     },
 );
 
@@ -108,8 +109,7 @@ watch(
                 >
                     <slot name="icon">
                         <template v-if="!iconHidden">
-                            <component class="h-5 w-5 mb-auto shrink-0" v-if="icon" :is="icon" />
-                            <Icon v-else :icon="'proicons:comment-exclamation'" class="h-5 w-5 mb-auto shrink-0" />
+                            <component class="h-5 w-5 mb-auto shrink-0" :is="icon" />
                         </template>
                     </slot>
                     <slot name="content">

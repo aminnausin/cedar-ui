@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 
-import { Icon } from '@iconify/vue';
+import { ProiconsCommentExclamation } from '@/components/icons';
 import { ref } from 'vue';
 
 const props = withDefaults(
@@ -16,6 +16,7 @@ const props = withDefaults(
     {
         hoverCardDelay: 600,
         hoverCardLeaveDelay: 500,
+        icon: ProiconsCommentExclamation,
     },
 );
 
@@ -72,8 +73,7 @@ const hoverCardLeave = () => {
             >
                 <slot name="icon">
                     <template v-if="!iconHidden">
-                        <component class="h-5 w-5 mb-auto shrink-0" v-if="icon" :is="icon" />
-                        <Icon v-else :icon="'proicons:comment-exclamation'" class="h-5 w-5 mb-auto shrink-0" />
+                        <component class="h-5 w-5 mb-auto shrink-0" :is="icon" />
                     </template>
                 </slot>
                 <slot name="content">
