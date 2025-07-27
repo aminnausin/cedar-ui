@@ -7,8 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# .nuxt
-.env
 node_modules
 .DS_Store
 dist
@@ -22,7 +20,6 @@ coverage
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*
@@ -30,10 +27,4 @@ coverage
 *.sln
 *.sw?
 
-test-results/
-playwright-report/
-vite.config.ts.timestamp*
-
-**/.vitepress/cache/*
-**/.vitepress/.temp
-**/temp.json
+*.tsbuildinfo

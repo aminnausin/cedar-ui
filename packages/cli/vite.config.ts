@@ -12,6 +12,8 @@ export default defineConfig({
             insertTypesEntry: true,
             tsconfigPath: './tsconfig.app.json',
             rollupTypes: true,
+            cleanVueFileName: true,
+            staticImport: true,
         }),
     ],
     resolve: {

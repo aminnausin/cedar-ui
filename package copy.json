@@ -60,5 +60,12 @@
             "side-channel": "npm:@nolyfill/side-channel@^1.0.44",
             "typedarray": "npm:@nolyfill/typedarray@^1.0.44"
         }
+    },
+    "simple-git-hooks": {
+        "pre-commit": "pnpm lint-staged",
+        "commit-msg": "pnpm commitlint --edit ${1}"
+    },
+    "lint-staged": {
+        "*": "eslint --fix"
     }
 }

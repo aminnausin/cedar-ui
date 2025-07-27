@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // This is so bad lol pls fix
-import type { Message, ToastControllerProps, ToastLayout, ToastPostion, ToastToDismiss } from '@/types/cedar-ui.ts';
+import type { Message, ToastControllerProps, ToastLayout, ToastPostion, ToastToDismiss } from '../../types/cedar-ui.ts';
 
 import { nextTick, onMounted, ref, watch, watchEffect } from 'vue';
-import { ToastState } from '@/service/toaster/toastService';
+import { ToastState } from '../../service/toaster/toastService';
 
 import {
     DEFAULT_GAP,
@@ -14,9 +14,9 @@ import {
     VISIBLE_TOASTS_AMOUNT,
     Y_OFFSET_STEP,
     Z_STEP,
-} from '@/service/toaster/constants';
+} from '../../service/toaster/constants';
 
-import ToastNotification from '@/components/core/ToastNotification.vue';
+import ToastNotification from './ToastNotification.vue';
 
 const props = withDefaults(defineProps<ToastControllerProps>(), {
     layout: 'default',
@@ -234,6 +234,7 @@ watchEffect((onInvalidate) => {
 
 <template>
     <teleport to="body">
+        <p class="absolute top-0 left-0 text-3xl p-4 bg-amber-400/50 text-white">toastsHovered: {{ toastsHovered }}</p>
         <ol
             v-cloak
             ref="container"

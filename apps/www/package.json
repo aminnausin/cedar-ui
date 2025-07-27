@@ -1,0 +1,43 @@
+{
+  "name": "www",
+  "type": "module",
+  "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.7.0",
+    "@iconify/vue": "^5.0.0",
+    "@tsconfig/node22": "^22.0.1",
+    "@types/node": "^22.10.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "@vue/eslint-config-typescript": "^14.1.3",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.22.0",
+    "eslint-plugin-vue": "~10.0.0",
+    "prettier": "3.5.3",
+    "typescript": "catalog:",
+    "unplugin-icons": "^22.1.0",
+    "vue-tsc": "catalog:",
+    "vitepress": "^1.6.3"
+  },
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.9",
+    "@vueuse/components": "catalog:",
+    "@vueuse/integrations": "catalog:",
+    "@vueuse/core": "catalog:",
+    "fast-deep-equal": "catalog:",
+    "focus-trap": "catalog:",
+    "tailwindcss": "catalog:",
+    "tailwind-scrollbar-hide": "catalog:",
+    "vue": "catalog:"
+  },
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  }
+}
