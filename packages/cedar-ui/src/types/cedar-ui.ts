@@ -185,8 +185,36 @@ export interface PopoverItem {
     selectedIcon?: Component;
 }
 
+// Table
+
 export declare type TableSortOption = {
     title: string;
     value: string;
     disabled?: boolean;
 };
+
+// Form
+
+export type FormFieldValue = string | number | boolean | Array<any> | null;
+export type FormFields<T> = T & { [key: string]: FormFieldValue };
+
+export interface FormHooks {
+    onBefore?: () => any;
+    onSuccess?: (response: any) => any;
+    onError?: (error: any) => any;
+    onFinish?: () => any;
+}
+
+export interface FormState<T> {
+    fields: FormFields<T>;
+    errors: { [key: string]: string };
+    dirty: boolean;
+    hasErrors: boolean;
+    processing: boolean;
+    wasSuccessful: boolean;
+    recentlySuccessful: boolean;
+    submit: (submitFn: (fields: FormFields<T>) => Promise<any>, hooks?: FormHooks) => Promise<void>;
+    reset: (...fields: (keyof FormFields<T>)[]) => void;
+    clearErrors: (...fields: string[]) => void;
+    setErrors: (errors: { [key: string]: string }) => void;
+}

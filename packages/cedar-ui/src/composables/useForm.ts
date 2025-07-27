@@ -1,30 +1,8 @@
+import type { FormFields, FormState } from '@/types/cedar-ui';
+
 import { reactive, watch } from 'vue';
 
 import deepEqual from 'fast-deep-equal';
-
-export type FormFieldValue = string | number | boolean | Array<any> | null;
-type FormFields<T> = T & { [key: string]: FormFieldValue };
-
-interface FormHooks {
-    onBefore?: () => any;
-    onSuccess?: (response: any) => any;
-    onError?: (error: any) => any;
-    onFinish?: () => any;
-}
-
-interface FormState<T> {
-    fields: FormFields<T>;
-    errors: { [key: string]: string };
-    dirty: boolean;
-    hasErrors: boolean;
-    processing: boolean;
-    wasSuccessful: boolean;
-    recentlySuccessful: boolean;
-    submit: (submitFn: (fields: FormFields<T>) => Promise<any>, hooks?: FormHooks) => Promise<void>;
-    reset: (...fields: (keyof FormFields<T>)[]) => void;
-    clearErrors: (...fields: string[]) => void;
-    setErrors: (errors: { [key: string]: string }) => void;
-}
 
 export default function useForm<T extends Record<string, any>>(fields: FormFields<T>) {
     let defaults = fields;

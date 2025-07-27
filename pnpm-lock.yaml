@@ -88,6 +88,9 @@ importers:
 
   apps/www:
     dependencies:
+      '@aminnausin/cedar-ui':
+        specifier: workspace:*
+        version: link:../../packages/cedar-ui
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
         version: 0.4.2(tailwindcss@3.4.17)
@@ -174,7 +177,7 @@ importers:
         specifier: 'catalog:'
         version: 3.0.4(typescript@5.8.3)
 
-  packages/cli:
+  packages/cedar-ui:
     dependencies:
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
