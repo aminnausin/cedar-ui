@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { FormFieldValue } from '@/composables/useForm';
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField, FormFieldValue } from '@/types/cedar-ui.ts';
 
 import { LucideChevronDown, LucideChevronUp } from '@/components/icons';
 
