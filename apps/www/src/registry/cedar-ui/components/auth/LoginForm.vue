@@ -4,13 +4,13 @@ import type { FormField } from '@/types/cedar-ui.ts';
 import { useRouter, useRoute, RouterLink } from 'vue-router';
 import { ref } from 'vue';
 
-import FormInputLabel from '@/registry/cedar-ui/components/labels/FormInputLabel.vue';
-import FormErrorList from '@/registry/cedar-ui/components/labels/FormErrorList.vue';
-import ButtonForm from '@/registry/cedar-ui/components/button/ButtonForm.vue';
-import FormInput from '@/registry/cedar-ui/components/inputs/FormInput.vue';
-import BaseForm from '@/registry/cedar-ui/components/forms/BaseForm.vue';
-import FormItem from '@/registry/cedar-ui/components/forms/FormItem.vue';
-import useForm from './useForm';
+import FormInputLabel from '@/components/labels/FormInputLabel.vue';
+import FormErrorList from '@/components/labels/FormErrorList.vue';
+import ButtonForm from '@/components/inputs/ButtonForm.vue';
+import FormInput from '@/components/inputs/FormInput.vue';
+import BaseForm from '@/components/forms/BaseForm.vue';
+import FormItem from '@/components/forms/FormItem.vue';
+import useForm from '@/composables/useForm';
 
 const userData = ref({});
 const router = useRouter();

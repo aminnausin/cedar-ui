@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CedarDelete } from '@/registry/cedar-ui/components/icons';
+import { CedarDelete } from '../icons';
 
 const props = defineProps(['positionClasses', 'colourClasses', 'textClasses', 'to', 'label', 'disabled']);
 </script>

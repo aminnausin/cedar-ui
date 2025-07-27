@@ -5,13 +5,10 @@ import { useRoute, useRouter } from 'vue-router';
 import { toast } from '@/service/toaster/toastService';
 import { ref } from 'vue';
 
-import FormInputLabel from '@/registry/cedar-ui/components/labels/FormInputLabel.vue';
-import FormErrorList from '@/registry/cedar-ui/components/labels/FormErrorList.vue';
-import ButtonForm from '@/registry/cedar-ui/components/button/ButtonForm.vue';
-import FormInput from '@/registry/cedar-ui/components/inputs/FormInput.vue';
-import BaseForm from '@/registry/cedar-ui/components/forms/BaseForm.vue';
-import FormItem from '@/registry/cedar-ui/components/forms/FormItem.vue';
-import useForm from './useForm';
+import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../form';
+
+import ButtonForm from '../button';
+import useForm from '@aminnausin/cedar-ui';
 
 const router = useRouter();
 const route = useRoute();

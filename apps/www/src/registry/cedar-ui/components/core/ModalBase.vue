@@ -3,8 +3,8 @@ import { ref, useTemplateRef, watch } from 'vue';
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
 
-import ButtonCorner from '@/registry/cedar-ui/components/inputs/ButtonCorner.vue';
-import ButtonForm from '@/registry/cedar-ui/components/inputs/ButtonForm.vue';
+import ButtonCorner from '@/registry/cedar-ui/components/button/ButtonCorner.vue';
+import ButtonForm from '@/registry/cedar-ui/components/button/ButtonForm.vue';
 
 const props = withDefaults(
     defineProps<{

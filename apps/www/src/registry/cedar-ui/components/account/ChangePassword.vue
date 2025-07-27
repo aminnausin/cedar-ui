@@ -4,13 +4,13 @@ import type { FormField } from '@/types/cedar-ui.ts';
 import { reactive } from 'vue';
 import { toast } from '@/service/toaster/toastService';
 
-import SettingsHeader from '@/registry/cedar-ui/components/headers/SettingsHeader.vue';
-import FormInputLabel from '@/registry/cedar-ui/components/labels/FormInputLabel.vue';
-import FormErrorList from '@/registry/cedar-ui/components/labels/FormErrorList.vue';
-import SettingsCard from '@/registry/cedar-ui/components/cards/SettingsCard.vue';
-import ButtonForm from '@/registry/cedar-ui/components/inputs/ButtonForm.vue';
-import FormInput from '@/registry/cedar-ui/components/inputs/FormInput.vue';
-import useForm from './useForm';
+import SettingsHeader from '@/components/headers/SettingsHeader.vue';
+import FormInputLabel from '@/components/labels/FormInputLabel.vue';
+import FormErrorList from '@/components/labels/FormErrorList.vue';
+import SettingsCard from '@/components/cards/SettingsCard.vue';
+import ButtonForm from '@/components/inputs/ButtonForm.vue';
+import FormInput from '@/components/inputs/FormInput.vue';
+import useForm from '@/composables/useForm';
 
 const fields = reactive<FormField[]>([
     {

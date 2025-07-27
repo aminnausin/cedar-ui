@@ -5,9 +5,9 @@ import { PhSortDescendingLight, PhSortAscendingLight, SvgSpinners90RingWithBg } 
 import { onMounted, ref } from 'vue';
 
 import TextInputLabelled from '@/registry/cedar-ui/components/inputs/TextInputLabelled.vue';
-import TablePagination from '@/registry/cedar-ui/components/table/TablePagination.vue';
+import TablePagination from '@/registry/cedar-ui/ui/table/TablePagination.vue';
 import InputSelect from '@/registry/cedar-ui/components/core/InputSelect.vue';
-import ButtonIcon from '@/registry/cedar-ui/components/inputs/ButtonIcon.vue';
+import ButtonIcon from '@/registry/cedar-ui/components/button/ButtonIcon.vue';
 import useTable from '@/registry/cedar-ui/composables/useTable.ts';
 
 const props = withDefaults(defineProps<TableProps<T>>(), {

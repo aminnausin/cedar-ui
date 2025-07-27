@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 
-import ButtonCorner from '@/registry/cedar-ui/components/inputs/ButtonCorner.vue';
+import ButtonCorner from '@/registry/cedar-ui/components/button/ButtonCorner.vue';
 
 const props = defineProps(['label', 'colour', 'textClass', 'URL', 'removeable']);
 </script>

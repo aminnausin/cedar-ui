@@ -7,7 +7,7 @@ export { default as RelativeHoverCard } from '@/registry/cedar-ui/components/car
 export { default as SettingsCard } from '@/registry/cedar-ui/components/cards/SettingsCard.vue';
 export { default as HoverCard } from '@/registry/cedar-ui/components/cards/HoverCard.vue';
 
-export { default as ButtonForm } from '@/registry/cedar-ui/components/inputs/ButtonForm.vue';
+export { default as ButtonForm } from '@/registry/cedar-ui/components/button/ButtonForm.vue';
 export { default as FormInput } from '@/registry/cedar-ui/components/inputs/FormInput.vue';
 
 export { default as LogoutSessionsModal } from '@/registry/cedar-ui/components/modals/LogoutSessionsModal.vue';

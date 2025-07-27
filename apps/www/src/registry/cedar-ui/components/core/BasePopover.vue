@@ -3,7 +3,7 @@ import { computed, nextTick, onMounted, onUnmounted, ref, useTemplateRef, watch,
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
 
-import ButtonText from '@/registry/cedar-ui/components/inputs/ButtonText.vue';
+import ButtonText from '@/registry/cedar-ui/components/button/ButtonText.vue';
 
 const props = withDefaults(
     defineProps<{
