@@ -134,6 +134,12 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
         version: 5.2.4(vite@5.4.19(@types/node@22.16.5))(vue@3.5.18(typescript@5.8.3))
+      '@vue/compiler-core':
+        specifier: ^3.5.15
+        version: 3.5.18
+      '@vue/compiler-dom':
+        specifier: ^3.5.15
+        version: 3.5.18
       '@vue/eslint-config-prettier':
         specifier: ^10.1.0
         version: 10.2.0(eslint@9.32.0(jiti@2.5.1))(prettier@3.5.3)

@@ -1,6 +1,7 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
+home: true
 
 hero:
   name: "Cedar-UI"
@@ -23,3 +24,8 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
+<script setup>
+import LandingPage from "../../.vitepress/theme/components/LandingPage.vue"
+</script>
+
+<LandingPage />
