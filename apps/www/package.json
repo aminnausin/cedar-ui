@@ -36,7 +36,8 @@
     "focus-trap": "catalog:",
     "tailwindcss": "catalog:",
     "tailwind-scrollbar-hide": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "vue-router": "^4.5.0"
   },
   "scripts": {
     "dev": "vitepress dev",
