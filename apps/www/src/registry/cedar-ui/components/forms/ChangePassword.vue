@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField } from '@aminnausin/cedar-ui';
 
 import { reactive } from 'vue';
-import { toast } from '@/service/toaster/toastService';
+import { toast } from '@aminnausin/cedar-ui';
 
-import SettingsHeader from '@/registry/cedar-ui/components/headers/SettingsHeader.vue';
+import SettingsHeader from '@/registry/cedar-ui/components/card/SettingsHeader.vue';
 import FormInputLabel from '@/registry/cedar-ui/components/labels/FormInputLabel.vue';
 import FormErrorList from '@/registry/cedar-ui/components/labels/FormErrorList.vue';
 import SettingsCard from '@/registry/cedar-ui/components/cards/SettingsCard.vue';

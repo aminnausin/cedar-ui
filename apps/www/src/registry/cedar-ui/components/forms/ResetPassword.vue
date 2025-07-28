@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField } from '@aminnausin/cedar-ui';
 
 import { useRoute, useRouter } from 'vue-router';
-import { toast } from '@/service/toaster/toastService';
+import { toast } from '@aminnausin/cedar-ui';
 import { ref } from 'vue';
 
 import FormInputLabel from '@/registry/cedar-ui/components/labels/FormInputLabel.vue';

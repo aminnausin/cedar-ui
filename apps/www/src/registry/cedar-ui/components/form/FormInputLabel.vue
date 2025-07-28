@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField } from '@aminnausin/cedar-ui';
 
 const props = defineProps<{
     field: FormField;

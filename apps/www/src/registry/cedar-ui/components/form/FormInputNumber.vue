@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { FormFieldValue, FormField } from '@/types/cedar-ui.ts';
+import type { FormFieldValue, FormField } from '@aminnausin/cedar-ui';
 
-import { LucideChevronDown, LucideChevronUp } from '@/components/icons';
+import { LucideChevronDown, LucideChevronUp } from '../icons';
 
 const props = defineProps<{ field: FormField }>();
 const model = defineModel<FormFieldValue>();

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField } from '@aminnausin/cedar-ui';
 
-import { toast } from '@/service/toaster/toastService';
+import { toast } from '@aminnausin/cedar-ui';
 
 import FormInputLabel from '@/registry/cedar-ui/components/labels/FormInputLabel.vue';
 import FormErrorList from '@/registry/cedar-ui/components/labels/FormErrorList.vue';
