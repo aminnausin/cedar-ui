@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField } from '@aminnausin/cedar-ui';
 
+import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../form';
 import { useRouter, useRoute, RouterLink } from 'vue-router';
+import { ButtonForm } from '../button';
+import { useForm } from '@aminnausin/cedar-ui';
 import { ref } from 'vue';
-
-import FormInputLabel from '@/components/labels/FormInputLabel.vue';
-import FormErrorList from '@/components/labels/FormErrorList.vue';
-import ButtonForm from '@/components/inputs/ButtonForm.vue';
-import FormInput from '@/components/inputs/FormInput.vue';
-import BaseForm from '@/components/forms/BaseForm.vue';
-import FormItem from '@/components/forms/FormItem.vue';
-import useForm from '@/composables/useForm';
 
 const userData = ref({});
 const router = useRouter();

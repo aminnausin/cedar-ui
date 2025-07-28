@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField } from '@aminnausin/cedar-ui';
 
+import { FormInput, FormErrorList, FormInputLabel } from '../form';
+import { SettingsCard, SettingsHeader } from '../card';
+import { toast, useForm } from '@aminnausin/cedar-ui';
+import { ButtonForm } from '../button';
 import { reactive } from 'vue';
-import { toast } from '@/service/toaster/toastService';
-
-import SettingsHeader from '@/components/headers/SettingsHeader.vue';
-import FormInputLabel from '@/components/labels/FormInputLabel.vue';
-import FormErrorList from '@/components/labels/FormErrorList.vue';
-import SettingsCard from '@/components/cards/SettingsCard.vue';
-import ButtonForm from '@/components/inputs/ButtonForm.vue';
-import FormInput from '@/components/inputs/FormInput.vue';
-import useForm from '@/composables/useForm';
 
 const fields = reactive<FormField[]>([
     {

@@ -3,7 +3,7 @@ import { computed, nextTick, ref } from 'vue';
 
 import { ProiconsChevronRight, ProiconsChevronLeft } from '@/registry/cedar-ui/components/icons';
 
-import TablePaginationButton from '@/registry/cedar-ui/components/table/TablePaginationButton.vue';
+import TablePaginationButton from './TablePaginationButton.vue';
 
 const props = withDefaults(
     defineProps<{

@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import type { FormField } from '@/types/cedar-ui.ts';
+import type { FormField } from '@aminnausin/cedar-ui';
 
-import { toast } from '@/service/toaster/toastService';
-
-import FormInputLabel from '@/components/labels/FormInputLabel.vue';
-import FormErrorList from '@/components/labels/FormErrorList.vue';
-import ButtonForm from '@/components/inputs/ButtonForm.vue';
-import FormInput from '../form/FormInput.vue';
-import BaseForm from '@/components/forms/BaseForm.vue';
-import FormItem from '@/components/forms/FormItem.vue';
-import useForm from '@/composables/useForm';
+import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../form';
+import { toast, useForm } from '@aminnausin/cedar-ui';
+import { ButtonForm } from '../button';
 
 const emit = defineEmits(['confirm', 'cancel']);
 
