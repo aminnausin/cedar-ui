@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import { useClipboard } from '@aminnausin/cedar-ui';
 import { ButtonIcon } from '../button';
 import { toRef } from 'vue';
-
-import useClipboard from './useClipboard';
 
 const props = defineProps<{ text: string; tabindex?: number }>();
 
