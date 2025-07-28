@@ -18,7 +18,8 @@
         ],
         "declaration": false,
         "outDir": "dist",
-        "sourceMap": true
+        "sourceMap": true,
+        "allowJs": true
     },
     "include": [
         "src",

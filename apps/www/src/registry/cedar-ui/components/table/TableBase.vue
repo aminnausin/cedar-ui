@@ -2,14 +2,13 @@
 import type { TableSortOption, TableProps } from '@/registry/cedar-ui/types/cedar-ui.ts';
 
 import { PhSortDescendingLight, PhSortAscendingLight, SvgSpinners90RingWithBg } from '../icons';
+import { TextInputLabelled } from '../input';
 import { onMounted, ref } from 'vue';
+import { InputSelect } from '../select';
 import { ButtonIcon } from '../button';
 
 import TablePagination from './TablePagination.vue';
 import useTable from './useTable';
-
-import TextInputLabelled from '@/registry/cedar-ui/components/inputs/TextInputLabelled.vue';
-import InputSelect from '@/registry/cedar-ui/components/select/InputSelect.vue';
 
 const props = withDefaults(defineProps<TableProps<T>>(), {
     useToolbar: true,
