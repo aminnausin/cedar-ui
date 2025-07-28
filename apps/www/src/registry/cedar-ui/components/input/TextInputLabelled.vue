@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FormInputLabel from '@/registry/cedar-ui/components/labels/FormInputLabel.vue';
+import { FormInputLabel } from '../form';
 
 const model = defineModel();
 const { text, placeholder, id } = defineProps(['text', 'placeholder', 'id']);

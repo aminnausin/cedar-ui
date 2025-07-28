@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { createModalCore } from '@/composables/useModalCore';
+import { createModalCore } from './useModalCore';
+import { PasswordConfirm } from '../auth';
 
-import PasswordConfirm from '@/registry/cedar-ui/components/forms/PasswordConfirm.vue';
-import BaseModal from '@/registry/cedar-ui/components/modals/BaseModal.vue';
+import BaseModal from './BaseModal.vue';
 
 const props = defineProps<{ onSuccess?: () => void }>();
 const modalStore = createModalCore();

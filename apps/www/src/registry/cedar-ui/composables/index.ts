@@ -5,4 +5,4 @@ export { default as useTable } from '../components/table/useTable';
 
 export * from './useSwipeHandler';
 export * from './useToastTimer';
-export * from './useModalCore';
+export * from '../components/modal/useModalCore';

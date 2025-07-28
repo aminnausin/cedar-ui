@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { createModalCore } from '@/composables/useModalCore';
+import { createModalCore } from './useModalCore';
+import { PasswordConfirm } from '../auth';
 import { useRouter } from 'vue-router';
 
-import PasswordConfirm from '@/registry/cedar-ui/components/forms/PasswordConfirm.vue';
-import BaseModal from '@/registry/cedar-ui/components/modals/BaseModal.vue';
+import BaseModal from './BaseModal.vue';
 
 const modalStore = createModalCore();
 const router = useRouter();

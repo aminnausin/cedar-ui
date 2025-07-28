@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createModalCore } from '@/composables/useModalCore';
+import { createModalCore } from './useModalCore';
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
 
