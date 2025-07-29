@@ -11,6 +11,7 @@ const activeColour = ref(`ring ring-inset ring-[0.1rem] dark:ring-0 ring-violet-
         :aria-label="props.label"
     >
         <slot name="icon"></slot>
+        <slot />
         <span :class="`hidden ${activeColour}`"></span>
     </button>
 </template>

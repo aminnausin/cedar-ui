@@ -1,32 +1,40 @@
 <script setup lang="ts">
+import type { AccordionItem } from '@aminnausin/cedar-ui';
 import { ref } from 'vue';
+withDefaults(defineProps<{ accordions?: AccordionItem[] }>(), {
+    accordions: () => [
+        { id: '1', title: 'What is Pines?', content: 'Pines is a UI library built for AlpineJS and TailwindCSS.' },
+        {
+            id: '2',
+            title: 'How do I install Pines?',
+            content: 'Add AlpineJS and TailwindCSS to your page and then copy and paste any of these elements into your project.',
+        },
+        {
+            id: '3',
+            title: 'Can I use Pines with other libraries or frameworks?',
+            content: 'Absolutely! Pines works with any other library or framework. Pines works especially well with the TALL stack.',
+        },
+    ],
+});
 
-const activeAccordion = ref<string>('');
-const accordions = ref<{ id: string; key: string; value: string }[]>([
-    { id: '1', key: 'What is Pines?', value: 'Pines is a UI library built for AlpineJS and TailwindCSS.' },
-    {
-        id: '2',
-        key: 'How do I install Pines?',
-        value: 'Add AlpineJS and TailwindCSS to your page and then copy and paste any of these elements into your project.',
-    },
-    {
-        id: '3',
-        key: 'Can I use Pines with other libraries or frameworks?',
-        value: 'Absolutely! Pines works with any other library or framework. Pines works especially well with the TALL stack.',
-    },
-]);
+const activeAccordionId = ref<string>('');
 
 function setActiveAccordion(id: string) {
-    activeAccordion.value = activeAccordion.value == id ? '' : id;
+    activeAccordionId.value = activeAccordionId.value == id ? '' : id;
 }
 </script>
 <template>
-    <div class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white border border-gray-200 divide-y divide-gray-200 rounded-md">
-        <div v-for="accordion in accordions" :key="accordion.id" class="cursor-pointer group">
-            <button @click="setActiveAccordion(accordion.id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline">
-                <span>{{ accordion.key }}</span>
+    <div
+        class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white border border-gray-200 divide-y divide-gray-200 rounded-md"
+    >
+        <div v-for="accordion in accordions" :key="accordion.id" class="cursor-pointer">
+            <button
+                @click="setActiveAccordion(accordion.id)"
+                class="flex items-center justify-between w-full p-4 text-left select-none hover:underline"
+            >
+                <span>{{ accordion.title }}</span>
                 <svg
-                    :class="`w-4 h-4 duration-200 ease-out ${activeAccordion == accordion.id ? 'rotate-180' : ''}`"
+                    :class="`w-4 h-4 duration-200 ease-out ${activeAccordionId == accordion.id ? 'rotate-180' : ''}`"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -38,18 +46,15 @@ function setActiveAccordion(id: string) {
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
             </button>
-            <Transition
-                enter-active-class=""
-                enter-from-class="h-0 overflow-hidden"
-                enter-to-class="h-full overflow-hidden"
-                leave-active-class=""
-                leave-from-class="h-0 overflow-hidden"
-                leave-to-class="h-0 overflow-hidden"
+
+            <div
+                :class="[
+                    'transition-all ease-in overflow-hidden duration-300',
+                    activeAccordionId === accordion.id ? 'max-h-[99999px]' : 'max-h-0',
+                ]"
             >
-                <div class="ease-in duration-300" v-show="activeAccordion == accordion.id" v-cloak>
-                    <div class="p-4 pt-0 opacity-70">{{ accordion.value }}</div>
-                </div>
-            </Transition>
+                <div class="p-4 pt-0 opacity-70">{{ accordion?.content }}</div>
+            </div>
         </div>
     </div>
 </template>

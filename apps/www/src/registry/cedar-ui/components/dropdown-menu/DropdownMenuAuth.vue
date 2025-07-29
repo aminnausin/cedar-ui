@@ -1,16 +1,53 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@aminnausin/cedar-ui';
 
-import { nextTick, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue';
+import { ProiconsSettings, LucideUserPlus, LucideLogOut, LucideLogIn } from '../icons';
 import { OnClickOutside } from '@vueuse/components';
 
 import DropdownItem from './DropdownItem.vue';
 
-const route = { name: '', path: '' };
+const userData = ref<null | { email: string }>(null); // Replace with your auth state
 
-const props = defineProps<{ dropdownOpen: boolean; dropDownItems: DropdownMenuItem[][] }>();
+const defaults = {
+    external: false,
+    disabled: false,
+    action: () => {
+        console.log('haha');
+
+        userData.value = {
+            email: 'aminnausin@nausin.me',
+        };
+    },
+};
+const props = defineProps<{ dropdownOpen: boolean }>();
 const dropdown = useTemplateRef('dropdown');
 const manualPosition = ref(0);
+
+const dropDownItems: DropdownMenuItem[][] = [
+    [{ ...defaults, name: 'settings', text: 'Settings', icon: ProiconsSettings }],
+    [
+        { ...defaults, name: 'login', text: 'Log in', icon: LucideLogIn },
+        { ...defaults, name: 'register', text: 'Sign up', icon: LucideUserPlus },
+    ],
+];
+
+const dropDownItemsAuth = computed<DropdownMenuItem[][]>(() => {
+    return [
+        [
+            {
+                ...defaults,
+                name: 'logout',
+                text: 'Log out',
+                icon: LucideLogOut,
+                shortcut: '⇧⌘Q',
+                action: () => {
+                    userData.value = null;
+                },
+            },
+        ],
+    ];
+});
 
 const adjustDropdownPosition = async () => {
     if (!dropdown.value || !dropdown.value.parentElement) return;
@@ -66,7 +103,9 @@ onUnmounted(() => {
                 <div
                     class="p-1 mt-1 bg-white dark:bg-neutral-800/70 backdrop-blur-lg border rounded-md shadow-md border-neutral-200/70 dark:border-neutral-700 text-neutral-700 dark:text-neutral-100"
                 >
-                    <section v-for="(group, groupIndex) in dropDownItems" :key="groupIndex">
+                    <div class="px-2 py-1.5 text-sm font-semibold" v-if="userData">{{ userData.email }}</div>
+                    <div class="h-px my-1 -mx-1 bg-neutral-200 dark:bg-neutral-500" v-if="userData"></div>
+                    <section v-for="(group, groupIndex) in userData ? dropDownItemsAuth : dropDownItems" :key="groupIndex">
                         <div
                             v-if="groupIndex !== 0 && groupIndex !== group.length && group.some((item) => !item.hidden)"
                             class="h-px my-1 -mx-1 bg-neutral-200 dark:bg-neutral-500"
@@ -75,12 +114,13 @@ onUnmounted(() => {
                             v-for="(item, index) in group.filter((item) => !item.hidden)"
                             :key="index"
                             :linkData="item"
-                            :selected="route.name === item.name || route.path === item.name || route.path === item.url"
+                            :selected="false"
                             :external="item.external"
                             :disabled="item.disabled ?? false"
                             @click="
                                 () => {
                                     $emit('toggleDropdown', false);
+                                    if (item.action && userData) item.action();
                                 }
                             "
                         >

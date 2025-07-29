@@ -39,7 +39,7 @@ const {
         <input
             ref="datePickerInput"
             :class="[
-                'h-10 px-3 py-2 rounded-md shadow-sm block mt-1 w-full text-sm',
+                'h-10 px-3 py-2 rounded-md shadow-sm block w-full text-sm',
                 'focus:outline-none border-none',
                 'disabled:cursor-not-allowed disabled:opacity-50',
                 'text-gray-900 dark:text-neutral-100 bg-white dark:bg-neutral-700 placeholder:text-neutral-400',
@@ -64,7 +64,7 @@ const {
                     datePickerInput?.focus();
                 }
             "
-            class="absolute top-0 right-0 px-3 py-2 cursor-pointer text-neutral-400 hover:text-neutral-500"
+            class="absolute top-0 right-0 px-3 py-2 cursor-pointer text-neutral-400 hover:text-neutral-500 h-10"
         >
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path

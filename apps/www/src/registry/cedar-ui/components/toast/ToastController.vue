@@ -234,7 +234,6 @@ watchEffect((onInvalidate) => {
 
 <template>
     <teleport to="body">
-        <p class="absolute top-0 left-0 text-3xl p-4 bg-amber-400/50 text-white">toastsHovered: {{ toastsHovered }}</p>
         <ol
             v-cloak
             ref="container"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SwipeDirection, ToastProps } from '@aminnausin/cedar-ui';
 
-import { useToastTimer, useSwipeHandler, SWIPE_THRESHOLD, TOAST_LIFE, VISIBLE_TOASTS_AMOUNT, Y_OFFSET_STEP } from '@aminnausin/cedar-ui';
+import { useToastTimer, useSwipeHandler, SWIPE_THRESHOLD, TOAST_LIFE, VISIBLE_TOASTS_AMOUNT } from '@aminnausin/cedar-ui';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const emit = defineEmits<(e: 'close', id: string) => void>(); // removeToast
@@ -228,7 +228,7 @@ onBeforeUnmount(() => {
                             fill="currentColor"
                         ></path>
                     </svg>
-                    <p class="text-[13px] font-medium leading-none" :title="props.title">{{ Y_OFFSET_STEP + ' : ' + props.title }}</p>
+                    <p class="text-[13px] font-medium leading-none" :title="props.title">{{ props.title }}</p>
                 </div>
                 <p
                     v-show="props.description"

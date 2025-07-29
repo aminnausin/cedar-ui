@@ -32,7 +32,17 @@ const tag = computed(() => {
         role="menuitem"
     >
         <slot name="icon">
-            <span width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2">
+            <span
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-4 h-4 mr-2"
+            >
             </span>
         </slot>
         <span class="text-nowrap">{{ linkData.text }}</span>
@@ -53,7 +63,12 @@ const tag = computed(() => {
             <span class="w-4 h-4 mr-2"></span>
         </slot>
         <span class="text-nowrap">{{ linkData.text }}</span>
-        <span v-if="typeof linkData.shortcut === 'string'" class="ml-auto text-xs tracking-widest opacity-60" :title="linkData.shortcutTitle">{{ linkData.shortcut ?? '' }}</span>
+        <span
+            v-if="typeof linkData.shortcut === 'string'"
+            class="ml-auto text-xs tracking-widest opacity-60"
+            :title="linkData.shortcutTitle"
+            >{{ linkData.shortcut ?? '' }}</span
+        >
         <component v-else :is="linkData.shortcut" class="ml-auto"></component>
     </component>
 </template>

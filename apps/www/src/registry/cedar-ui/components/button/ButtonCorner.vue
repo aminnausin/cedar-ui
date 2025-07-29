@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { CedarDelete } from '../icons';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps(['positionClasses', 'colourClasses', 'textClasses', 'to', 'label', 'disabled']);
 </script>
 
 <template>
-    <router-link
+    <RouterLink
         v-if="to"
         :aria-label="label ?? 'Link'"
         :title="label ?? 'Link'"
@@ -17,7 +18,7 @@ const props = defineProps(['positionClasses', 'colourClasses', 'textClasses', 't
         <slot name="icon">
             <CedarDelete />
         </slot>
-    </router-link>
+    </RouterLink>
     <button
         v-else
         :aria-label="props?.label ?? 'Close Modal'"

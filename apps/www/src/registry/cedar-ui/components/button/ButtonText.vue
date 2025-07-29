@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import { computed } from 'vue';
 
 const props = withDefaults(
@@ -54,7 +55,7 @@ const variantClass = computed(() => {
 </script>
 
 <template>
-    <router-link
+    <RouterLink
         v-if="to"
         :to="to"
         :class="['flex gap-2 items-center justify-center cursor-pointer', variantClass]"
@@ -63,13 +64,19 @@ const variantClass = computed(() => {
         :aria-disabled="disabled"
         :target="target ?? '_blank'"
     >
-        <slot name="text">
+        <slot>
             <p class="line-clamp-1 flex-1 text-left">{{ text }}</p>
         </slot>
         <slot name="icon"> </slot>
-    </router-link>
-    <button v-else :class="['flex gap-2 items-center justify-center cursor-pointer', variantClass]" :type="type" :disabled="disabled" :title="title ?? 'Button'">
-        <slot name="text">
+    </RouterLink>
+    <button
+        v-else
+        :class="['flex gap-2 items-center justify-center cursor-pointer', variantClass]"
+        :type="type"
+        :disabled="disabled"
+        :title="title ?? 'Button'"
+    >
+        <slot>
             <p class="line-clamp-1 flex-1 text-left" v-if="text">{{ text }}</p>
         </slot>
         <slot name="icon"> </slot>
