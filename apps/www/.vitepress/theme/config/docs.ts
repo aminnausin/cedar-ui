@@ -54,20 +54,12 @@ export const docsConfig: DocsConfig = {
             href: '/',
         },
         {
-            title: 'Docs',
+            title: 'Documentation',
             href: '/docs/introduction',
         },
         {
             title: 'Components',
             href: '/docs/components/accordion',
-        },
-        {
-            title: 'Blocks',
-            href: '/blocks',
-        },
-        {
-            title: 'Themes',
-            href: '/themes',
         },
     ],
     sidebarNav: [
@@ -82,71 +74,43 @@ export const docsConfig: DocsConfig = {
                     title: 'Installation',
                     href: '/docs/installation',
                 },
-                {
-                    title: 'components.json',
-                    href: '/docs/components-json',
-                },
-                {
-                    title: 'Theming',
-                    href: '/docs/theming',
-                },
-                {
-                    title: 'Dark Mode',
-                    href: '/docs/dark-mode',
-                    items: [],
-                },
-                {
-                    title: 'CLI',
-                    href: '/docs/cli',
-                },
-                {
-                    title: 'Tailwind v4',
-                    href: '/docs/tailwind-v4',
-                    items: [],
-                    label: 'New',
-                },
-                {
-                    title: 'Typography',
-                    href: '/docs/typography',
-                },
-                {
-                    title: 'Figma',
-                    href: '/docs/figma',
-                },
-                {
-                    title: 'Changelog',
-                    href: '/docs/changelog',
-                },
+                // {
+                //     title: 'components.json',
+                //     href: '/docs/components-json',
+                // },
+                // {
+                //     title: 'CLI',
+                //     href: '/docs/cli',
+                // },
+                // {
+                //     title: 'Changelog',
+                //     href: '/docs/changelog',
+                // },
                 {
                     title: 'About',
                     href: '/docs/about',
-                },
-                {
-                    title: 'Contribution',
-                    href: '/docs/contribution',
-                    items: [],
                 },
             ],
         },
         {
             title: 'Installation',
             items: [
-                {
-                    title: 'Vite',
-                    href: '/docs/installation/vite',
-                },
-                {
-                    title: 'Nuxt',
-                    href: '/docs/installation/nuxt',
-                },
-                {
-                    title: 'Astro',
-                    href: '/docs/installation/astro',
-                },
-                {
-                    title: 'Laravel',
-                    href: '/docs/installation/laravel',
-                },
+                // {
+                //     title: 'Vite',
+                //     href: '/docs/installation/vite',
+                // },
+                // {
+                //     title: 'Nuxt',
+                //     href: '/docs/installation/nuxt',
+                // },
+                // {
+                //     title: 'Astro',
+                //     href: '/docs/installation/astro',
+                // },
+                // {
+                //     title: 'Laravel',
+                //     href: '/docs/installation/laravel',
+                // },
                 {
                     title: 'Manual',
                     href: '/docs/installation/manual',
@@ -154,51 +118,11 @@ export const docsConfig: DocsConfig = {
             ],
         },
         {
-            title: 'Extended',
-            items: [
-                {
-                    title: 'Auto Form',
-                    href: '/docs/components/auto-form',
-                    items: [],
-                },
-                {
-                    title: 'Charts',
-                    href: '/docs/charts',
-                    items: [],
-                },
-            ],
-            label: 'Legacy',
-        },
-        {
             title: 'Components',
             items: [
                 {
-                    title: 'Sidebar',
-                    href: '/docs/components/sidebar',
-                },
-                {
                     title: 'Accordion',
                     href: '/docs/components/accordion',
-                },
-                {
-                    title: 'Alert',
-                    href: '/docs/components/alert',
-                },
-                {
-                    title: 'Alert Dialog',
-                    href: '/docs/components/alert-dialog',
-                },
-                {
-                    title: 'Aspect Ratio',
-                    href: '/docs/components/aspect-ratio',
-                },
-                {
-                    title: 'Avatar',
-                    href: '/docs/components/avatar',
-                },
-                {
-                    title: 'Badge',
-                    href: '/docs/components/badge',
                 },
                 {
                     title: 'Breadcrumb',
@@ -209,56 +133,19 @@ export const docsConfig: DocsConfig = {
                     title: 'Button',
                     href: '/docs/components/button',
                 },
+
                 {
-                    title: 'Calendar',
-                    href: '/docs/components/calendar',
+                    title: 'Clipboard',
+                    href: '/docs/components/clipboard',
                     items: [],
-                },
-                {
-                    title: 'Card',
-                    href: '/docs/components/card',
-                },
-                {
-                    title: 'Carousel',
-                    href: '/docs/components/carousel',
-                    items: [],
-                },
-                {
-                    title: 'Checkbox',
-                    href: '/docs/components/checkbox',
-                },
-                {
-                    title: 'Collapsible',
-                    href: '/docs/components/collapsible',
-                },
-                {
-                    title: 'Combobox',
-                    href: '/docs/components/combobox',
-                },
-                {
-                    title: 'Command',
-                    href: '/docs/components/command',
                 },
                 {
                     title: 'Context Menu',
                     href: '/docs/components/context-menu',
                 },
                 {
-                    title: 'Data Table',
-                    href: '/docs/components/data-table',
-                },
-                {
                     title: 'Date Picker',
                     href: '/docs/components/date-picker',
-                    items: [],
-                },
-                {
-                    title: 'Dialog',
-                    href: '/docs/components/dialog',
-                },
-                {
-                    title: 'Drawer',
-                    href: '/docs/components/drawer',
                     items: [],
                 },
                 {
@@ -282,93 +169,18 @@ export const docsConfig: DocsConfig = {
                     href: '/docs/components/label',
                 },
                 {
-                    title: 'Menubar',
-                    href: '/docs/components/menubar',
-                },
-                {
-                    title: 'Navigation Menu',
-                    href: '/docs/components/navigation-menu',
-                },
-                {
                     title: 'Number Field',
                     href: '/docs/components/number-field',
-                },
-                {
-                    title: 'Pagination',
-                    href: '/docs/components/pagination',
-                },
-                {
-                    title: 'PIN Input',
-                    href: '/docs/components/pin-input',
-                    items: [],
-                },
-                {
-                    title: 'Popover',
-                    href: '/docs/components/popover',
-                },
-                {
-                    title: 'Progress',
-                    href: '/docs/components/progress',
-                },
-                {
-                    title: 'Radio Group',
-                    href: '/docs/components/radio-group',
-                },
-                {
-                    title: 'Range Calendar',
-                    href: '/docs/components/range-calendar',
-                    items: [],
-                },
-                {
-                    title: 'Resizable',
-                    href: '/docs/components/resizable',
-                    items: [],
-                },
-                {
-                    title: 'Scroll Area',
-                    href: '/docs/components/scroll-area',
                 },
                 {
                     title: 'Select',
                     href: '/docs/components/select',
                 },
                 {
-                    title: 'Separator',
-                    href: '/docs/components/separator',
-                },
-                {
-                    title: 'Sheet',
-                    href: '/docs/components/sheet',
-                },
-                {
-                    title: 'Skeleton',
-                    href: '/docs/components/skeleton',
-                },
-                {
-                    title: 'Slider',
-                    href: '/docs/components/slider',
-                },
-                {
-                    title: 'Sonner',
-                    href: '/docs/components/sonner',
-                    items: [],
-                },
-                {
-                    title: 'Stepper',
-                    href: '/docs/components/stepper',
-                },
-                {
-                    title: 'Switch',
-                    href: '/docs/components/switch',
-                },
-                {
                     title: 'Table',
                     href: '/docs/components/table',
                 },
-                {
-                    title: 'Tabs',
-                    href: '/docs/components/tabs',
-                },
+
                 {
                     title: 'Tags Input',
                     href: '/docs/components/tags-input',
@@ -382,56 +194,198 @@ export const docsConfig: DocsConfig = {
                     title: 'Toast',
                     href: '/docs/components/toast',
                 },
-                {
-                    title: 'Toggle',
-                    href: '/docs/components/toggle',
-                },
-                {
-                    title: 'Toggle Group',
-                    href: '/docs/components/toggle-group',
-                },
-                {
-                    title: 'Tooltip',
-                    href: '/docs/components/tooltip',
-                },
             ],
         },
-        {
-            title: 'Registry',
-            label: 'New',
-            items: [
-                {
-                    title: 'Introduction',
-                    href: '/docs/registry',
-                    items: [],
-                },
-                {
-                    title: 'Getting Started',
-                    href: '/docs/registry/getting-started',
-                    items: [],
-                },
-                {
-                    title: 'Examples',
-                    href: '/docs/registry/examples',
-                    items: [],
-                },
-                {
-                    title: 'FAQ',
-                    href: '/docs/registry/faq',
-                    items: [],
-                },
-                {
-                    title: 'registry.json',
-                    href: '/docs/registry/registry-json',
-                    items: [],
-                },
-                {
-                    title: 'registry-item.json',
-                    href: '/docs/registry/registry-item-json',
-                    items: [],
-                },
-            ],
-        },
+        // {
+        //     title: 'Dev Components',
+        //     items: [
+        //         {
+        //             title: 'Sidebar',
+        //             href: '/docs/components/sidebar',
+        //         },
+        //         {
+        //             title: 'Accordion',
+        //             href: '/docs/components/accordion',
+        //         },
+        //         {
+        //             title: 'Alert',
+        //             href: '/docs/components/alert',
+        //         },
+        //         {
+        //             title: 'Alert Dialog',
+        //             href: '/docs/components/alert-dialog',
+        //         },
+        //         {
+        //             title: 'Aspect Ratio',
+        //             href: '/docs/components/aspect-ratio',
+        //         },
+        //         {
+        //             title: 'Avatar',
+        //             href: '/docs/components/avatar',
+        //         },
+        //         {
+        //             title: 'Badge',
+        //             href: '/docs/components/badge',
+        //         },
+        //         {
+        //             title: 'Breadcrumb',
+        //             href: '/docs/components/breadcrumb',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Button',
+        //             href: '/docs/components/button',
+        //         },
+        //         {
+        //             title: 'Calendar',
+        //             href: '/docs/components/calendar',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Clipboard',
+        //             href: '/docs/components/clipboard',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Card',
+        //             href: '/docs/components/card',
+        //         },
+        //         {
+        //             title: 'Carousel',
+        //             href: '/docs/components/carousel',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Checkbox',
+        //             href: '/docs/components/checkbox',
+        //         },
+        //         {
+        //             title: 'Collapsible',
+        //             href: '/docs/components/collapsible',
+        //         },
+        //         {
+        //             title: 'Combobox',
+        //             href: '/docs/components/combobox',
+        //         },
+        //         {
+        //             title: 'Command',
+        //             href: '/docs/components/command',
+        //         },
+        //         {
+        //             title: 'Context Menu',
+        //             href: '/docs/components/context-menu',
+        //         },
+        //         {
+        //             title: 'Data Table',
+        //             href: '/docs/components/data-table',
+        //         },
+        //         {
+        //             title: 'Date Picker',
+        //             href: '/docs/components/date-picker',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Dialog',
+        //             href: '/docs/components/dialog',
+        //         },
+        //         {
+        //             title: 'Drawer',
+        //             href: '/docs/components/drawer',
+        //             items: [],
+        //         },
+
+        //         {
+        //             title: 'Menubar',
+        //             href: '/docs/components/menubar',
+        //         },
+        //         {
+        //             title: 'Navigation Menu',
+        //             href: '/docs/components/navigation-menu',
+        //         },
+        //         {
+        //             title: 'Number Field',
+        //             href: '/docs/components/number-field',
+        //         },
+        //         {
+        //             title: 'Pagination',
+        //             href: '/docs/components/pagination',
+        //         },
+        //         {
+        //             title: 'PIN Input',
+        //             href: '/docs/components/pin-input',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Popover',
+        //             href: '/docs/components/popover',
+        //         },
+        //         {
+        //             title: 'Progress',
+        //             href: '/docs/components/progress',
+        //         },
+        //         {
+        //             title: 'Radio Group',
+        //             href: '/docs/components/radio-group',
+        //         },
+        //         {
+        //             title: 'Range Calendar',
+        //             href: '/docs/components/range-calendar',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Resizable',
+        //             href: '/docs/components/resizable',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Scroll Area',
+        //             href: '/docs/components/scroll-area',
+        //         },
+
+        //         {
+        //             title: 'Separator',
+        //             href: '/docs/components/separator',
+        //         },
+        //         {
+        //             title: 'Sheet',
+        //             href: '/docs/components/sheet',
+        //         },
+        //         {
+        //             title: 'Skeleton',
+        //             href: '/docs/components/skeleton',
+        //         },
+        //         {
+        //             title: 'Slider',
+        //             href: '/docs/components/slider',
+        //         },
+        //         {
+        //             title: 'Sonner',
+        //             href: '/docs/components/sonner',
+        //             items: [],
+        //         },
+        //         {
+        //             title: 'Stepper',
+        //             href: '/docs/components/stepper',
+        //         },
+        //         {
+        //             title: 'Switch',
+        //             href: '/docs/components/switch',
+        //         },
+
+        //         {
+        //             title: 'Toggle',
+        //             href: '/docs/components/toggle',
+        //         },
+        //         {
+        //             title: 'Toggle Group',
+        //             href: '/docs/components/toggle-group',
+        //         },
+        //         {
+        //             title: 'Tooltip',
+        //             href: '/docs/components/tooltip',
+        //         },
+        //     ],
+        // },
     ],
 };
 
