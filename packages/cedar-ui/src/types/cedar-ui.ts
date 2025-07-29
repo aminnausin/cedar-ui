@@ -218,3 +218,11 @@ export interface FormState<T> {
     clearErrors: (...fields: string[]) => void;
     setErrors: (errors: { [key: string]: string }) => void;
 }
+
+// Accordion
+
+export interface AccordionItem {
+    id: string;
+    title: string;
+    content: string;
+}

@@ -7,6 +7,8 @@ catalog:
   '@vueuse/core': ^13.2.0
   '@vueuse/components': ^13.5.0
   '@vueuse/integrations': ^13.5.0
+  class-variance-authority: ^0.7.1
+  clsx: ^2.1.1
   typescript: ^5.8.3
   vue: ^3.5.15
   vue-tsc: ^3.0.4
@@ -14,3 +16,4 @@ catalog:
   focus-trap: ^7.5.4
   fast-deep-equal: ^3.1.3
   tailwind-scrollbar-hide: ^2.0.0
+  reka-ui: ^2.2.1
