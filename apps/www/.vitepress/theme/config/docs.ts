@@ -125,8 +125,8 @@ export const docsConfig: DocsConfig = {
                     href: '/docs/components/accordion',
                 },
                 {
-                    title: 'Breadcrumb',
-                    href: '/docs/components/breadcrumb',
+                    title: 'BreadCrumbs',
+                    href: '/docs/components/breadcrumbs',
                     items: [],
                 },
                 {

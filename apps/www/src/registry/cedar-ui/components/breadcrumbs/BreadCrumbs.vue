@@ -40,3 +40,9 @@ withDefaults(defineProps<{ breadCrumbs: BreadCrumbItem[] }>(), { breadCrumbs: ()
         </ol>
     </nav>
 </template>
+<style lang="css" scoped>
+a {
+    text-decoration: none;
+    color: inherit;
+}
+</style>
