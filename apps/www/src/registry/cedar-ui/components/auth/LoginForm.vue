@@ -45,7 +45,7 @@ const handleLogin = async () => {
                 <FormInputLabel :field="field" class="me-auto" />
                 <RouterLink
                     to="/recovery"
-                    class="underline leading-none text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    class="underline leading-none text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
                 >
                     Forgot password?
                 </RouterLink>
@@ -65,8 +65,8 @@ const handleLogin = async () => {
                 :class="[
                     'rounded dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 shadow-sm',
                     'appearance-none',
-                    'focus:ring-indigo-500 focus:!ring-[0.125rem] !ring-offset-0',
-                    'checked:text-indigo-600',
+                    'focus:ring-purple-500 focus:!ring-[0.125rem] !ring-offset-0',
+                    'checked:text-purple-600',
                 ]"
                 name="remember_me"
             />
@@ -75,7 +75,7 @@ const handleLogin = async () => {
 
         <div class="flex flex-wrap gap-2 gap-x-4 items-center justify-end text-center">
             <RouterLink
-                class="underline text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                class="underline text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
                 to="/register"
             >
                 Not Registered?

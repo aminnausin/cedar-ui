@@ -1,17 +1,21 @@
 ---
 title: Dropdown Menu
-description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
-source: apps/www/src/registry/default/ui/dropdown-menu
-primitive: https://www.reka-ui.com/docs/components/dropdown-menu.html
+description: A simple dropdown menu element..
+source: apps/www/src/registry/cedar-ui/dropdown-menu
 ---
 
 <ComponentPreview name="DropdownMenuDemo" />
 
 ## Installation
 
-```bash
+``` bash
 npx cedar-ui@latest add dropdown-menu
+npm i @aminnausin/cedar-ui
 ```
+
+or download the following folders to your project:
+
+`@/components/cedar-ui/dropdown-menu`
 
 ## Usage
 

@@ -1,5 +1,5 @@
+import plugin from 'tailwindcss';
 import tailwindcssAnimate from 'tailwindcss-animate';
-import { fontFamily } from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -87,4 +87,15 @@ export default {
             },
         },
     },
+    plugins: [
+        plugin(function ({ addVariant }) {
+            addVariant('hocus', ['&:hover', '&:focus']);
+        }),
+        // tailwindcssAnimate,
+        require('@tailwindcss/forms'),
+
+        require('@tailwindcss/aspect-ratio'),
+
+        require('tailwind-scrollbar-hide'),
+    ],
 };

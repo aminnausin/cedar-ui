@@ -13,8 +13,6 @@ const defaults = {
     external: false,
     disabled: false,
     action: () => {
-        console.log('haha');
-
         userData.value = {
             email: 'aminnausin@nausin.me',
         };
@@ -120,7 +118,7 @@ onUnmounted(() => {
                             @click="
                                 () => {
                                     $emit('toggleDropdown', false);
-                                    if (item.action && userData) item.action();
+                                    if (item.action) item.action();
                                 }
                             "
                         >

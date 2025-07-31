@@ -1,39 +1,32 @@
 ---
-title: Hover Card
-description: A hover element card preview.
-source: apps/www/src/registry/cedar-ui/components/hover-card
+title: Date Picker
+description: A date picker element that can be used to select a date.
+source: apps/www/src/registry/cedar-ui/input
 ---
 
-<ComponentPreview name="HoverCardDemo" />
+<ComponentPreview name="InputDemo" />
 
 ## Installation
 
-```bash
-npx cedar-ui@latest add hover-card
+<Steps>
+
+### Run the following command
+
+``` bash
+npx cedar-ui@latest add input
+npm i @aminnausin/cedar-ui
 ```
 
-## Usage
+or download the following folders to your project:
 
-```vue
-<script setup lang="ts">
-import {
-  HoverCard,
-} from '@/components/cedar-ui/hover-card'
+`@/components/cedar-ui/input`
 
-const username = ref('@vue.js')
-const description = ref('')
-</script>
+</Steps>
 
-<template>
-  <HoverCard :content="description" scroll-container="window">
-      <template #trigger>
-          <h2>
-              {{ username }}
-          </h2>
-      </template>
-      <template #content>
-        {{ description }}
-      </template>
-  </HoverCard>
-</template>
-```
+## Form Input
+
+<ComponentPreview name="FormInputDemo" />
+
+The FormInput is intended for use within a form and given a `FormField`.
+
+See installations instructions for the [Form](/docs/components/form) component.

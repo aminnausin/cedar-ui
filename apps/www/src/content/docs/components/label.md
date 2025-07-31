@@ -1,39 +1,29 @@
 ---
-title: Hover Card
-description: A hover element card preview.
-source: apps/www/src/registry/cedar-ui/components/hover-card
+title: Label
+description: Renders an accessible label associated with controls.
+source: apps/www/src/registry/cedar-ui/components/input
 ---
 
-<ComponentPreview name="HoverCardDemo" />
+<ComponentPreview name="LabelDemo" />
 
 ## Installation
 
-```bash
-npx cedar-ui@latest add hover-card
+``` bash
+npx cedar-ui@latest add input
+npm i @aminnausin/cedar-ui
 ```
+
+or download the following folders to your project:
+
+`@/components/cedar-ui/input`
 
 ## Usage
 
 ```vue
 <script setup lang="ts">
-import {
-  HoverCard,
-} from '@/components/cedar-ui/hover-card'
-
-const username = ref('@vue.js')
-const description = ref('')
+import { InputLabel } from '@/registry/cedar-ui/components/input';
 </script>
-
 <template>
-  <HoverCard :content="description" scroll-container="window">
-      <template #trigger>
-          <h2>
-              {{ username }}
-          </h2>
-      </template>
-      <template #content>
-        {{ description }}
-      </template>
-  </HoverCard>
+    <InputLabel name="artist">Album Artist</InputLabel>
 </template>
 ```

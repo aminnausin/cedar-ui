@@ -1,39 +1,28 @@
 ---
-title: Hover Card
-description: A hover element card preview.
-source: apps/www/src/registry/cedar-ui/components/hover-card
+title: Textarea
+description: A textarea form input element for collecting long user info.
+source: apps/www/src/registry/cedar-ui/textarea
 ---
 
-<ComponentPreview name="HoverCardDemo" />
+<ComponentPreview name="TextareaDemo" />
 
 ## Installation
 
-```bash
-npx cedar-ui@latest add hover-card
+<Steps>
+
+### Run the following command
+
+``` bash
+npx cedar-ui@latest add textarea
+npm i @aminnausin/cedar-ui
 ```
 
-## Usage
+or download the following folders to your project:
 
-```vue
-<script setup lang="ts">
-import {
-  HoverCard,
-} from '@/components/cedar-ui/hover-card'
+`@/components/cedar-ui/textarea`
 
-const username = ref('@vue.js')
-const description = ref('')
-</script>
+</Steps>
 
-<template>
-  <HoverCard :content="description" scroll-container="window">
-      <template #trigger>
-          <h2>
-              {{ username }}
-          </h2>
-      </template>
-      <template #content>
-        {{ description }}
-      </template>
-  </HoverCard>
-</template>
-```
+The Textarea component is intended for use within a form and given a `FormField`.
+
+See installations instructions for the [Form](/docs/components/form) component.

@@ -1,29 +1,3 @@
----
-title: Hover Card
-description: A hover element card preview.
-source: apps/www/src/registry/cedar-ui/components/form
----
-
-<ComponentPreview name="NumberFieldDemo" />
-
-## Installation
-
-``` bash
-npx cedar-ui@latest add form
-npm i @aminnausin/cedar-ui
-```
-
-or download the following folders to your project:
-
-`@/components/cedar-ui/form`
-
-The Date Picker is intended for use within a form and given a `FormField`.
-
-See installations instructions for the [Form](/docs/components/form) component.
-
-## Usage
-
-```vue
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
@@ -49,5 +23,3 @@ const field = ref<FormField>({
         <FormInputNumber v-model="rating" :field="field" />
     </form>
 </template>
-
-```
