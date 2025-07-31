@@ -1,16 +1,19 @@
-// https://vitepress.dev/guide/custom-theme
+import type { PropType } from 'vue';
 import type { Theme } from 'vitepress';
 
-import { defineComponent, h, type PropType } from 'vue';
+import { defineComponent, h } from 'vue';
 
 import * as components from './components';
-import DefaultTheme from 'vitepress/theme';
-import Layout from './layout/MainLayout.vue';
-import DocsLayout from './layout/DocsLayout.vue';
-import './style.css';
 
+// import DefaultTheme from 'vitepress/theme';
+import DocsLayout from './layout/DocsLayout.vue';
+import Layout from './layout/MainLayout.vue';
+
+import './style.css';
+import './styles/vp-doc.css';
+import './styles/shiki.css';
 export default {
-    extends: DefaultTheme,
+    // extends: DefaultTheme,
     Layout,
     enhanceApp({ app, router, siteData }) {
         app.component('docs', DocsLayout);

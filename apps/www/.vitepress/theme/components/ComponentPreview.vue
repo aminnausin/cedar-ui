@@ -89,7 +89,7 @@ watch(
                     <ComponentLoader v-bind="$attrs" :name="name" :type-name="'example'" />
                 </div>
             </TabsContent>
-            <TabsContent value="code" class="vp-doc">
+            <TabsContent value="code" class="">
                 <div v-if="codeHtml" class="language-vue" style="flex: 1" v-html="codeHtml"></div>
                 <slot v-else />
             </TabsContent>
