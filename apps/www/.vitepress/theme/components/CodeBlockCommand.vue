@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core';
-import { CheckIcon, ClipboardIcon } from 'lucide-vue-next';
-import { Button } from './ui/new-york/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/new-york/tabs';
+import { ButtonClipboard } from '@/registry/cedar-ui/components/clipboard';
+import { ClipboardIcon } from 'lucide-vue-next';
 import { ref } from 'vue';
 
 type PackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun';
@@ -12,16 +11,11 @@ export interface Config {
     packageManager: PackageManager;
 }
 
-const props = defineProps<{
+defineProps<{
     tabs: Record<Config['packageManager'], string>;
 }>();
 
 const packageManager = ref<PackageManager>('npm');
-const { copied, copy } = useClipboard();
-
-function handleCopy() {
-    copy(props.tabs[packageManager.value]);
-}
 </script>
 
 <template>
@@ -45,14 +39,13 @@ function handleCopy() {
                 ><code><span class="line"><span>{{ value }}</span></span></code></pre>
             </TabsContent>
         </Tabs>
-        <Button
-            size="icon"
-            variant="ghost"
-            class="absolute right-2.5 top-2 z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
-            @click="handleCopy"
-        >
-            <span class="sr-only">Copy</span>
-            <CheckIcon v-if="copied" /><ClipboardIcon v-else />
-        </Button>
+        <div class="absolute right-2.5 top-2 z-10 h-6 w-6">
+            <ButtonClipboard
+                :text="tabs[packageManager]"
+                button-style="h-6 w-6 bg-zinc-900 hover:bg-zinc-700 text-zinc-50 dark:text-zinc-50 stroke-1 transition-all duration-300 [&_svg]:h-3 [&_svg]:w-3 !p-0"
+            >
+                <ClipboardIcon />
+            </ButtonClipboard>
+        </div>
     </div>
 </template>
