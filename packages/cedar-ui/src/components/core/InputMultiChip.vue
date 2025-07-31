@@ -189,7 +189,7 @@ watch(
                 'disabled:cursor-not-allowed disabled:opacity-50',
                 'text-left text-gray-900 dark:text-neutral-100 bg-white dark:bg-neutral-700 placeholder:text-neutral-400',
                 'ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-                `${select.selectOpen ? 'hocus:ring-0' : 'hocus:ring-[0.125rem]'} hover:ring-violet-400 hover:dark:ring-violet-700 focus:ring-indigo-400 dark:focus:ring-indigo-500 focus:outline-none`,
+                `${select.selectOpen ? 'hocus:ring-0' : 'hocus:ring-[0.125rem]'} hover:ring-violet-400 hover:dark:ring-violet-700 focus:ring-purple-400 dark:focus:ring-purple-500 focus:outline-none`,
             ]"
             :disabled="disabled"
             type="button"

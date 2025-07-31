@@ -34,7 +34,7 @@ const addToNumber = (change: 1 | -1) => {
                 'disabled:cursor-not-allowed disabled:opacity-50',
                 'text-gray-900 dark:text-neutral-100 bg-white dark:bg-neutral-700 placeholder:text-neutral-400',
                 'ring-inset focus:ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-                'focus:ring-[0.125rem] focus:ring-indigo-400 dark:focus:ring-indigo-500',
+                'focus:ring-[0.125rem] focus:ring-purple-400 dark:focus:ring-purple-500',
             ]"
             :name="field.name"
             :title="field.text ?? field.name"
@@ -49,14 +49,14 @@ const addToNumber = (change: 1 | -1) => {
         <span class="absolute top-0 right-0 h-full flex flex-col w-12">
             <button
                 @click.prevent.stop="incrementNumber"
-                class="h-1/2 items-center justify-center flex hover:bg-neutral-200/50 hover:dark:bg-neutral-600 rounded-tr-md ring-inset focus:outline-none focus:ring-[0.125rem] focus:ring-indigo-400 dark:focus:ring-indigo-500"
+                class="h-1/2 items-center justify-center flex hover:bg-neutral-200/50 hover:dark:bg-neutral-600 rounded-tr-md ring-inset focus:outline-none focus:ring-[0.125rem] focus:ring-purple-400 dark:focus:ring-purple-500"
                 :title="`Increment ${field.name}`"
             >
                 <LucideChevronUp width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-4 h-4" />
             </button>
             <button
                 @click.prevent.stop="decrementNumber"
-                class="h-1/2 items-center justify-center flex hover:bg-neutral-200/50 hover:dark:bg-neutral-600 rounded-br-md ring-inset focus:outline-none focus:ring-[0.125rem] focus:ring-indigo-400 dark:focus:ring-indigo-500"
+                class="h-1/2 items-center justify-center flex hover:bg-neutral-200/50 hover:dark:bg-neutral-600 rounded-br-md ring-inset focus:outline-none focus:ring-[0.125rem] focus:ring-purple-400 dark:focus:ring-purple-500"
                 :title="`Decrement ${field.name}`"
             >
                 <LucideChevronDown width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-4 h-4" />

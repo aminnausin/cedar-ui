@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
                     'transition-all duration-300 ease-out',
                     'bg-white dark:bg-primary-dark-700/70 text-gray-800 dark:text-neutral-100 shadow-[0_5px_15px_-3px_rgb(0_0_0_/_0.08)]',
                     'ring-inset ring-1 ring-gray-100 dark:ring-neutral-800/50',
-                    '!outline-none focus:ring-gray-400 dark:focus:ring-indigo-500 focus:ring-2',
+                    '!outline-none focus:ring-gray-400 dark:focus:ring-purple-500 focus:ring-2',
                 ]"
                 v-show="isMounted"
             >
