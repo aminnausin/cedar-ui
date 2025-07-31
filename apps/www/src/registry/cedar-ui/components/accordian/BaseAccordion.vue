@@ -25,7 +25,7 @@ function setActiveAccordion(id: string) {
 </script>
 <template>
     <div
-        class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white border border-gray-200 divide-y divide-gray-200 rounded-md"
+        class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white dark:bg-primary-dark-800 border border-gray-200 dark:border-border divide-y divide-gray-200 dark:divide-neutral-700 rounded-md"
     >
         <div v-for="accordion in accordions" :key="accordion.id" class="cursor-pointer">
             <button
