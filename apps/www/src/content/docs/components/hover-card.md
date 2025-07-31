@@ -9,8 +9,12 @@ source: apps/www/src/registry/cedar-ui/components/hover-card
 ## Installation
 
 ```bash
-npx shadcn-vue@latest add hover-card
+npx cedar-ui@latest add hover-card
 ```
+
+or download the following folders to your project:
+
+`@/components/cedar-ui/hover-card`
 
 ## Usage
 
@@ -19,14 +23,21 @@ npx shadcn-vue@latest add hover-card
 import {
   HoverCard,
 } from '@/components/cedar-ui/hover-card'
+
+const username = ref('@vue.js')
+const description = ref('')
 </script>
 
 <template>
-  <HoverCard>
-    <HoverCardTrigger>Hover</HoverCardTrigger>
-    <HoverCardContent>
-      The Vue Framework – created and maintained by @vuejs.
-    </HoverCardContent>
+  <HoverCard :content="description" scroll-container="window">
+      <template #trigger>
+          <h2>
+              {{ username }}
+          </h2>
+      </template>
+      <template #content>
+        {{ description }}
+      </template>
   </HoverCard>
 </template>
 ```
