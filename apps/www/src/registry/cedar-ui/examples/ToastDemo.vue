@@ -35,7 +35,8 @@ const types: ToastType[] = ['default', 'success', 'warning', 'danger', 'info'];
                         currentPosition = pos;
                         showToast();
                     "
-                    :class="[{ '!ring-neutral-500': currentPosition == pos }, 'text-sm h-8 ring-1 capitalize']"
+                    :class="[{ '!ring-neutral-500 dark:!ring-neutral-200': currentPosition == pos }, 'text-sm h-8 ring-1 capitalize']"
+                    :variant="'default'"
                 >
                     {{ pos }}
                 </ButtonText>
