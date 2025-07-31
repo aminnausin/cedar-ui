@@ -9,7 +9,7 @@ source: apps/www/src/registry/cedar-ui/components/hover-card
 ## Installation
 
 ```bash
-npx shadcn-vue@latest add hover-card
+npx cedar-ui@latest add hover-card
 ```
 
 ## Usage

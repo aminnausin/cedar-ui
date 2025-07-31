@@ -10,7 +10,7 @@ primitive: https://www.reka-ui.com/docs/components/dropdown-menu.html
 ## Installation
 
 ```bash
-npx shadcn-vue@latest add dropdown-menu
+npx cedar-ui@latest add dropdown-menu
 ```
 
 ## Usage

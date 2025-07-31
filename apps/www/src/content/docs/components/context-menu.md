@@ -10,7 +10,7 @@ primitive: https://www.reka-ui.com/docs/components/context-menu.html
 ## Installation
 
 ```bash
-npx shadcn-vue@latest add context-menu
+npx cedar-ui@latest add context-menu
 ```
 
 ## Usage

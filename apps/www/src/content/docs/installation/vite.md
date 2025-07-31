@@ -106,7 +106,7 @@ export default defineConfig({
 Run the `shadcn-vue` init command to setup your project:
 
 ```bash
-npx shadcn-vue@latest init
+npx cedar-ui@latest init
 ```
 
 You will be asked a few questions to configure `components.json`.
@@ -120,7 +120,7 @@ Which color would you like to use as base color? › Neutral
 You can now start adding components to your project.
 
 ```bash
-npx shadcn-vue@latest add button
+npx cedar-ui@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:
