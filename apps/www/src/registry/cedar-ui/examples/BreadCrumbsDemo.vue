@@ -25,7 +25,7 @@ const items: BreadCrumbItem[] = [
 </script>
 
 <template>
-    <section class="w-full flex flex-col gap-8 items-center">
+    <section class="w-full flex flex-col gap-8 items-center text-sm">
         <BreadCrumbs :bread-crumbs="items" />
     </section>
 </template>

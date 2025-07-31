@@ -178,6 +178,10 @@ export const docsConfig: DocsConfig = {
                     href: '/docs/components/number-field',
                 },
                 {
+                    title: 'Popover',
+                    href: '/docs/components/popover',
+                },
+                {
                     title: 'Select',
                     href: '/docs/components/select',
                 },
