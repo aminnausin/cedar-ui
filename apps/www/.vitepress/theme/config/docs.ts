@@ -169,6 +169,11 @@ export const docsConfig: DocsConfig = {
                     href: '/docs/components/label',
                 },
                 {
+                    title: 'Multi-Select',
+                    href: '/docs/components/multi-select',
+                    items: [],
+                },
+                {
                     title: 'Number Field',
                     href: '/docs/components/number-field',
                 },
@@ -180,11 +185,9 @@ export const docsConfig: DocsConfig = {
                     title: 'Table',
                     href: '/docs/components/table',
                 },
-
                 {
-                    title: 'Tags Input',
-                    href: '/docs/components/tags-input',
-                    items: [],
+                    title: 'Tabs',
+                    href: '/docs/components/tabs',
                 },
                 {
                     title: 'Textarea',
