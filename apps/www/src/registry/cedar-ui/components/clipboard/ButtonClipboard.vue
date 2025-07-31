@@ -4,7 +4,13 @@ import { ButtonIcon } from '../button';
 import { toRef } from 'vue';
 import { cn } from '@/lib/utils';
 
-const props = defineProps<{ text: string; tabindex?: number; buttonStyle?: string; title?: string }>();
+const props = defineProps<{
+    text: string;
+    tabindex?: number;
+    buttonStyle?: string;
+    title?: string;
+    variant?: 'default' | 'ghost' | 'transparent';
+}>();
 
 const clipboard = useClipboard(toRef(props.text));
 </script>
@@ -19,7 +25,7 @@ const clipboard = useClipboard(toRef(props.text));
             leave-from-class="opacity-100 translate-x-0"
             leave-to-class="opacity-0 translate-x-2"
         >
-            <div v-if="clipboard.copyNotification.value" class="absolute left-0" v-cloak>
+            <div v-if="clipboard.copyNotification.value" class="absolute left-0 flex w-0" v-cloak>
                 <div
                     class="px-3 h-7 -ml-1.5 items-center flex text-xs bg-green-500 border-r border-green-500 -translate-x-full text-white rounded"
                 >
@@ -40,6 +46,7 @@ const clipboard = useClipboard(toRef(props.text));
                 )
             "
             :title="title"
+            :variant="variant ?? 'default'"
         >
             <template #icon>
                 <svg
@@ -54,29 +61,26 @@ const clipboard = useClipboard(toRef(props.text));
                 >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
-                <svg
-                    v-if="!clipboard.copyNotification.value"
-                    class="w-4 h-4 stroke-current"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <g fill="none" stroke="none">
-                        <path
-                            d="M7.75 7.757V6.75a3 3 0 0 1 3-3h6.5a3 3 0 0 1 3 3v6.5a3 3 0 0 1-3 3h-.992"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path>
-                        <path
-                            d="M3.75 10.75a3 3 0 0 1 3-3h6.5a3 3 0 0 1 3 3v6.5a3 3 0 0 1-3 3h-6.5a3 3 0 0 1-3-3v-6.5z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path>
-                    </g>
-                </svg>
+                <slot v-else v-cloak>
+                    <svg class="w-4 h-4 stroke-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke="none">
+                            <path
+                                d="M7.75 7.757V6.75a3 3 0 0 1 3-3h6.5a3 3 0 0 1 3 3v6.5a3 3 0 0 1-3 3h-.992"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="M3.75 10.75a3 3 0 0 1 3-3h6.5a3 3 0 0 1 3 3v6.5a3 3 0 0 1-3 3h-6.5a3 3 0 0 1-3-3v-6.5z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                        </g>
+                    </svg>
+                </slot>
             </template>
         </ButtonIcon>
     </div>
