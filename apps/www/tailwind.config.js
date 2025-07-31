@@ -58,12 +58,32 @@ export default {
                     border: 'hsl(var(--sidebar-border))',
                     ring: 'hsl(var(--sidebar-ring))',
                 },
+                'primary-dark': {
+                    600: '#2a2a2d', // Card Hover
+                    700: '#26262a', // Card 2
+                    800: '#27272a', // Card
+                    900: '#18181b', // Panel
+                    950: '#101014', // bg
+                },
             },
             borderRadius: {
                 xl: 'calc(var(--radius) + 4px)',
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)',
+            },
+            aspectRatio: {
+                video: '16 / 9',
+                square: '1 / 1',
+                portrait: '9 / 16',
+                '1/2': '1 / 2',
+                '2/3': '2 / 3',
+                '3/4': '3 / 4',
+            },
+            screens: {
+                xs: '320px',
+                xms: '400px',
+                '3xl': '2000px',
             },
         },
     },
