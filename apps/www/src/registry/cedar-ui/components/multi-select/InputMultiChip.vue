@@ -28,6 +28,7 @@ const props = withDefaults(
         max?: number;
         disabled?: boolean;
         title?: string;
+        fieldName?: string;
     }>(),
     {
         placeholder: 'Select Item',
@@ -193,6 +194,7 @@ watch(
             :disabled="disabled"
             type="button"
             :title="title ?? 'Make Selection'"
+            :id="fieldName"
         >
             <span class="truncate">{{ placeholder }}</span>
             <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">

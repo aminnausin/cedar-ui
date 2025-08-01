@@ -1,6 +1,6 @@
 ---
 title: Popover
-description: A popover element that can display rich content in a portal, triggered by a button..
+description: A popover element that can display rich content in a portal, triggered by a button.
 source: apps/www/src/registry/cedar-ui/components/popover
 ---
 

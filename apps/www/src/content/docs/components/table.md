@@ -1,39 +1,56 @@
 ---
-title: Hover Card
-description: A hover element card preview.
-source: apps/www/src/registry/cedar-ui/components/hover-card
+title: Table
+description: A simple component based table, with search and sort slots.
+source: apps/www/src/registry/cedar-ui/components/table
 ---
 
-<ComponentPreview name="HoverCardDemo" />
+<ComponentPreview name="TableDemo" />
 
 ## Installation
 
-```bash
-npx cedar-ui@latest add hover-card
+ ```bash
+npx cedar-ui@latest add table
+npm i @aminnausin/cedar-ui
 ```
+
+or download the following folders to your project:
+
+`@/components/cedar-ui/table`
 
 ## Usage
 
 ```vue
 <script setup lang="ts">
 import {
-  HoverCard,
+  TableBase,
 } from '@/components/cedar-ui/hover-card'
 
-const username = ref('@vue.js')
-const description = ref('')
 </script>
 
 <template>
-  <HoverCard :content="description" scroll-container="window">
-      <template #trigger>
-          <h2>
-              {{ username }}
-          </h2>
-      </template>
-      <template #content>
-        {{ description }}
-      </template>
-  </HoverCard>
+    <TableBase
+        :data="rows"
+        :row="RowComponent"
+        :clickAction="
+            () => {
+                toast.info('Primary Action');
+            }
+        "
+        :otherAction="
+            () => {
+                toast.info('Other Action');
+            }
+        "
+        :loading="isLoadingRows"
+        :useToolbar="true"
+        :sortAction="handleSort"
+        :sortingOptions="sortingOptions"
+        :selectedID="-1"
+        :startAscending="true"
+        :search-query="searchQuery"
+        :items-per-page="12"
+        @search="handleSearch"
+        v-model="searchQuery"
+    />
 </template>
 ```

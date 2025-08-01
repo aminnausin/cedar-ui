@@ -8,7 +8,7 @@ source: apps/www/src/registry/cedar-ui/components/form
 
 ## Installation
 
-``` bash
+ ```bash
 npx cedar-ui@latest add form
 npm i @aminnausin/cedar-ui
 ```

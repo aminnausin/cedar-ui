@@ -127,7 +127,6 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'BreadCrumbs',
                     href: '/docs/components/breadcrumbs',
-                    items: [],
                 },
                 {
                     title: 'Button',
@@ -137,7 +136,6 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'Clipboard',
                     href: '/docs/components/clipboard',
-                    items: [],
                 },
                 {
                     title: 'Context Menu',
@@ -146,7 +144,6 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'Date Picker',
                     href: '/docs/components/date-picker',
-                    items: [],
                 },
                 {
                     title: 'Dropdown Menu',
@@ -155,6 +152,7 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'Form',
                     href: '/docs/components/form',
+                    label: 'Incomplete',
                 },
                 {
                     title: 'Hover Card',
@@ -171,7 +169,6 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'Multi-Select',
                     href: '/docs/components/multi-select',
-                    items: [],
                 },
                 {
                     title: 'Number Field',
@@ -192,6 +189,7 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'Tabs',
                     href: '/docs/components/tabs',
+                    label: 'Incomplete',
                 },
                 {
                     title: 'Textarea',

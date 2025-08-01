@@ -1,6 +1,6 @@
 ---
-title: Date Picker
-description: A date picker element that can be used to select a date.
+title: Text Input
+description: Displays a form input field or a component that looks like an input field.
 source: apps/www/src/registry/cedar-ui/input
 ---
 
@@ -12,7 +12,7 @@ source: apps/www/src/registry/cedar-ui/input
 
 ### Run the following command
 
-``` bash
+ ```bash
 npx cedar-ui@latest add input
 npm i @aminnausin/cedar-ui
 ```

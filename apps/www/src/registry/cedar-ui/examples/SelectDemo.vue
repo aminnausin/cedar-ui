@@ -1,24 +1,63 @@
 <script setup lang="ts">
-import type { FormField } from '@aminnausin/cedar-ui';
+import { InputSelect } from '@/registry/cedar-ui/components/select';
+import { computed } from 'vue';
 
-import { DatePicker } from '../components/date-picker';
-import { ref } from 'vue';
-import FormInputLabel from '../components/form/FormInputLabel.vue';
-
-const field = ref<FormField>({
-    name: 'date_released',
-    text: 'Release Date',
-    type: 'date',
-    value: null,
-    subtext: `The video release date.`,
-    default: null,
+const sortingOptions = computed(() => {
+    return [
+        {
+            title: 'Title',
+            value: 'title',
+            disabled: false,
+        },
+        {
+            title: 'Date Uploaded',
+            value: 'date',
+            disabled: false,
+        },
+        {
+            title: 'Views',
+            value: 'view_count',
+            disabled: false,
+        },
+        {
+            title: 'Duration',
+            value: 'duration',
+            disabled: false,
+        },
+        {
+            title: 'File Size',
+            value: 'file_size',
+            disabled: false,
+        },
+        {
+            title: 'Date Released',
+            value: 'date_released',
+            disabled: false,
+        },
+        {
+            title: `Episode`,
+            value: 'episode',
+            disabled: false,
+        },
+        {
+            title: 'Season',
+            value: 'season',
+            disabled: false,
+        },
+    ];
 });
-
-const releaseDate = ref(null);
 </script>
 <template>
-    <form class="flex flex-col gap-1">
-        <FormInputLabel :field="field" />
-        <DatePicker v-model="releaseDate" :field="field" class="w-64 mt-1" />
-    </form>
+    <div class="w-full">
+        <InputSelect
+            :name="'sort'"
+            :placeholder="'Sort by...'"
+            :prefix="'By '"
+            :options="sortingOptions"
+            :defaultItem="0"
+            class="w-full"
+            title="Sort by..."
+            @selectItem="() => {}"
+        />
+    </div>
 </template>

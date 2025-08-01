@@ -11,7 +11,7 @@ source: apps/www/src/registry/cedar-ui/components/tabs
 
 ### Run the following command
 
-``` bash
+ ```bash
 npx cedar-ui@latest add tabs
 npm i @aminnausin/cedar-ui
 ```

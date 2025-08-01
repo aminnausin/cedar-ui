@@ -8,7 +8,7 @@ source: apps/www/src/registry/cedar-ui/dropdown-menu
 
 ## Installation
 
-``` bash
+ ```bash
 npx cedar-ui@latest add dropdown-menu
 npm i @aminnausin/cedar-ui
 ```

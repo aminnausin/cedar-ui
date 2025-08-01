@@ -8,7 +8,7 @@ source: apps/www/src/registry/cedar-ui/components/input
 
 ## Installation
 
-``` bash
+ ```bash
 npx cedar-ui@latest add input
 npm i @aminnausin/cedar-ui
 ```

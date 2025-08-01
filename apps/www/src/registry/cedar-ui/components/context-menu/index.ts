@@ -1,1 +1,2 @@
-export { default as BreadCrumbs } from './BreadCrumbs.vue';
+export { default as ContextMenu } from './ContextMenu.vue';
+export { default as ContextMenuItem } from './ContextMenuItem.vue';

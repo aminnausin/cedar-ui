@@ -15,7 +15,7 @@ The toast component takes functional inspiration from [vue-sonner](https://vue-s
 
 ### Run the following command
 
-``` bash
+ ```bash
 npx cedar-ui@latest add toast
 npm i @aminnausin/cedar-ui
 ```

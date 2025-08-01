@@ -8,7 +8,7 @@ source: apps/www/src/registry/cedar-ui/date-picker
 
 ## Installation
 
-``` bash
+ ```bash
 npx cedar-ui@latest add date-picker
 npm i @aminnausin/cedar-ui
 ```

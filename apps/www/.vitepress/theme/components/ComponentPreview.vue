@@ -52,7 +52,7 @@ watch(
 </script>
 
 <template>
-    <div class="not-docs group relative my-4 flex flex-col space-y-2">
+    <div class="not-docs relative my-4 flex flex-col space-y-2">
         <Tabs default-value="preview" class="relative mr-auto w-full">
             <div class="flex items-center justify-between pb-3">
                 <TabsList class="w-full justify-start rounded-none bg-transparent p-0 border-b">
@@ -70,7 +70,7 @@ watch(
                     </TabsTrigger>
                     <ButtonClipboard
                         class="ms-auto"
-                        :button-style="'transition-all hover:ring-purple-600 w-8 h-8 !ring-0 hover:border-b border-purple-600'"
+                        :button-style="'transition-all w-8 h-8 !ring-0'"
                         :text="transformedRawString"
                         :title="'Copy code'"
                     />

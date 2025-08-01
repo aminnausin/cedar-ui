@@ -1,39 +1,22 @@
 ---
-title: Hover Card
-description: A hover element card preview.
-source: apps/www/src/registry/cedar-ui/components/hover-card
+title: Multi-Select
+description: A multi-select element (for tags) with a search and create button.
+source: apps/www/src/registry/cedar-ui/components/multi-select
 ---
 
-<ComponentPreview name="HoverCardDemo" />
+<ComponentPreview name="MultiSelectDemo" />
 
 ## Installation
 
-```bash
-npx cedar-ui@latest add hover-card
+ ```bash
+npx cedar-ui@latest add multi-select
+npm i @aminnausin/cedar-ui
 ```
 
-## Usage
+or download the following folders to your project:
 
-```vue
-<script setup lang="ts">
-import {
-  HoverCard,
-} from '@/components/cedar-ui/hover-card'
+`@/components/cedar-ui/multi-select`
 
-const username = ref('@vue.js')
-const description = ref('')
-</script>
+The Date Picker is intended for use within a form and given a `FormField`.
 
-<template>
-  <HoverCard :content="description" scroll-container="window">
-      <template #trigger>
-          <h2>
-              {{ username }}
-          </h2>
-      </template>
-      <template #content>
-        {{ description }}
-      </template>
-  </HoverCard>
-</template>
-```
+See installations instructions for the [Form](/docs/components/form) component.

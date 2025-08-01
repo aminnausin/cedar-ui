@@ -144,6 +144,16 @@
 }
 
 @layer utilities {
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type='number'] {
+        appearance: textfield;
+    }
+
     .step {
         counter-increment: step;
     }
@@ -190,14 +200,6 @@
     .container {
         @apply px-4;
     }
-}
-
-.vp-doc div[class*='language-'],
-.vp-doc p,
-.vp-doc pre,
-.vp-doc pre code {
-    margin: 0px 0px;
-    padding: 0;
 }
 
 div[class^='language-'] {
