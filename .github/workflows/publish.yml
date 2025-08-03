@@ -44,13 +44,7 @@ jobs:
     - name: Install dependencies
       run: pnpm i --frozen-lockfile
 
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: pnpm
-
     - name: Build CLI & Publish to npm
-      run: npm run pkg:release
+      run: pnpm --filter cedar-ui pub:release
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
