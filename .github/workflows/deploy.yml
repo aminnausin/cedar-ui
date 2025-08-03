@@ -22,7 +22,7 @@ jobs:
   check-file-changes:
     runs-on: ubuntu-latest
     outputs:
-      docs_changed: ${{ steps.filter.outputs.docs_changed }}
+      docs_changed: ${{ steps.filter.outputs.docs_changed == 'true' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -34,10 +34,10 @@ jobs:
         base: ${{ github.event.before }}
         filters: |
           docs_changed:
-              - './apps/**.*'
+              - 'apps/**.*'
     - name: Show filtered changes
       run: |
-        echo "Package changed: ${{ steps.filter.outputs.docs_changed }}"
+        echo "Docs changed: ${{ steps.filter.outputs.docs_changed }}"
   build:
     needs: [ check-file-changes ]
     if: needs.check-file-changes.outputs.docs_changed == 'true'

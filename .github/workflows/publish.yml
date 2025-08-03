@@ -11,7 +11,7 @@ jobs:
   check-file-changes:
     runs-on: ubuntu-latest
     outputs:
-      package_changed: ${{ steps.filter.outputs.package_changed }}
+      package_changed: ${{ steps.filter.outputs.package_changed == 'true' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
