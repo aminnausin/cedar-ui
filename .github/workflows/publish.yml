@@ -1,0 +1,56 @@
+name: Publish cedar-ui package to npm
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+
+jobs:
+  check-file-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      package_changed: ${{ steps.filter.outputs.package_changed }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Detect Package file changes
+      id: filter
+      uses: dorny/paths-filter@v2
+      with:
+        base: ${{ github.event.before }}
+        filters: |
+          package_changed:
+              - './packages/**.*'
+    - name: Show filtered changes
+      run: |
+        echo "Package changed: ${{ steps.filter.outputs.package_changed }}"
+  # Add test stage
+  release:
+    needs: [ check-file-changes ]
+    if: needs.check-file-changes.outputs.package_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4.0.0
+
+    - name: Install dependencies
+      run: pnpm i --frozen-lockfile
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+
+    - name: Build CLI & Publish to npm
+      run: npm run pkg:release
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

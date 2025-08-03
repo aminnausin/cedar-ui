@@ -19,8 +19,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
+  check-file-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      docs_changed: ${{ steps.filter.outputs.docs_changed }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Detect Package file changes
+      id: filter
+      uses: dorny/paths-filter@v2
+      with:
+        base: ${{ github.event.before }}
+        filters: |
+          docs_changed:
+              - './apps/**.*'
+    - name: Show filtered changes
+      run: |
+        echo "Package changed: ${{ steps.filter.outputs.docs_changed }}"
   build:
+    needs: [ check-file-changes ]
+    if: needs.check-file-changes.outputs.docs_changed == 'true'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -36,10 +56,10 @@ jobs:
       with:
         node-version: 22
         cache: pnpm
-    # - name: Setup Pages
-    #   uses: actions/configure-pages@v4
     - name: Install dependencies
       run: pnpm install
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
     - name: Build with VitePress
       run: pnpm docs:build
     - name: Upload artifact

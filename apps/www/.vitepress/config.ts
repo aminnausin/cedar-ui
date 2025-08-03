@@ -25,15 +25,33 @@ export default defineConfig({
         ['meta', { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: 'black' }],
 
         ['meta', { name: 'creator', content: 'aminnausin' }],
-        ['meta', { name: 'theme-color', content: '#41b883' }],
+        ['meta', { name: 'theme-color', content: '#9333ea' }],
         ['meta', { name: 'og:type', content: 'website' }],
         ['meta', { name: 'og:locale', content: 'en' }],
         ['meta', { name: 'og:site_name', content: siteConfig.name }],
         // ['meta', { name: 'og:image', content: siteConfig.ogImage }],
         // ['meta', { name: 'twitter:image', content: siteConfig.ogImage }],
+
+        [
+            'script',
+            {
+                defer: 'true',
+                'data-domain': 'cedar-ui.nausin.me',
+                src: 'https://plausible.nausin.me/js/script.hash.outbound-links.js',
+            },
+        ],
+        [
+            'script',
+            {},
+            `
+                window.plausible = window.plausible || function() {
+                    (window.plausible.q = window.plausible.q || []).push(arguments)
+                }
+            `,
+        ],
     ],
     sitemap: {
-        hostname: 'https://www.shadcn-vue.com',
+        hostname: 'https://www.cedar-ui.nausin.me',
         transformItems(items) {
             return items.filter((item) => !item.url.includes('migration'));
         },
@@ -48,23 +66,6 @@ export default defineConfig({
             pattern: 'https://github.com/aminnausin/cedar-ui/tree/dev/apps/www/src/:path',
             text: 'Edit this page on GitHub',
         },
-
-        nav: [
-            { text: 'Home', link: '/' },
-            { text: 'Examples', link: '/docs/markdown-examples' },
-        ], //docsConfig.mainNav,
-
-        sidebar: docsConfig.sidebarNav,
-
-        // sidebar: [
-        //     {
-        //         text: 'Examples',
-        //         items: [
-        //             { text: 'Markdown Examples', link: '/markdown-examples' },
-        //             { text: 'Runtime API Examples', link: '/api-examples' },
-        //         ],
-        //     },
-        // ],
 
         socialLinks: [{ icon: 'github', link: 'https://github.com/aminnausin/cedar-ui' }],
     },

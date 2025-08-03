@@ -25,7 +25,7 @@ const sourceLink = 'https://github.com/unovue/shadcn-vue/tree/dev/';
 
                         <span
                             v-if="docsGroup.label"
-                            class="ml-2 font-normal rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+                            class="ml-2 font-normal rounded-md bg-purple-600 px-1.5 py-0.5 text-xs leading-none text-white no-underline group-hover:no-underline"
                         >
                             {{ docsGroup.label }}
                         </span>
@@ -49,7 +49,7 @@ const sourceLink = 'https://github.com/unovue/shadcn-vue/tree/dev/';
 
                                 <span
                                     v-if="doc.label"
-                                    class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+                                    class="ml-2 rounded-md bg-purple-600 px-1.5 py-0.5 text-xs leading-none text-white no-underline group-hover:no-underline"
                                 >
                                     {{ doc.label }}
                                 </span>
@@ -77,7 +77,7 @@ const sourceLink = 'https://github.com/unovue/shadcn-vue/tree/dev/';
                     </h1>
                     <span
                         v-if="frontmatter.label"
-                        class="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline"
+                        class="ml-2 rounded-md bg-purple-600 px-1.5 py-0.5 text-xs leading-none text-white no-underline group-hover:no-underline"
                     >
                         {{ frontmatter.label }}
                     </span>
