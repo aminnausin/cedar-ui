@@ -30,7 +30,9 @@ jobs:
   # Add test stage
   release:
     needs: [ check-file-changes ]
-    if: needs.check-file-changes.outputs.package_changed == 'true'
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      needs.check-file-changes.outputs.package_changed == 'true'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
