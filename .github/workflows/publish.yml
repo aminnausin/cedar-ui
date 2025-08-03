@@ -47,6 +47,13 @@ jobs:
     - name: Install dependencies
       run: pnpm i --frozen-lockfile
 
+    - name: Set up .npmrc
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        echo "@aminnausin:registry=https://registry.npmjs.org/" >> ~/.npmrc
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
     - name: Build CLI & Publish to npm
       run: pnpm --filter @aminnausin/cedar-ui pub:release
       env:

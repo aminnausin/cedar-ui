@@ -7,6 +7,9 @@
     "url": "https://github.com/aminnausin/cedar-ui.git",
     "directory": "packages/cedar-ui"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "vue",
     "ui",
