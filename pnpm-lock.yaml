@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@aminnausin/cedar-ui':
+      specifier: latest
+      version: 0.0.1
     '@vueuse/components':
       specifier: ^13.6.0
       version: 13.6.0
@@ -98,8 +101,8 @@ importers:
   apps/www:
     dependencies:
       '@aminnausin/cedar-ui':
-        specifier: workspace:*
-        version: link:../../packages/cedar-ui
+        specifier: 'catalog:'
+        version: 0.0.1(change-case@5.4.4)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
         version: 0.4.2(tailwindcss@3.4.17)
@@ -393,6 +396,12 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@aminnausin/cedar-ui@0.0.1':
+    resolution: {integrity: sha512-0G9mUd4UVfm5mOmFTHbu2uUijaD/Dfd1C1OQB4NwbS882iw6Ewq/NnHjaEuu7NfYH4i59m/6RmQwiS+lmPg3rg==}
+    peerDependencies:
+      vue: ^3.5.13
+      vue-router: ^4.5.0
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -4352,6 +4361,34 @@ snapshots:
       '@algolia/client-common': 5.34.1
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@aminnausin/cedar-ui@0.0.1(change-case@5.4.4)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
+    dependencies:
+      '@tailwindcss/aspect-ratio': 0.4.2(tailwindcss@3.4.17)
+      '@tailwindcss/forms': 0.5.10(tailwindcss@3.4.17)
+      '@vueuse/components': 10.11.1(vue@3.5.18(typescript@5.9.2))
+      '@vueuse/core': 10.11.1(vue@3.5.18(typescript@5.9.2))
+      '@vueuse/integrations': 11.3.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2))
+      fast-deep-equal: 3.1.3
+      focus-trap: 7.6.5
+      tailwind-scrollbar-hide: 2.0.0(tailwindcss@3.4.17)
+      tailwindcss: 3.4.17
+      vue: 3.5.18(typescript@5.9.2)
+      vue-router: 4.5.1(vue@3.5.18(typescript@5.9.2))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - async-validator
+      - axios
+      - change-case
+      - drauu
+      - fuse.js
+      - idb-keyval
+      - jwt-decode
+      - nprogress
+      - qrcode
+      - sortablejs
+      - ts-node
+      - universal-cookie
 
   '@ampproject/remapping@2.3.0':
     dependencies:
