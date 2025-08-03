@@ -10,14 +10,15 @@ const props = defineProps<{
 
 <template>
     <label
-        :for="field?.name"
+        v-if="field.text"
+        :for="field.name"
         :class="[
             `leading-none block font-medium text-gray-700 dark:text-neutral-200`,
             textSize ? textSize : 'text-sm',
             `${props.class ?? ''}`,
         ]"
     >
-        {{ field?.text }}
+        {{ field.text }}
     </label>
-    <p v-if="field?.subtext" class="text-sm/6 text-gray-500 dark:text-gray-400">{{ field.subtext }}</p>
+    <p v-if="field.subtext" class="text-sm/6 text-gray-500 dark:text-gray-400">{{ field.subtext }}</p>
 </template>

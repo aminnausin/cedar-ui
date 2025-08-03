@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <label :for="name" :class="[`font-medium text-gray-700 dark:text-neutral-200`, props.class]">
+    <label v-if="text" :for="name" :class="[`font-medium text-gray-700 dark:text-neutral-200`, props.class]">
         <slot>
             {{ text }}
         </slot>
