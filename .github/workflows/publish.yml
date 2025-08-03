@@ -24,6 +24,7 @@ jobs:
         filters: |
           package_changed:
               - 'packages/cedar-ui/**'
+              - '.github.workflows/publish.yml'
     - name: Show filtered changes
       run: |
         echo "Package changed: ${{ steps.filter.outputs.package_changed }}"
@@ -47,6 +48,6 @@ jobs:
       run: pnpm i --frozen-lockfile
 
     - name: Build CLI & Publish to npm
-      run: pnpm --filter cedar-ui pub:release
+      run: pnpm --filter @aminnausin/cedar-ui pub:release
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
