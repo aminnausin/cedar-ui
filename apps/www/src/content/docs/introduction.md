@@ -7,17 +7,9 @@ description: Re-usable components built with Reka UI, and Tailwind CSS.
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../../.vitepress/theme/components/ui/default/accordion'
 </script>
 
-An unofficial, community-led [Vue](https://vuejs.org/) port of [shadcn/ui](https://ui.shadcn.com). We are not affiliated with [shadcn](https://twitter.com/shadcn), but we did get his blessing before creating a Vue version of his work. This project was born out of the need for a similar project for the Vue ecosystem.
+A collection of re-usable UI components I wrote for use in my Vue.js projects.
 
-This is **NOT** a component library. It's a collection of re-usable components that you can copy and paste or use the CLI to add to your apps.
-
-**What do you mean not a component library?**
-
-It means you do not install it as a dependency. It is not available or distributed via npm, with no plans to publish it.
-
-Pick the components you need. Use the CLI to automatically add the components, or copy and paste the code into your project and customize to your needs. The code is yours.
-
-_Use this as a reference to build your own component libraries._
+Components are copy-paste, using core logic from my `@aminnausin/cedar-ui` npm package.
 
 <div class="[&>h2]:!mb-0">
 
@@ -48,7 +40,7 @@ Which frameworks are supported?
 </AccordionTrigger>
 <AccordionContent>
 
-This port is built to be used with Vue/Nuxt.
+This is strictly a Vue library.
 
 </AccordionContent>
 </AccordionItem>
@@ -59,7 +51,7 @@ Can I use this in my project?
 <AccordionContent>
 Yes. Free to use for personal and commercial projects. No attribution required.
 
-But let us know if you do use it. We'd love to see what you build with it.
+It would be cool to see these components in your projects.
 </AccordionContent>
 </AccordionItem>
 </Accordion>

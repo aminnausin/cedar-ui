@@ -15,4 +15,4 @@ description: Powered by amazing open source projects.
 
 ## License
 
- ©
+ AGPL-3.0 © Amin Nausin
