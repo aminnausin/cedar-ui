@@ -1,7 +1,7 @@
 {
     "name": "cedar-ui",
     "type": "module",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": true,
     "packageManager": "pnpm@9.15.9",
     "license": "MIT",
@@ -13,36 +13,38 @@
         "pnpm": ">=9.6.0"
     },
     "scripts": {
-        "dev": "pnpm --filter www dev",
-        "build": "pnpm --filter www build",
-        "preview": "pnpm --filter www preview",
+        "docs:dev": "pnpm --filter www dev",
+        "docs:build": "pnpm --filter www build",
+        "docs:preview": "pnpm --filter www preview",
+        "pkg:build": "pnpm --filter @aminnausin/cedar-ui build",
+        "pkg:beta": "cd packages/cedar-ui && pnpm pub:beta",
+        "pkg:release": "cd packages/cedar-ui && pnpm pub:release",
+        "cli:dev": "pnpm --filter shadcn-vue dev",
+        "cli:start": "pnpm --filter shadcn-vue start:dev",
+        "cli:build": "pnpm --filter shadcn-vue build",
+        "cli:beta": "cd packages/cli && pnpm pub:beta",
+        "cli:release": "cd packages/cli && pnpm pub:release",
         "prepare": "pnpm simple-git-hooks",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "dev:cli": "pnpm --filter shadcn-vue dev",
-        "start:cli": "pnpm --filter shadcn-vue start:dev",
-        "build:cli": "pnpm --filter shadcn-vue build",
-        "build:pkg": "pnpm --filter @aminnausin/cedar-ui build",
         "build:registry": "pnpm --filter=www build:registry",
-        "bumpp": "bumpp package.json packages/*/package.json apps/*/package.json",
-        "pub:beta": "cd packages/cli && pnpm pub:beta",
-        "pub:release": "cd packages/cli && pnpm pub:release",
         "test": "pnpm --filter shadcn-vue test",
+        "bumpp": "bumpp package.json packages/*/package.json apps/*/package.json",
         "taze": "taze major -frI --ignore-paths ./packages/cli/test/** --exclude typescript,/@iconify/",
         "taze:minor": "taze minor -fwri --ignore-paths ./packages/cli/test/** --exclude /@iconify/"
     },
     "devDependencies": {
-        "@antfu/eslint-config": "^4.13.2",
+        "@antfu/eslint-config": "^4.19.0",
         "@commitlint/cli": "^19.8.1",
         "@commitlint/config-conventional": "^19.8.1",
-        "@vitest/ui": "^3.1.4",
-        "bumpp": "^10.1.1",
-        "eslint": "^9.27.0",
-        "lint-staged": "^16.0.0",
-        "simple-git-hooks": "^2.13.0",
+        "@vitest/ui": "^3.2.4",
+        "bumpp": "^10.2.2",
+        "eslint": "^9.32.0",
+        "lint-staged": "^16.1.4",
+        "simple-git-hooks": "^2.13.1",
         "taze": "^19.1.0",
         "typescript": "catalog:",
-        "vitest": "^3.1.4"
+        "vitest": "^3.2.4"
     },
     "commitlint": {
         "extends": [
@@ -63,9 +65,10 @@
         }
     },
     "simple-git-hooks": {
+        "pre-commit": "pnpm lint-staged",
         "commit-msg": "pnpm commitlint --edit ${1}"
     },
     "lint-staged": {
-        "*": ""
+        "*": "eslint --fix"
     }
 }
