@@ -70,6 +70,7 @@ const handleRemoveTag = (tag: VideoTagResource) => {
             :defaultItems="[]"
             :options="allTags"
             :max="field.max"
+            :class="'-mt-0'"
             @createAction="handleCreateTag"
             @selectItems="handleSetTags"
             @removeAction="handleRemoveTag"
