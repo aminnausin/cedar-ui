@@ -2,9 +2,9 @@
     "name": "cedar-ui",
     "type": "module",
     "version": "0.0.2",
-    "private": true,
+    "private": false,
     "packageManager": "pnpm@9.15.9",
-    "license": "MIT",
+    "license": "AGPL-3.0",
     "repository": "aminnausin/cedar-ui",
     "workspaces": [
         "packages/*"
