@@ -92,31 +92,31 @@ export const docsConfig: DocsConfig = {
                 },
             ],
         },
-        {
-            title: 'Installation',
-            items: [
-                // {
-                //     title: 'Vite',
-                //     href: '/docs/installation/vite',
-                // },
-                // {
-                //     title: 'Nuxt',
-                //     href: '/docs/installation/nuxt',
-                // },
-                // {
-                //     title: 'Astro',
-                //     href: '/docs/installation/astro',
-                // },
-                // {
-                //     title: 'Laravel',
-                //     href: '/docs/installation/laravel',
-                // },
-                {
-                    title: 'Manual',
-                    href: '/docs/installation/manual',
-                },
-            ],
-        },
+        // {
+        //     title: 'Installation',
+        //     items: [
+        //         // {
+        //         //     title: 'Vite',
+        //         //     href: '/docs/installation/vite',
+        //         // },
+        //         // {
+        //         //     title: 'Nuxt',
+        //         //     href: '/docs/installation/nuxt',
+        //         // },
+        //         // {
+        //         //     title: 'Astro',
+        //         //     href: '/docs/installation/astro',
+        //         // },
+        //         // {
+        //         //     title: 'Laravel',
+        //         //     href: '/docs/installation/laravel',
+        //         // },
+        //         {
+        //             title: 'Manual',
+        //             href: '/docs/installation/manual',
+        //         },
+        //     ],
+        // },
         {
             title: 'Components',
             items: [
