@@ -23,7 +23,7 @@ jobs:
         base: ${{ github.event.before }}
         filters: |
           package_changed:
-              - './packages/**.*'
+              - 'packages/cedar-ui/**'
     - name: Show filtered changes
       run: |
         echo "Package changed: ${{ steps.filter.outputs.package_changed }}"

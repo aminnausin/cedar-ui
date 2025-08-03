@@ -34,7 +34,7 @@ jobs:
         base: ${{ github.event.before }}
         filters: |
           docs_changed:
-              - 'apps/**.*'
+              - 'apps/www/**'
     - name: Show filtered changes
       run: |
         echo "Docs changed: ${{ steps.filter.outputs.docs_changed }}"
