@@ -1,48 +1,33 @@
-# Vue Pines UI Library
+
+<h1 align="center">
+Cedar-UI
+</h1>
 
 <img src="src/assets/cover.jpg" alt="cover"/>
 
-This is a WIP Vue.js port for the Open Source <a href="https://devdojo.com/pines" target="_blank">Pines UI Library</a>.
-
-1. Download the contents of the GitHub repo and store it in a folder.
-2. Make sure you have <a href="https://nodejs.org/" target="_blank">NodeJS</a> installed along with the <a href="https://www.npmjs.com/package/http-server" target="_blank">http-server</a> package.
-3. CD into your folder and run `http-serve`
-4. Visit the localhost URL to see PinesUI
-
-Be sure to visit <a href="https://devdojo.com/questions" target="_blank">DevDojo discussions</a> section to ask questions and get assistance.
+A partial port of [Pines UI](https://devdojo.com/pines) for Vue with inspiration from [shadcn-vue](https://shadcn-vue.com/) and [vue-sonner](https://github.com/xiaoluoboding/vue-sonner).
 
 ## License
 
-The Pines UI Library is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+The Cedar-UI Library is open-sourced software licensed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 
 ## Project Setup
 
 ```sh
-npm install
+pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compile and Hot-Reload for Vitepress development
 
 ```sh
-npm run dev
+npm run docs:dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+npm run pkg:build
+npm run docs:build
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
