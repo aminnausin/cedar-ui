@@ -8,7 +8,7 @@ catalogs:
   default:
     '@aminnausin/cedar-ui':
       specifier: latest
-      version: 0.0.1
+      version: 0.0.4
     '@vueuse/components':
       specifier: ^13.6.0
       version: 13.6.0
@@ -102,7 +102,7 @@ importers:
     dependencies:
       '@aminnausin/cedar-ui':
         specifier: 'catalog:'
-        version: 0.0.1(change-case@5.4.4)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
+        version: 0.0.4(change-case@5.4.4)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
         version: 0.4.2(tailwindcss@3.4.17)
@@ -397,8 +397,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@aminnausin/cedar-ui@0.0.1':
-    resolution: {integrity: sha512-0G9mUd4UVfm5mOmFTHbu2uUijaD/Dfd1C1OQB4NwbS882iw6Ewq/NnHjaEuu7NfYH4i59m/6RmQwiS+lmPg3rg==}
+  '@aminnausin/cedar-ui@0.0.4':
+    resolution: {integrity: sha512-zzDY/x1D3MjGJH3NaTWWI96btVtgm0NP180mYgBWUwiMRW3k8BJg3vU24oUD4Lg84QAYDjZvRlrQA3I0gf4R1g==}
     peerDependencies:
       vue: ^3.5.13
       vue-router: ^4.5.0
@@ -4362,7 +4362,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@aminnausin/cedar-ui@0.0.1(change-case@5.4.4)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
+  '@aminnausin/cedar-ui@0.0.4(change-case@5.4.4)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
     dependencies:
       '@tailwindcss/aspect-ratio': 0.4.2(tailwindcss@3.4.17)
       '@tailwindcss/forms': 0.5.10(tailwindcss@3.4.17)
