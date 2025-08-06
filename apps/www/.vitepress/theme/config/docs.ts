@@ -132,7 +132,6 @@ export const docsConfig: DocsConfig = {
                     title: 'Button',
                     href: '/docs/components/button',
                 },
-
                 {
                     title: 'Clipboard',
                     href: '/docs/components/clipboard',
@@ -165,6 +164,10 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'Label',
                     href: '/docs/components/label',
+                },
+                {
+                    title: 'Modal',
+                    href: '/docs/components/modal',
                 },
                 {
                     title: 'Multi-Select',

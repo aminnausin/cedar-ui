@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { createModalCore } from './useModalCore';
+import type { useModalCore } from './useModalCore';
 
 import ButtonCorner from '@/registry/cedar-ui/components/button/ButtonCorner.vue';
 
 defineProps<{
-    modal: ReturnType<typeof createModalCore>;
+    modal: ReturnType<typeof useModalCore>;
 }>();
 </script>
 

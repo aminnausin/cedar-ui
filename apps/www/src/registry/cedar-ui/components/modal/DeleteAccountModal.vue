@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { createModalCore } from './useModalCore';
+import { useModalCore } from './useModalCore';
 import { PasswordConfirm } from '../auth';
 import { useRouter } from 'vue-router';
 
 import BaseModal from './BaseModal.vue';
 
-const modalStore = createModalCore();
+const modalStore = useModalCore();
 const router = useRouter();
 
 function handleSuccess() {

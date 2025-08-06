@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { createModalCore } from './useModalCore';
 import { PasswordConfirm } from '../auth';
+import { useModalCore } from '@aminnausin/cedar-ui';
 
 import BaseModal from './BaseModal.vue';
 
 const props = defineProps<{ onSuccess?: () => void }>();
-const modalStore = createModalCore();
+const modalStore = useModalCore();
 
 function handleSuccess() {
     modalStore.close();

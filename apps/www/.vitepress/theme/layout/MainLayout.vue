@@ -5,6 +5,7 @@ import { Content, useData, useRoute, useRouter } from 'vitepress';
 import { Dialog, DialogContent } from '../components/ui/default/dialog';
 import { ToastController } from '@/registry/cedar-ui/components/toast';
 import { useMagicKeys } from '@vueuse/core';
+import { GlobalModal } from '@/registry/cedar-ui/components/modal';
 import { docsConfig } from '../config/docs';
 import { ref, watch } from 'vue';
 import { Button } from '../components/ui/default/button';
@@ -234,4 +235,5 @@ function handleSelectLink(item: NavItem) {
         <!-- <DefaultToaster /> -->
     </div>
     <ToastController />
+    <GlobalModal />
 </template>
