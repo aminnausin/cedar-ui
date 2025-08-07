@@ -24,7 +24,18 @@ export default defineConfigWithVueTs(
         },
     },
 
-    globalIgnores(['**/node_modules/**', 'vendor', '**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/.output/**', 'public/**', '.vite/**', '**/pulse/**', '**/pulseCards/**']),
+    globalIgnores([
+        '**/node_modules/**',
+        'vendor',
+        '**/dist/**',
+        '**/dist-ssr/**',
+        '**/coverage/**',
+        '**/.output/**',
+        'public/**',
+        '.vite/**',
+        '**/pulse/**',
+        '**/pulseCards/**',
+    ]),
 
     pluginVue.configs['flat/essential'],
     vueTsConfigs.recommended,
@@ -36,6 +47,7 @@ export default defineConfigWithVueTs(
             'no-unused-vars': 'off',
             '@typescript-eslint/no-unused-vars': 'off',
             '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-require-imports': 'off',
             'vue/block-lang': [
                 'error',
                 {
