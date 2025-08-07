@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { computed } from 'vue';
+import { cn } from '@/lib/utils';
 
 const props = withDefaults(
     defineProps<{
@@ -9,8 +10,10 @@ const props = withDefaults(
         title?: string;
         variant?: 'default' | 'ghost' | 'transparent' | 'form';
         to?: string;
+        href?: string;
         target?: string;
         text?: string;
+        class?: string;
     }>(),
     {
         title: '',
@@ -55,10 +58,10 @@ const variantClass = computed(() => {
 </script>
 
 <template>
-    <RouterLink
+    <router-link
         v-if="to"
         :to="to"
-        :class="['flex gap-2 items-center justify-center cursor-pointer', variantClass]"
+        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
         :type="type"
         :title="title"
         :aria-disabled="disabled"
@@ -68,10 +71,24 @@ const variantClass = computed(() => {
             <p class="line-clamp-1 flex-1 text-left">{{ text }}</p>
         </slot>
         <slot name="icon"> </slot>
-    </RouterLink>
+    </router-link>
+    <a
+        v-else-if="href"
+        :href="href"
+        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
+        :type="type"
+        :title="title"
+        :aria-disabled="disabled"
+        :target="target ?? '_blank'"
+    >
+        <slot>
+            <p class="line-clamp-1 flex-1 text-left">{{ text }}</p>
+        </slot>
+        <slot name="icon"> </slot>
+    </a>
     <button
         v-else
-        :class="['flex gap-2 items-center justify-center cursor-pointer', variantClass]"
+        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
         :type="type"
         :disabled="disabled"
         :title="title ?? 'Button'"

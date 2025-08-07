@@ -125,26 +125,25 @@ function handleSelectLink(item: NavItem) {
             </div>
         </header>
 
-        <main class="flex flex-1 flex-col">
-            <component :is="frontmatter.layout" v-if="frontmatter.layout">
-                <slot />
-            </component>
+        <main class="flex flex-1 flex-col container-wrapper w-full">
+            <template v-if="!frontmatter.layout && !$route.path.includes('docs') && !$route.path.includes('examples')">
+                <Content :key="$route.path" />
+            </template>
+            <div
+                v-else
+                class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"
+            >
+                <component :is="frontmatter.layout" v-if="frontmatter.layout">
+                    <slot />
+                </component>
+                <component :is="'docs'" v-else-if="$route.path.includes('docs')">
+                    <Content :key="$route.path" />
+                </component>
 
-            <div v-else-if="$route.path.includes('docs') || $route.path.includes('examples')" class="container-wrapper w-full">
-                <div
-                    class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"
-                >
-                    <component :is="'docs'" v-if="$route.path.includes('docs')">
-                        <Content :key="$route.path" />
-                    </component>
-
-                    <component :is="'examples'" v-else-if="$route.path.includes('examples')">
-                        <Content :key="$route.path" />
-                    </component>
-                </div>
+                <component :is="'examples'" v-else-if="$route.path.includes('examples')">
+                    <Content :key="$route.path" />
+                </component>
             </div>
-
-            <Content v-else-if="!frontmatter.layout" :key="$route.path" />
         </main>
 
         <footer class="border-t p-4 container-wrapper">
@@ -232,7 +231,6 @@ function handleSelectLink(item: NavItem) {
                 </Command>
             </DialogContent>
         </Dialog>
-        <!-- <DefaultToaster /> -->
     </div>
     <ToastController />
     <GlobalModal />
