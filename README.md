@@ -9,6 +9,7 @@ Cedar-UI
     <img src="https://img.shields.io/badge/vue-v3.5.14-white" alt="Vue">
     <img src="https://img.shields.io/github/license/aminnausin/cedar-ui?color=purple" alt="License">
     <img src="https://img.shields.io/npm/v/%40aminnausin%2Fcedar-ui" alt="NPM Package Version">
+    <img src="https://img.shields.io/npm/d18m/%40aminnausin%2Fcedar-ui?color=F9322C" alt="NPM Downloads">
     <img src="https://repo-view-counter.nausin.me/?repo=aminnausin/cedar-ui&colour=737373&label=views" alt="Repo View Counter">
 </p>
 
@@ -19,6 +20,32 @@ A partial port of [Pines UI](https://devdojo.com/pines) for Vue with inspiration
 ## License
 
 The Cedar-UI Library is open-sourced software licensed under the GNU AFFERO GENERAL PUBLIC LICENSE.
+
+## Installation
+
+```bash
+pnpm add @aminnausin/cedar-ui
+```
+
+```bash
+npm install @aminnausin/cedar-ui
+```
+
+```bash
+yarn add @aminnausin/cedar-ui
+```
+
+## Required Peer Dependencies
+
+To use `@aminnausin/cedar-ui`, make sure the following packages are installed in your project:
+
+```bash
+npm install vue vue-router tailwindcss @tailwindcss/forms @tailwindcss/aspect-ratio @vueuse/core @vueuse/components @vueuse/integrations
+```
+
+## Documentation
+
+For full documentation, visit [cedar-ui.nausin.me](https://cedar-ui.nausin.me).
 
 ## Project Setup
 

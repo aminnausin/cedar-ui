@@ -16,6 +16,14 @@ npm install @aminnausin/cedar-ui
 yarn add @aminnausin/cedar-ui
 ```
 
+## Required Peer Dependencies
+
+To use `@aminnausin/cedar-ui`, make sure the following packages are installed in your project:
+
+```bash
+npm install vue vue-router tailwindcss @tailwindcss/forms @tailwindcss/aspect-ratio @vueuse/core @vueuse/components @vueuse/integrations
+```
+
 ## Documentation
 
 For full documentation, visit [cedar-ui.nausin.me](https://cedar-ui.nausin.me).
