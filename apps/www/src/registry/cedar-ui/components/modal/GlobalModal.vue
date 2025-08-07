@@ -2,6 +2,7 @@
 import { useModalCore } from '@aminnausin/cedar-ui';
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
+import { cn } from '../../lib/utils';
 
 const modalStore = useModalCore();
 </script>
@@ -40,7 +41,12 @@ const modalStore = useModalCore();
                     <OnClickOutside
                         @trigger="modalStore.close"
                         @keydown.esc="modalStore.close"
-                        class="gap-4 flex flex-col drop-shadow-md m-auto w-full p-6 bg-white dark:bg-neutral-800/90 backdrop-blur-lg border shadow-lg border-neutral-200 dark:border-neutral-700 sm:max-w-lg xl:max-w-xl 3xl:max-w-2xl rounded-md sm:rounded-lg"
+                        :class="
+                            cn(
+                                'gap-4 flex flex-col drop-shadow-md m-auto w-full p-6 bg-white dark:bg-neutral-800/90 backdrop-blur-lg border shadow-lg border-neutral-200 dark:border-neutral-700 sm:max-w-lg xl:max-w-xl 3xl:max-w-2xl rounded-md sm:rounded-lg',
+                                modalStore.props.rootClass,
+                            )
+                        "
                         tabindex="-1"
                     >
                         <component :is="modalStore.component.value" v-bind="modalStore.props.value" />

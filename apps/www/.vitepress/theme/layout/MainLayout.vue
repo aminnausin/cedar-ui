@@ -1,40 +1,26 @@
 <script setup lang="ts">
-import type { NavItem } from '../config/docs';
-
-import { Content, useData, useRoute, useRouter } from 'vitepress';
-import { Dialog, DialogContent } from '../components/ui/default/dialog';
+import { Content, useData, useRoute } from 'vitepress';
 import { ToastController } from '@/registry/cedar-ui/components/toast';
 import { useMagicKeys } from '@vueuse/core';
+import { useModalCore } from '@aminnausin/cedar-ui';
 import { GlobalModal } from '@/registry/cedar-ui/components/modal';
 import { docsConfig } from '../config/docs';
-import { ref, watch } from 'vue';
+import { watch } from 'vue';
 import { Button } from '../components/ui/default/button';
 
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-    CommandSeparator,
-} from '../components/ui/default/command';
-
 import ThemeToggle from '../components/ThemeToggle.vue';
+import SearchModal from '../components/SearchModal.vue';
 import NavLink from '../components/NavLink.vue';
 import Logo from '../components/Logo.vue';
 import Kbd from '../components/Kbd.vue';
 
 import ProiconsGithub from '~icons/proicons/github';
-import MoonIcon from '~icons/lucide/moon';
-import SunIcon from '~icons/lucide/sun';
-import Circle from '~icons/radix-icons/circle';
-import File from '~icons/radix-icons/file';
 
-const { frontmatter, isDark } = useData();
+const { frontmatter } = useData();
 
+const searchModal = useModalCore();
+const modalProps = { modal: searchModal, hideHeader: true, rootClass: 'p-0' };
 const $route = useRoute();
-const $router = useRouter();
 
 const links = [
     {
@@ -44,7 +30,6 @@ const links = [
     },
 ];
 
-const isOpen = ref(false);
 const { Meta_K, Ctrl_K } = useMagicKeys({
     passive: false,
     onEventFired(e) {
@@ -53,15 +38,8 @@ const { Meta_K, Ctrl_K } = useMagicKeys({
 });
 
 watch([Meta_K, Ctrl_K], (v) => {
-    if (v[0] || v[1]) isOpen.value = true;
+    if (v[0] || v[1]) searchModal.open(SearchModal, modalProps);
 });
-
-function handleSelectLink(item: NavItem) {
-    if (item.external) window.open(item.href, '_blank');
-    else $router.go(item.href);
-
-    isOpen.value = false;
-}
 </script>
 
 <template>
@@ -92,7 +70,7 @@ function handleSelectLink(item: NavItem) {
                         <Button
                             variant="outline"
                             class="relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
-                            @click="isOpen = true"
+                            @click="searchModal.open(SearchModal, modalProps)"
                         >
                             <span class="hidden lg:inline-flex">Search documentation...</span>
                             <span class="inline-flex lg:hidden">Search...</span>
@@ -164,73 +142,6 @@ function handleSelectLink(item: NavItem) {
                 </span>
             </p>
         </footer>
-
-        <Dialog v-model:open="isOpen">
-            <DialogContent class="p-0">
-                <Command>
-                    <CommandInput placeholder="Type a command or search..." />
-                    <CommandEmpty> No results found. </CommandEmpty>
-                    <CommandList @escape-key-down="isOpen = false">
-                        <CommandGroup heading="Links">
-                            <CommandItem
-                                v-for="item in docsConfig.mainNav"
-                                :key="item.title"
-                                :heading="item.title"
-                                :value="item.title"
-                                class="py-3"
-                                @select="handleSelectLink(item)"
-                            >
-                                <File class="mr-2 h-5 w-5" />
-                                <span>{{ item.title }}</span>
-                            </CommandItem>
-                        </CommandGroup>
-                        <CommandSeparator />
-                        <CommandGroup v-for="item in docsConfig.sidebarNav" :key="item.title" :heading="item.title">
-                            <CommandItem
-                                v-for="subItem in item.items"
-                                :key="subItem.title"
-                                :heading="subItem.title"
-                                :value="subItem.title"
-                                class="py-3"
-                                @select="handleSelectLink(subItem)"
-                            >
-                                <Circle class="mr-2 h-4 w-4" />
-                                <span>{{ subItem.title }}</span>
-                            </CommandItem>
-                        </CommandGroup>
-                        <CommandSeparator />
-                        <CommandGroup heading="Theme">
-                            <CommandItem
-                                value="light-theme"
-                                class="py-3"
-                                @select="
-                                    () => {
-                                        isDark = false;
-                                        isOpen = false;
-                                    }
-                                "
-                            >
-                                <SunIcon class="mr-2 h-5 w-5" />
-                                <span>Light Theme</span>
-                            </CommandItem>
-                            <CommandItem
-                                value="dark-theme"
-                                class="py-3"
-                                @select="
-                                    () => {
-                                        isDark = true;
-                                        isOpen = false;
-                                    }
-                                "
-                            >
-                                <MoonIcon class="mr-2 h-5 w-5" />
-                                <span>Dark Theme</span>
-                            </CommandItem>
-                        </CommandGroup>
-                    </CommandList>
-                </Command>
-            </DialogContent>
-        </Dialog>
     </div>
     <ToastController />
     <GlobalModal />

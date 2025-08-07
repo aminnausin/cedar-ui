@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-    <section class="flex flex-wrap gap-2 items-center">
+    <section v-if="!modal.props?.hideHeader" class="flex flex-wrap gap-2 items-center">
         <h3 ref="modalTitle" id="modalTitle" class="text-xl font-semibold scroll-mt-16 sm:scroll-mt-12 flex-1">
             <slot name="title">
                 {{ modal.props?.title ?? 'Modal Title' }}
