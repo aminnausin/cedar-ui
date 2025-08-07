@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ButtonText } from '@/registry/cedar-ui/components/button';
+
 import LogosTailwindcssIcon from '~icons/logos/tailwindcss-icon';
 import LogosTypescriptIcon from '~icons/logos/typescript-icon';
 import ProiconsArrowRight from '~icons/proicons/arrow-right';
