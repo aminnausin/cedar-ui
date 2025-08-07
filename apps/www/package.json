@@ -6,7 +6,6 @@
     "dist"
   ],
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
     "@iconify-json/bi": "^1.2.4",
     "@iconify-json/logos": "^1.2.5",
     "@iconify-json/lucide": "^1.2.58",
@@ -19,19 +18,15 @@
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/compiler-core": "^3.5.18",
     "@vue/compiler-dom": "^3.5.18",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "@vue/eslint-config-typescript": "^14.6.0",
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "catalog:",
     "clsx": "catalog:",
-    "eslint": "^9.32.0",
-    "eslint-plugin-vue": "~10.4.0",
     "prettier": "3.5.3",
-    "shiki": "^3.9.1",
+    "shiki": "^3.9.2",
     "typescript": "catalog:",
     "unplugin-icons": "^22.2.0",
-    "vitepress": "^1.6.3",
+    "vitepress": "^1.6.4",
     "vue-tsc": "catalog:"
   },
   "dependencies": {
