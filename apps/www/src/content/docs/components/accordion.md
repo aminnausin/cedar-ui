@@ -1,7 +1,7 @@
 ---
 title: Accordion
 description: A vertically stacked set of interactive headings that each reveal a section of content.
-source: apps/www/src/registry/default/ui/accordion
+source: apps/www/src/registry/cedar-ui/components/accordion
 ---
 
 <ComponentPreview name="AccordionDemo" class="sm:max-w-[70%]" />
@@ -16,7 +16,7 @@ npx cedar-ui@latest add accordion
 
 ```vue
 <script setup lang="ts">
-import { BaseAccordion } from '@/registry/cedar-ui/components/accordian';
+import { BaseAccordion } from '@/registry/cedar-ui/components/accordion';
 
 const accordionItems = [
   { id: 'item-1', title: 'Is it accessible?', content: 'Yes. It adheres to the WAI-ARIA design pattern.' },

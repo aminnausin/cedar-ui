@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { AccordionItem } from '@aminnausin/cedar-ui';
 
-import { BaseAccordion } from '@/registry/cedar-ui/components/accordian';
+import { BaseAccordion } from '@/registry/cedar-ui/components/accordion';
 
 const accordionItems: AccordionItem[] = [
     { id: 'item-1', title: 'Is it accessible?', content: 'I didnt pay enough attention' },

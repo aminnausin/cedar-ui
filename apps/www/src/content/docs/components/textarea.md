@@ -1,7 +1,7 @@
 ---
 title: Textarea
 description: A textarea form input element for collecting long user info.
-source: apps/www/src/registry/cedar-ui/textarea
+source: apps/www/src/registry/cedar-ui/components/textarea
 ---
 
 <ComponentPreview name="TextareaDemo" />

@@ -1,7 +1,7 @@
 ---
 title: Date Picker
 description: A date picker element that can be used to select a date.
-source: apps/www/src/registry/cedar-ui/date-picker
+source: apps/www/src/registry/cedar-ui/components/date-picker
 ---
 
 <ComponentPreview name="DatePickerDemo" />
