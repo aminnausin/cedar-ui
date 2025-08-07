@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Code2, ExternalLink } from 'lucide-vue-next';
 import { useData, useRoute } from 'vitepress';
-import { BreadCrumbs } from '@/registry/cedar-ui/components/breadcrumbs';
 import { docsConfig } from '../config/docs';
 import { cn } from '@/lib/utils';
 
@@ -12,7 +11,7 @@ const { frontmatter } = useData();
 
 const $route = useRoute();
 
-const sourceLink = 'https://github.com/unovue/shadcn-vue/tree/dev/';
+const sourceLink = 'https://github.com/aminnausin/cedar-ui/tree/main/';
 </script>
 
 <template>
