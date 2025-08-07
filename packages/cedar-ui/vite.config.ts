@@ -28,7 +28,16 @@ export default defineConfig({
             // fileName: (format) => `cedar-ui.${format}.js`,
         },
         rollupOptions: {
-            external: ['vue', 'vue-router'],
+            external: [
+                'vue',
+                'vue-router',
+                'tailwindcss',
+                '@tailwindcss/aspect-ratio',
+                '@tailwindcss/forms',
+                '@vueuse/core',
+                '@vueuse/components',
+                '@vueuse/integrations',
+            ],
             output: {
                 globals: {
                     vue: 'Vue',
