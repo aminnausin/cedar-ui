@@ -2,7 +2,7 @@ packages:
 - apps/*
 - packages/*
 catalog:
-  '@aminnausin/cedar-ui': ^0.0.6
+  '@aminnausin/cedar-ui': latest
   '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/forms': ^0.5.10
   '@vueuse/core': ^13.6.0
