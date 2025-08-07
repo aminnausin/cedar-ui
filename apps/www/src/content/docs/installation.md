@@ -8,6 +8,7 @@ description: Add dependencies to your project manually.
 ### Add Tailwind CSS
 
 Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
+This setup is based on Tailwind V3.
 
 [Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
 
@@ -16,7 +17,7 @@ Components are styled using Tailwind CSS. You need to install Tailwind CSS in yo
 Add the following dependencies to your project:
 
 ```bash
-npm install class-variance-authority clsx tailwind-merge tw-animate-css
+npm install clsx tailwind-merge
 ```
 
 ### Configure path aliases
@@ -39,10 +40,9 @@ The `@` alias is a preference. You can use other aliases if you want.
 ### Configure styles
 
 ```css:line-numbers title="src/styles/globals.css"
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: oklch(1 0 0);
@@ -152,26 +152,17 @@ The `@` alias is a preference. You can use other aliases if you want.
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+}
 
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--reka-accordion-content-height);
-    }
+@layer utilities {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
-  @keyframes accordion-up {
-    from {
-      height: var(--reka-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+  input[type='number'] {
+    appearance: textfield;
   }
 }
 
@@ -183,6 +174,111 @@ The `@` alias is a preference. You can use other aliases if you want.
     @apply bg-background text-foreground;
   }
 }
+```
+
+### Setup your tailwind.config.js
+
+```js:line-numbers title="tailwind.config.js"
+import plugin from 'tailwindcss';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+    darkMode: ['class'],
+    content: ['./src/**/*.{vue,js,ts,jsx,tsx,md}'],
+    theme: {
+        container: {
+            center: true,
+            padding: '2rem',
+            screens: {
+                '2xl': '1536px',
+            },
+        },
+        extend: {
+            colors: {
+                border: 'hsl(var(--border))',
+                input: 'hsl(var(--input))',
+                ring: 'hsl(var(--ring))',
+                background: 'hsl(var(--background))',
+                foreground: 'hsl(var(--foreground))',
+                primary: {
+                    DEFAULT: 'hsl(var(--primary))',
+                    foreground: 'hsl(var(--primary-foreground))',
+                },
+                secondary: {
+                    DEFAULT: 'hsl(var(--secondary))',
+                    foreground: 'hsl(var(--secondary-foreground))',
+                },
+                destructive: {
+                    DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+                    foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
+                },
+                muted: {
+                    DEFAULT: 'hsl(var(--muted))',
+                    foreground: 'hsl(var(--muted-foreground))',
+                },
+                accent: {
+                    DEFAULT: 'hsl(var(--accent))',
+                    foreground: 'hsl(var(--accent-foreground))',
+                },
+                popover: {
+                    DEFAULT: 'hsl(var(--popover))',
+                    foreground: 'hsl(var(--popover-foreground))',
+                },
+                card: {
+                    DEFAULT: 'hsl(var(--card))',
+                    foreground: 'hsl(var(--card-foreground))',
+                },
+                sidebar: {
+                    DEFAULT: 'hsl(var(--sidebar-background))',
+                    foreground: 'hsl(var(--sidebar-foreground))',
+                    primary: 'hsl(var(--sidebar-primary))',
+                    'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+                    accent: 'hsl(var(--sidebar-accent))',
+                    'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+                    border: 'hsl(var(--sidebar-border))',
+                    ring: 'hsl(var(--sidebar-ring))',
+                },
+                'primary-dark': {
+                    600: '#2a2a2d', // Card Hover
+                    700: '#26262a', // Card 2
+                    800: '#27272a', // Card
+                    900: '#18181b', // Panel
+                    950: '#101014', // bg
+                },
+            },
+            borderRadius: {
+                xl: 'calc(var(--radius) + 4px)',
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)',
+            },
+            aspectRatio: {
+                video: '16 / 9',
+                square: '1 / 1',
+                portrait: '9 / 16',
+                '1/2': '1 / 2',
+                '2/3': '2 / 3',
+                '3/4': '3 / 4',
+            },
+            screens: {
+                xs: '320px',
+                xms: '400px',
+                '3xl': '2000px',
+            },
+        },
+    },
+    plugins: [
+        plugin(function ({ addVariant }) {
+            addVariant('hocus', ['&:hover', '&:focus']);
+        }),
+        // tailwindcssAnimate,
+        require('@tailwindcss/forms'),
+
+        require('@tailwindcss/aspect-ratio'),
+
+        require('tailwind-scrollbar-hide'),
+    ],
+};
 ```
 
 ### That's it

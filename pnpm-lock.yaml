@@ -7,7 +7,7 @@ settings:
 catalogs:
   default:
     '@aminnausin/cedar-ui':
-      specifier: latest
+      specifier: ^0.0.6
       version: 0.0.6
     '@vueuse/components':
       specifier: ^13.6.0
