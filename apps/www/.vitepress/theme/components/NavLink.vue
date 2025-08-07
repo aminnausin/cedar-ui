@@ -11,13 +11,13 @@ defineProps<{ href?: string; external?: boolean; active: boolean }>();
         :class="
             cn(
                 'group hover:text-purple-700 dark:hover:text-purple-500 transition-all flex flex-col relative cursor-pointer',
-                active ? 'text-purple-600' : '',
+                active ? 'text-purple-600 dark:text-purple-500' : '',
             )
         "
     >
         <slot />
         <div
-            class="w-0 mx-auto h-0.5 absolute -bottom-0.5 left-1/2 group-hover:left-0 group-hover:w-full rounded-lg bg-purple-700 transition-all"
+            class="w-0 mx-auto h-0.5 absolute -bottom-0.5 left-1/2 group-hover:left-0 group-hover:w-full rounded-lg bg-purple-700 dark:bg-purple-500 transition-all"
         ></div>
     </a>
 </template>

@@ -8,7 +8,7 @@ import ProiconsArrowRight from '~icons/proicons/arrow-right';
     <div class="container py-6 flex flex-col gap-6 text-sm">
         <section class="flex flex-col gap-2">
             <h1 class="text-4xl font-semibold">Build your design system</h1>
-            <p class="text-neutral-700 dark:text-neutral-300 leading-none text-base">
+            <p class="text-neutral-700 dark:text-neutral-300 text-base">
                 A collection of beautiful, accessible Vue 3 components built with Tailwind CSS and designed to be customised.
             </p>
         </section>
@@ -16,7 +16,7 @@ import ProiconsArrowRight from '~icons/proicons/arrow-right';
             <ButtonText
                 :href="'/docs/installation'"
                 target=""
-                :class="'bg-purple-600 dark:bg-purple-600 hover:bg-purple-700 dark:hover:bg-purple-700 text-white ring-gray-900/50'"
+                :class="'bg-purple-600 dark:bg-purple-600 hover:bg-purple-700 dark:hover:bg-purple-700 text-white !ring-purple-600 hover:!ring-purple-700'"
             >
                 Get Started</ButtonText
             >
@@ -31,16 +31,14 @@ import ProiconsArrowRight from '~icons/proicons/arrow-right';
                 <LogosTailwindcssIcon class="size-6" />
                 <div class="flex flex-col gap-2">
                     <h3 class="text-base">Styled with Tailwind CSS</h3>
-                    <p class="text-neutral-700 dark:text-neutral-300 leading-none">
-                        Beautifully styled by default, overwrite any style you want.
-                    </p>
+                    <p class="text-neutral-700 dark:text-neutral-300">Beautifully styled by default, overwrite any style you want.</p>
                 </div>
             </div>
             <div class="flex items-start gap-2">
                 <LogosTypescriptIcon class="size-6" />
                 <div class="flex flex-col gap-2">
                     <h3 class="text-base">Type-safe with TypeScript</h3>
-                    <p class="text-neutral-700 dark:text-neutral-300 leading-none">BAuto-complete and type safety for most components.</p>
+                    <p class="text-neutral-700 dark:text-neutral-300">Auto-complete and type safety for most components.</p>
                 </div>
             </div>
         </section>
