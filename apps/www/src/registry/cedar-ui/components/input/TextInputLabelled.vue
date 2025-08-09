@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { FormInputLabel } from '../form';
 
-withDefaults(defineProps<{ id?: string; text: string; placeholder?: string; subtext?: string; required?: boolean }>(), {
+withDefaults(defineProps<{ id?: string; text?: string; placeholder?: string; subtext?: string; required?: boolean }>(), {
     id: 'text-input-labelled-' + Math.random() * 10000,
+    text: '',
 });
 
 const model = defineModel();

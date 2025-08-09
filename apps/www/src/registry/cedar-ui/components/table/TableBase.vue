@@ -6,9 +6,9 @@ import { TextInputLabelled } from '../input';
 import { onMounted, ref } from 'vue';
 import { InputSelect } from '../select';
 import { ButtonIcon } from '../button';
+import { useTable } from '@aminnausin/cedar-ui';
 
 import TablePagination from './TablePagination.vue';
-import useTable from './useTable';
 
 const props = withDefaults(defineProps<TableProps<T>>(), {
     useToolbar: true,
@@ -16,19 +16,17 @@ const props = withDefaults(defineProps<TableProps<T>>(), {
     itemsPerPage: 12,
     selectedID: null,
     startAscending: true,
-    searchQuery: '',
     usePaginationIcons: false,
     maxVisiblePages: 5,
     noResultsMessage: 'No Results',
 });
 
-const emit = defineEmits<(e: 'search', value: string) => void>();
-
 const tableData = useTable(props);
 const sortAscending = ref(props.startAscending);
 const lastSortKey = ref('');
 
-const model = defineModel<string | undefined>({
+// Search Query
+const model = defineModel<string>({
     required: false,
     default: undefined,
 });
@@ -46,36 +44,23 @@ const handleSortChange = (sortKey?: TableSortOption) => {
     props.sortAction?.(lastSortKey.value as keyof T, sortAscending.value ? 1 : -1);
 };
 
-const handleSearch = (event: InputEvent) => {
-    const target = event.target as HTMLInputElement;
-    const value = target.value;
-
-    if (model.value !== undefined) {
-        model.value = value;
-    } else {
-        tableData.fields.searchQuery = value;
-    }
-    emit('search', value);
-};
-
 onMounted(() => {
     if (props.useToolbar && props.sortAction) props.sortAction(lastSortKey.value as keyof T, props.startAscending ? 1 : -1);
 });
 </script>
 
 <template>
-    <!-- [&>*:not(:first-child)]:pt-4 -->
     <section class="flex flex-col gap-4 w-full">
         <section v-if="props.useToolbar" class="flex justify-center sm:justify-between flex-col sm:flex-row gap-2">
             <TextInputLabelled
-                :value="model ?? tableData.fields.searchQuery"
-                :text="''"
+                v-if="model !== undefined"
+                v-model="model"
                 :placeholder="`Search ${props.itemName ? `${props.itemName}...` : ''}`"
                 :id="'table-search'"
                 class="w-full sm:w-80"
                 title="Search with..."
-                @input="handleSearch"
             />
+
             <span class="flex items-end gap-2 flex-wrap">
                 <div class="flex gap-2 flex-col w-full sm:w-40 flex-1">
                     <InputSelect
