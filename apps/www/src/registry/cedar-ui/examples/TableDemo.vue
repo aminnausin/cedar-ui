@@ -148,10 +148,6 @@ const handleSort = async (column: keyof MediaResource = 'name', dir: -1 | 1 = 1)
     media.value = tempList;
     return tempList;
 };
-
-const handleSearch = (query: string) => {
-    searchQuery.value = query;
-};
 </script>
 <template>
     <TableBase
@@ -175,7 +171,6 @@ const handleSearch = (query: string) => {
         :startAscending="true"
         :search-query="searchQuery"
         :items-per-page="4"
-        @search="handleSearch"
         v-model="searchQuery"
     />
 </template>

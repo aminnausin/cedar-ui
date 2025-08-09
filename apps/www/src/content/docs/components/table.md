@@ -21,9 +21,10 @@ or download the following folders to your project:
 
 ```vue
 <script setup lang="ts">
-import {
-  TableBase,
-} from '@/components/cedar-ui/hover-card'
+import { TableBase } from '@/components/cedar-ui/hover-card'
+import { ref } from 'vue';
+
+const searchQuery = ref('')
 
 </script>
 
@@ -49,7 +50,6 @@ import {
         :startAscending="true"
         :search-query="searchQuery"
         :items-per-page="12"
-        @search="handleSearch"
         v-model="searchQuery"
     />
 </template>
