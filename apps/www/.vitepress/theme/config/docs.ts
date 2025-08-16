@@ -125,6 +125,10 @@ export const docsConfig: DocsConfig = {
                     href: '/docs/components/accordion',
                 },
                 {
+                    title: 'Badge',
+                    href: '/docs/components/badge',
+                },
+                {
                     title: 'BreadCrumbs',
                     href: '/docs/components/breadcrumbs',
                 },

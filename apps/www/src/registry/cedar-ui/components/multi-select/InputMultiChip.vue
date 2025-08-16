@@ -6,7 +6,7 @@ import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component.mjs';
 import { MdiLightPlus } from '@/registry/cedar-ui/components/icons';
 import { ButtonIcon } from '../button';
 import { TextInput } from '../input';
-import { ChipTag } from '../chip';
+import { BadgeTag } from '../badge';
 
 import useMultiSelect from './useMultiSelect';
 
@@ -326,7 +326,7 @@ watch(
         </Transition>
     </div>
     <span v-if="select.selectedItems?.length > 0" class="flex flex-wrap gap-1 pt-2 pb-1">
-        <ChipTag
+        <BadgeTag
             v-for="(chip, index) in select.selectedItems"
             :key="index"
             :label="chip.name"

@@ -22,7 +22,7 @@ const props = withDefaults(
     { align: 'center' },
 );
 const style = ref('cedar-ui');
-const codeConfig = ref({ componentsPath: '@/components', utilsPath: '@/util' });
+const codeConfig = ref({ componentsPath: '@/cedar-ui', utilsPath: '@/util' });
 
 const rawString = ref('');
 const codeHtml = ref('');
