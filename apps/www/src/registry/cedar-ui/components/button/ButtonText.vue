@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { computed } from 'vue';
-import { cn } from '@/lib/utils';
+import { cn } from '@aminnausin/cedar-ui';
 
 const props = withDefaults(
     defineProps<{
