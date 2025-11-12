@@ -20,6 +20,7 @@
     "typescript",
     "pines-ui"
   ],
+  "type": "module",
   "main": "./dist/cedar-ui.umd.mjs",
   "module": "./dist/cedar-ui.mjs",
   "types": "./dist/index.d.ts",
