@@ -1,6 +1,4 @@
-/** @type {import('tailwindcss').Config} */
-
-import plugin from 'tailwindcss/plugin';
+// import plugin from 'tailwindcss/plugin';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,14 +7,11 @@ export default {
         extend: {},
     },
     plugins: [
-        plugin(function ({ addVariant }) {
-            addVariant('hocus', ['&:hover', '&:focus']);
-        }),
-
-        require('@tailwindcss/forms'),
-
-        require('@tailwindcss/aspect-ratio'),
-
-        require('tailwind-scrollbar-hide'),
+        // plugin(function ({ addVariant }) {
+        // addVariant('hocus', ['&:hover', '&:focus']);
+        // }),
+        // require('@tailwindcss/forms'),
+        // require('@tailwindcss/aspect-ratio'),
+        // require('tailwind-scrollbar-hide'),
     ],
 };
