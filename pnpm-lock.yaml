@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@aminnausin/cedar-ui':
-      specifier: ^0.0.6
-      version: 0.0.6
+      specifier: latest
+      version: 0.0.7
     '@vueuse/components':
       specifier: ^13.6.0
       version: 13.6.0
@@ -123,7 +123,7 @@ importers:
     dependencies:
       '@aminnausin/cedar-ui':
         specifier: 'catalog:'
-        version: 0.0.6(@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17))(@tailwindcss/forms@0.5.10(tailwindcss@3.4.17))(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@3.4.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
+        version: 0.0.7(@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17))(@tailwindcss/forms@0.5.10(tailwindcss@3.4.17))(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@3.4.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
         version: 0.4.2(tailwindcss@3.4.17)
@@ -239,12 +239,6 @@ importers:
 
   packages/cedar-ui:
     dependencies:
-      '@tailwindcss/aspect-ratio':
-        specifier: '>=0.4.2'
-        version: 0.4.2(tailwindcss@3.4.17)
-      '@tailwindcss/forms':
-        specifier: '>=0.5.10'
-        version: 0.5.10(tailwindcss@3.4.17)
       '@vueuse/components':
         specifier: '>=10.11.1 <14.0.0'
         version: 13.6.0(vue@3.5.18(typescript@5.9.2))
@@ -269,9 +263,6 @@ importers:
       tailwind-scrollbar-hide:
         specifier: ^2.0.0
         version: 2.0.0(tailwindcss@3.4.17)
-      tailwindcss:
-        specifier: '>=3.4.17'
-        version: 3.4.17
       vue:
         specifier: '>=3.5.13 <4.0.0'
         version: 3.5.18(typescript@5.9.2)
@@ -294,12 +285,6 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.9.2)(vue@3.5.18(typescript@5.9.2))
-      autoprefixer:
-        specifier: ^10.4.21
-        version: 10.4.21(postcss@8.5.6)
-      postcss:
-        specifier: ^8.5.6
-        version: 8.5.6
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -397,8 +382,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@aminnausin/cedar-ui@0.0.6':
-    resolution: {integrity: sha512-NPnFMfwbyqAHldWkcaWQ7atNXZc3E+V6d0qVtRsuwpFwjng9CtRUjLPj1xbBAfNdJ2B7hiyHYac2pwnv7eRxuQ==}
+  '@aminnausin/cedar-ui@0.0.7':
+    resolution: {integrity: sha512-GsQ0a54mXweOauLzJhfZMz6MEsglBat7JKEEB6qxTErZl64OsHZ5CG+4w+k4NX8Bt0jkbQFh2O60VI38CeSivA==}
     peerDependencies:
       '@tailwindcss/aspect-ratio': '>=0.4.2'
       '@tailwindcss/forms': '>=0.5.10'
@@ -4371,7 +4356,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@aminnausin/cedar-ui@0.0.6(@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17))(@tailwindcss/forms@0.5.10(tailwindcss@3.4.17))(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@3.4.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
+  '@aminnausin/cedar-ui@0.0.7(@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17))(@tailwindcss/forms@0.5.10(tailwindcss@3.4.17))(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@3.4.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
     dependencies:
       '@tailwindcss/aspect-ratio': 0.4.2(tailwindcss@3.4.17)
       '@tailwindcss/forms': 0.5.10(tailwindcss@3.4.17)
