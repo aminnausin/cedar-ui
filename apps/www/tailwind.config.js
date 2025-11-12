@@ -91,10 +91,8 @@ export default {
         //     addVariant('hocus', ['&:hover', '&:focus']);
         // }),
         // tailwindcssAnimate,
-        require('@tailwindcss/forms'),
-
-        require('@tailwindcss/aspect-ratio'),
-
-        require('tailwind-scrollbar-hide'),
+        // require('@tailwindcss/forms'),
+        // require('@tailwindcss/aspect-ratio'),
+        // require('tailwind-scrollbar-hide'),
     ],
 };
