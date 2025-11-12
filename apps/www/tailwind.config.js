@@ -1,4 +1,4 @@
-import plugin from 'tailwindcss';
+// import plugin from 'tailwindcss';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -87,9 +87,9 @@ export default {
         },
     },
     plugins: [
-        plugin(function ({ addVariant }) {
-            addVariant('hocus', ['&:hover', '&:focus']);
-        }),
+        // plugin(function ({ addVariant }) {
+        //     addVariant('hocus', ['&:hover', '&:focus']);
+        // }),
         // tailwindcssAnimate,
         require('@tailwindcss/forms'),
 
