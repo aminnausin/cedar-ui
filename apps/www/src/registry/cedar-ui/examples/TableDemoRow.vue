@@ -24,7 +24,7 @@ const { data: videoData } = defineProps<{
 
 <template>
     <div
-        class="relative flex flex-wrap flex-col gap-x-8 gap-y-4 p-3 w-full shadow rounded-md ring-inset cursor-pointer dark:bg-primary-dark-800/70 dark:hover:bg-violet-700/70 bg-neutral-50 hover:bg-violet-400/30 odd:bg-neutral-100 dark:odd:bg-primary-dark-600"
+        class="relative flex flex-wrap flex-col gap-x-8 gap-y-4 p-3 w-full shadow-sm rounded-md ring-inset cursor-pointer dark:bg-primary-dark-800/70 dark:hover:bg-violet-700/70 bg-neutral-50 hover:bg-violet-400/30 odd:bg-neutral-100 dark:odd:bg-primary-dark-600"
         :videoData-id="videoData.id"
         :videoData-path="`../`"
         :title="`${videoData.title}\n${videoData.name}`"
@@ -62,7 +62,7 @@ const { data: videoData } = defineProps<{
             >
                 <template #trigger>
                     <TablerMicrophone2
-                        class="[&>*]:stroke-[1.4px] shrink-0 h-5 w-5 hover:opacity-20 opacity-100 transition-opacity duration-300"
+                        class="*:stroke-[1.4px] shrink-0 h-5 w-5 hover:opacity-20 opacity-100 transition-opacity duration-300"
                         title="Has Lyrics"
                         v-if="isAudio"
                     />

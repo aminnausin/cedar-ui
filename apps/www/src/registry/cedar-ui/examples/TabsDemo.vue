@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { Tabs } from '@/registry/cedar-ui/components/tabs';
+import { TabsList, TabsTrigger } from '@/registry/cedar-ui/components/tabs';
 </script>
 <template>
-    <Tabs :default-value="'Account'"></Tabs>
+    <TabsList :default-value="'Account'">
+        <template #tabsTriggers>
+            <TabsTrigger value="Account" />
+            <TabsTrigger value="Account2" />
+        </template>
+    </TabsList>
 </template>

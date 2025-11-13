@@ -9,13 +9,14 @@ import * as components from './components';
 import DocsLayout from './layout/DocsLayout.vue';
 import Layout from './layout/MainLayout.vue';
 
-import './style.css';
 import './styles/vp-doc.css';
 import './styles/shiki.css';
+import './style.css';
 export default {
     // extends: DefaultTheme,
     Layout,
     enhanceApp({ app, router, siteData }) {
+        // eslint-disable-next-line vue/multi-word-component-names
         app.component('docs', DocsLayout);
         app.component(
             'RouterLink',

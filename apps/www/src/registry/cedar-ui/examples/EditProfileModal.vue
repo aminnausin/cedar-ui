@@ -22,8 +22,8 @@ function handleSuccess() {
         <TextInputLabelled :text="'Username'" :placeholder="'aminnausin'" :subtext="'This is your public display name.'" />
 
         <div class="flex flex-col sm:flex-row gap-2 justify-end">
-            <ButtonForm variant="reset" type="button" class="!capitalize" @click="modalStore.close()">Cancel</ButtonForm>
-            <ButtonForm variant="submit" type="button" @click="handleSuccess" class="!capitalize"> Save </ButtonForm>
+            <ButtonForm variant="reset" type="button" class="capitalize!" @click="modalStore.close()">Cancel</ButtonForm>
+            <ButtonForm variant="submit" type="button" @click="handleSuccess" class="capitalize!"> Save </ButtonForm>
         </div>
     </BaseModal>
 </template>

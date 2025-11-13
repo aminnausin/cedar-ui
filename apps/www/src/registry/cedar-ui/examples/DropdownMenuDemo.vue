@@ -41,11 +41,11 @@ const toggleDropdown = () => {
                     <h2
                         id="user-name"
                         :class="[
-                            'hidden sm:block truncate !p-0 !border-none !font-normal',
+                            'hidden sm:block truncate p-0! border-none! font-normal!',
                             {
-                                'bg-neutral-200 dark:bg-neutral-800 rounded-full w-32 h-5 !my-auto animate-pulse': isLoadingUserData,
+                                'bg-neutral-200 dark:bg-neutral-800 rounded-full w-32 h-5 my-auto! animate-pulse': isLoadingUserData,
                             },
-                            { '!my-0': !isLoadingUserData },
+                            { 'my-0!': !isLoadingUserData },
                         ]"
                     >
                         {{ isLoadingUserData ? '' : userData?.name || 'Guest' }}

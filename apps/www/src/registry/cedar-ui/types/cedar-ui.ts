@@ -4,6 +4,8 @@ export type ToastType = 'success' | 'info' | 'warning' | 'danger' | 'default' | 
 export type ToastPostion = 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';
 export type ToastLayout = 'default' | 'expanded';
 
+export type TabsOrientation = 'horizontal' | 'vertical';
+
 export interface ToastIcons {
     success?: Component;
     info?: Component;
@@ -190,3 +192,16 @@ export declare type TableSortOption = {
     value: string;
     disabled?: boolean;
 };
+
+export interface TabsProps {
+    defaultValue: string;
+    orientation?: TabsOrientation;
+}
+
+export interface TabsTriggerProps {
+    value: string;
+}
+
+export interface TabsMarkerProps {
+    orientation?: TabsOrientation;
+}

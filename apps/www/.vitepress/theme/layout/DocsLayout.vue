@@ -91,7 +91,7 @@ const sourceLink = 'https://github.com/aminnausin/cedar-ui/tree/main/';
                     v-if="frontmatter.docs"
                     :href="frontmatter.docs"
                     target="_blank"
-                    class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 select-none border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 select-none border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 >
                     <ExternalLink class="mr-1 h-3 w-3" />
                     Docs
@@ -100,7 +100,7 @@ const sourceLink = 'https://github.com/aminnausin/cedar-ui/tree/main/';
                     v-if="frontmatter.source"
                     :href="sourceLink + frontmatter.source"
                     target="_blank"
-                    class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 select-none border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 select-none border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 >
                     Component Source
                     <Code2 class="ml-1 h-3 w-3" />
@@ -109,7 +109,7 @@ const sourceLink = 'https://github.com/aminnausin/cedar-ui/tree/main/';
                     v-if="frontmatter.primitive"
                     :href="frontmatter.primitive"
                     target="_blank"
-                    class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 select-none border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 select-none border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 >
                     API Reference
                     <ExternalLink class="ml-1 h-3 w-3" />

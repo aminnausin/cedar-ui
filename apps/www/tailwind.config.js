@@ -1,8 +1,16 @@
-// import plugin from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
+
+const customVariants = plugin(({ addVariant }) => {
+    addVariant('hocus', ['&:hover', '&:focus']);
+    addVariant('default', 'html :where(&)');
+    addVariant('scrollbar', '&::-webkit-scrollbar');
+    addVariant('scrollbar-track', '&::-webkit-scrollbar-track');
+    addVariant('scrollbar-thumb', '&::-webkit-scrollbar-thumb');
+});
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ['class'],
+    darkMode: 'class',
     content: ['./src/**/*.{vue,js,ts,jsx,tsx,md}', './.vitepress/**/*.{vue,js,ts,jsx,tsx}'],
     theme: {
         container: {
@@ -86,13 +94,5 @@ export default {
             },
         },
     },
-    plugins: [
-        // plugin(function ({ addVariant }) {
-        //     addVariant('hocus', ['&:hover', '&:focus']);
-        // }),
-        // tailwindcssAnimate,
-        // require('@tailwindcss/forms'),
-        // require('@tailwindcss/aspect-ratio'),
-        // require('tailwind-scrollbar-hide'),
-    ],
+    plugins: [customVariants],
 };

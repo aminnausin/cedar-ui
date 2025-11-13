@@ -77,7 +77,7 @@ const hoverCardLeave = () => {
                     </template>
                 </slot>
                 <slot name="content">
-                    <p class="text-pretty h-fit w-full break-words whitespace-pre-wrap">
+                    <p class="text-pretty h-fit w-full wrap-break-word whitespace-pre-wrap">
                         {{ content }}
                     </p>
                 </slot>

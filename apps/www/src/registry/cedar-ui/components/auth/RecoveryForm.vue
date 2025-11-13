@@ -36,7 +36,7 @@ const handleSubmit = async () => {
     <BaseForm @submit.prevent="handleSubmit">
         <FormItem v-for="(field, index) in fields" :key="index">
             <FormInputLabel :field="field" />
-            <FormInput v-model="form.fields[field.name]" :field="field" class="!mt-0" />
+            <FormInput v-model="form.fields[field.name]" :field="field" class="mt-0!" />
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>
 
@@ -45,14 +45,14 @@ const handleSubmit = async () => {
             type="button"
             @click="handleSubmit"
             :disabled="form.processing"
-            class="!justify-center !capitalize w-full"
+            class="justify-center! capitalize! w-full"
             >Email password reset link</ButtonForm
         >
     </BaseForm>
     <span class="mx-auto text-gray-600 dark:text-gray-400">
         Or, return to
         <RouterLink
-            class="underline hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
+            class="underline hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
             to="/login"
         >
             log in

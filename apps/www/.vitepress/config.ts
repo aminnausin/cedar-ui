@@ -5,8 +5,7 @@ import { siteConfig } from './theme/config/site';
 import ComponentPreviewPlugin from './theme/plugins/previewer';
 import CodeWrapperPlugin from './theme/plugins/codewrapper';
 import CodeBlockPlugin from './theme/plugins/codeblock';
-import autoprefixer from 'autoprefixer';
-import tailwind from 'tailwindcss';
+import Tailwind from '@tailwindcss/vite';
 import Icons from 'unplugin-icons/vite';
 import path from 'path';
 
@@ -81,12 +80,7 @@ export default defineConfig({
         'content/(.*)': '(.*)',
     },
     vite: {
-        css: {
-            postcss: {
-                plugins: [tailwind() as any, autoprefixer()],
-            },
-        },
-        plugins: [Icons({ compiler: 'vue3', autoInstall: true }) as any],
+        plugins: [Icons({ compiler: 'vue3', autoInstall: true }) as any, Tailwind()],
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, '../src'),

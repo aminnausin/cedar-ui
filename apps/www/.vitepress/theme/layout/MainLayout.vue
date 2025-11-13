@@ -45,7 +45,7 @@ watch([Meta_K, Ctrl_K], (v) => {
 <template>
     <div class="relative flex min-h-svh flex-col bg-background">
         <header
-            class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 container-wrapper"
+            class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60 container-wrapper"
         >
             <div class="container flex h-14 items-center">
                 <div class="mr-4 md:mr-1 flex">

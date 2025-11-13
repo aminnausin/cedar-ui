@@ -11,13 +11,13 @@ A collection of re-usable UI components I wrote for use in my Vue.js projects.
 
 Components are copy-paste, using core logic from my `@aminnausin/cedar-ui` npm package.
 
-<div class="[&>h2]:!mb-0">
+<div class="[&>h2]:mb-0!">
 
 ## FAQ
 
 </div>
 
-<div class="[&_h3]:!mt-0">
+<div class="[&_h3]:mt-0!">
 <Accordion  type="multiple">
 
 <AccordionItem value="faq-1">

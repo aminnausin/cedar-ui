@@ -66,7 +66,7 @@ const handleSubmit = async () => {
     <BaseForm @submit.prevent="handleSubmit">
         <FormItem v-for="(field, index) in fields" :key="index">
             <FormInputLabel :field="field" />
-            <FormInput v-model="form.fields[field.name]" :field="field" class="!mt-0" />
+            <FormInput v-model="form.fields[field.name]" :field="field" class="mt-0!" />
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>
 
@@ -76,7 +76,7 @@ const handleSubmit = async () => {
                 type="button"
                 @click="handleSubmit"
                 :disabled="form.processing"
-                class="!justify-center !capitalize w-full"
+                class="justify-center! capitalize! w-full"
             >
                 Reset Password
             </ButtonForm>
