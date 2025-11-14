@@ -19,7 +19,7 @@ or download the following folders to your project:
 
 ## Usage
 
-In `App.vue`
+In `App.vue` or your component if you expose `setContextMenu()` with a pinia store.
 
 ```vue
 <script setup lang="ts">
@@ -57,35 +57,76 @@ const setContextMenu = (event: MouseEvent, options: ContextMenuType) => {
 </template>
 ```
 
+In a component
+
 ```vue
 <script setup lang="ts">
-import {
-  ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuTrigger,
-} from '@/components/ui/context-menu'
+import type { ContextMenuItem } from '@aminnausin/cedar-ui';
+
+import { useTemplateRef } from 'vue';
+import { useAppStore } from '@/stores/AppStore';
+import { storeToRefs } from 'pinia';
+
+const { contextMenuItems, contextMenuStyle, contextMenuItemStyle} = storeToRefs(useAppStore());
+
+const playerContextMenu = useTemplateRef('contextMenu');
+const player = useTemplateRef("player")
+
+
+const playerContextMenuItems = computed(() => {
+    const items: ContextMenuItem[] = [
+        {
+            text: 'Save Frame',
+            action: () => {
+                if (!player.value) return;
+                saveVideoFrame(player.value);
+            },
+        },
+        {
+            text: 'Copy Frame',
+            action: () => {
+                if (!player.value) return;
+                copyVideoFrame(player.value);
+            },
+        },
+    ];
+    return items;
+});
+
 </script>
 
 <template>
-
-  <ContextMenu>
-    <ContextMenuTrigger>Right click</ContextMenuTrigger>
-    <ContextMenuContent>
-      <ContextMenuItem>Profile</ContextMenuItem>
-      <ContextMenuItem>Billing</ContextMenuItem>
-      <ContextMenuItem>Team</ContextMenuItem>
-      <ContextMenuItem>Subscription</ContextMenuItem>
-    </ContextMenuContent>
-  </ContextMenu>
+    <div
+        :class="[`relative overflow-clip rounded-sm`]"
+        ref="video-container"
+        id="video-container"
+        @contextmenu="
+            (e: any) => {
+                setContextMenu(e, { items: playerContextMenuItems, style: 'w-32', itemStyle: 'text-xs' });
+                playerContextMenu?.contextMenuToggle(e, true);
+            }
+        "
+    >
+        <video
+            id="video-source"
+            width="100%"
+            type="video/mp4"
+            ref="player"
+            style="z-index: 3"
+            preload="metadata"
+            :class="[`relative h-full object-contain select-none focus:outline-hidden`,]"
+            :src="''"
+        />
+        <div class="absolute top-0 left-0 h-full w-full" >
+            <ContextMenu
+                ref="contextMenu"
+                :items="contextMenuItems"
+                :style="contextMenuStyle"
+                :itemStyle="contextMenuItemStyle ?? 'hover:bg-purple-600 hover:text-white'"
+                scrollContainer="window"
+                teleport-disabled
+            />
+        </div>
+    </div>
 </template>
 ```

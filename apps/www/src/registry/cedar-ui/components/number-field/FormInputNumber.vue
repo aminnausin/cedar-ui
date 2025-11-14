@@ -32,11 +32,12 @@ const addToNumber = (change: 1 | -1) => {
                 'rounded-md shadow-xs block w-full pe-12 text-sm',
                 'focus:outline-hidden border-none',
                 'disabled:cursor-not-allowed disabled:opacity-50',
-                'text-gray-900 dark:text-neutral-100 bg-white dark:bg-neutral-700 placeholder:text-neutral-400',
+                'text-gray-900 dark:text-neutral-100 bg-white dark:bg-primary-dark-800 placeholder:text-neutral-400',
                 'ring-inset focus:ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
                 'focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500',
             ]"
             :name="field.name"
+            :id="field.name"
             :title="field.text ?? field.name"
             type="number"
             :required="field.required"

@@ -33,7 +33,7 @@ const variantClass = computed(() => {
             ].join(' ');
         default:
             return [
-                'h-10 max-h-full aspect-square rounded-md ',
+                'max-h-full rounded-md ',
                 'p-2 shadow-xs',
                 'focus:outline-hidden text-gray-900 dark:text-neutral-100',
                 'ring-1 ring-neutral-200 dark:ring-neutral-700 hocus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500 hover:ring-violet-400 dark:hover:ring-violet-700',

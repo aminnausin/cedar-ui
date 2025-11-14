@@ -39,10 +39,10 @@ const packageManager = ref<PackageManager>('npm');
                 ><code><span class="line"><span>{{ value }}</span></span></code></pre>
             </TabsContent>
         </Tabs>
-        <div class="absolute right-2.5 top-2 z-10 h-6 w-6">
+        <div class="absolute right-2.5 top-2 z-10">
             <ButtonClipboard
                 :text="tabs[packageManager]"
-                button-style="h-6 w-6 bg-zinc-900 hover:bg-zinc-700 text-zinc-50 dark:text-zinc-50 stroke-1 transition-all duration-300 [&_svg]:h-3 [&_svg]:w-3 p-0!"
+                button-style="size-6! ring-neutral-700 bg-zinc-900 hover:bg-zinc-700 text-zinc-50 dark:text-zinc-50 stroke-1 transition-all duration-300 [&_svg]:size-3 p-0!"
             >
                 <ClipboardIcon />
             </ButtonClipboard>
