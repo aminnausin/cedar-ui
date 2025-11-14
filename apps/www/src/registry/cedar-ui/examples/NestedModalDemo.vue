@@ -8,7 +8,7 @@ const modal = useModalCore();
 </script>
 
 <template>
-    <ButtonText @click="modal.open(NestedModal)" :class="['text-sm h-8 ring-1 capitalize']" :variant="'default'">
+    <ButtonText @click="modal.open(NestedModal)" :class="'text-sm h-8 ring-1 capitalize'" :variant="'default'">
         Open Nested Modal
     </ButtonText>
 </template>
