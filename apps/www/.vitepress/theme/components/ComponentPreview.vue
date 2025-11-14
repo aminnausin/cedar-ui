@@ -70,7 +70,7 @@ watch(
                     </TabsTrigger>
                     <ButtonClipboard
                         class="ms-auto"
-                        :button-style="'transition-all w-8 h-8 !ring-0'"
+                        :button-style="'transition-all w-8 h-8 ring-0!'"
                         :text="transformedRawString"
                         :title="'Copy code'"
                     />

@@ -2,6 +2,7 @@
 import type { NavItem } from '../config/docs';
 
 import { useData, useRouter } from 'vitepress';
+import { ButtonCorner } from '@/registry/cedar-ui/components/button';
 import { useModalCore } from '@aminnausin/cedar-ui';
 import { docsConfig } from '../config/docs';
 import { BaseModal } from '@/registry/cedar-ui/components/modal';
@@ -20,7 +21,6 @@ import MoonIcon from '~icons/lucide/moon';
 import SunIcon from '~icons/lucide/sun';
 import Circle from '~icons/radix-icons/circle';
 import File from '~icons/radix-icons/file';
-import { ButtonCorner } from '@/registry/cedar-ui/components/button';
 
 const { isDark } = useData();
 
@@ -39,8 +39,8 @@ function handleSelectLink(item: NavItem) {
     <BaseModal :modal="modal">
         <Command>
             <div class="flex w-full [&>*:first-child]:flex-1 [&>*:first-child]:border-none border-b items-center py-1">
-                <CommandInput placeholder="Type a command or search..." class="border-none ring-none outline-none" />
-                <ButtonCorner @click="modal.close" class="!m-0 !static" />
+                <CommandInput placeholder="Type a command or search..." class="border-none ring-none outline-hidden" />
+                <ButtonCorner @click="modal.close" class="m-0! static!" />
             </div>
             <CommandEmpty> No results found. </CommandEmpty>
             <CommandList @escape-key-down="modal.close()">
