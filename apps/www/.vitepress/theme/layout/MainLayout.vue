@@ -69,7 +69,7 @@ watch([Meta_K, Ctrl_K], (v) => {
                     <div class="w-full flex-1 md:w-auto md:flex-none">
                         <Button
                             variant="outline"
-                            class="relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
+                            class="relative h-8 w-full justify-start rounded-xl bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
                             @click="searchModal.open(SearchModal, modalProps)"
                         >
                             <span class="hidden lg:inline-flex">Search documentation...</span>
