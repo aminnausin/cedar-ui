@@ -44,7 +44,7 @@ const {
                 'disabled:cursor-not-allowed disabled:opacity-50',
                 'text-gray-900 dark:text-neutral-100 bg-white dark:bg-neutral-700 placeholder:text-neutral-400',
                 'ring-inset focus:ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-                'focus:ring-[0.125rem] focus:ring-purple-400 dark:focus:ring-purple-500',
+                'focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500',
             ]"
             @click="toggleDatePicker()"
             @keydown.esc="toggleDatePicker(false)"
@@ -92,7 +92,7 @@ const {
                     'disabled:cursor-not-allowed disabled:opacity-50',
                     'text-gray-900 dark:text-neutral-100 bg-white dark:bg-neutral-700 placeholder:text-neutral-400',
                     'ring-inset focus:ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-                    'focus:ring-[0.125rem] focus:ring-purple-400 dark:focus:ring-purple-500',
+                    'focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500',
                     `${datePickerPosition === 'top' ? 'bottom-0 mb-12' : 'top-0 mt-12'}`,
                 ]"
                 ref="datePickerCalendar"

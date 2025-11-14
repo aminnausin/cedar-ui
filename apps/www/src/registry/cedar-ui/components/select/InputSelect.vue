@@ -141,7 +141,7 @@ watch(
                 { 'text-neutral-400!': placeholder && !select.selectedItem },
                 'relative h-10 flex items-center justify-between w-full py-2 pl-3 pr-10',
                 'text-left rounded-md shadow-xs cursor-pointer text-sm border-none focus:outline-hidden',
-                'ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700 hocus:ring-[0.125rem] hover:ring-violet-400 dark:hover:ring-violet-700 focus:ring-purple-400 dark:focus:ring-purple-500',
+                'ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700 hocus:ring-2 hover:ring-violet-400 dark:hover:ring-violet-700 focus:ring-purple-400 dark:focus:ring-purple-500',
                 'text-gray-900 dark:text-neutral-100 bg-white dark:bg-primary-dark-800',
                 'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:opacity-60',
                 props.class,

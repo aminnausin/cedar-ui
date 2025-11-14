@@ -65,7 +65,7 @@ const handleLogin = async () => {
                 :class="[
                     'rounded dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 shadow-xs',
                     'appearance-none',
-                    'focus:ring-purple-500 focus:ring-[0.125rem]! ring-offset-0!',
+                    'focus:ring-purple-500 focus:ring-2! ring-offset-0!',
                     'checked:text-purple-600',
                 ]"
                 name="remember_me"
