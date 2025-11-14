@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { toast, useModalCore } from '@aminnausin/cedar-ui';
-import { TextInputLabelled } from '../components/input';
-import { ButtonForm } from '../components/button';
-import { BaseModal } from '../components/modal';
+import { TextInputLabelled } from '@/registry/cedar-ui/components/input';
+import { ButtonForm } from '@/registry/cedar-ui/components/button';
+import { BaseModal } from '@/registry/cedar-ui/components/modal';
 
 const props = defineProps<{ onSuccess?: () => void }>();
 const modalStore = useModalCore();

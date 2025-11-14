@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@aminnausin/cedar-ui';
 
-import { ProiconsSettings, LucideUserPlus, LucideLogIn } from '../components/icons';
+import { ProiconsSettings, LucideUserPlus, LucideLogIn } from '@/registry/cedar-ui/components/icons';
 import { DropdownMenu } from '@/registry/cedar-ui/components/dropdown-menu';
 import { ref } from 'vue';
 

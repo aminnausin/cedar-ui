@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HoverCard from '../components/hover-card/HoverCard.vue';
+import { HoverCard } from '@/registry/cedar-ui/components/hover-card';
 const title = 'Frieren: S1E01';
 const stateVideo = { id: 1 };
 </script>

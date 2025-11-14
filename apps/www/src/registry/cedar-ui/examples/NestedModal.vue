@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useModalCore } from '@aminnausin/cedar-ui';
-import { ButtonForm } from '../components/button';
+import { ButtonForm } from '@/registry/cedar-ui/components/button';
+import { BaseModal } from '@/registry/cedar-ui/components/modal';
 
 import EditProfileModal from './EditProfileModal.vue';
-import { BaseModal } from '../components/modal';
 
 const modal = useModalCore();
 </script>

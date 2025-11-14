@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useModalCore } from '@aminnausin/cedar-ui';
-import { ButtonText } from '../components/button';
+import { ButtonText } from '@/registry/cedar-ui/components/button';
 
 import NestedModal from './NestedModal.vue';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
 import { sortObject, toast } from '@aminnausin/cedar-ui';
+import { computed, ref } from 'vue';
 import { TableBase } from '@/registry/cedar-ui/components/table';
 
 import TableDemoRow from './TableDemoRow.vue';

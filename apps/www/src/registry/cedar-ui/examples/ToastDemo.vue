@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ToastOptions, ToastPostion, ToastType } from '@aminnausin/cedar-ui';
 
-import { ButtonText } from '../components/button';
+import { ButtonText } from '@/registry/cedar-ui/components/button';
 import { toast } from '@aminnausin/cedar-ui';
 import { ref } from 'vue';
 

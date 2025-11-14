@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TabsList, TabsMarkerLine, TabsTrigger, TabsContent } from '@/registry/cedar-ui/components/tabs';
-import { TextInputLabelled } from '../components/input';
-import { ButtonForm } from '../components/button';
+import { TextInputLabelled } from '@/registry/cedar-ui/components/input';
+import { ButtonForm } from '@/registry/cedar-ui/components/button';
 </script>
 <template>
     <div class="space-y-16 self-center text-sm">
