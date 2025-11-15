@@ -1,17 +1,14 @@
 name: Test
 
 on:
-  push:
-    branches:
-    - dev
-    paths:
-    - 'packages/**'
-
   pull_request:
     branches:
     - main
     paths:
     - 'packages/**'
+    paths-ignore:
+    - 'README.md'
+    - '.github/**'
 
 jobs:
   test:
@@ -32,3 +29,6 @@ jobs:
 
     - name: Test
       run: pnpm test
+
+    - name: Build Site
+      run: pnpm docs:build
