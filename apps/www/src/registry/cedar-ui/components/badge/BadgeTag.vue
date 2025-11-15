@@ -25,7 +25,7 @@ const defaultStyle =
             v-if="removeable"
             :positionClasses="'w-4 h-4'"
             :textClasses="cn(`text-white dark:text-rose-700`, textClass)"
-            :colourClasses="'dark:bg-neutral-900/20 dark:hover:bg-rose-700 hover:bg-rose-300 hover:text-rose-700 dark:hover:text-white drop-shadow'"
+            :colourClasses="'dark:bg-neutral-900/20 dark:hover:bg-rose-700 hover:bg-rose-300 hover:text-rose-700 dark:hover:text-white drop-shadow-sm'"
             :label="'Remove'"
             @click.stop.prevent="$emit('clickAction')"
         />
@@ -36,7 +36,7 @@ const defaultStyle =
             v-if="removeable"
             :positionClasses="'w-4 h-4'"
             :textClasses="cn(`text-white dark:text-rose-700`, textClass)"
-            :colourClasses="'dark:bg-neutral-900/20 dark:hover:bg-rose-700 hover:bg-rose-300 hover:text-rose-700 dark:hover:text-white drop-shadow'"
+            :colourClasses="'dark:bg-neutral-900/20 dark:hover:bg-rose-700 hover:bg-rose-300 hover:text-rose-700 dark:hover:text-white drop-shadow-sm'"
             :label="'Remove'"
             @click.stop.prevent="$emit('clickAction')"
         />

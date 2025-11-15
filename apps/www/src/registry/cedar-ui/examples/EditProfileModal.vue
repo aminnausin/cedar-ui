@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { toast, useModalCore } from '@aminnausin/cedar-ui';
-import { TextInputLabelled } from '../components/input';
-import { ButtonForm } from '../components/button';
-import { BaseModal } from '../components/modal';
+import { TextInputLabelled } from '@/registry/cedar-ui/components/input';
+import { ButtonForm } from '@/registry/cedar-ui/components/button';
+import { BaseModal } from '@/registry/cedar-ui/components/modal';
 
 const props = defineProps<{ onSuccess?: () => void }>();
 const modalStore = useModalCore();
@@ -22,8 +22,8 @@ function handleSuccess() {
         <TextInputLabelled :text="'Username'" :placeholder="'aminnausin'" :subtext="'This is your public display name.'" />
 
         <div class="flex flex-col sm:flex-row gap-2 justify-end">
-            <ButtonForm variant="reset" type="button" class="!capitalize" @click="modalStore.close()">Cancel</ButtonForm>
-            <ButtonForm variant="submit" type="button" @click="handleSuccess" class="!capitalize"> Save </ButtonForm>
+            <ButtonForm variant="reset" type="button" class="capitalize!" @click="modalStore.close()">Cancel</ButtonForm>
+            <ButtonForm variant="submit" type="button" @click="handleSuccess" class="capitalize!"> Save </ButtonForm>
         </div>
     </BaseModal>
 </template>

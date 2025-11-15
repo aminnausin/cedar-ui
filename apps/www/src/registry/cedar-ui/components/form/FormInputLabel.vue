@@ -19,6 +19,6 @@ const props = defineProps<{
         ]"
     >
         {{ field.text }}
+        <p v-if="field.subtext" class="text-sm/6 text-gray-500 dark:text-gray-400 p">{{ field.subtext }}</p>
     </label>
-    <p v-if="field.subtext" class="text-sm/6 text-gray-500 dark:text-gray-400">{{ field.subtext }}</p>
 </template>

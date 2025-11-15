@@ -17,7 +17,7 @@ import ProiconsArrowRight from '~icons/proicons/arrow-right';
             <ButtonText
                 :href="'/docs/installation'"
                 target=""
-                :class="'bg-purple-600 dark:bg-purple-600 hover:bg-purple-700 dark:hover:bg-purple-700 text-white !ring-purple-600 hover:!ring-purple-700'"
+                :class="'bg-purple-600 dark:bg-purple-600 hover:bg-purple-700 dark:hover:bg-purple-700 text-white ring-purple-600! hover:ring-purple-700!'"
             >
                 Get Started</ButtonText
             >

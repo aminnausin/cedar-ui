@@ -15,7 +15,7 @@ defineProps<{
                 {{ modal.props?.title ?? 'Modal Title' }}
             </slot>
         </h3>
-        <ButtonCorner @click="modal.close" class="!static !m-0" />
+        <ButtonCorner @click="modal.close" class="static! m-0!" />
         <p class="w-full text-sm text-neutral-500 dark:text-neutral-400" v-if="$slots.description" id="modalDescription">
             <slot name="description"> </slot>
         </p>

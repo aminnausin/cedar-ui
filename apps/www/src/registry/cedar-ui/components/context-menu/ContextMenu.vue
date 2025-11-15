@@ -121,7 +121,7 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                     }
                 "
                 ref="contextMenu"
-                :class="`absolute z-50 w-48 max-w-[100vw] p-1 transition-all bg-white dark:bg-neutral-800/90 backdrop-blur-sm border border-neutral-200/70 dark:border-neutral-700/10 rounded-md shadow-sm ${style}`"
+                :class="`absolute z-50 w-48 max-w-[100vw] p-1 transition-all bg-white dark:bg-neutral-800/90 backdrop-blur-xs border border-neutral-200/70 dark:border-neutral-700/10 rounded-md shadow-xs ${style}`"
                 :style="menuStyles"
                 v-cloak
             >
@@ -141,14 +141,14 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                     <span v-if="!items">
                         <div
                             @click="(e: any) => contextMenuToggle(e, false)"
-                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-neutral-100 outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none"
+                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-neutral-100 outline-hidden pl-8 data-disabled:opacity-50 data-disabled:pointer-events-none"
                         >
                             <span>Edit</span>
                             <span class="ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600">⌘[</span>
                         </div>
                         <div
                             @click="(e: any) => contextMenuToggle(e, false)"
-                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-purple-600 hover:text-white outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none"
+                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-purple-600 hover:text-white outline-hidden pl-8 data-disabled:opacity-50 data-disabled:pointer-events-none"
                         >
                             <svg
                                 class="absolute w-4 h-4 -mt-px left-2"
@@ -168,7 +168,7 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                         </div>
                         <div
                             @click="(e: any) => contextMenuToggle(e, false)"
-                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-purple-600 hover:text-white outline-none pl-8 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none"
+                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-purple-600 hover:text-white outline-hidden pl-8 data-disabled:opacity-50 data-disabled:pointer-events-none"
                         >
                             <svg
                                 class="absolute w-4 h-4 -mt-px left-2"

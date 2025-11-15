@@ -1,9 +1,14 @@
 <script setup lang="ts">
-export interface TabsContentProps {
-    value: string;
-    isActive?: boolean;
-}
-defineProps<TabsContentProps>();
+import type { TabsContentProps } from '../../types/cedar-ui';
+import type { Ref } from 'vue';
+
+import { computed, inject } from 'vue';
+
+const props = defineProps<TabsContentProps>();
+
+const tabSelected = inject<Ref<string>>('tabSelected');
+
+const isActive = computed(() => tabSelected?.value === props.value);
 </script>
 <template>
     <slot v-if="isActive"> </slot>

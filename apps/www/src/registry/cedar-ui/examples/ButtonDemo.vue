@@ -5,7 +5,7 @@ const variants: ('default' | 'form' | 'ghost' | 'transparent')[] = ['default', '
 </script>
 
 <template>
-    <section class="flex gap-4 items-center text-sm [&>*]:h-8 flex-wrap">
+    <section class="flex gap-4 items-center text-sm *:h-8 flex-wrap">
         <ButtonText v-for="variant in variants" :key="variant" :text="variant" :variant="variant" />
     </section>
 </template>

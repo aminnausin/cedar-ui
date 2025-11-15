@@ -21,13 +21,13 @@ const route = useRoute()
       :to="props.path"
       class="flex items-center"
       :class="{
-        '!font-semibold !text-foreground': route.path === props.path,
+        'font-semibold! text-foreground!': route.path === props.path,
       }"
     >
       <slot />
       <ChevronRight
         v-if="!props.lastItem"
-        class="flex-shrink-0 h-3 w-3 text-muted mx-2"
+        class="shrink-0 h-3 w-3 text-muted mx-2"
       />
     </component>
   </li>

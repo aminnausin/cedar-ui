@@ -196,7 +196,6 @@ export const docsConfig: DocsConfig = {
                 {
                     title: 'Tabs',
                     href: '/docs/components/tabs',
-                    label: 'Incomplete',
                 },
                 {
                     title: 'Textarea',

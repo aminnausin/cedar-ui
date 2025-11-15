@@ -1,0 +1,34 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+    - main
+    paths:
+    - 'packages/**'
+    paths-ignore:
+    - 'README.md'
+    - '.github/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup (Install Node & pnpm)
+      uses: ./.github/actions/setup
+
+    - name: Install dependencies
+      run: pnpm i --frozen-lockfile
+
+    - name: Lint
+      run: pnpm lint
+
+    - name: Test
+      run: pnpm test
+
+    - name: Build Site
+      run: pnpm docs:build

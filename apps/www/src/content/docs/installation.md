@@ -8,7 +8,7 @@ description: Add dependencies to your project manually.
 ### Add Tailwind CSS
 
 Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
-This setup is based on Tailwind V3.
+This setup is based on Tailwind V4.
 
 [Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
 
@@ -179,11 +179,19 @@ The `@` alias is a preference. You can use other aliases if you want.
 ### Setup your tailwind.config.js
 
 ```js:line-numbers title="tailwind.config.js"
-import plugin from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
+
+const customVariants = plugin(({ addVariant }) => {
+    addVariant('hocus', ['&:hover', '&:focus']);
+    addVariant('default', 'html :where(&)');
+    addVariant('scrollbar', '&::-webkit-scrollbar');
+    addVariant('scrollbar-track', '&::-webkit-scrollbar-track');
+    addVariant('scrollbar-thumb', '&::-webkit-scrollbar-thumb');
+});
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ['class'],
+    darkMode: 'class',
     content: ['./src/**/*.{vue,js,ts,jsx,tsx,md}'],
     theme: {
         container: {
@@ -267,17 +275,7 @@ export default {
             },
         },
     },
-    plugins: [
-        plugin(function ({ addVariant }) {
-            addVariant('hocus', ['&:hover', '&:focus']);
-        }),
-        // tailwindcssAnimate,
-        require('@tailwindcss/forms'),
-
-        require('@tailwindcss/aspect-ratio'),
-
-        require('tailwind-scrollbar-hide'),
-    ],
+    plugins: [customVariants],
 };
 ```
 
