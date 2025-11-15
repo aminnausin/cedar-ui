@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TabsProps } from '../../types/cedar-ui';
+import type { TabsProps } from '@aminnausin/cedar-ui';
 
 import { onMounted, onUnmounted, provide, ref, useTemplateRef } from 'vue';
 import { TabsMarkerBlock, TabsMarkerLine, TabsTrigger } from '.';

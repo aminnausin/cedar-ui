@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TabsContentProps } from '../../types/cedar-ui';
+import type { TabsContentProps } from '@aminnausin/cedar-ui';
 import type { Ref } from 'vue';
 
 import { computed, inject } from 'vue';

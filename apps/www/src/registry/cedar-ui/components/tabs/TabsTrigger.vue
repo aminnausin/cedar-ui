@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TabsTriggerProps } from '../../types/cedar-ui';
+import type { TabsTriggerProps } from '@aminnausin/cedar-ui';
 import type { Ref } from 'vue';
 
 import { computed, inject } from 'vue';

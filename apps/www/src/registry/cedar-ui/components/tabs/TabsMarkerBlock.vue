@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TabsOrientation } from '../../types/cedar-ui';
+import type { TabsOrientation } from '@aminnausin/cedar-ui';
 import type { Ref } from 'vue';
 
 import { inject } from 'vue';
