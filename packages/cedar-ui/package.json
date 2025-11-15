@@ -44,9 +44,9 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
-    "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
-    "pub:release": "pnpm build && pnpm publish  --no-git-checks --access public"
+    "pub:beta": "pnpm build && npm publish --no-git-checks --access public --tag beta",
+    "pub:next": "pnpm build && npm publish --no-git-checks --access public --tag next",
+    "pub:release": "pnpm build && npm publish  --no-git-checks --access public"
   },
   "dependencies": {
     "clsx": "^2.1.1",
