@@ -1,0 +1,19 @@
+ci:
+- changed-files:
+  - any-glob-to-any-file:
+    - '.github/**/**'
+
+components:
+- changed-files:
+  - any-glob-to-any-file:
+    - 'apps/www/src/**/**'
+
+vitepress:
+- changed-files:
+  - any-glob-to-any-file:
+    - 'apps/www/.vitepress/**/**'
+
+packages:
+- changed-files:
+  - any-glob-to-any-file:
+    - 'packages/**/**'
