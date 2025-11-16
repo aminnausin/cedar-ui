@@ -15,10 +15,10 @@ import { ButtonForm } from '@/registry/cedar-ui/components/button';
             </template>
             <template #content>
                 <TabsContent value="Account">
-                    <div class="border rounded-lg shadow-xs bg-card text-neutral-900 p-6 space-y-6">
+                    <div class="border rounded-lg shadow-xs bg-card p-6 space-y-6">
                         <div class="flex flex-col space-y-1.5">
                             <h3 class="text-lg font-semibold leading-none tracking-tight">Account</h3>
-                            <p class="text-neutral-500">Make changes to your account here. Click save when you're done.</p>
+                            <p class="text-foreground-1">Make changes to your account here. Click save when you're done.</p>
                         </div>
                         <div class="space-y-4">
                             <TextInputLabelled :placeholder="'John Doe'" title="name" text="Name" />
@@ -31,10 +31,10 @@ import { ButtonForm } from '@/registry/cedar-ui/components/button';
                 </TabsContent>
 
                 <TabsContent value="Password">
-                    <div class="border rounded-lg shadow-xs bg-card text-neutral-900 p-6 space-y-6">
+                    <div class="border rounded-lg shadow-xs bg-card p-6 space-y-6">
                         <div class="flex flex-col space-y-1.5">
                             <h3 class="text-lg font-semibold leading-none tracking-tight">Password</h3>
-                            <p class="text-neutral-500">Change your password here. After saving, you'll be logged out.</p>
+                            <p class="text-foreground-1">Change your password here. After saving, you'll be logged out.</p>
                         </div>
                         <div class="space-y-4">
                             <TextInputLabelled :placeholder="'Current Password'" title="password" text="Current Password" />
@@ -57,18 +57,18 @@ import { ButtonForm } from '@/registry/cedar-ui/components/button';
 
             <template #content>
                 <TabsContent value="Account">
-                    <div class="border rounded-lg shadow-xs bg-card text-neutral-900">
+                    <div class="border rounded-lg shadow-xs bg-card">
                         <div class="flex flex-col space-y-1.5 p-6">
                             <h3 class="text-lg font-semibold leading-none tracking-tight">Account</h3>
-                            <p class="text-sm text-neutral-500">You do not have an account.</p>
+                            <p class="text-sm text-foreground-1">You do not have an account.</p>
                         </div>
                     </div>
                 </TabsContent>
                 <TabsContent value="Password">
-                    <div class="border rounded-lg shadow-xs bg-card text-neutral-900">
+                    <div class="border rounded-lg shadow-xs bg-card">
                         <div class="flex flex-col space-y-1.5 p-6">
                             <h3 class="text-lg font-semibold leading-none tracking-tight">Password</h3>
-                            <p class="text-sm text-neutral-500">You cannot change your password.</p>
+                            <p class="text-sm text-foreground-1">You cannot change your password.</p>
                         </div>
                     </div>
                 </TabsContent>

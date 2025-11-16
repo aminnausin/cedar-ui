@@ -81,6 +81,10 @@
         --primary: oklch(55.8% 0.288 302.321); /* purple-600 */
         --primary-muted: oklch(0.63 0.23 304); /* purple-500 */
         --primary-active: oklch(0.5 0.24 302); /* purple-700 */
+
+        /* Ring */
+        --ring-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
+        --ring-disabled: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
     }
 
     .dark {
@@ -134,7 +138,12 @@
         --primary-muted: oklch(0.63 0.23 304); /* purple-500 */
         --primary-active: oklch(0.5 0.24 302); /* purple-700 */
 
-        --card: var(--surface-1);
+        /* Ring */
+        --ring-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
+        --ring-disabled: oklch(37.1% 0 0) /* neutral-700 #404040 */;
+
+        /* Replacements */
+        --card: var(--surface-1); /* From White */
     }
 
     body {
@@ -302,9 +311,13 @@
     --color-primary-muted: var(--primary-muted);
     --color-primary-active: var(--primary-active);
 
-    /* Custom colors */
+    /* Ring Colours */
+    --color-r-disabled: var(var(--ring-disabled));
+    --color-r-default: var(var(--ring-default));
 
+    /* Custom colors */
     --color-input: var(--input);
+
     --color-ring: var(--ring);
 
     --color-primary-foreground: var(--primary-foreground);

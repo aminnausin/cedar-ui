@@ -19,8 +19,8 @@ const props = withDefaults(
 <template>
     <li :class="{ hidden: props.currentPage !== props.pageNumber && !props.text && !props.sticky }" class="h-full md:block z-0">
         <button
-            class="relative inline-flex items-center h-full px-3 group hover:text-gray-900 dark:hover:text-white dark:disabled:text-neutral-500 disabled:text-neutral-400 disabled:cursor-not-allowed"
-            :class="{ 'text-gray-900 dark:text-white bg-gray-50 dark:bg-neutral-900': props.currentPage === props.pageNumber }"
+            class="relative inline-flex items-center h-full px-3 group hover:text-foreground-0 disabled:text-foreground-2 disabled:cursor-not-allowed"
+            :class="{ 'text-foreground-0 bg-gray-50 dark:bg-neutral-900': props.currentPage === props.pageNumber }"
             :disabled="props.disabled ?? false"
         >
             <slot name="content">
@@ -31,7 +31,7 @@ const props = withDefaults(
 
             <span
                 v-if="!props.text || props.underline"
-                class="box-content absolute bottom-0 w-0 h-px -mx-px duration-200 ease-out translate-y-px border-transparent group-hover:left-0 group-hover:w-full group-hover:border-l group-hover:border-r bg-violet-600 group-hover:border-violet-600"
+                class="box-content absolute bottom-0 w-0 h-px -mx-px duration-200 ease-out translate-y-px border-transparent group-hover:left-0 group-hover:w-full group-hover:border-l group-hover:border-r bg-primary group-hover:border-primary"
                 bg-neutral-900
                 dark:bg-violet-600
                 group-hover:border-neutral-900

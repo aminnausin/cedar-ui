@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { cn } from '@aminnausin/cedar-ui';
 
 const props = withDefaults(
     defineProps<{
@@ -46,7 +47,7 @@ const variantClass = computed(() => {
 });
 </script>
 <template>
-    <button :type="type" :class="[...variantClass]" :disabled="disabled">
+    <button :type="type" :class="cn(...variantClass)" :disabled="disabled">
         <slot name="text"></slot>
         <slot></slot>
     </button>

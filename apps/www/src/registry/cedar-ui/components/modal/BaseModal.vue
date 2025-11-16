@@ -16,7 +16,7 @@ defineProps<{
             </slot>
         </h3>
         <ButtonCorner @click="modal.close" class="static! m-0!" />
-        <p class="w-full text-sm text-neutral-500 dark:text-neutral-400" v-if="$slots.description" id="modalDescription">
+        <p class="w-full text-sm text-foreground-2" v-if="$slots.description" id="modalDescription">
             <slot name="description"> </slot>
         </p>
     </section>
