@@ -38,7 +38,6 @@ const toastsHovered = ref(false);
 const expanded = ref(props.layout === 'expanded');
 const paddingBetweenToasts = ref(props.paddingBetweenToasts);
 const heightRecalculateTimeout = ref<null | number>(null);
-const burnTimeout = ref<null | number>(null);
 
 function deleteToastWithId(id: string) {
     messages.value = messages.value.filter((msg) => msg.id !== id);

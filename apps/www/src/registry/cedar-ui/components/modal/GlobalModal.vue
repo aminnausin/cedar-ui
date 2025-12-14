@@ -23,7 +23,7 @@ const modalStore = useModalCore();
                 leave-from-class="opacity-100"
                 leave-to-class="opacity-0"
             >
-                <div v-if="modalStore.isOpen.value" class="bg-opacity-70 absolute inset-0 h-full w-full backdrop-blur-xs"></div>
+                <div v-if="modalStore.isOpen.value" class="absolute inset-0 h-full w-full backdrop-blur-xs"></div>
             </Transition>
             <Transition
                 enter-active-class="ease-out duration-300"
