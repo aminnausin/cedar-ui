@@ -149,6 +149,10 @@ export const docsConfig: DocsConfig = {
                     href: '/docs/components/date-picker',
                 },
                 {
+                    title: 'Drawer',
+                    href: '/docs/components/drawer',
+                },
+                {
                     title: 'Dropdown Menu',
                     href: '/docs/components/dropdown-menu',
                 },
