@@ -1,4 +1,4 @@
-import type { Message, ToastOptions, ToastToDismiss } from '@/types/cedar-ui.ts';
+import type { Message, ToastOptions, ToastToDismiss } from '.';
 
 function UniqueComponentId(prefix = 'pv_id_') {
     return prefix + Math.random().toString(16).slice(2);

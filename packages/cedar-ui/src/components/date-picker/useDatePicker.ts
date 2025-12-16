@@ -1,12 +1,11 @@
-import { computed, nextTick, onMounted, ref, watch, type ModelRef, type Ref } from 'vue';
+import { computed, nextTick, onMounted, ref, watch, type Ref } from 'vue';
+import type { DatePickerProps } from './date-picker.types';
 
-interface DatePickerProps {
-    model?: ModelRef<string | undefined>;
-    defaultDate?: string;
-    useDefaultDate?: boolean;
-}
-
-export default function useDatePicker(props: DatePickerProps, datePickerInput: Ref<HTMLElement | null>, datePickerCalendar: Ref<HTMLElement | null>) {
+export default function useDatePicker(
+    props: DatePickerProps,
+    datePickerInput: Ref<HTMLElement | null>,
+    datePickerCalendar: Ref<HTMLElement | null>,
+) {
     const datePickerOpen = ref(false);
     const datePickerValue = ref(props.model?.value ?? props.defaultDate ?? '');
     const datePickerFormat = ref<'F d, Y' | 'd M, Y' | 'Y M d' | 'MM-DD-YYYY' | 'DD-MM-YYYY' | 'YYYY-MM-DD' | 'D d M, Y'>('F d, Y');
@@ -17,7 +16,20 @@ export default function useDatePicker(props: DatePickerProps, datePickerInput: R
     const datePickerBlankDaysInMonth = ref<number[]>([]);
     const datePickerPosition = ref<'top' | 'bottom'>('bottom');
 
-    const datePickerMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const datePickerMonthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ];
     const datePickerDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     const datePickerPanel = ref<'Y' | 'M' | 'D'>('D');

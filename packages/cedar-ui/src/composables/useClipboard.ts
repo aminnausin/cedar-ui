@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
 
-import { toast } from '@/service/toaster/toastService';
+import { toast } from '@/feedback/toast/toastService';
 import { ref } from 'vue';
 
 export default function useClipboard(copyText: Ref<string>) {

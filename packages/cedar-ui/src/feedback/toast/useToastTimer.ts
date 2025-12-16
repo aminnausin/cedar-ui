@@ -1,11 +1,6 @@
-import { ref, watch, onBeforeUnmount } from 'vue';
+import type { UseToastTimerOptions } from '.';
 
-interface UseToastTimerOptions {
-    duration: number;
-    isPaused: () => boolean;
-    onTimeout: () => void;
-    immediate?: boolean;
-}
+import { ref, watch, onBeforeUnmount } from 'vue';
 
 export function useToastTimer({ duration, isPaused, onTimeout, immediate = true }: UseToastTimerOptions) {
     const timeoutId = ref<number | null>();

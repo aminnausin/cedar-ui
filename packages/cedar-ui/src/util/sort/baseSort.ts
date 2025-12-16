@@ -1,6 +1,6 @@
-import type { SortDir } from '@/types/cedar-ui';
+import type { SortDir } from '@/types/shared';
 
-import { CompareStrategies } from '@/service/sort/strategies';
+import { CompareStrategies } from './strategies';
 
 export function sortObject<T>(column: keyof T, direction: SortDir = 1, dateColumns: string[] = ['date', 'date_released']) {
     return (a: T, b: T): number => {

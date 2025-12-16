@@ -1,4 +1,4 @@
-import type { FormFields, FormState } from '@/types/cedar-ui';
+import type { FormFields, FormState } from '..';
 
 import { reactive, watch } from 'vue';
 
