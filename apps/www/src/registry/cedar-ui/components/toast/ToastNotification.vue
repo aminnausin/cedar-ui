@@ -62,12 +62,15 @@ const { cancel: cancelToastTimer } = useToastTimer({
 });
 
 function getLeaveDirection() {
+    const yDir = isBottom.value ? 'translate-y-full' : '-translate-y-full';
+
     if (isSwiping.value) {
-        return offset.value.x > 0 ? 'translate-x-full' : '-translate-x-full';
+        const xDir = offset.value.x > 0 ? 'translate-x-full' : '-translate-x-full';
+        return Math.abs(offset.value.y) > 0 ? yDir : xDir;
     }
 
     if (props.toastCount === 1) {
-        return isBottom.value ? 'translate-y-full' : '-translate-y-full';
+        return yDir;
     }
 
     return 'translate-y-0';

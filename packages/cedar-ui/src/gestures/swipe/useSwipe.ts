@@ -132,11 +132,11 @@ export function useSwipeHandler({ directions, swipeThreshold, velocityThreshold,
 
         const shouldDismiss = Math.abs(swipeAmount) >= resolveSwipeThreshold(activeAxis.value) || velocity > (velocityThreshold ?? 0.11);
 
+        if (shouldDismiss) onSwipeOut();
+
         isSwiping.value = false;
         activeAxis.value = null;
         offset.value = { x: 0, y: 0 };
-
-        if (shouldDismiss) onSwipeOut();
     }
 
     function onPointerCancel() {
