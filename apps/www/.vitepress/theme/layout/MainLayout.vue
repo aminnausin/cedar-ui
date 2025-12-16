@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Content, useData, useRoute } from 'vitepress';
 import { ToastController } from '@/registry/cedar-ui/components/toast';
+import { DrawerController } from '@/registry/cedar-ui/components/drawer';
 import { useMagicKeys } from '@vueuse/core';
 import { useModalCore } from '@aminnausin/cedar-ui';
 import { GlobalModal } from '@/registry/cedar-ui/components/modal';
@@ -145,4 +146,5 @@ watch([Meta_K, Ctrl_K], (v) => {
     </div>
     <ToastController />
     <GlobalModal />
+    <DrawerController />
 </template>

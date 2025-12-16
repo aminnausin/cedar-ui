@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { BaseDrawer } from '../components/drawer';
 import { ButtonText } from '../components/button/';
 import { drawer } from '@aminnausin/cedar-ui';
+
+import CustomDrawer from './CustomDrawer.vue';
 </script>
 
 <template>
@@ -9,9 +10,9 @@ import { drawer } from '@aminnausin/cedar-ui';
         <ButtonText
             :class="'text-sm h-8 ring-1 capitalize'"
             :variant="'default'"
-            @click="drawer.open(BaseDrawer, { title: 'Move Goal', description: 'Set your daily activity goal.' })"
+            @click="drawer.open(CustomDrawer, { title: 'Move Goal', description: 'Set your daily activity goal.' })"
         >
-            Open Drawer
+            Open Custom Drawer
         </ButtonText>
     </div>
 </template>

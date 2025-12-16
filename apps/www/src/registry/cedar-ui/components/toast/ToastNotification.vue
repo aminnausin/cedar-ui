@@ -51,7 +51,7 @@ const isMounted = ref(false);
 
 const { offset, isSwiping, onPointerDown, onPointerMove, onPointerUp } = useSwipeHandler({
     directions: swipeDirections,
-    threshold: SWIPE_THRESHOLD,
+    swipeThreshold: { px: SWIPE_THRESHOLD },
     onSwipeOut: onClose,
 });
 

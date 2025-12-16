@@ -16,8 +16,6 @@ const content = useTemplateRef('content');
 const accordionHeight = ref(0);
 
 const recalculateAccordionHeight = () => {
-    console.log('re');
-
     if (!content.value || !props.isActive) {
         accordionHeight.value = 0;
         return;

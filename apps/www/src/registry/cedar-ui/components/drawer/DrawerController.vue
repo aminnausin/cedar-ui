@@ -1,29 +1,16 @@
 <script setup lang="ts">
-import { useDrawerCore } from './useDrawerCore';
-import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
-import { ButtonText } from '../button';
-import { BaseDrawer } from '.';
+import type { DrawerControllerProps } from '@aminnausin/cedar-ui';
 
-interface DrawerProps {
-    teleportTarget?: string;
-}
-const props = withDefaults(defineProps<DrawerProps>(), {
+import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component';
+import { useDrawer } from '@aminnausin/cedar-ui';
+
+const props = withDefaults(defineProps<DrawerControllerProps>(), {
     teleportTarget: 'body',
 });
 
-const drawerStore = useDrawerCore();
+const drawerStore = useDrawer();
 </script>
 <template>
-    <slot name="trigger">
-        <ButtonText
-            :class="'text-sm h-8 ring-1 capitalize'"
-            :variant="'default'"
-            @click="drawerStore.open(BaseDrawer, { title: 'Move Goal', description: 'Set your daily activity goal.', drawer: drawerStore })"
-        >
-            Open Drawer
-        </ButtonText>
-    </slot>
-
     <Teleport :to="teleportTarget">
         <div
             role="dialog"
@@ -58,11 +45,11 @@ const drawerStore = useDrawerCore();
                 leave-to-class="opacity-0 translate-y-full"
             >
                 <UseFocusTrap
-                    v-if="drawerStore.isOpen.value"
+                    v-if="drawerStore.isOpen.value && drawerStore.component.value"
                     class="scrollbar-hide fixed bottom-0 left-0 flex items-center"
                     :options="{ allowOutsideClick: true }"
                 >
-                    <component :is="drawerStore.component.value" v-bind="drawerStore.props.value" />
+                    <component :is="drawerStore.component.value" />
                 </UseFocusTrap>
             </Transition>
         </div>
