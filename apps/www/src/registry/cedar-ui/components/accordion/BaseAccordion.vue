@@ -28,7 +28,7 @@ function setActiveAccordion(id: string) {
 </script>
 <template>
     <div
-        class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white dark:bg-primary-dark-800 border border-gray-200 dark:border-border divide-y divide-gray-200 dark:divide-neutral-700 rounded-md"
+        class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white dark:bg-surface-2 border border-b dark:border-border divide-y divide-d rounded-md"
     >
         <BaseAccordionItem
             v-for="accordion in accordions"

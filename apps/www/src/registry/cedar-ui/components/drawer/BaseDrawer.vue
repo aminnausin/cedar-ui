@@ -35,7 +35,7 @@ const { offset, isSwiping, onPointerDown, onPointerMove, onPointerUp, onPointerC
         }"
         id="drawer"
     >
-        <div class="flex flex-col rounded-t-xl items-center justify-center">
+        <div class="flex flex-col items-center justify-center">
             <div class="w-full cursor-pointer group pt-4 flex">
                 <slot name="handle">
                     <DrawerHandle

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue';
 
-import { ProiconsChevronRight, ProiconsChevronLeft } from '@/registry/cedar-ui/components/icons';
+import { ProiconsChevronRight, ProiconsChevronLeft } from '../icons';
 
 import TablePaginationButton from './TablePaginationButton.vue';
 

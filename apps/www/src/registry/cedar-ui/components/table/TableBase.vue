@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import type { TableSortOption, TableProps } from '@/registry/cedar-ui/types/cedar-ui.ts';
+import type { TableSortOption, TableProps } from '@aminnausin/cedar-ui';
 
 import { PhSortDescendingLight, PhSortAscendingLight, SvgSpinners90RingWithBg } from '../icons';
 import { TextInputLabelled } from '../input';

@@ -76,7 +76,7 @@ const handleSubmit = async () => {
         <template #content>
             <SettingsHeader>
                 <h3 class="text-base font-medium">Update password</h3>
-                <p class="text-neutral-600 dark:text-neutral-400">Ensure your account is using a long, random password to stay secure.</p>
+                <p class="text-foreground-1">Ensure your account is using a long, random password to stay secure.</p>
             </SettingsHeader>
             <form class="flex flex-col sm:flex-row sm:justify-between flex-wrap gap-4 w-full max-w-xl" @submit.prevent="handleSubmit">
                 <div v-for="(field, index) in fields.filter((field) => !field.disabled)" :key="index" class="w-full" :class="field.class">
