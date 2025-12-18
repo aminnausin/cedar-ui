@@ -355,16 +355,19 @@
         --color-overlay: oklch(100% 0 0);
 
         /* Text (0 is brightest) */
-        --foreground-0: oklch(0.1405 0.0044 285.82);
-        --color-foreground-0: oklch(0.1405 0.0044 285.82);
+        --foreground-0: oklch(0.1405 0.0044 285.82); /* this is zinc-950 */
+        --color-foreground-0: oklch(21% 0.034 264.665); /* In my code I used gray-900 which is oklch(21% 0.034 264.665) = #101828 */
         --color-foreground-1: oklch(43.9% 0 0); /* neutral-600 (to 400) */
         --color-foreground-2: oklch(70.8% 0 0); /* neutral-500 (to 400)*/
         --color-foreground-3: oklch(70.8% 0 0); /* neutral-400 (to 500)*/
+        --color-foreground-4: oklch(97% 0 0); /* neutral-100 (to 300) #f5f5f5 */
+        --color-foreground-4-hover: oklch(97% 0 0); /* neutral-100 (to 300) #f5f5f5 */
 
         /* Main Colours */
         --color-primary: oklch(55.8% 0.288 302.321); /* purple-600 */
         --color-primary-muted: oklch(0.63 0.23 304); /* purple-500 */
         --color-primary-active: oklch(0.5 0.24 302); /* purple-700 */
+        --color-primary-dark: oklch(38.1% 0.176 304.987); /* purple-900 */
 
         /* Ring */
         --color-r-disabled: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
@@ -382,20 +385,13 @@
         --color-primary-dark-900: #18181b;
         --color-primary-dark-950: #101014;
 
-        --color-success: var(--success); /* green-500 */
-        --color-info: var(--info); /* blue-500 */
-        --color-warning: var(--warning); /* orange-500 */
-        --color-danger-1: var(--danger-1); /* rose-500 */
-        --color-danger-2: var(--danger-2); /* rose-600 */
-        --color-danger-3: var(--danger-3); /* rose-700 */
-
         /* Indicator Colors */
-        --success: oklch(72.3% 0.219 149.579);
-        --info: oklch(62.3% 0.214 259.815);
-        --warning: oklch(75% 0.183 55.934);
-        --danger-1: oklch(64.5% 0.246 16.439);
-        --danger-2: oklch(64.5% 0.246 16.439);
-        --danger-3: oklch(64.5% 0.246 16.439);
+        --color-success: oklch(72.3% 0.219 149.579); /* green-500 */
+        --color-info: oklch(62.3% 0.214 259.815); /* blue-500 */
+        --color-warning: oklch(75% 0.183 55.934); /* orange-500 */
+        --color-danger-1: oklch(64.5% 0.246 16.439); /* rose-500 */
+        --color-danger-2: oklch(58.6% 0.253 17.585); /* rose-600 */
+        --color-danger-3: oklch(51.4% 0.222 16.935); /* rose-700 */
 
         /* Opacity */
         --opacity-disabled: 0.6;
@@ -403,23 +399,19 @@
 
     .dark {
         /* Surfaces (0 is page) */
-        --color-surface-0: oklch(0.1749 0.0082 285.52);
-        --color-surface-1: oklch(0.2103 0.0059 285.89); /* #18181b */
-        --color-surface-2: oklch(0.2739 0.0055 286.03); /* #27272a */
-        --color-surface-3: #26262a;
-        --color-surface-4: #2a2a2d;
+        --color-surface-0: oklch(0.1749 0.0082 285.52); /* primary-dark-950 #101014 */
+        --color-surface-1: oklch(0.2103 0.0059 285.89); /* primary-dark-900 zinc-900 #18181b */
+        --color-surface-2: oklch(0.2739 0.0055 286.03); /* primary-dark-800 zinc-800 #27272a */
+        --color-surface-3: #26262a; /* primary-dark-700 #26262a */
+        --color-surface-4: #2a2a2d; /* primary-dark-600 #2a2a2d ?? this is darker */
 
         /* Text (0 is brightest) */
-        --foreground-0: hsl(0 0% 98%);
-        --color-foreground-0: hsl(0 0% 98%);
+        --foreground-0: hsl(0 0% 98%); /* zinc-50 and neutral-50 */
+        --color-foreground-0: hsl(0 0% 100%); /* white */
         --color-foreground-1: oklch(70.8% 0 0); /* neutral-400 */
         --color-foreground-2: oklch(70.8% 0 0); /* neutral-400 */
         --color-foreground-3: oklch(55.6% 0 0); /* neutral-500 */
-
-        /* Main Colours */
-        --color-primary: oklch(55.8% 0.288 302.321); /* purple-600 */
-        --color-primary-muted: oklch(0.63 0.23 304); /* purple-500 */
-        --color-primary-active: oklch(0.5 0.24 302); /* purple-700 */
+        --color-foreground-4: oklch(87% 0 0); /* neutral-300 #d4d4d4 */
 
         /* Ring */
         --color-r-disabled: oklch(37.1% 0 0) /* neutral-700 #404040 */;
@@ -428,6 +420,9 @@
         /* Border Divide */
         --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
         --color-d: oklch(37.1% 0 0); /* neutral-700 #404040 */
+
+        /* Indicator Colors */
+        --color-success: oklch(62.7% 0.194 149.214); /* green-600 */
 
         /* Replacements */
         --card: var(--surface-1); /* From White */

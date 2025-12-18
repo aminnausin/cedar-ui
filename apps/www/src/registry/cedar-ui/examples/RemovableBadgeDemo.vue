@@ -10,7 +10,7 @@ const removeTag = (tag: string) => {
 
 <template>
     <section class="w-full flex gap-1 flex-wrap justify-center items-center">
-        <BadgeTag v-for="tag in exampleTags" :key="tag" removeable @clickAction="removeTag(tag)" :class="'bg-slate-600'">
+        <BadgeTag v-for="tag in exampleTags" :key="tag" removeable @clickAction="removeTag(tag)" :class="'bg-surface-1 text-foreground'">
             {{ tag }}
         </BadgeTag>
     </section>

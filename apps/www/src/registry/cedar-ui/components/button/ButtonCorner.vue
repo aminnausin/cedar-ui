@@ -1,41 +1,50 @@
 <script setup lang="ts">
 import { CedarDelete } from '../icons';
 import { RouterLink } from 'vue-router';
+import { computed } from 'vue';
 import { cn } from '@aminnausin/cedar-ui';
 
-const props = defineProps(['positionClasses', 'colourClasses', 'textClasses', 'to', 'label', 'disabled']);
+const props = defineProps<{
+    to?: string;
+    label?: string;
+    disabled?: boolean;
+    class?: string;
+    positionClasses?: string; // legacy
+    colourClasses?: string; // legacy
+    textClasses?: string; // legacy
+}>();
+
+const wrapper = computed(() => (props.to ? RouterLink : 'button'));
+const wrapperProps = computed(() => {
+    return props.to
+        ? { to: props.to, title: props.label ?? 'Link', 'aria-label': props.label ?? 'Link' }
+        : {
+              'aria-label': props.label ?? 'Close Modal',
+              title: props?.label ?? 'Close Modal',
+              type: 'button',
+          };
+});
 </script>
 
 <template>
-    <RouterLink
-        v-if="to"
-        :aria-label="label ?? 'Link'"
-        :title="label ?? 'Link'"
-        :to="to ?? '/'"
+    <component
+        :is="wrapper"
+        :aria-disabled="disabled"
+        :disabled="disabled"
+        :data-disabled="disabled"
         :class="
             cn(
-                'flex items-center justify-center rounded-full aria-disabled:cursor-not-allowed aria-disabled:hover:ring-r-disabled aria-disabled:opacity-60',
-                `${positionClasses ?? ' absolute top-0 right-0 w-8 h-8 mt-5 mr-5'}`,
-                `${props?.colourClasses ?? 'hover:bg-gray-50 dark:hover:bg-gray-700'} ${props?.textClasses ?? 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'}`,
+                'flex items-center justify-center rounded-full cursor-pointer data-[disabled=true]:button-disabled',
+                positionClasses ?? 'absolute top-0 right-0 w-8 h-8 mt-5 mr-5',
+                colourClasses ?? 'hover:bg-surface-1',
+                textClasses ?? 'text-foreground-1 hover:text-foreground-0 ',
+                props.class,
             )
         "
-        :aria-disabled="disabled"
+        v-bind="wrapperProps"
     >
         <slot name="icon">
             <CedarDelete />
         </slot>
-    </RouterLink>
-    <button
-        v-else
-        :aria-label="props?.label ?? 'Close Modal'"
-        :title="props?.label ?? 'Close Modal'"
-        class="flex items-center justify-center rounded-full disabled:cursor-not-allowed aria-disabled:hover:ring-r-disabled disabled:opacity-60"
-        :class="`${props?.positionClasses ?? 'absolute top-0 right-0 w-8 h-8 mt-5 mr-5'} ${props?.colourClasses ?? 'hover:bg-gray-50 dark:hover:bg-gray-700'} ${props?.textClasses ?? 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'}`"
-        :disabled="disabled"
-        type="button"
-    >
-        <slot name="icon">
-            <CedarDelete />
-        </slot>
-    </button>
+    </component>
 </template>
