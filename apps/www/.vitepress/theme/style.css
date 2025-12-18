@@ -374,6 +374,7 @@
         --color-r-disabled: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
         --color-r-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
         --color-r-card: color-mix(in oklab, oklch(21% 0.034 264.665) 5%, transparent) /* gray-900/70 #101828 */;
+        --color-r-inverse: oklch(97% 0 0); /* neutral-100 inverse (toasts) */
 
         /* Border Divide */
         --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
@@ -418,6 +419,7 @@
         /* Ring */
         --color-r-disabled: oklch(37.1% 0 0) /* neutral-700 #404040 */;
         --color-r-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
+        --color-r-inverse: color-mix(in oklab, oklch(26.9% 0 0) 50%, transparent); /* neutral-800/50 */
 
         /* Border Divide */
         --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
