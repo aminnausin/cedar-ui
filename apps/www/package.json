@@ -30,7 +30,7 @@
     "vue-tsc": "catalog:"
   },
   "dependencies": {
-    "@aminnausin/cedar-ui": "catalog:",
+    "@aminnausin/cedar-ui": "workspace:*",
     "@tailwindcss/aspect-ratio": "catalog:",
     "@tailwindcss/forms": "catalog:",
     "@tailwindcss/postcss": "^4.1.17",
