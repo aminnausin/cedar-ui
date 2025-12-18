@@ -13,7 +13,6 @@ const props = withDefaults(
         href?: string;
         target?: string;
         text?: string;
-        class?: string;
     }>(),
     {
         title: '',
@@ -61,7 +60,7 @@ const variantClass = computed(() => {
     <router-link
         v-if="to"
         :to="to"
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
+        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass)]"
         :type="type"
         :title="title"
         :aria-disabled="disabled"
@@ -75,7 +74,7 @@ const variantClass = computed(() => {
     <a
         v-else-if="href"
         :href="href"
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
+        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass)]"
         :type="type"
         :title="title"
         :aria-disabled="disabled"
@@ -88,7 +87,7 @@ const variantClass = computed(() => {
     </a>
     <button
         v-else
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
+        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass)]"
         :type="type"
         :disabled="disabled"
         :title="title ?? 'Button'"

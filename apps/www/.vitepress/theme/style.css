@@ -356,6 +356,7 @@
 
         /* Text (0 is brightest) */
         --foreground-0: oklch(0.1405 0.0044 285.82); /* this is zinc-950 */
+        --color-foreground-i: hsl(0 0% 100%); /* white inverse of dark-0 */
         --color-foreground-0: oklch(21% 0.034 264.665); /* In my code I used gray-900 which is oklch(21% 0.034 264.665) = #101828 */
         --color-foreground-1: oklch(43.9% 0 0); /* neutral-600 (to 400) */
         --color-foreground-2: oklch(70.8% 0 0); /* neutral-500 (to 400)*/
@@ -389,7 +390,7 @@
         --color-success: oklch(72.3% 0.219 149.579); /* green-500 */
         --color-info: oklch(62.3% 0.214 259.815); /* blue-500 */
         --color-warning: oklch(75% 0.183 55.934); /* orange-500 */
-        --color-danger-1: oklch(64.5% 0.246 16.439); /* rose-500 */
+        --color-danger: oklch(64.5% 0.246 16.439); /* rose-500 */
         --color-danger-2: oklch(58.6% 0.253 17.585); /* rose-600 */
         --color-danger-3: oklch(51.4% 0.222 16.935); /* rose-700 */
 
@@ -407,6 +408,7 @@
 
         /* Text (0 is brightest) */
         --foreground-0: hsl(0 0% 98%); /* zinc-50 and neutral-50 */
+        --color-foreground-i: oklch(21% 0.034 264.665); /* gray-900 inverse of light-0 */
         --color-foreground-0: hsl(0 0% 100%); /* white */
         --color-foreground-1: oklch(70.8% 0 0); /* neutral-400 */
         --color-foreground-2: oklch(70.8% 0 0); /* neutral-400 */
@@ -423,6 +425,7 @@
 
         /* Indicator Colors */
         --color-success: oklch(62.7% 0.194 149.214); /* green-600 */
+        --color-danger: oklch(58.6% 0.253 17.585); /* rose-600 */
 
         /* Replacements */
         --card: var(--surface-1); /* From White */
