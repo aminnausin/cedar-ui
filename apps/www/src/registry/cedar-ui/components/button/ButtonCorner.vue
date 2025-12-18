@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import { CedarDelete } from '../icons';
+import { CedarDelete2 } from '../icons';
 import { RouterLink } from 'vue-router';
 import { computed } from 'vue';
 import { cn } from '@aminnausin/cedar-ui';
 
-const props = defineProps<{
-    to?: string;
-    label?: string;
-    disabled?: boolean;
-    class?: string;
-    positionClasses?: string; // legacy
-    colourClasses?: string; // legacy
-    textClasses?: string; // legacy
-}>();
+const props = withDefaults(
+    defineProps<{
+        to?: string;
+        label?: string;
+        disabled?: boolean;
+        positionClasses?: string; // legacy
+        colourClasses?: string; // legacy
+        textClasses?: string; // legacy
+        useDefaultStyle?: boolean;
+    }>(),
+    {
+        useDefaultStyle: true,
+    },
+);
 
 const wrapper = computed(() => (props.to ? RouterLink : 'button'));
 const wrapperProps = computed(() => {
@@ -23,6 +28,16 @@ const wrapperProps = computed(() => {
               title: props?.label ?? 'Close Modal',
               type: 'button',
           };
+});
+
+const defaultClasses = computed(() => {
+    return props.useDefaultStyle
+        ? {
+              position: 'absolute top-0 right-0 w-8 h-8 mt-5 mr-5',
+              colour: 'hover:bg-surface-1',
+              text: 'text-foreground-1 hover:text-foreground-0',
+          }
+        : { position: '', colour: '', text: '' };
 });
 </script>
 
@@ -35,16 +50,15 @@ const wrapperProps = computed(() => {
         :class="
             cn(
                 'flex items-center justify-center rounded-full cursor-pointer data-[disabled=true]:button-disabled',
-                positionClasses ?? 'absolute top-0 right-0 w-8 h-8 mt-5 mr-5',
-                colourClasses ?? 'hover:bg-surface-1',
-                textClasses ?? 'text-foreground-1 hover:text-foreground-0 ',
-                props.class,
+                positionClasses ?? defaultClasses.position,
+                colourClasses ?? defaultClasses.colour,
+                textClasses ?? defaultClasses.text,
             )
         "
         v-bind="wrapperProps"
     >
         <slot name="icon">
-            <CedarDelete />
+            <CedarDelete2 />
         </slot>
     </component>
 </template>

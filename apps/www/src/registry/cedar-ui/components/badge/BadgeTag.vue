@@ -20,7 +20,7 @@ const wrapperProps = computed(() => (props.URL ? { to: props.URL } : {}));
         :is="wrapper"
         :class="
             cn(
-                'p-1 px-2 text-sm leading-none rounded-xl truncate lowercase text-foreground-4 bg-primary dark:bg-primary-dark shrink-0 transition-colors duration-200',
+                'p-1 px-2 text-sm leading-none rounded-xl truncate lowercase text-foreground-4 bg-primary dark:bg-primary-dark shrink-0 transition-colors duration-300',
                 {
                     'cursor-default': props.URL,
                     'flex gap-1 items-center justify-between': removeable,

@@ -1,5 +1,8 @@
 export { default as CedarDelete } from './CedarDelete.vue';
 
+// Source: https://devdojo.com/pines/docs/toast
+export { default as CedarDelete2 } from './CedarDelete2.vue';
+
 // Source: https://icon-sets.iconify.design/mdi-light
 export { default as MdiLightPlus } from './MdiLightPlus.vue';
 
