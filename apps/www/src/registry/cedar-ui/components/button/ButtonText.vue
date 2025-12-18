@@ -22,79 +22,56 @@ const props = withDefaults(
     },
 );
 
+const wrapper = computed(() => (props.to ? RouterLink : props.href ? 'a' : 'button'));
+const wrapperProps = computed(() => {
+    let wProps = {};
+
+    if (props.to) wProps = { to: props.to, title: props.title ?? 'Link' };
+    else if (props.href) wProps = { href: props.href, title: props.title ?? 'External Link' };
+    else wProps = { title: 'Button' };
+
+    return { title: props.title, target: props.target ?? '_blank', type: props.type, ...wProps };
+});
+
 const variantClass = computed(() => {
     switch (props.variant) {
         case 'ghost':
-            return '';
+            return ['hocus:bg-surface-2'];
         case 'transparent':
-            return [
-                'transition',
-                'hover:bg-white dark:hover:bg-primary-dark-800',
-                'focus:outline-hidden hover:text-gray-900 dark:text-neutral-100',
-                'hocus:ring-2 hover:ring-violet-400 dark:hover:ring-violet-700 focus:ring-white',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:hover:ring-1 disabled:opacity-60',
-            ].join(' ');
+            return ['hocus:ring-1 hocus:ring-surface-1'];
         case 'form':
             return [
-                'inline-flex items-center justify-center px-4 py-2 text-sm transition-colors border dark:border-neutral-600 rounded-md focus:outline-hidden',
-                'focus:ring-1 focus:ring-neutral-100 dark:focus:ring-neutral-400 focus:ring-offset-1 hover:bg-neutral-100 dark:hover:bg-neutral-900',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:hover:ring-1 disabled:opacity-60',
-            ].join(' ');
+                'inline-flex px-4',
+                'border border-r-button hocus:border-primary',
+                'focus:ring-1 focus:ring-primary hover:bg-surface-2',
+            ];
         default:
             return [
-                'h-10 max-h-full rounded-md ',
-                'p-2 shadow-xs',
-                'focus:outline-hidden text-gray-900 dark:text-neutral-100',
-                'ring-1 ring-neutral-200 dark:ring-neutral-700 hocus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500 hover:ring-violet-400 dark:hover:ring-violet-700',
-                'bg-white dark:bg-primary-dark-800',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:ring-1 disabled:opacity-60',
-            ].join(' ');
+                'shadow-xs bg-surface-2',
+                'border border-r-button hover:border-primary-active focus:border-primary',
+                'ring-primary-active hocus:ring-1 focus:ring-primary',
+            ];
     }
 });
 </script>
 
 <template>
-    <router-link
-        v-if="to"
-        :to="to"
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass)]"
-        :type="type"
-        :title="title"
+    <component
+        :is="wrapper"
         :aria-disabled="disabled"
-        :target="target ?? '_blank'"
-    >
-        <slot>
-            <p class="line-clamp-1 flex-1 text-left">{{ text }}</p>
-        </slot>
-        <slot name="icon"> </slot>
-    </router-link>
-    <a
-        v-else-if="href"
-        :href="href"
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass)]"
-        :type="type"
-        :title="title"
-        :aria-disabled="disabled"
-        :target="target ?? '_blank'"
-    >
-        <slot>
-            <p class="line-clamp-1 flex-1 text-left">{{ text }}</p>
-        </slot>
-        <slot name="icon"> </slot>
-    </a>
-    <button
-        v-else
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass)]"
-        :type="type"
         :disabled="disabled"
-        :title="title ?? 'Button'"
+        :data-disabled="disabled"
+        :class="[
+            cn(
+                'data-[disabled=true]:button-disabled flex h-8 max-h-full cursor-pointer items-center justify-center gap-2 rounded-md p-2 transition-colors duration-200 focus:outline-hidden',
+                ...variantClass,
+            ),
+        ]"
+        v-bind="wrapperProps"
     >
         <slot>
             <p class="line-clamp-1 flex-1 text-left" v-if="text">{{ text }}</p>
         </slot>
         <slot name="icon"> </slot>
-    </button>
+    </component>
 </template>

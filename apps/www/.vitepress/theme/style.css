@@ -3,7 +3,7 @@
 @plugin '@tailwindcss/aspect-ratio';
 @plugin 'tailwind-scrollbar-hide';
 
-@config "../../tailwind.config.js";
+@config '../../tailwind.config.js';
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -16,7 +16,7 @@
 
 @layer base {
     body {
-        @apply bg-background text-foreground min-h-screen antialiased overscroll-none;
+        @apply bg-background text-foreground min-h-screen overscroll-none antialiased;
         /* font-feature-settings: "rlig" 1, "calt" 1; */
         font-synthesis-weight: none;
         text-rendering: optimizeLegibility;
@@ -59,7 +59,7 @@
     }
 
     pre code .line {
-        @apply px-4 min-h-4 w-full inline-block leading-(--vp-code-line-height);
+        @apply inline-block min-h-4 w-full px-4 leading-(--vp-code-line-height);
     }
 
     .line-number {
@@ -77,7 +77,7 @@
     }
 
     [data-code-block-plugin] [data-code-block-title] {
-        @apply mt-4 px-4 text-sm font-medium text-foreground;
+        @apply text-foreground mt-4 px-4 text-sm font-medium;
     }
 
     [data-code-block-plugin] div[class^='language-'] {
@@ -119,8 +119,8 @@
     counter-increment: step;
 
     &:before {
-        @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
-        @apply ml-[-50px] -mt-1;
+        @apply bg-muted border-background absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-base font-medium;
+        @apply -mt-1 ml-[-50px];
         content: counter(step);
     }
 }
@@ -130,7 +130,7 @@
 
     &::after {
         content: '';
-        @apply absolute -inset-4 shadow-xl rounded-xl border;
+        @apply absolute -inset-4 rounded-xl border shadow-xl;
     }
 }
 
@@ -149,11 +149,11 @@
 }
 
 @utility container-wrapper {
-    @apply max-w-[1400px] min-[1800px]:max-w-(--breakpoint-2xl) min-[1400px]:border-x border-border/90 dark:border-border mx-auto w-full;
+    @apply border-border/90 dark:border-border mx-auto w-full max-w-[1400px] min-[1400px]:border-x min-[1800px]:max-w-(--breakpoint-2xl);
 }
 
 @utility container {
-    @apply px-4 xl:px-6 mx-auto max-w-(--breakpoint-2xl);
+    @apply mx-auto max-w-(--breakpoint-2xl) px-4 xl:px-6;
 }
 
 @layer base {
@@ -372,12 +372,14 @@
 
         /* Ring */
         --color-r-disabled: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
+        --color-r-button: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
         --color-r-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
         --color-r-card: color-mix(in oklab, oklch(21% 0.034 264.665) 5%, transparent) /* gray-900/70 #101828 */;
         --color-r-inverse: oklch(97% 0 0); /* neutral-100 inverse (toasts) */
 
         /* Border Divide */
         --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
+        --color-border-1: oklch(92% 0.004 286.32); /*zinc-200 or oklch(92.2% 0 0); /* neutral-200 #e5e5e5 */
         --color-d: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
 
         /* Primary dark shades */
@@ -418,11 +420,13 @@
 
         /* Ring */
         --color-r-disabled: oklch(37.1% 0 0) /* neutral-700 #404040 */;
+        --color-r-button: oklch(43.9% 0 0); /* neutral-600 #525252 */
         --color-r-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
         --color-r-inverse: color-mix(in oklab, oklch(26.9% 0 0) 50%, transparent); /* neutral-800/50 */
 
         /* Border Divide */
         --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
+        --color-border-1: oklch(43.9% 0 0); /* neutral-600 #525252 */
         --color-d: oklch(37.1% 0 0); /* neutral-700 #404040 */
 
         /* Indicator Colors */
@@ -444,5 +448,5 @@
 }
 
 @utility button-disabled {
-    @apply cursor-not-allowed hover:ring-r-disabled opacity-disabled;
+    @apply hover:ring-r-disabled opacity-disabled pointer-events-none cursor-not-allowed;
 }
