@@ -1,16 +1,31 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-const props = defineProps(['label', 'colour', 'URL', 'active']);
-const activeColour = `bg-neutral-300 dark:bg-violet-700`;
+import { ButtonIcon } from '../button';
+import { cn } from '@aminnausin/cedar-ui';
+
+const props = defineProps<{
+    label?: string;
+    colour?: string;
+    active?: boolean;
+    url?: string;
+    href?: string;
+}>();
 </script>
 
 <template>
-    <router-link
-        :id="'btn-nav-' + props.label"
-        :to="props.URL"
-        :class="`${props.active ? activeColour : `bg-white dark:bg-primary-dark-800`} hover:bg-neutral-100 dark:hover:bg-violet-700 dark:text-neutral-200 flex justify-center items-center shrink-0 h-8 w-8 rounded-lg shadow-lg`"
-        :aria-label="props.label"
+    <button-icon
+        :id="'btn-nav-' + label"
+        :to="url"
+        :href="href"
+        :variant="'transparent'"
+        :class="
+            cn(
+                'hocus:bg-foreground-4-hover hocus:dark:bg-primary-dark hover:ring-primary size-8 shrink-0 rounded-lg shadow-lg dark:hover:ring-0',
+                active ? `bg-foreground-4 dark:bg-primary-active` : `bg-surface-2`,
+            )
+        "
+        :title="label"
     >
         <slot name="icon"></slot>
-    </router-link>
+        <slot></slot>
+    </button-icon>
 </template>

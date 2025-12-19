@@ -38,7 +38,7 @@ const wrapperProps = computed(() => {
 const variantClass = computed(() => {
     switch (props.variant) {
         case 'ghost':
-            return ['hocus:dark:bg-surface-2'];
+            return [];
         case 'transparent':
             return ['hocus:ring-1 hocus:ring-surface-1 hocus:bg-transparent'];
         case 'form':

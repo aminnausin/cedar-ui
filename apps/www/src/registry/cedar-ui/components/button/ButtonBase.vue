@@ -13,6 +13,7 @@ const props = withDefaults(
         ariaLabel?: string;
         class?: any;
         useSize?: boolean;
+        target?: string;
     }>(),
     {
         useSize: true,
@@ -37,6 +38,7 @@ const wrapper = computed(() => props.as ?? (props.to ? RouterLink : props.href ?
                 props.class,
             )
         "
+        :target="wrapper !== 'button' ? target : undefined"
         :disabled="wrapper === 'button' ? disabled : undefined"
         :aria-disabled="wrapper !== 'button' ? disabled : undefined"
         :data-disabled="disabled"

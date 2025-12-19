@@ -1,17 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ButtonIcon } from '../button';
+import { cn } from '@aminnausin/cedar-ui';
 
-const props = defineProps(['label', 'colour', 'active']);
-const activeColour = ref(`ring-3 ring-inset ring-[0.1rem] dark:ring-0 ring-violet-500 dark:bg-violet-700 bg-white`);
+const props = defineProps<{
+    label?: string;
+    colour?: string;
+    active: boolean;
+}>();
+
+const oldClass = `${props.active ? `bg-white ring-3 ring-[0.1rem] ring-violet-500 ring-inset dark:bg-violet-700 dark:ring-0` : `dark:bg-primary-dark-800 bg-white`} flex h-8 w-8 shrink-0 items-center justify-center rounded-lg shadow-lg hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-violet-700`;
 </script>
 <template>
-    <button
-        :id="'btn-nav-' + props.label"
-        :class="`${props.active ? activeColour : `bg-white dark:bg-primary-dark-800`} hover:bg-neutral-100 dark:hover:bg-violet-700 dark:text-neutral-100 flex justify-center items-center shrink-0 h-8 w-8 rounded-lg shadow-lg`"
-        :aria-label="props.label"
+    <button-icon
+        :id="'btn-nav-' + label"
+        :variant="'transparent'"
+        :class="
+            cn(
+                'dark:hover:bg-primary-dark hover:bg-foreground-4-hover focus:bg-surface-2 size-8 shrink-0 rounded-lg shadow-lg hover:ring-0',
+                active
+                    ? `ring-primary dark:bg-primary-active hover:ring-primary/70 ring-2 ring-inset hover:ring-2 dark:ring-0`
+                    : `bg-surface-2`,
+            )
+        "
+        :title="label"
     >
-        <slot name="icon"></slot>
         <slot />
-        <span :class="`hidden ${activeColour}`"></span>
-    </button>
+    </button-icon>
 </template>

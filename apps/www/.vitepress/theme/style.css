@@ -436,9 +436,6 @@
         --color-success: oklch(62.7% 0.194 149.214); /* green-600 */
         --color-danger: oklch(58.6% 0.253 17.585); /* rose-600 */
 
-        /* Replacements */
-        --card: var(--surface-1); /* From White */
-
         /* Toasts Menus Popovers Dropdowns */
         --color-overlay: color-mix(in oklab, oklch(0.2739 0.0055 286.03) /* #26262a */ 70%, transparent); /* surface-2 */
     }

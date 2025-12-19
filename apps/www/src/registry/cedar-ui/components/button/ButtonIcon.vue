@@ -22,9 +22,9 @@ const props = withDefaults(
 const variantClass = computed(() => {
     switch (props.variant) {
         case 'ghost':
-            return ['hocus:dark:bg-surface-2'];
+            return [];
         case 'transparent':
-            return ['hocus:ring-1 hocus:ring-surface-1 hocus:bg-transparent'];
+            return ['hover:ring-1 focus:ring-1 hover:ring-surface-1 focus:ring-surface-1 focus:bg-transparent hover:bg-transparent'];
         default:
             return ['shadow-xs', 'ring-1 ring-r-button hover:ring-primary-active focus:ring-primary hocus:ring-2', 'bg-surface-2'];
     }
@@ -48,7 +48,11 @@ const wrapperProps = computed(() => {
 </script>
 
 <template>
-    <ButtonBase v-bind="wrapperProps" :class="['hocus:bg-surface-3 aspect-square', ...variantClass]">
+    <ButtonBase
+        v-bind="wrapperProps"
+        :class="['focus:bg-surface-3 hover:bg-surface-3 aspect-square', ...variantClass]"
+        :aria-label="$slots.text ? undefined : title"
+    >
         <!-- Should remove (only have icon but that should be the default not named) -->
         <slot name="text"> </slot>
         <slot name="icon"> </slot>
