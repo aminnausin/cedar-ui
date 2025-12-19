@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { CedarDelete2 } from '../icons';
 import { RouterLink } from 'vue-router';
+import { ButtonBase } from '.';
 import { computed } from 'vue';
 import { cn } from '@aminnausin/cedar-ui';
 
@@ -19,7 +20,6 @@ const props = withDefaults(
     },
 );
 
-const wrapper = computed(() => (props.to ? RouterLink : 'button'));
 const wrapperProps = computed(() => {
     return props.to
         ? { to: props.to, title: props.label ?? 'Link', 'aria-label': props.label ?? 'Link' }
@@ -33,7 +33,7 @@ const wrapperProps = computed(() => {
 const defaultClasses = computed(() => {
     return props.useDefaultStyle
         ? {
-              position: 'absolute top-0 right-0 w-8 h-8 mt-5 mr-5',
+              position: 'absolute top-0 right-0 size-8 mt-5 mr-5',
               colour: 'hover:bg-surface-1',
               text: 'text-foreground-1 hover:text-foreground-0',
           }
@@ -42,14 +42,12 @@ const defaultClasses = computed(() => {
 </script>
 
 <template>
-    <component
-        :is="wrapper"
-        :aria-disabled="disabled"
+    <ButtonBase
         :disabled="disabled"
-        :data-disabled="disabled"
+        :use-size="false"
         :class="
             cn(
-                'flex items-center justify-center rounded-full cursor-pointer data-[disabled=true]:button-disabled',
+                'rounded-full p-0',
                 positionClasses ?? defaultClasses.position,
                 colourClasses ?? defaultClasses.colour,
                 textClasses ?? defaultClasses.text,
@@ -60,5 +58,5 @@ const defaultClasses = computed(() => {
         <slot name="icon">
             <CedarDelete2 />
         </slot>
-    </component>
+    </ButtonBase>
 </template>

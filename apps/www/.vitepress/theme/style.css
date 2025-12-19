@@ -345,6 +345,7 @@
         /* Custom */
 
         /* Surfaces (0 is page) */
+        --color-surface-i: oklch(0.1749 0.0082 285.52); /* primary-dark-950 #101014 */
         --color-surface-0: oklch(0.9841 0.0035 39.48); /* primary-950 #fcf9f8 */
         --color-surface-1: oklch(0.9851 0 129.63); /* primary-900 #fafafa */
         --color-surface-2: oklch(100% 0 0); /* white */
@@ -362,7 +363,7 @@
         --color-foreground-2: oklch(55.6% 0 0); /* neutral-500 (to 400)*/
         --color-foreground-3: oklch(70.8% 0 0); /* neutral-400 (to 500)*/
         --color-foreground-4: oklch(97% 0 0); /* neutral-100 (to 300) #f5f5f5 */
-        --color-foreground-4-hover: oklch(97% 0 0); /* neutral-100 (to 300) #f5f5f5 */
+        --color-foreground-4-hover: oklch(97% 0 0); /* neutral-100 (to 400) #f5f5f5 */
 
         /* Main Colours */
         --color-primary: oklch(55.8% 0.288 302.321); /* purple-600 */
@@ -403,6 +404,7 @@
 
     .dark {
         /* Surfaces (0 is page) */
+        --color-surface-i: oklch(0.9841 0.0035 39.48); /* primary-950 #fcf9f8 */
         --color-surface-0: oklch(0.1749 0.0082 285.52); /* primary-dark-950 #101014 */
         --color-surface-1: oklch(0.2103 0.0059 285.89); /* primary-dark-900 zinc-900 #18181b */
         --color-surface-2: oklch(0.2739 0.0055 286.03); /* primary-dark-800 zinc-800 #27272a */
@@ -417,6 +419,7 @@
         --color-foreground-2: oklch(70.8% 0 0); /* neutral-400 */
         --color-foreground-3: oklch(55.6% 0 0); /* neutral-500 */
         --color-foreground-4: oklch(87% 0 0); /* neutral-300 #d4d4d4 */
+        --color-foreground-4-hover: oklch(70.8% 0 0); /* neutral-400 #a1a1a1 */
 
         /* Ring */
         --color-r-disabled: oklch(37.1% 0 0) /* neutral-700 #404040 */;
@@ -448,5 +451,9 @@
 }
 
 @utility button-disabled {
-    @apply hover:ring-r-disabled opacity-disabled pointer-events-none cursor-not-allowed;
+    @apply opacity-disabled cursor-not-allowed;
+}
+
+@utility button-disabled-pointer {
+    @apply pointer-events-none;
 }

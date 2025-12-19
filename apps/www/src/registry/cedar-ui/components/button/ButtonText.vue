@@ -1,14 +1,17 @@
 <script setup lang="ts">
+import type { ButtonType, TextButtonVariant } from '@aminnausin/cedar-ui';
+
 import { RouterLink } from 'vue-router';
+import { ButtonBase } from '.';
 import { computed } from 'vue';
 import { cn } from '@aminnausin/cedar-ui';
 
 const props = withDefaults(
     defineProps<{
-        type?: 'reset' | 'submit' | 'button' | undefined;
+        type?: ButtonType;
         disabled?: boolean;
         title?: string;
-        variant?: 'default' | 'ghost' | 'transparent' | 'form';
+        variant?: TextButtonVariant;
         to?: string;
         href?: string;
         target?: string;
@@ -22,7 +25,6 @@ const props = withDefaults(
     },
 );
 
-const wrapper = computed(() => (props.to ? RouterLink : props.href ? 'a' : 'button'));
 const wrapperProps = computed(() => {
     let wProps = {};
 
@@ -36,42 +38,22 @@ const wrapperProps = computed(() => {
 const variantClass = computed(() => {
     switch (props.variant) {
         case 'ghost':
-            return ['hocus:bg-surface-2'];
+            return ['hocus:dark:bg-surface-2'];
         case 'transparent':
-            return ['hocus:ring-1 hocus:ring-surface-1'];
+            return ['hocus:ring-1 hocus:ring-surface-1 hocus:bg-transparent'];
         case 'form':
-            return [
-                'inline-flex px-4',
-                'border border-r-button hocus:border-primary',
-                'focus:ring-1 focus:ring-primary hover:bg-surface-2',
-            ];
+            return ['inline-flex px-4', 'border border-r-button', 'focus:ring-primary focus:ring-1 focus:ring-offset-1'];
         default:
-            return [
-                'shadow-xs bg-surface-2',
-                'border border-r-button hover:border-primary-active focus:border-primary',
-                'ring-primary-active hocus:ring-1 focus:ring-primary',
-            ];
+            return ['shadow-xs', 'ring-1 ring-r-button hover:ring-primary-active focus:ring-primary hocus:ring-2', 'bg-surface-2'];
     }
 });
 </script>
 
 <template>
-    <component
-        :is="wrapper"
-        :aria-disabled="disabled"
-        :disabled="disabled"
-        :data-disabled="disabled"
-        :class="[
-            cn(
-                'data-[disabled=true]:button-disabled flex h-8 max-h-full cursor-pointer items-center justify-center gap-2 rounded-md p-2 transition-colors duration-200 focus:outline-hidden',
-                ...variantClass,
-            ),
-        ]"
-        v-bind="wrapperProps"
-    >
+    <button-base :class="[cn('ring-offset-surface-0 hocus:bg-surface-3', ...variantClass)]" v-bind="wrapperProps">
         <slot>
             <p class="line-clamp-1 flex-1 text-left" v-if="text">{{ text }}</p>
         </slot>
         <slot name="icon"> </slot>
-    </component>
+    </button-base>
 </template>

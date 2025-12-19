@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { ButtonBase } from '.';
 import { computed } from 'vue';
 
 const props = withDefaults(
@@ -9,6 +9,7 @@ const props = withDefaults(
         title?: string;
         variant?: 'default' | 'ghost' | 'transparent';
         to?: string;
+        href?: string;
         target?: string;
     }>(),
     {
@@ -21,51 +22,36 @@ const props = withDefaults(
 const variantClass = computed(() => {
     switch (props.variant) {
         case 'ghost':
-            return '';
+            return ['hocus:dark:bg-surface-2'];
         case 'transparent':
-            return [
-                'transition',
-                'hover:bg-white dark:hover:bg-primary-dark-800',
-                'focus:outline-hidden hover:text-gray-900 dark:text-neutral-100',
-                'hocus:ring-2 hover:ring-violet-400 dark:hover:ring-violet-700 focus:ring-white',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:hover:ring-1 disabled:opacity-60',
-            ];
+            return ['hocus:ring-1 hocus:ring-surface-1 hocus:bg-transparent'];
         default:
-            return [
-                'max-h-full rounded-md',
-                'p-2 shadow-xs',
-                'focus:outline-hidden text-gray-900 dark:text-neutral-100',
-                'ring-1 ring-neutral-200 dark:ring-neutral-700 hocus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500 hover:ring-violet-400 dark:hover:ring-violet-700',
-                'bg-white dark:bg-primary-dark-800',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:ring-1 disabled:opacity-60',
-            ];
+            return ['shadow-xs', 'ring-1 ring-r-button hover:ring-primary-active focus:ring-primary hocus:ring-2', 'bg-surface-2'];
     }
+});
+
+const wrapperProps = computed(() => {
+    let wProps = {};
+
+    if (props.to || props.href) wProps = { title: props.title ?? 'Link' };
+
+    return {
+        title: props.title ?? 'Button',
+        to: props.to,
+        href: props.href,
+        target: props.target ?? '_blank',
+        type: props.type,
+        disabled: props.disabled,
+        ...wProps,
+    };
 });
 </script>
 
 <template>
-    <RouterLink
-        v-if="to"
-        :to="to"
-        :class="['flex items-center justify-center cursor-pointer', ...variantClass]"
-        :type="props.type"
-        :title="props.title ?? 'Button'"
-        :aria-disabled="disabled"
-        :target="target"
-    >
+    <ButtonBase v-bind="wrapperProps" :class="['hocus:bg-surface-3 aspect-square', ...variantClass]">
+        <!-- Should remove (only have icon but that should be the default not named) -->
         <slot name="text"> </slot>
         <slot name="icon"> </slot>
-    </RouterLink>
-    <button
-        v-else
-        :class="['flex items-center justify-center cursor-pointer', ...variantClass]"
-        :type="props.type"
-        :disabled="props.disabled"
-        :title="props.title ?? 'Icon'"
-    >
-        <slot name="text"> </slot>
-        <slot name="icon"> </slot>
-    </button>
+        <slot></slot>
+    </ButtonBase>
 </template>
