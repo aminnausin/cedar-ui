@@ -348,17 +348,19 @@
         --color-surface-i: oklch(0.1749 0.0082 285.52); /* primary-dark-950 #101014 */
         --color-surface-0: oklch(0.9841 0.0035 39.48); /* primary-950 #fcf9f8 */
         --color-surface-1: oklch(0.9851 0 129.63); /* primary-900 #fafafa */
-        --color-surface-2: oklch(100% 0 0); /* white */
+        --color-surface-2: var(--color-white); /* white */
         --color-surface-3: oklch(0.9674 0.0013 286.35); /* primary-800 #f4f4f5 */
         --color-surface-4: oklch(0.9841 0.0035 39.48);
 
         /* Toasts Menus Popovers Dropdowns */
-        --color-overlay: oklch(100% 0 0);
+        --color-overlay: var(--color-white);
+        --color-overlay-2: var(--color-white);
+        --color-overlay-border: var(--color-neutral-200);
 
         /* Text (0 is brightest) */
         --foreground-0: oklch(0.1405 0.0044 285.82); /* this is zinc-950 */
-        --color-foreground-i: hsl(0 0% 100%); /* white inverse of dark-0 */
-        --color-foreground-0: oklch(21% 0.034 264.665); /* In my code I used gray-900 which is oklch(21% 0.034 264.665) = #101828 */
+        --color-foreground-i: var(--color-white); /* white inverse of dark-0 */
+        --color-foreground-0: var(--color-gray-900); /* In my code I used gray-900 which is oklch(21% 0.034 264.665) = #101828 */
         --color-foreground-1: oklch(43.9% 0 0); /* neutral-600 (to 400) */
         --color-foreground-2: oklch(55.6% 0 0); /* neutral-500 (to 400)*/
         --color-foreground-3: oklch(70.8% 0 0); /* neutral-400 (to 500)*/
@@ -366,10 +368,11 @@
         --color-foreground-4-hover: oklch(97% 0 0); /* neutral-100 (to 400) #f5f5f5 */
 
         /* Main Colours */
-        --color-primary: oklch(55.8% 0.288 302.321); /* purple-600 */
-        --color-primary-muted: oklch(0.63 0.23 304); /* purple-500 */
-        --color-primary-active: oklch(0.5 0.24 302); /* purple-700 */
-        --color-primary-dark: oklch(38.1% 0.176 304.987); /* purple-900 */
+        --color-primary: var(--color-purple-600); /* purple-600 */
+        --color-primary-muted: var(--color-purple-500); /* purple-500 */
+        --color-primary-active: var(--color-purple-700); /* purple-700 */
+        --color-primary-dark: var(--color-purple-900); /* purple-900 */
+        --color-primary-foreground: var(--color-white); /* purple-600 */
 
         /* Ring */
         --color-r-disabled: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
@@ -437,7 +440,9 @@
         --color-danger: oklch(58.6% 0.253 17.585); /* rose-600 */
 
         /* Toasts Menus Popovers Dropdowns */
-        --color-overlay: color-mix(in oklab, oklch(0.2739 0.0055 286.03) /* #26262a */ 70%, transparent); /* surface-2 */
+        --color-overlay: color-mix(in oklab, oklch(0.2739 0.0055 286.03) /* #26262a */ 70%, transparent); /* surface-3/70 */
+        --color-overlay-2: color-mix(in oklab, var(--color-neutral-800) 90%, transparent);
+        --color-overlay-border: color-mix(in oklab, var(--color-neutral-700) 10%, transparent);
     }
 }
 

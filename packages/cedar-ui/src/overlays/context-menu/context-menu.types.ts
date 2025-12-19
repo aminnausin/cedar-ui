@@ -1,14 +1,16 @@
 // Context Menu
 
+import type { AnchorTarget } from '@/types/shared';
 import type { Component } from 'vue';
 
-export interface ContextMenu {
+export interface ContextMenuOptions {
     disabled?: boolean;
     style?: string;
     itemStyle?: string;
     items?: ContextMenuItem[];
     scrollContainer?: 'window' | 'body';
 }
+
 export interface ContextMenuItem {
     text?: string;
     shortcut?: string;
@@ -21,4 +23,5 @@ export interface ContextMenuItem {
     disabled?: boolean;
     hidden?: boolean;
     icon?: Component;
+    target?: AnchorTarget;
 }

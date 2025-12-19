@@ -27,3 +27,5 @@ export interface DropdownMenuItem {
     shortcutTitle?: string;
     iconStrokeWidth?: number;
 }
+
+export type AnchorTarget = '_self' | '_blank' | '_parent' | '_top' | (string & {});

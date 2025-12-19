@@ -1,74 +1,37 @@
 <script setup lang="ts">
 import type { ContextMenuItem } from '@aminnausin/cedar-ui';
 
-import { RouterLink } from 'vue-router';
+import { ButtonBase } from '../button';
+import { computed } from 'vue';
+import { cn } from '@aminnausin/cedar-ui';
 
-withDefaults(defineProps<ContextMenuItem>(), {});
+const props = withDefaults(defineProps<ContextMenuItem>(), {});
+
+const wrapperProps = computed(() => {
+    if (!props.url) return {};
+    if (props.external) return { href: props.url, target: props.target ?? '_blank' };
+    return { to: props.url, target: props.target };
+});
 </script>
 <template>
-    <a
-        v-if="external && url"
-        :href="url"
-        target="_blank"
-        :data-disabled="disabled"
-        :class="`${selected ? (selectedStyle ?? 'font-bold text-violet-500') : ''} cursor-pointer relative w-full flex select-none hover:bg-neutral-100 dark:hover:bg-neutral-900 items-center rounded px-2 py-1.5 text-sm outline-hidden transition-colors data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 ${style ?? ''}`"
-    >
-        <slot name="icon">
-            <component v-if="icon" :is="icon" class="w-4 h-4 mr-2" />
-            <span
-                v-else
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-4 h-4 mr-2"
-            >
-            </span>
-        </slot>
-        <span class="text-nowrap">{{ text }}</span
-        ><span class="ml-auto text-xs tracking-widest opacity-60">{{ shortcut ?? '' }}</span>
-    </a>
-    <RouterLink
-        v-else-if="url"
-        :to="disabled ? '' : url"
-        :data-disabled="disabled"
-        :class="`${selected ? (selectedStyle ?? 'font-bold text-violet-500') : ''} cursor-pointer relative w-full flex select-none hover:bg-neutral-100 dark:hover:bg-neutral-900 items-center rounded px-2 py-1.5 text-sm outline-hidden transition-colors data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 ${style ?? ''}`"
-    >
-        <slot name="icon">
-            <component v-if="icon" :is="icon" class="w-4 h-4 mr-2" />
-            <span
-                v-else
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-4 h-4 mr-2"
-            >
-            </span>
-        </slot>
-        <span class="text-nowrap">{{ text }}</span>
-        <span class="ml-auto text-xs tracking-widest opacity-60">{{ shortcut ?? '' }}</span>
-    </RouterLink>
-    <button
-        v-else
+    <ButtonBase
+        :class="
+            cn(
+                selected ? (selectedStyle ?? 'text-primary font-bold') : '',
+                'relative w-full rounded px-2 py-1.5 select-none hover:bg-neutral-100 dark:hover:bg-neutral-900',
+                style,
+            )
+        "
         :disabled="disabled"
-        :class="`${selected ? (selectedStyle ?? 'font-bold text-violet-500') : ''} cursor-pointer relative w-full flex select-none hover:bg-neutral-100 dark:hover:bg-neutral-900 items-center rounded px-2 py-1.5 text-sm outline-hidden transition-colors disabled:pointer-events-none disabled:opacity-50 ${style ?? ''}`"
         :onclick="
             () => {
                 if (action) action();
             }
         "
+        v-bind="wrapperProps"
     >
         <slot name="icon">
-            <component v-if="icon" :is="icon" class="w-4 h-4 mr-2" />
+            <component v-if="icon" :is="icon" class="mr-2 h-4 w-4" />
             <span
                 v-else
                 width="24"
@@ -79,11 +42,11 @@ withDefaults(defineProps<ContextMenuItem>(), {});
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="w-4 h-4 mr-2"
+                class="mr-2 h-4 w-4"
             >
             </span>
         </slot>
         <span class="text-nowrap">{{ text }}</span>
         <span class="ml-auto text-xs tracking-widest opacity-60">{{ shortcut ?? '' }}</span>
-    </button>
+    </ButtonBase>
 </template>
