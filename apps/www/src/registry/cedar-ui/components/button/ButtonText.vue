@@ -30,9 +30,8 @@ const wrapperProps = computed(() => {
 
     if (props.to) wProps = { to: props.to, title: props.title ?? 'Link' };
     else if (props.href) wProps = { href: props.href, title: props.title ?? 'External Link' };
-    else wProps = { title: 'Button' };
 
-    return { title: props.title, target: props.target ?? '_blank', type: props.type, ...wProps };
+    return { title: props.title ?? 'Button', target: props.target ?? '_blank', type: props.type, ...wProps };
 });
 
 const variantClass = computed(() => {

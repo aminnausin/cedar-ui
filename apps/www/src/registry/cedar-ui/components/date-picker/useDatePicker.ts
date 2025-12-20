@@ -6,18 +6,37 @@ interface DatePickerProps {
     useDefaultDate?: boolean;
 }
 
-export default function useDatePicker(props: DatePickerProps, datePickerInput: Ref<HTMLElement | null>, datePickerCalendar: Ref<HTMLElement | null>) {
-    const datePickerOpen = ref(false);
-    const datePickerValue = ref(props.model?.value ?? props.defaultDate ?? '');
-    const datePickerFormat = ref<'F d, Y' | 'd M, Y' | 'Y M d' | 'MM-DD-YYYY' | 'DD-MM-YYYY' | 'YYYY-MM-DD' | 'D d M, Y'>('F d, Y');
+export default function useDatePicker(
+    props: DatePickerProps,
+    datePickerInput: Ref<HTMLElement | null>,
+    datePickerCalendar: Ref<HTMLElement | null>,
+) {
     const datePickerMonth = ref(0);
     const datePickerYear = ref(0);
     const datePickerDay = ref(0);
+
+    const datePickerOpen = ref(false);
+    const datePickerValue = ref(props.model?.value ?? props.defaultDate ?? '');
+    const datePickerFormat = ref<'F d, Y' | 'd M, Y' | 'Y M d' | 'MM-DD-YYYY' | 'DD-MM-YYYY' | 'YYYY-MM-DD' | 'D d M, Y'>('F d, Y');
+
     const datePickerDaysInMonth = ref<number[]>([]);
     const datePickerBlankDaysInMonth = ref<number[]>([]);
     const datePickerPosition = ref<'top' | 'bottom'>('bottom');
 
-    const datePickerMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const datePickerMonthNames = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ];
     const datePickerDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     const datePickerPanel = ref<'Y' | 'M' | 'D'>('D');
@@ -136,6 +155,15 @@ export default function useDatePicker(props: DatePickerProps, datePickerInput: R
         }
     }
 
+    /**
+     * Is the date picker looking at the month of the currently selected value
+     */
+    function datePickerIsSelectedMonth() {
+        if (!datePickerDay.value) return false;
+        const d = new Date(datePickerValue.value);
+        return d.getMonth() === datePickerMonth.value && d.getFullYear() === datePickerYear.value;
+    }
+
     function datePickerIsSelectedDate(day: number) {
         const d = new Date(datePickerYear.value, datePickerMonth.value, day);
         return datePickerValue.value === datePickerFormatDate(d);
@@ -145,6 +173,12 @@ export default function useDatePicker(props: DatePickerProps, datePickerInput: R
         const today = new Date();
         const d = new Date(datePickerYear.value, datePickerMonth.value, day);
         return today.toDateString() === d.toDateString();
+    }
+
+    function datePickerIsCurrentMonth() {
+        const today = new Date();
+        const d = new Date(datePickerValue.value);
+        return d.getMonth() === today.getMonth() && d.getFullYear() === today.getFullYear();
     }
 
     function calculateDays() {
@@ -219,8 +253,10 @@ export default function useDatePicker(props: DatePickerProps, datePickerInput: R
         datePickerValueClicked,
         datePickerPrevious,
         datePickerNext,
+        datePickerIsSelectedMonth,
         datePickerIsSelectedDate,
         datePickerIsToday,
+        datePickerIsCurrentMonth,
         showDatePickerPanel,
     };
 }

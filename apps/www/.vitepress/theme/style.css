@@ -356,16 +356,18 @@
         --color-overlay: var(--color-white);
         --color-overlay-2: var(--color-white);
         --color-overlay-border: var(--color-neutral-200);
+        --color-overlay-accent: var(--color-neutral-100);
 
         /* Text (0 is brightest) */
         --foreground-0: oklch(0.1405 0.0044 285.82); /* this is zinc-950 */
         --color-foreground-i: var(--color-white); /* white inverse of dark-0 */
         --color-foreground-0: var(--color-gray-900); /* In my code I used gray-900 which is oklch(21% 0.034 264.665) = #101828 */
-        --color-foreground-1: oklch(43.9% 0 0); /* neutral-600 (to 400) */
-        --color-foreground-2: oklch(55.6% 0 0); /* neutral-500 (to 400)*/
-        --color-foreground-3: oklch(70.8% 0 0); /* neutral-400 (to 500)*/
-        --color-foreground-4: oklch(97% 0 0); /* neutral-100 (to 300) #f5f5f5 */
-        --color-foreground-4-hover: oklch(97% 0 0); /* neutral-100 (to 400) #f5f5f5 */
+        --color-foreground-1: var(--color-neutral-600); /* neutral-600 (to 400) */
+        --color-foreground-2: var(--color-neutral-500); /* neutral-500 (to 400)*/
+        --color-foreground-3: var(--color-neutral-400); /* neutral-400 (to 500)*/
+        --color-foreground-4: var(--color-neutral-100); /* neutral-100 (to 300) #f5f5f5 */
+        --color-foreground-4-hover: var(--color-neutral-100); /* neutral-100 (to 400) #f5f5f5 */
+        --color-foreground-5: var(--color-neutral-100); /* neutral-100 */
 
         /* Main Colours */
         --color-primary: var(--color-purple-600); /* purple-600 */
@@ -375,16 +377,16 @@
         --color-primary-foreground: var(--color-white); /* purple-600 */
 
         /* Ring */
-        --color-r-disabled: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
-        --color-r-button: oklch(92.2% 0 0) /* neutral-200 #e5e5e5 */;
-        --color-r-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
+        --color-r-disabled: var(--color-neutral-200) /* neutral-200 #e5e5e5 */;
+        --color-r-button: var(--color-neutral-200) /* neutral-200 #e5e5e5 */;
+        --color-r-default: var(--color-gray-900) /* gray-900 #101828 */;
         --color-r-card: color-mix(in oklab, oklch(21% 0.034 264.665) 5%, transparent) /* gray-900/70 #101828 */;
-        --color-r-inverse: oklch(97% 0 0); /* neutral-100 inverse (toasts) */
+        --color-r-inverse: var(--color-neutral-100); /* neutral-100 inverse (toasts) */
 
         /* Border Divide */
-        --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
+        --color-b: var(--color-gray-200); /* gray-200 #e5e7eb */
         --color-border-1: oklch(92% 0.004 286.32); /*zinc-200 or oklch(92.2% 0 0); /* neutral-200 #e5e5e5 */
-        --color-d: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
+        --color-d: var(--color-gray-200); /* gray-200 #e5e7eb */
 
         /* Primary dark shades */
         --color-primary-dark-600: #2a2a2d;
@@ -414,20 +416,21 @@
         --color-surface-3: #26262a; /* primary-dark-700 #26262a */
         --color-surface-4: #2a2a2d; /* primary-dark-600 #2a2a2d ?? this is darker */
 
-        /* Text (0 is brightest) */
+        /* Text (0 is brightest) This is a mess */
         --foreground-0: hsl(0 0% 98%); /* zinc-50 and neutral-50 */
-        --color-foreground-i: oklch(21% 0.034 264.665); /* gray-900 inverse of light-0 */
-        --color-foreground-0: hsl(0 0% 100%); /* white */
-        --color-foreground-1: oklch(70.8% 0 0); /* neutral-400 */
-        --color-foreground-2: oklch(70.8% 0 0); /* neutral-400 */
-        --color-foreground-3: oklch(55.6% 0 0); /* neutral-500 */
-        --color-foreground-4: oklch(87% 0 0); /* neutral-300 #d4d4d4 */
-        --color-foreground-4-hover: oklch(70.8% 0 0); /* neutral-400 #a1a1a1 */
+        --color-foreground-i: var(--color-gray-900); /* gray-900 inverse of light-0 */
+        --color-foreground-0: var(--color-white); /* white */
+        --color-foreground-1: var(--color-neutral-400); /* neutral-400 */
+        --color-foreground-2: var(--color-neutral-400); /* neutral-400 */
+        --color-foreground-3: var(--color-neutral-500); /* neutral-500 */
+        --color-foreground-4: var(--color-neutral-300); /* neutral-300 #d4d4d4 */
+        --color-foreground-4-hover: var(--color-neutral-400); /* neutral-400 #a1a1a1 */
+        --color-foreground-5: var(--color-neutral-100); /* neutral-100 */
 
         /* Ring */
-        --color-r-disabled: oklch(37.1% 0 0) /* neutral-700 #404040 */;
-        --color-r-button: oklch(43.9% 0 0); /* neutral-600 #525252 */
-        --color-r-default: oklch(21% 0.034 264.665) /* gray-900 #101828 */;
+        --color-r-disabled: var(--color-neutral-700) /* neutral-700 #404040 */;
+        --color-r-button: var(--color-neutral-600); /* neutral-600 #525252 */
+        --color-r-default: var(--color-gray-900) /* gray-900 #101828 */;
         --color-r-inverse: color-mix(in oklab, oklch(26.9% 0 0) 50%, transparent); /* neutral-800/50 */
 
         /* Border Divide */
@@ -440,9 +443,10 @@
         --color-danger: oklch(58.6% 0.253 17.585); /* rose-600 */
 
         /* Toasts Menus Popovers Dropdowns */
-        --color-overlay: color-mix(in oklab, oklch(0.2739 0.0055 286.03) /* #26262a */ 70%, transparent); /* surface-3/70 */
-        --color-overlay-2: color-mix(in oklab, var(--color-neutral-800) 90%, transparent);
-        --color-overlay-border: color-mix(in oklab, var(--color-neutral-700) 10%, transparent);
+        --color-overlay: oklch(0.2739 0.0055 286.03) /* #26262a */; /* surface-3/70 */
+        --color-overlay-2: var(--color-neutral-800);
+        --color-overlay-border: var(--color-neutral-700);
+        --color-overlay-accent: var(--color-neutral-900);
     }
 }
 

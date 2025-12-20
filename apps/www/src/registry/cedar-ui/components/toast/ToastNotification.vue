@@ -124,8 +124,8 @@ onBeforeUnmount(() => {
         ref="toastEl"
         :id="props.id"
         :class="[
-            `toast w-full absolute duration-300 transition-all ease-out`,
-            { 'opacity-0 pointer-events-none': index >= maxVisibleToasts },
+            `toast absolute w-full transition-all duration-300 ease-out`,
+            { 'pointer-events-none opacity-0': index >= maxVisibleToasts },
             style,
         ]"
         :style="{
@@ -154,11 +154,11 @@ onBeforeUnmount(() => {
             <span
                 :class="[
                     { 'p-4': !html, 'p-0': html },
-                    'flex flex-col items-start backdrop-blur-lg rounded-md ',
+                    'flex flex-col items-start rounded-md backdrop-blur-lg',
                     'group relative select-text',
                     'transition-all duration-300 ease-out',
-                    'bg-overlay text-foreground-0 shadow-[0_5px_15px_-3px_rgb(0_0_0/0.08)]',
-                    'ring-inset ring-1 ring-r-inverse',
+                    'bg-overlay/70 text-foreground-0 shadow-[0_5px_15px_-3px_rgb(0_0_0/0.08)]',
+                    'ring-r-inverse ring-1 ring-inset',
                 ]"
                 v-show="isMounted"
             >
@@ -173,26 +173,26 @@ onBeforeUnmount(() => {
                         'text-foreground-0': type === 'default',
                     }"
                 >
-                    <CedarSuccess v-show="type === 'success'" class="size-4 mr-1 -ml-1" />
-                    <CedarInfo v-show="type === 'info'" class="size-4 mr-1 -ml-1" />
-                    <CedarWarning v-show="type === 'warning'" class="size-4 mr-1 -ml-1" />
-                    <CedarDanger v-show="type === 'danger'" class="size-4 mr-1 -ml-1" />
-                    <p class="text-[13px] font-medium leading-none" :title="title">{{ title }}</p>
+                    <CedarSuccess v-show="type === 'success'" class="mr-1 -ml-1 size-4" />
+                    <CedarInfo v-show="type === 'info'" class="mr-1 -ml-1 size-4" />
+                    <CedarWarning v-show="type === 'warning'" class="mr-1 -ml-1 size-4" />
+                    <CedarDanger v-show="type === 'danger'" class="mr-1 -ml-1 size-4" />
+                    <p class="text-[13px] leading-none font-medium" :title="title">{{ title }}</p>
                 </div>
                 <p
                     v-show="description"
                     :class="{ 'pl-5': type !== 'default' }"
-                    class="mt-1.5 text-xs leading-tight opacity-70 w-full whitespace-pre-wrap wrap-break-word overflow-y-auto scrollbar-minimal max-h-32 min-h-3 pe-2"
+                    class="scrollbar-minimal mt-1.5 max-h-32 min-h-3 w-full overflow-y-auto pe-2 text-xs leading-tight wrap-break-word whitespace-pre-wrap opacity-70"
                 >
                     {{ description }}
                 </p>
                 <template v-if="!html">
                     <ButtonCorner
                         @click="onClose"
-                        class="absolute right-0 p-1.5 mr-2.5 text-foreground-2 hover:text-foreground-1 dark:text-danger-3 hover:bg-surface-1 dark:bg-surface-1/50 dark:hover:bg-surface-1 dark:hover:text-danger"
+                        class="text-foreground-2 hover:text-foreground-1 dark:text-danger-3 hover:bg-surface-1 dark:bg-surface-1/50 dark:hover:bg-surface-1 dark:hover:text-danger absolute right-0 mr-2.5 p-1.5"
                         label="Close Toast"
                         :class="[
-                            'rounded-full opacity-0 cursor-pointer',
+                            'cursor-pointer rounded-full opacity-0',
                             {
                                 'top-1/2 -translate-y-1/2': !description && !html,
                                 'top-0 mt-2.5': description || html,

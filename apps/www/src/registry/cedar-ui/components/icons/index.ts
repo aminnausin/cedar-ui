@@ -7,6 +7,11 @@ export { default as CedarWarning } from './CedarWarning.vue';
 export { default as CedarDanger } from './CedarDanger.vue';
 export { default as CedarInfo } from './CedarInfo.vue';
 
+// Source: https://devdojo.com/pines/docs/date-picker
+export { default as CedarCalendar } from './CedarCalendar.vue';
+export { default as CedarChevronLeft } from './CedarChevronLeft.vue';
+export { default as CedarChevronRight } from './CedarChevronRight.vue';
+
 // Source: https://icon-sets.iconify.design/mdi-light
 export { default as MdiLightPlus } from './MdiLightPlus.vue';
 

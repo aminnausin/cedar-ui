@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn, type ButtonComponent } from '@aminnausin/cedar-ui';
+import { cn, type ButtonComponent, type ButtonType } from '@aminnausin/cedar-ui';
 
 import { RouterLink } from 'vue-router';
 import { computed } from 'vue';
@@ -14,10 +14,12 @@ const props = withDefaults(
         class?: any;
         useSize?: boolean;
         target?: string;
+        type?: ButtonType;
     }>(),
     {
         useSize: true,
         disabled: false,
+        type: 'button',
     },
 );
 
@@ -32,7 +34,7 @@ const wrapper = computed(() => props.as ?? (props.to ? RouterLink : props.href ?
                 { 'data-[disabled=true]:button-disabled-pointer': wrapper === 'button' }, // Disabled Button
                 'data-[disabled=true]:button-disabled', // Disabled
                 'flex items-center justify-center gap-2', // Layout
-                'cursor-pointer text-sm', // Style
+                'cursor-pointer', // Style
                 { 'h-8 max-h-full p-2': useSize }, // Size
                 'rounded-md', // Shape
                 props.class,
@@ -45,6 +47,7 @@ const wrapper = computed(() => props.as ?? (props.to ? RouterLink : props.href ?
         :aria-label="ariaLabel"
         :to="to"
         :href="href"
+        :type="type"
     >
         <slot />
     </component>

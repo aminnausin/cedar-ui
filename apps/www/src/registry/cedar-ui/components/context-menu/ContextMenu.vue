@@ -122,7 +122,7 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                 "
                 ref="contextMenu"
                 :class="[
-                    'bg-overlay-2 border-overlay-border absolute z-50 w-48 max-w-[100vw] rounded-md border p-1 shadow-xs backdrop-blur-xs transition-all',
+                    'bg-overlay-2/90 border-overlay-border/10 absolute z-50 w-48 max-w-[100vw] rounded-md border p-1 shadow-xs backdrop-blur-xs transition-all',
                     style,
                 ]"
                 :style="menuStyles"

@@ -18,7 +18,7 @@ const wrapperProps = computed(() => {
         :class="
             cn(
                 selected ? (selectedStyle ?? 'text-primary font-bold') : '',
-                'relative w-full rounded px-2 py-1.5 select-none hover:bg-neutral-100 dark:hover:bg-neutral-900',
+                'hover:bg-overlay-accent relative w-full rounded px-2 py-1.5 select-none',
                 style,
             )
         "
