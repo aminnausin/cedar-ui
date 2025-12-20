@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
                     'flex flex-col items-start rounded-md backdrop-blur-lg',
                     'group relative select-text',
                     'transition-all duration-300 ease-out',
-                    'bg-overlay/70 text-foreground-0 shadow-[0_5px_15px_-3px_rgb(0_0_0/0.08)]',
+                    'bg-overlay-t text-foreground-0 shadow-[0_5px_15px_-3px_rgb(0_0_0/0.08)]',
                     'ring-r-inverse ring-1 ring-inset',
                 ]"
                 v-show="isMounted"

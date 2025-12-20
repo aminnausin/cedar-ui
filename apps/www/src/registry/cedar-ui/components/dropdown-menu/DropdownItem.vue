@@ -1,74 +1,48 @@
 <script setup lang="ts">
+import type { AnchorTarget } from '@aminnausin/cedar-ui';
 import type { Component } from 'vue';
 
-import { RouterLink } from 'vue-router';
+import { ButtonBase } from '../button';
 import { computed } from 'vue';
 
 const props = defineProps<{
-    linkData: { url?: string; text: string; shortcut?: string | Component; shortcutTitle?: string; title?: string };
+    linkData: { url?: string; text: string; shortcut?: string | Component; shortcutTitle?: string; title?: string; target?: AnchorTarget };
     selected: boolean | undefined;
     external: boolean | undefined;
     disabled?: boolean;
 }>();
 
-const baseClasses =
-    'cursor-pointer relative w-full flex select-none hover:bg-neutral-100 dark:hover:bg-neutral-900 items-center rounded px-2 py-1.5 text-sm outline-hidden transition-colors';
-const disabledClasses = 'pointer-events-none opacity-50';
-const selectedClass = 'font-bold text-violet-500';
-const tag = computed(() => {
-    if (props.external) return 'a';
-    if (props.linkData.url) return RouterLink;
-    return 'button';
+const wrapperProps = computed(() => {
+    if (!props.linkData.url) return {};
+    if (props.external) return { href: props.linkData.url, target: props.external ? '_blank' : '_self' };
+    return { to: props.linkData.url, target: props.linkData.target ?? '_self' };
 });
 </script>
 <template>
-    <RouterLink
-        v-if="!external && linkData.url"
-        :class="[baseClasses, selected && selectedClass, disabled && disabledClasses]"
-        :to="disabled ? '' : linkData.url"
-        :disabled="!linkData.url ? disabled : undefined"
-        :data-disabled="linkData.url ? disabled : undefined"
-        :title="linkData.title"
+    <ButtonBase
         role="menuitem"
+        v-bind="wrapperProps"
+        :class="['hover:bg-overlay-accent relative w-full rounded px-2 py-1.5 text-sm select-none', { 'text-primary font-bold': selected }]"
+        :disabled="disabled"
+        :title="linkData.title"
     >
         <slot name="icon">
-            <span
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-4 h-4 mr-2"
-            >
-            </span>
+            <span class="mr-2 h-4 w-4"></span>
         </slot>
-        <span class="text-nowrap">{{ linkData.text }}</span>
-        <span class="ml-auto text-xs tracking-widest opacity-60" :title="linkData.shortcutTitle">{{ linkData.shortcut ?? '' }}</span>
-    </RouterLink>
-    <component
-        v-else
-        :is="tag"
-        :class="[baseClasses, selected && selectedClass, disabled && disabledClasses]"
-        :href="external ? linkData.url : ''"
-        :target="external ? '_blank' : undefined"
-        :disabled="!linkData.url ? disabled : undefined"
-        :data-disabled="linkData.url ? disabled : undefined"
-        :title="linkData.title"
-        role="menuitem"
-    >
-        <slot name="icon">
-            <span class="w-4 h-4 mr-2"></span>
-        </slot>
-        <span class="text-nowrap">{{ linkData.text }}</span>
+
+        <span class="mr-auto text-nowrap">
+            <slot>
+                {{ linkData.text }}
+            </slot>
+        </span>
+
         <span
-            v-if="typeof linkData.shortcut === 'string'"
-            class="ml-auto text-xs tracking-widest opacity-60"
+            v-if="!linkData.shortcut || typeof linkData.shortcut === 'string'"
+            class="text-xs tracking-widest opacity-60"
             :title="linkData.shortcutTitle"
-            >{{ linkData.shortcut ?? '' }}</span
         >
-        <component v-else :is="linkData.shortcut" class="ml-auto"></component>
-    </component>
+            {{ linkData.shortcut }}
+        </span>
+        <component v-else :is="linkData.shortcut" class=""></component>
+    </ButtonBase>
 </template>

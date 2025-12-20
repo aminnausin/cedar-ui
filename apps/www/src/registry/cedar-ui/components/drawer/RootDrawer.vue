@@ -2,7 +2,7 @@
 import { cn } from '@aminnausin/cedar-ui';
 </script>
 <template>
-    <div :class="cn('backdrop-blur-lg rounded-t-lg bg-surface-1 w-screen', 'border border-b')">
+    <div :class="cn('bg-surface-1 w-screen rounded-t-lg backdrop-blur-lg')">
         <slot></slot>
     </div>
 </template>

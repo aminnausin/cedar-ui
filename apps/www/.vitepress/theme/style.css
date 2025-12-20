@@ -354,7 +354,9 @@
 
         /* Toasts Menus Popovers Dropdowns */
         --color-overlay: var(--color-white);
+        --color-overlay-t: var(--color-overlay);
         --color-overlay-2: var(--color-white);
+        --color-overlay-2-t: var(--color-overlay-2);
         --color-overlay-border: var(--color-neutral-200);
         --color-overlay-accent: var(--color-neutral-100);
 
@@ -387,6 +389,7 @@
         --color-b: var(--color-gray-200); /* gray-200 #e5e7eb */
         --color-border-1: oklch(92% 0.004 286.32); /*zinc-200 or oklch(92.2% 0 0); /* neutral-200 #e5e5e5 */
         --color-d: var(--color-gray-200); /* gray-200 #e5e7eb */
+        --color-hr: var(--color-neutral-200);
 
         /* Primary dark shades */
         --color-primary-dark-600: #2a2a2d;
@@ -437,6 +440,7 @@
         --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
         --color-border-1: oklch(43.9% 0 0); /* neutral-600 #525252 */
         --color-d: oklch(37.1% 0 0); /* neutral-700 #404040 */
+        --color-hr: var(--color-neutral-500);
 
         /* Indicator Colors */
         --color-success: oklch(62.7% 0.194 149.214); /* green-600 */
@@ -444,7 +448,9 @@
 
         /* Toasts Menus Popovers Dropdowns */
         --color-overlay: oklch(0.2739 0.0055 286.03) /* #26262a */; /* surface-3/70 */
+        --color-overlay-t: color-mix(in oklab, var(--color-overlay) 70%, transparent); /* surface-3/70 */
         --color-overlay-2: var(--color-neutral-800);
+        --color-overlay-2-t: color-mix(in oklab, var(--color-neutral-800) 90%, transparent); /* neutral-800/90 */
         --color-overlay-border: var(--color-neutral-700);
         --color-overlay-accent: var(--color-neutral-900);
     }

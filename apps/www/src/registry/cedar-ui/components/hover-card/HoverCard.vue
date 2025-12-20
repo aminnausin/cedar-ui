@@ -103,19 +103,19 @@ watch(
                     v-cloak
                     :class="[
                         positionClasses,
-                        `z-30 flex absolute overflow-auto transition-opacity ease-in-out duration-200 md:max-w-xl xl:max-w-3xl text-sm p-3 h-fit max-h-[50vh] scrollbar-minimal bg-white dark:odd:bg-primary-dark-600/70 dark:bg-neutral-800/70 backdrop-blur-lg border dark:border-none rounded-md shadow-md border-neutral-200/70 gap-2 items-center`,
+                        `scrollbar-minimal dark:odd:bg-primary-dark-600/70 absolute z-30 flex h-fit max-h-[50vh] items-center gap-2 overflow-auto rounded-md border border-neutral-200/70 bg-white p-3 text-sm shadow-md backdrop-blur-lg transition-opacity duration-200 ease-in-out md:max-w-xl xl:max-w-3xl dark:border-none dark:bg-neutral-800/70`,
                     ]"
                     :style="tooltipStyles"
                 >
                     <slot name="icon">
                         <template v-if="!iconHidden">
-                            <component class="h-5 w-5 mb-auto shrink-0" :is="icon" />
+                            <component class="mb-auto h-5 w-5 shrink-0" :is="icon" />
                         </template>
                     </slot>
                     <slot name="content">
                         <div class="flex flex-col gap-2">
                             <h4 v-if="contentTitle">{{ contentTitle }}</h4>
-                            <p class="dark:text-neutral-400 text-pretty whitespace-pre-wrap w-full" v-if="content">{{ content }}</p>
+                            <p class="w-full text-pretty whitespace-pre-wrap dark:text-neutral-400" v-if="content">{{ content }}</p>
                         </div>
                     </slot>
                 </div>
