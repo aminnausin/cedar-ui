@@ -12,6 +12,9 @@ export { default as CedarCalendar } from './CedarCalendar.vue';
 export { default as CedarChevronLeft } from './CedarChevronLeft.vue';
 export { default as CedarChevronRight } from './CedarChevronRight.vue';
 
+// Source: https://devdojo.com/pines/docs/popover
+export { default as CedarOptions } from './CedarOptions.vue';
+
 // Source: https://icon-sets.iconify.design/mdi-light
 export { default as MdiLightPlus } from './MdiLightPlus.vue';
 

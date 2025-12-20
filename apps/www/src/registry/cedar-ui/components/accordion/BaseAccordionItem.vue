@@ -29,7 +29,7 @@ watch(() => [props.accordion.content, props.isActive], recalculateAccordionHeigh
 <template>
     <div>
         <button
-            class="flex items-center justify-between w-full p-4 text-left select-none hover:underline"
+            class="flex w-full cursor-pointer items-center justify-between p-4 text-left select-none hover:underline"
             @click="emit('setActive', accordion.id)"
             :id="`accordion-header-${accordion.id}`"
             :aria-expanded="isActive"
@@ -40,7 +40,7 @@ watch(() => [props.accordion.content, props.isActive], recalculateAccordionHeigh
             </slot>
             <slot name="icon">
                 <svg
-                    :class="`w-4 h-4 duration-200 ease-out ${isActive ? 'rotate-180' : ''}`"
+                    :class="`size-4 duration-200 ease-out ${isActive ? 'rotate-180' : ''}`"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -55,7 +55,7 @@ watch(() => [props.accordion.content, props.isActive], recalculateAccordionHeigh
         </button>
 
         <div
-            :class="[cn('transition-all ease-out overflow-hidden duration-300', rootClass)]"
+            :class="[cn('overflow-hidden transition-all duration-300 ease-out', rootClass)]"
             :style="`--accordion-height: ${accordionHeight}px; max-height: var(--accordion-height);`"
             :id="`accordion-panel-${accordion.id}`"
             role="region"
