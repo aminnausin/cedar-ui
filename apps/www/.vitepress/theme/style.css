@@ -370,6 +370,7 @@
         --color-foreground-4: var(--color-neutral-100); /* neutral-100 (to 300) #f5f5f5 */
         --color-foreground-4-hover: var(--color-neutral-100); /* neutral-100 (to 400) #f5f5f5 */
         --color-foreground-6: var(--color-neutral-700); /* to neutral-300 */
+        --color-foreground-7: var(--color-neutral-500); /* to neutral-300 */
 
         /* Main Colours */
         --color-primary: var(--color-purple-600); /* purple-600 */
@@ -430,6 +431,7 @@
         --color-foreground-4-hover: var(--color-neutral-400); /* neutral-400 #a1a1a1 */
         --color-foreground-5: var(--color-neutral-100); /* neutral-100 */
         --color-foreground-6: var(--color-neutral-300); /* from neutral-700 */
+        --color-foreground-7: var(--color-neutral-300); /* from neutral-500 */
 
         /* Ring */
         --color-r-disabled: var(--color-neutral-700) /* neutral-700 #404040 */;

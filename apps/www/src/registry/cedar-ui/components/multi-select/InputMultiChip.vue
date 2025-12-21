@@ -264,7 +264,7 @@ watch(
                             :type="'button'"
                             :disabled="!newValue"
                             @click="handleCreate"
-                            class="size-10 ring-inset"
+                            class="inline-flex h-full ring-inset"
                             title="Add a new tag"
                         >
                             <template #icon>

@@ -81,7 +81,7 @@ onMounted(() => {
                     "
                     :title="`Reorder Results...`"
                     :aria-label="`Reorder Results`"
-                    class="ring-inset"
+                    class="inline-flex h-full ring-inset"
                 >
                     <template #icon>
                         <!-- Arrow Pointing Down if ascending and then Up otherwise (arrow shows what to change to ?? idk descending points up actually)-->
@@ -94,7 +94,7 @@ onMounted(() => {
         <section :class="[useGrid || `flex w-full flex-wrap gap-2 ${tableStyles ?? ''}`]">
             <div
                 v-if="loading || tableData.filteredPage.length === 0"
-                class="col-span-full flex w-full items-center justify-center gap-2 text-center text-lg uppercase tracking-wider text-gray-500 dark:text-gray-400"
+                class="text-foreground-2 col-span-full flex w-full items-center justify-center gap-2 text-center text-lg tracking-wider uppercase"
             >
                 <p>{{ loading ? '...Loading' : noResultsMessage }}</p>
                 <SvgSpinners90RingWithBg v-show="loading" />
