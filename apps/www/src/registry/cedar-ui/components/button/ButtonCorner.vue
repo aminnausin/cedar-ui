@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CedarDelete2 } from '../icons';
-import { RouterLink } from 'vue-router';
 import { ButtonBase } from '.';
 import { computed } from 'vue';
 import { cn } from '@aminnausin/cedar-ui';
@@ -26,7 +25,6 @@ const wrapperProps = computed(() => {
         : {
               'aria-label': props.label ?? 'Close Modal',
               title: props?.label ?? 'Close Modal',
-              type: 'button',
           };
 });
 
@@ -34,7 +32,7 @@ const defaultClasses = computed(() => {
     return props.useDefaultStyle
         ? {
               position: 'absolute top-0 right-0 size-8 mt-5 mr-5',
-              colour: 'hover:bg-surface-1',
+              colour: 'focus-visible:bg-surface-1 hover:bg-surface-1',
               text: 'text-foreground-1 hover:text-foreground-0',
           }
         : { position: '', colour: '', text: '' };

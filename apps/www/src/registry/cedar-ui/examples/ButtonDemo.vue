@@ -49,7 +49,7 @@ const navButtons = [
             <p>Corner</p>
             <div class="bg-surface-1 relative flex rounded-lg p-4 text-sm">
                 Example
-                <ButtonCorner class="hover:bg-surface-2 hover:text-danger-2 m-2 size-6" :label="'Do nothing'" />
+                <ButtonCorner class="hover:bg-surface-2 focus-visible:bg-surface-2 hover:text-danger-2 m-2 size-6" :label="'Do nothing'" />
             </div>
         </div>
         <div>
