@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { ButtonType, TextButtonVariant } from '@aminnausin/cedar-ui';
 
-import { RouterLink } from 'vue-router';
 import { ButtonBase } from '.';
 import { computed } from 'vue';
 import { cn } from '@aminnausin/cedar-ui';

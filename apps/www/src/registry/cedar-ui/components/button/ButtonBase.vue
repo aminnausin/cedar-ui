@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { cn, type ButtonComponent, type ButtonType } from '@aminnausin/cedar-ui';
+import type { ButtonComponent, ButtonType } from '@aminnausin/cedar-ui';
+import type { ComponentPublicInstance } from 'vue';
 
+import { computed, useTemplateRef } from 'vue';
 import { RouterLink } from 'vue-router';
-import { computed } from 'vue';
+import { cn } from '@aminnausin/cedar-ui';
+
+const el = useTemplateRef<HTMLElement | ComponentPublicInstance | null>('el');
 
 const props = withDefaults(
     defineProps<{
@@ -24,9 +28,24 @@ const props = withDefaults(
 );
 
 const wrapper = computed(() => props.as ?? (props.to ? RouterLink : props.href ? 'a' : 'button')); // Component is set here but props are set 1 level above
+
+defineExpose({
+    $el: () => {
+        const value = el.value;
+
+        if (!value) return null;
+
+        if (value instanceof HTMLElement) {
+            return value;
+        }
+
+        return value.$el as HTMLElement | null;
+    },
+});
 </script>
 <template>
     <component
+        ref="el"
         :is="wrapper"
         :class="
             cn(

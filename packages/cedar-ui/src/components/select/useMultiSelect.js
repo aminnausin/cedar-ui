@@ -71,7 +71,9 @@ export default function useMultiSelect({ options, defaultItems }, refs) {
             if (!this.selectButton || !this.selectableItemsList) return;
 
             let selectDropdownBottomPos =
-                this.selectButton?.getBoundingClientRect().top + this.selectButton.offsetHeight + parseInt(window.getComputedStyle(this.selectableItemsList).maxHeight);
+                this.selectButton?.getBoundingClientRect().top +
+                this.selectButton.offsetHeight +
+                parseInt(window.getComputedStyle(this.selectableItemsList).maxHeight);
 
             this.selectDropdownPosition = window.innerHeight < selectDropdownBottomPos ? 'top' : 'bottom';
         },

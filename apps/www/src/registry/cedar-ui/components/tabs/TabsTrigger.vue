@@ -3,6 +3,7 @@ import type { TabsTriggerProps } from '@aminnausin/cedar-ui';
 import type { Ref } from 'vue';
 
 import { computed, inject } from 'vue';
+import { ButtonBase } from '../button';
 
 const props = defineProps<TabsTriggerProps>();
 
@@ -16,21 +17,22 @@ function handleClick() {
 }
 </script>
 <template>
-    <button
+    <button-base
         type="button"
         role="tab"
         :data-value="value"
         :aria-selected="isActive"
         @click="handleClick"
         :class="[
-            'relative z-20  items-center justify-center w-full px-3 py-3 text-sm font-medium transition-colors duration-200 rounded-md cursor-pointer text-nowrap text-ellipsis truncate',
-            isActive
-                ? 'text-neutral-950 dark:text-white'
-                : 'text-neutral-600 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200',
+            'hover:bg-surface-3 relative w-full truncate rounded-none p-3 text-sm font-medium text-nowrap text-ellipsis focus-visible:font-bold',
+            isActive ? 'text-foreground-0' : 'text-foreground-1 hover:text-foreground-0',
         ]"
+        :use-size="false"
     >
-        <slot>
-            {{ value }}
-        </slot>
-    </button>
+        <p style="z-index: 11">
+            <slot>
+                {{ value }}
+            </slot>
+        </p>
+    </button-base>
 </template>

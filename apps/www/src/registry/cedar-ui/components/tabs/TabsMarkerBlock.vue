@@ -8,9 +8,6 @@ const orientation = inject<Ref<TabsOrientation>>('orientation');
 </script>
 <template>
     <div
-        :class="[
-            'bg-white dark:bg-primary-dark-700 rounded-md shadow-sm',
-            orientation === 'horizontal' ? 'w-full h-full' : 'w-full h-full',
-        ]"
+        :class="['bg-surface-2 dark:bg-surface-3 rounded-md shadow-sm', orientation === 'horizontal' ? 'h-full w-full' : 'h-full w-full']"
     ></div>
 </template>
