@@ -1,63 +1,45 @@
 <script setup lang="ts">
-import useSelect from './useSelect';
+// Needs to be converted to TypeScript and use library elements but this is a lot of work
+import type { SelectItem, SelectProps } from '@aminnausin/cedar-ui';
 
 import { onMounted, ref, useTemplateRef, watch } from 'vue';
+import { CedarCheckMark, CedarChevronUpDown } from '../icons';
 import { OnClickOutside } from '@vueuse/components';
+import { useSelect } from '@aminnausin/cedar-ui';
 
-interface SelectItem {
-    title: string;
-    value: any;
-    key?: any;
-    disabled?: boolean;
-}
-
-const props = withDefaults(
-    defineProps<{
-        name?: string;
-        class?: string;
-        rootClass?: string;
-        placeholder?: string;
-        defaultItem?: number | null;
-        options?: SelectItem[];
-        disabled?: boolean;
-        title?: string;
-        prefix?: string;
-        menuMargin?: { top: string; bottom: string };
-    }>(),
-    {
-        class: '',
-        rootClass: '',
-        prefix: '',
-        defaultItem: null,
-        options: () => [
-            {
-                title: 'Title',
-                value: 'title',
-                disabled: false,
-            },
-            {
-                title: 'Date Uploaded',
-                value: 'date',
-                disabled: false,
-            },
-            {
-                title: 'Date released',
-                value: 'date_released',
-                disabled: false,
-            },
-            {
-                title: 'Episode',
-                value: 'episode',
-                disabled: true,
-            },
-            {
-                title: 'Season',
-                value: 'season',
-                disabled: true,
-            },
-        ],
-    },
-);
+const props = withDefaults(defineProps<SelectProps>(), {
+    class: '',
+    rootClass: '',
+    prefix: '',
+    defaultItem: null,
+    options: () => [
+        {
+            title: 'Title',
+            value: 'title',
+            disabled: false,
+        },
+        {
+            title: 'Date Uploaded',
+            value: 'date',
+            disabled: false,
+        },
+        {
+            title: 'Date released',
+            value: 'date_released',
+            disabled: false,
+        },
+        {
+            title: 'Episode',
+            value: 'episode',
+            disabled: true,
+        },
+        {
+            title: 'Season',
+            value: 'season',
+            disabled: true,
+        },
+    ],
+});
 
 const emit = defineEmits(['selectItem']);
 const selectButton = useTemplateRef('selectButton');
@@ -131,24 +113,27 @@ watch(
 );
 </script>
 <template>
-    <section :class="[`relative`, rootClass]" @focusout="handleFocusOut" ref="selectableItemsRoot">
+    <section :class="[`group relative text-sm`, rootClass]" @focusout="handleFocusOut" ref="selectableItemsRoot">
         <button
-            :id="name ?? 'Select'"
-            ref="selectButton"
-            @click="select.toggleSelect()"
+            @click="select.toggleSelect(!select.selectOpen)"
+            :id="props.name"
+            :title="title ?? 'Make Selection'"
+            :disabled="disabled"
             :class="[
+                'transition duration-200 ease-in-out focus:outline-hidden', // Animation
+                'disabled:button-disabled disabled:button-disabled-pointer', // Disabled
+                'relative flex items-center justify-between gap-2', // Layout
+                'cursor-pointer rounded-md shadow-xs', // Style
+                'h-10 max-h-full w-full py-2 pr-10 pl-3', // Size
+                'bg-surface-2 hover:bg-surface-3',
+                'ring-r-button hocus:ring-2 ring-1',
                 { 'hocus:ring-0': select.selectOpen },
-                { 'text-neutral-400!': placeholder && !select.selectedItem },
-                'relative h-10 flex items-center justify-between w-full py-2 pl-3 pr-10',
-                'text-left rounded-md shadow-xs cursor-pointer text-sm border-none focus:outline-hidden',
-                'ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700 hocus:ring-2 hover:ring-violet-400 dark:hover:ring-violet-700 focus:ring-purple-400 dark:focus:ring-purple-500',
-                'text-gray-900 dark:text-neutral-100 bg-white dark:bg-primary-dark-800',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:opacity-60',
+                { 'text-foreground-3': placeholder && !select.selectedItem },
+                'hover:ring-primary-muted focus:ring-primary focus-within:ring-primary-muted',
                 props.class,
             ]"
-            :disabled="disabled"
+            ref="selectButton"
             type="button"
-            :title="title ?? 'Make Selection'"
         >
             <span class="truncate"
                 >{{
@@ -156,39 +141,22 @@ watch(
                     select.selectedItem ? `${prefix}${select.selectedItem.title}` : placeholder
                 }}
             </span>
-            <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+            <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <slot name="selectButtonIcon">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                        class="w-5 h-5 text-gray-400"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                            clip-rule="evenodd"
-                        ></path>
-                    </svg>
+                    <CedarChevronUpDown :class="['text-foreground-2 size-5']" />
                 </slot>
             </span>
         </button>
 
-        <Transition
-            enter-active-class="transition ease-out duration-50"
-            enter-from-class="opacity-0 -translate-y-1"
-            enter-to-class="opacity-100"
-        >
+        <Transition enter-from-class="opacity-0" enter-to-class="opacity-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
             <OnClickOutside
-                v-cloak
-                v-if="select.selectOpen"
+                v-show="select.selectOpen"
                 :class="[
                     select.selectDropdownPosition == 'top'
                         ? `bottom-0 ${menuMargin?.bottom ?? 'mb-11'}`
                         : `top-0 ${menuMargin?.top ?? 'mt-11'}`,
                 ]"
-                class="z-30 absolute w-full mt-1 overflow-clip text-sm rounded-md shadow-md max-h-56 ring-1 ring-opacity-5 ring-black dark:ring-neutral-700 bg-white dark:bg-neutral-800/70 backdrop-blur-lg"
+                class="bg-overlay-t ring-r-button absolute z-30 mt-1 max-h-56 w-full overflow-clip rounded-md shadow-md ring-1 backdrop-blur-lg transition duration-200 ease-in-out"
                 @trigger="select.toggleSelect(false)"
                 @keydown.esc.stop="
                     (event: Event) => {
@@ -218,19 +186,15 @@ watch(
                         event.preventDefault();
                     }
                 "
-                @keydown.enter.stop="
+                @keydown.enter.stop.prevent="
                     //@ts-ignore
                     select.selectedItem = select.selectableItemActive;
                     select.toggleSelect(false);
+                    console.log('enter');
                 "
                 @keydown.stop="select.selectKeydown($event)"
             >
-                <ul
-                    ref="selectableItemsList"
-                    class="w-full overflow-auto max-h-56 scrollbar-thin focus:outline-hidden"
-                    tabindex="-1"
-                    role="listbox"
-                >
+                <ul ref="selectableItemsList" class="scrollbar-thin max-h-56 w-full overflow-auto focus:outline-hidden" role="listbox">
                     <template v-for="item in select.selectableItems" :key="item.value">
                         <li
                             @click="handleItemClick(item)"
@@ -241,33 +205,25 @@ watch(
                             :id="item.value + '-' + select.selectId"
                             :title="item.title"
                             :data-disabled="item.disabled ? item.disabled : ''"
-                            :tabindex="select.selectableItemIsActive(item) ? 0 : -1"
-                            :class="{
-                                'bg-neutral-100 dark:bg-neutral-900/70 text-gray-900 dark:text-neutral-100':
-                                    select.selectableItemIsActive(item),
-                                'text-gray-700 dark:text-neutral-300': !select.selectableItemIsActive(item),
-                            }"
-                            class="focus:rounded-md relative flex items-center h-full py-2 pl-8 cursor-pointer data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none"
+                            :tabindex="'0'"
+                            :class="[
+                                {
+                                    'bg-overlay-accent dark:bg-overlay-accent/70': select.selectableItemActive === item,
+                                    'text-foreground-6': !select.selectableItemActive === item,
+                                },
+                                'data-[disabled=true]:button-disabled data-[disabled=true]:button-disabled-pointer relative flex h-full cursor-pointer items-center py-2 pl-8 focus:rounded-md',
+                            ]"
                             role="option"
                             :aria-selected="select.selectableItemIsActive(item) ? 'true' : 'false'"
                         >
-                            <svg
+                            <CedarCheckMark
                                 v-if="
                                     //@ts-ignore
                                     select.selectedItem.value == item.value
                                 "
-                                class="absolute left-0 w-4 h-4 ml-2 stroke-current text-neutral-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span class="block font-medium truncate">{{ item.title }}</span>
+                                class="text-foreground-2 absolute left-0 ml-2 size-4 stroke-current"
+                            />
+                            <span class="block truncate font-medium">{{ item.title }}</span>
                         </li>
                     </template>
                 </ul>

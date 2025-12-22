@@ -1,33 +1,19 @@
 <script setup lang="ts">
-import type { Component } from 'vue';
+import type { HoverCardProps } from '@aminnausin/cedar-ui';
 
 import { ProiconsCommentExclamation } from '../icons';
 import { ref, watch } from 'vue';
+import { cn } from '@aminnausin/cedar-ui';
 
-const props = withDefaults(
-    defineProps<{
-        content?: string;
-        contentTitle?: string;
-        positionClasses?: string;
-        hoverCardDelay?: number;
-        hoverCardLeaveDelay?: number;
-        margin?: number;
-        iconHidden?: boolean;
-        paddingLeft?: number;
-        scrollContainer?: 'body' | 'window';
-        disabled?: boolean;
-        icon?: Component;
-    }>(),
-    {
-        hoverCardDelay: 600,
-        hoverCardLeaveDelay: 500,
-        margin: 0,
-        paddingLeft: 0,
-        scrollContainer: 'body',
-        disabled: false,
-        icon: ProiconsCommentExclamation,
-    },
-);
+const props = withDefaults(defineProps<HoverCardProps>(), {
+    hoverCardDelay: 600,
+    hoverCardLeaveDelay: 500,
+    margin: 0,
+    paddingLeft: 0,
+    scrollContainer: 'body',
+    disabled: false,
+    icon: ProiconsCommentExclamation,
+});
 
 const hoverCardHovered = ref<boolean>(false);
 const hoverCardTimout = ref<number | null>(null);
@@ -101,21 +87,29 @@ watch(
                     @mouseleave="hoverCardLeave"
                     v-show="hoverCardHovered"
                     v-cloak
-                    :class="[
-                        positionClasses,
-                        `z-30 flex absolute overflow-auto transition-opacity ease-in-out duration-200 md:max-w-xl xl:max-w-3xl text-sm p-3 h-fit max-h-[50vh] scrollbar-minimal bg-white dark:odd:bg-primary-dark-600/70 dark:bg-neutral-800/70 backdrop-blur-lg border dark:border-none rounded-md shadow-md border-neutral-200/70 gap-2 items-center`,
-                    ]"
+                    :class="
+                        cn(
+                            'absolute z-30',
+                            'transition-opacity duration-200 ease-in-out',
+                            'flex h-fit max-h-[50vh] items-center gap-2 overflow-auto p-3',
+                            'border border-neutral-200/70 dark:border-none',
+                            'dark:odd:bg-primary-dark-600/70 bg-white dark:bg-neutral-800/70',
+                            'scrollbar-minimal rounded-md text-sm shadow-md backdrop-blur-lg',
+                            'md:max-w-xl xl:max-w-3xl',
+                            positionClasses,
+                        )
+                    "
                     :style="tooltipStyles"
                 >
                     <slot name="icon">
                         <template v-if="!iconHidden">
-                            <component class="h-5 w-5 mb-auto shrink-0" :is="icon" />
+                            <component class="mb-auto h-5 w-5 shrink-0" :is="icon" />
                         </template>
                     </slot>
                     <slot name="content">
                         <div class="flex flex-col gap-2">
                             <h4 v-if="contentTitle">{{ contentTitle }}</h4>
-                            <p class="dark:text-neutral-400 text-pretty whitespace-pre-wrap w-full" v-if="content">{{ content }}</p>
+                            <p class="w-full text-pretty whitespace-pre-wrap dark:text-neutral-400" v-if="content">{{ content }}</p>
                         </div>
                     </slot>
                 </div>

@@ -30,7 +30,7 @@
     "vue-tsc": "catalog:"
   },
   "dependencies": {
-    "@aminnausin/cedar-ui": "catalog:",
+    "@aminnausin/cedar-ui": "workspace:*",
     "@tailwindcss/aspect-ratio": "catalog:",
     "@tailwindcss/forms": "catalog:",
     "@tailwindcss/postcss": "^4.1.17",
@@ -50,7 +50,7 @@
     "vue-router": "^4.5.1"
   },
   "scripts": {
-    "dev": "vitepress dev",
+    "dev": "vitepress dev --port 8121",
     "build": "vitepress build",
     "preview": "vitepress preview"
   }

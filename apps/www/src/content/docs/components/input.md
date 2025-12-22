@@ -1,6 +1,6 @@
 ---
 title: Text Input
-description: Displays a form input field or a component that looks like an input field.
+description: An optionally labelled text input field.
 source: apps/www/src/registry/cedar-ui/components/input
 ---
 

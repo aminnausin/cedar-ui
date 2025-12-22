@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import type { ButtonType, TextButtonVariant } from '@aminnausin/cedar-ui';
+
+import { ButtonBase } from '.';
 import { computed } from 'vue';
 import { cn } from '@aminnausin/cedar-ui';
 
 const props = withDefaults(
     defineProps<{
-        type?: 'reset' | 'submit' | 'button' | undefined;
+        type?: ButtonType;
         disabled?: boolean;
         title?: string;
-        variant?: 'default' | 'ghost' | 'transparent' | 'form';
+        variant?: TextButtonVariant;
         to?: string;
         href?: string;
         target?: string;
         text?: string;
-        class?: string;
     }>(),
     {
         title: '',
@@ -23,79 +24,34 @@ const props = withDefaults(
     },
 );
 
+const wrapperProps = computed(() => {
+    let wProps = {};
+
+    if (props.to) wProps = { to: props.to, title: props.title ?? 'Link' };
+    else if (props.href) wProps = { href: props.href, title: props.title ?? 'External Link' };
+
+    return { title: props.title ?? 'Button', target: props.target ?? '_blank', type: props.type, ...wProps };
+});
+
 const variantClass = computed(() => {
     switch (props.variant) {
         case 'ghost':
-            return '';
+            return [];
         case 'transparent':
-            return [
-                'transition',
-                'hover:bg-white dark:hover:bg-primary-dark-800',
-                'focus:outline-hidden hover:text-gray-900 dark:text-neutral-100',
-                'hocus:ring-2 hover:ring-violet-400 dark:hover:ring-violet-700 focus:ring-white',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:hover:ring-1 disabled:opacity-60',
-            ].join(' ');
+            return ['hocus:ring-1 hocus:ring-surface-1 hocus:bg-transparent'];
         case 'form':
-            return [
-                'inline-flex items-center justify-center px-4 py-2 text-sm transition-colors border dark:border-neutral-600 rounded-md focus:outline-hidden',
-                'focus:ring-1 focus:ring-neutral-100 dark:focus:ring-neutral-400 focus:ring-offset-1 hover:bg-neutral-100 dark:hover:bg-neutral-900',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:hover:ring-1 disabled:opacity-60',
-            ].join(' ');
+            return ['inline-flex px-4', 'border border-r-button', 'focus:ring-primary focus:ring-1 focus:ring-offset-1'];
         default:
-            return [
-                'h-10 max-h-full rounded-md ',
-                'p-2 shadow-xs',
-                'focus:outline-hidden text-gray-900 dark:text-neutral-100',
-                'ring-1 ring-neutral-200 dark:ring-neutral-700 hocus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500 hover:ring-violet-400 dark:hover:ring-violet-700',
-                'bg-white dark:bg-primary-dark-800',
-                'aria-disabled:cursor-not-allowed aria-disabled:hover:ring-neutral-200 dark:aria-disabled:hover:ring-neutral-700 aria-disabled:ring-1 aria-disabled:opacity-60',
-                'disabled:cursor-not-allowed disabled:hover:ring-neutral-200 dark:disabled:hover:ring-neutral-700 disabled:ring-1 disabled:opacity-60',
-            ].join(' ');
+            return ['shadow-xs', 'ring-1 ring-r-button hover:ring-primary-active focus:ring-primary hocus:ring-2', 'bg-surface-2'];
     }
 });
 </script>
 
 <template>
-    <router-link
-        v-if="to"
-        :to="to"
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
-        :type="type"
-        :title="title"
-        :aria-disabled="disabled"
-        :target="target ?? '_blank'"
-    >
-        <slot>
-            <p class="line-clamp-1 flex-1 text-left">{{ text }}</p>
-        </slot>
-        <slot name="icon"> </slot>
-    </router-link>
-    <a
-        v-else-if="href"
-        :href="href"
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
-        :type="type"
-        :title="title"
-        :aria-disabled="disabled"
-        :target="target ?? '_blank'"
-    >
-        <slot>
-            <p class="line-clamp-1 flex-1 text-left">{{ text }}</p>
-        </slot>
-        <slot name="icon"> </slot>
-    </a>
-    <button
-        v-else
-        :class="[cn('flex gap-2 items-center justify-center cursor-pointer', variantClass, props.class)]"
-        :type="type"
-        :disabled="disabled"
-        :title="title ?? 'Button'"
-    >
+    <button-base :class="[cn('ring-offset-surface-0 hocus:bg-surface-3', ...variantClass)]" v-bind="wrapperProps">
         <slot>
             <p class="line-clamp-1 flex-1 text-left" v-if="text">{{ text }}</p>
         </slot>
         <slot name="icon"> </slot>
-    </button>
+    </button-base>
 </template>

@@ -1,1 +1,1 @@
-export { default as FormInputNumber } from './FormInputNumber.vue';
+export { default as FormNumberField } from './FormNumberField.vue';

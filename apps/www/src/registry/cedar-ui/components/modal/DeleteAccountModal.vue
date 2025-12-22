@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useModalCore } from './useModalCore';
 import { PasswordConfirm } from '../auth';
+import { useModalCore } from './useModalCore';
 import { useRouter } from 'vue-router';
 
 import BaseModal from './BaseModal.vue';

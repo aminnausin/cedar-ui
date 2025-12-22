@@ -4,7 +4,7 @@ import type { FormField } from '@aminnausin/cedar-ui';
 import { FormTextArea } from '@/registry/cedar-ui/components/textarea';
 import { ref } from 'vue';
 
-import { FormInputLabel } from '@/registry/cedar-ui/components/form';
+import { FormLabel } from '@/registry/cedar-ui/components/form';
 
 const field = ref<FormField>({
     name: 'lyrics',
@@ -19,8 +19,8 @@ const field = ref<FormField>({
 const lyrics = ref(null);
 </script>
 <template>
-    <form class="flex flex-col gap-1 w-full">
-        <FormInputLabel :field="field" />
-        <FormTextArea v-model="lyrics" :field="field" class="w-full mt-1" />
+    <form class="flex w-full flex-col gap-1">
+        <FormLabel :for="field.name" :text="field.name" :subtext="field.subtext" />
+        <FormTextArea v-model="lyrics" :field="field" class="mt-1 w-full" />
     </form>
 </template>

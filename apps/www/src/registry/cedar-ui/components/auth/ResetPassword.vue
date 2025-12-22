@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../form';
+import { BaseForm, FormInput, FormItem, FormErrorList, FormLabel } from '../form';
 import { useRoute, useRouter } from 'vue-router';
 import { toast, useForm } from '@aminnausin/cedar-ui';
 import { ButtonForm } from '../button';
@@ -65,7 +65,7 @@ const handleSubmit = async () => {
 <template>
     <BaseForm @submit.prevent="handleSubmit">
         <FormItem v-for="(field, index) in fields" :key="index">
-            <FormInputLabel :field="field" />
+            <FormLabel :for="field.name" :text="field.text" :subtext="field.subtext" />
             <FormInput v-model="form.fields[field.name]" :field="field" class="mt-0!" />
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>
@@ -76,7 +76,7 @@ const handleSubmit = async () => {
                 type="button"
                 @click="handleSubmit"
                 :disabled="form.processing"
-                class="justify-center! capitalize! w-full"
+                class="w-full justify-center! capitalize!"
             >
                 Reset Password
             </ButtonForm>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toast, useModalCore } from '@aminnausin/cedar-ui';
-import { TextInputLabelled } from '@/registry/cedar-ui/components/input';
+import { LabelledTextInput } from '@/registry/cedar-ui/components/input';
 import { ButtonForm } from '@/registry/cedar-ui/components/button';
 import { BaseModal } from '@/registry/cedar-ui/components/modal';
 
@@ -19,9 +19,9 @@ function handleSuccess() {
         <template #title>Edit profile</template>
         <template #description>Make changes to your profile here. Click save when you're done.</template>
 
-        <TextInputLabelled :text="'Username'" :placeholder="'aminnausin'" :subtext="'This is your public display name.'" />
+        <LabelledTextInput :text="'Username'" :placeholder="'aminnausin'" :subtext="'This is your public display name.'" />
 
-        <div class="flex flex-col sm:flex-row gap-2 justify-end">
+        <div class="flex flex-col justify-end gap-2 sm:flex-row">
             <ButtonForm variant="reset" type="button" class="capitalize!" @click="modalStore.close()">Cancel</ButtonForm>
             <ButtonForm variant="submit" type="button" @click="handleSuccess" class="capitalize!"> Save </ButtonForm>
         </div>

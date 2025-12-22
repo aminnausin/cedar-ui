@@ -1,48 +1,45 @@
 <script setup lang="ts">
-const props = withDefaults(
-    defineProps<{
-        currentPage?: number;
-        pageNumber?: number;
-        text?: string;
-        underline?: boolean;
-        sticky?: boolean;
-        disabled?: boolean;
-    }>(),
-    {
-        underline: false,
-        sticky: false,
-        disabled: false,
-    },
-);
+import type { TablePaginationButtonProps } from '@aminnausin/cedar-ui';
+
+import { ButtonBase } from '../button';
+
+const props = withDefaults(defineProps<TablePaginationButtonProps>(), {
+    underline: false,
+    sticky: false,
+    disabled: false,
+});
 </script>
 
 <template>
-    <li :class="{ hidden: props.currentPage !== props.pageNumber && !props.text && !props.sticky }" class="h-full md:block z-0">
-        <button
-            class="relative inline-flex items-center h-full px-3 group hover:text-gray-900 dark:hover:text-white dark:disabled:text-neutral-500 disabled:text-neutral-400 disabled:cursor-not-allowed"
-            :class="{ 'text-gray-900 dark:text-white bg-gray-50 dark:bg-neutral-900': props.currentPage === props.pageNumber }"
-            :disabled="props.disabled ?? false"
+    <li :class="{ hidden: currentPage !== pageNumber && !text && !sticky }" class="z-0 h-full md:block">
+        <button-base
+            class="group hover:text-foreground-0 disabled:text-foreground-2 pointer-events-auto! relative inline-flex h-full items-center rounded-none px-3 disabled:cursor-not-allowed"
+            :class="{
+                'text-foreground-0 bg-overlay-accent': currentPage === pageNumber,
+                'hover:bg-overlay-accent': !disabled,
+            }"
+            :disabled="disabled ?? false"
         >
             <slot name="content">
                 <span>
-                    {{ props?.text ?? props.pageNumber }}
+                    {{ text ?? pageNumber }}
                 </span>
             </slot>
 
             <span
-                v-if="!props.text || props.underline"
-                class="box-content absolute bottom-0 w-0 h-px -mx-px duration-200 ease-out translate-y-px border-transparent group-hover:left-0 group-hover:w-full group-hover:border-l group-hover:border-r bg-violet-600 group-hover:border-violet-600"
+                v-if="!text || underline"
+                class="bg-primary group-hover:border-primary absolute bottom-0 -mx-px box-content h-px w-0 translate-y-px border-transparent duration-200 ease-out group-hover:left-0 group-hover:w-full group-hover:border-r group-hover:border-l"
                 bg-neutral-900
                 dark:bg-violet-600
                 group-hover:border-neutral-900
                 dark:group-hover:border-violet-600
                 :class="{
-                    'left-0 w-full border-l border-r': props.currentPage === props.pageNumber,
-                    'left-1/2': props.currentPage !== props.pageNumber,
+                    'left-0 w-full border-r border-l': currentPage === pageNumber,
+                    'left-1/2': currentPage !== pageNumber,
                 }"
             >
                 <!-- bg-neutral-900 dark:bg-violet-600 group-hover:border-neutral-900 dark:group-hover:border-violet-600 -->
             </span>
-        </button>
+        </button-base>
     </li>
 </template>

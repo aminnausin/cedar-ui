@@ -24,7 +24,7 @@ const { data: videoData } = defineProps<{
 
 <template>
     <div
-        class="relative flex flex-wrap flex-col gap-x-8 gap-y-4 p-3 w-full shadow-sm rounded-md ring-inset cursor-pointer dark:bg-primary-dark-800/70 dark:hover:bg-violet-700/70 bg-neutral-50 hover:bg-violet-400/30 odd:bg-neutral-100 dark:odd:bg-primary-dark-600"
+        class="relative flex flex-wrap flex-col gap-x-8 gap-y-4 p-3 w-full shadow-sm rounded-md ring-inset cursor-pointer dark:bg-surface-2/70 dark:hover:bg-primary-active/70 bg-neutral-50 hover:bg-primary-muted/30 odd:bg-neutral-100 dark:odd:bg-primary-dark-600"
         :videoData-id="videoData.id"
         :videoData-path="`../`"
         :title="`${videoData.title}\n${videoData.name}`"
@@ -69,7 +69,7 @@ const { data: videoData } = defineProps<{
                 </template>
             </HoverCard>
 
-            <span class="flex gap-1 truncate text-neutral-600 dark:text-neutral-400 text-sm uppercase min-w-fit">
+            <span class="flex gap-1 truncate text-foreground-1 text-sm uppercase min-w-fit">
                 <h4 class="text-nowrap truncate" :title="`File Size: 20.4MB`">
                     {{ '20.4MB' }}
                 </h4>
@@ -80,9 +80,7 @@ const { data: videoData } = defineProps<{
                 <h4 class="text-nowrap" v-else-if="!isAudio" title="Resolution and Codec">{{ '1080' }}P{{ ` | H264` }}</h4>
             </span>
         </section>
-        <section
-            class="flex flex-wrap justify-between gap-x-4 gap-y-2 w-full items-start text-sm sm:w-auto text-neutral-600 dark:text-neutral-400 group"
-        >
+        <section class="flex flex-wrap justify-between gap-x-4 gap-y-2 w-full items-start text-sm sm:w-auto text-foreground-1 group">
             <span class="flex gap-2 items-center w-full flex-1">
                 <span class="flex gap-1">
                     <h4 class="min-w-fit" :title="`View Count: ${data.views}`">{{ data.views }} view(s)</h4>

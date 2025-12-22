@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T">
-import type { TableSortOption, TableProps } from '@/registry/cedar-ui/types/cedar-ui.ts';
+import type { TableSortOption, TableProps } from '@aminnausin/cedar-ui';
 
 import { PhSortDescendingLight, PhSortAscendingLight, SvgSpinners90RingWithBg } from '../icons';
-import { TextInputLabelled } from '../input';
+import { LabelledTextInput } from '../input';
 import { onMounted, ref } from 'vue';
 import { InputSelect } from '../select';
 import { ButtonIcon } from '../button';
@@ -52,7 +52,7 @@ onMounted(() => {
 <template>
     <section class="flex w-full flex-col gap-3">
         <section v-if="props.useToolbar" class="flex flex-col justify-center gap-2 sm:flex-row sm:justify-between">
-            <TextInputLabelled
+            <LabelledTextInput
                 v-if="model !== undefined"
                 v-model="model"
                 :placeholder="`Search ${props.itemName ? `${props.itemName}...` : ''}`"
@@ -81,7 +81,7 @@ onMounted(() => {
                     "
                     :title="`Reorder Results...`"
                     :aria-label="`Reorder Results`"
-                    class="ring-inset"
+                    class="inline-flex h-full ring-inset"
                 >
                     <template #icon>
                         <!-- Arrow Pointing Down if ascending and then Up otherwise (arrow shows what to change to ?? idk descending points up actually)-->
@@ -94,7 +94,7 @@ onMounted(() => {
         <section :class="[useGrid || `flex w-full flex-wrap gap-2 ${tableStyles ?? ''}`]">
             <div
                 v-if="loading || tableData.filteredPage.length === 0"
-                class="col-span-full flex w-full items-center justify-center gap-2 text-center text-lg uppercase tracking-wider text-gray-500 dark:text-gray-400"
+                class="text-foreground-2 col-span-full flex w-full items-center justify-center gap-2 text-center text-lg tracking-wider uppercase"
             >
                 <p>{{ loading ? '...Loading' : noResultsMessage }}</p>
                 <SvgSpinners90RingWithBg v-show="loading" />

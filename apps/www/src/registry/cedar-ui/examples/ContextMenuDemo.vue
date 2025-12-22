@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ContextMenu as ContextMenuType, ContextMenuItem } from '@aminnausin/cedar-ui';
+import type { ContextMenuOptions, ContextMenuItem } from '@aminnausin/cedar-ui';
 
 import { computed, ref, useTemplateRef } from 'vue';
 import { ContextMenu } from '@/registry/cedar-ui/components/context-menu';
@@ -13,7 +13,7 @@ const contextMenuEvent = ref<MouseEvent>();
 const contextMenuItemStyle = ref('');
 const contextMenuStyle = ref('');
 
-const setContextMenu = (event: MouseEvent, options: ContextMenuType) => {
+const setContextMenu = (event: MouseEvent, options: ContextMenuOptions) => {
     if (!options.items || options.items.length === 0) return;
     contextMenuEvent.value = event;
     contextMenuItems.value = options.items ?? contextMenuItems.value;
@@ -28,7 +28,7 @@ const isShowingStats = ref(false);
 const isShowingParty = ref(false);
 const isAudio = ref(false);
 
-const options = computed<ContextMenuType>(() => {
+const options = computed<ContextMenuOptions>(() => {
     return {
         items: [
             {
@@ -67,6 +67,12 @@ const options = computed<ContextMenuType>(() => {
                     toast.success('Frame Copied!');
                 },
             },
+            {
+                text: 'Go Home',
+                url: '/',
+                external: true,
+                target: '_self',
+            },
         ],
         style: 'w-32',
         itemStyle: 'text-xs',
@@ -81,7 +87,7 @@ const options = computed<ContextMenuType>(() => {
                 setContextMenu(e, options);
             }
         "
-        class="w-full min-h-[310px] flex items-center justify-center border-dashed border-2"
+        class="flex min-h-[310px] w-full items-center justify-center border-2 border-dashed"
     >
         Right Click Here
     </div>
@@ -89,7 +95,7 @@ const options = computed<ContextMenuType>(() => {
         ref="contextMenu"
         :items="contextMenuItems"
         :style="contextMenuStyle"
-        :itemStyle="contextMenuItemStyle ?? 'hover:bg-purple-600 hover:text-white'"
+        :itemStyle="contextMenuItemStyle"
         scrollContainer="window"
     />
 </template>

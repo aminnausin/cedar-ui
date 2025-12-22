@@ -1,23 +1,30 @@
 <script setup lang="ts">
+import type { TextInputProps } from '@aminnausin/cedar-ui';
+
+import { InputShell } from '.';
+import { ref } from 'vue';
+
 const model = defineModel();
-const { placeholder, id, minlength, maxlength } = defineProps(['placeholder', 'id', 'minlength', 'maxlength']);
+
+defineProps<TextInputProps>();
+const el = ref<HTMLInputElement | null>(null);
+
+defineExpose({ el });
 </script>
 <template>
-    <input
-        type="text"
-        v-model="model"
-        :name="id"
-        :id="id"
-        :minlength="minlength"
-        :maxlength="maxlength"
-        :placeholder="placeholder"
-        :class="[
-            'h-10 p-2 shadow-xs rounded-md w-full text-sm text-ellipsis whitespace-nowrap line-clamp-1',
-            'border-none outline-hidden',
-            'disabled:cursor-not-allowed disabled:opacity-50',
-            'text-gray-900 dark:text-neutral-100 bg-white dark:bg-primary-dark-800 placeholder:text-neutral-400',
-            'ring-inset focus:ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-            'hocus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500 hover:ring-violet-400 dark:hover:ring-violet-700',
-        ]"
-    />
+    <InputShell>
+        <template #input="{ class: inputClass }">
+            <input
+                ref="el"
+                type="text"
+                v-model="model"
+                :id="id"
+                :minlength="minlength"
+                :maxlength="maxlength"
+                :placeholder="placeholder"
+                :class="[inputClass]"
+                :disabled="disabled"
+            />
+        </template>
+    </InputShell>
 </template>

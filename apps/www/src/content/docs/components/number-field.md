@@ -1,6 +1,6 @@
 ---
-title: Hover Card
-description: A hover element card preview.
+title: Number Field
+description: A form number input element with increment and decrement stepper buttons.
 source: apps/www/src/registry/cedar-ui/components/form
 ---
 
@@ -9,15 +9,16 @@ source: apps/www/src/registry/cedar-ui/components/form
 ## Installation
 
  ```bash
-npx cedar-ui@latest add form
+npx cedar-ui@latest add input number-field
 npm i @aminnausin/cedar-ui
 ```
 
 or download the following folders to your project:
 
+`@/components/cedar-ui/input`
 `@/components/cedar-ui/form`
 
-The Date Picker is intended for use within a form and given a `FormField`.
+The FormNumberField is intended for use within a form and given a `FormField`.
 
 See installations instructions for the [Form](/docs/components/form) component.
 
@@ -27,7 +28,7 @@ See installations instructions for the [Form](/docs/components/form) component.
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { FormInputNumber, FormInputLabel } from '@/registry/cedar-ui/components/form';
+import { FormNumberField, FormLabel } from '@/registry/cedar-ui/components/form';
 import { ref } from 'vue';
 
 const rating = ref(88);
@@ -45,8 +46,8 @@ const field = ref<FormField>({
 </script>
 <template>
     <form class="flex flex-col gap-1 w-full">
-        <FormInputLabel :field="field" />
-        <FormInputNumber v-model="rating" :field="field" />
+        <FormLabel :for="field.name" :text="field.text" :subtext="field.subtext" />
+        <FormNumberField v-model="rating" :field="field" />
     </form>
 </template>
 

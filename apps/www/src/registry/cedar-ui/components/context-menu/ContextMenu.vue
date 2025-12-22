@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ContextMenu } from '@aminnausin/cedar-ui';
+import type { ContextMenuOptions } from '@aminnausin/cedar-ui';
 
 import { nextTick, onMounted, onUnmounted, ref, Teleport, useTemplateRef } from 'vue';
 import { useMouseInElement } from '@vueuse/core';
@@ -7,7 +7,7 @@ import { OnClickOutside } from '@vueuse/components';
 
 import ContextMenuItem from './ContextMenuItem.vue';
 
-const props = withDefaults(defineProps<ContextMenu>(), {
+const props = withDefaults(defineProps<ContextMenuOptions>(), {
     positionClasses: 'z-30 left-20 bottom-10',
     style: '',
     disabled: false,
@@ -121,7 +121,10 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                     }
                 "
                 ref="contextMenu"
-                :class="`absolute z-50 w-48 max-w-[100vw] p-1 transition-all bg-white dark:bg-neutral-800/90 backdrop-blur-xs border border-neutral-200/70 dark:border-neutral-700/10 rounded-md shadow-xs ${style}`"
+                :class="[
+                    'bg-overlay-2-t border-overlay-border/10 absolute z-50 w-48 max-w-[100vw] rounded-md border p-1 shadow-xs backdrop-blur-xs transition-all',
+                    style,
+                ]"
                 :style="menuStyles"
                 v-cloak
             >
@@ -141,17 +144,17 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                     <span v-if="!items">
                         <div
                             @click="(e: any) => contextMenuToggle(e, false)"
-                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-neutral-100 outline-hidden pl-8 data-disabled:opacity-50 data-disabled:pointer-events-none"
+                            class="group relative flex cursor-default items-center rounded px-2 py-1.5 pl-8 outline-hidden select-none hover:bg-neutral-100 data-disabled:pointer-events-none data-disabled:opacity-50"
                         >
                             <span>Edit</span>
                             <span class="ml-auto text-xs tracking-widest text-neutral-400 group-hover:text-neutral-600">⌘[</span>
                         </div>
                         <div
                             @click="(e: any) => contextMenuToggle(e, false)"
-                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-purple-600 hover:text-white outline-hidden pl-8 data-disabled:opacity-50 data-disabled:pointer-events-none"
+                            class="group relative flex cursor-default items-center rounded px-2 py-1.5 pl-8 outline-hidden select-none hover:bg-purple-600 hover:text-white data-disabled:pointer-events-none data-disabled:opacity-50"
                         >
                             <svg
-                                class="absolute w-4 h-4 -mt-px left-2"
+                                class="absolute left-2 -mt-px h-4 w-4"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -168,10 +171,10 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                         </div>
                         <div
                             @click="(e: any) => contextMenuToggle(e, false)"
-                            class="relative flex cursor-default select-none group items-center rounded px-2 py-1.5 hover:bg-purple-600 hover:text-white outline-hidden pl-8 data-disabled:opacity-50 data-disabled:pointer-events-none"
+                            class="group hover:bg-primary hover:text-primary-foreground data-disabled:opacity-disabled relative flex cursor-default items-center rounded px-2 py-1.5 pl-8 outline-hidden select-none data-disabled:pointer-events-none"
                         >
                             <svg
-                                class="absolute w-4 h-4 -mt-px left-2"
+                                class="absolute left-2 -mt-px h-4 w-4"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -186,7 +189,7 @@ defineExpose({ contextMenuToggle, contextMenuOpen });
                             </svg>
                             <span>Quick Look</span>
                         </div>
-                        <ContextMenuItem text="Edit" class="hover:bg-purple-600 hover:text-white" />
+                        <ContextMenuItem text="Edit" class="hover:bg-primary hover:text-primary-foreground" />
                         <ContextMenuItem text="Share" />
                     </span>
                 </slot>

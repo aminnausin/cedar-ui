@@ -2,7 +2,7 @@ packages:
 - apps/*
 - packages/*
 catalog:
-  '@aminnausin/cedar-ui': ^0.0.9
+  '@aminnausin/cedar-ui': workspace:*
   '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/forms': ^0.5.10
   '@vueuse/core': ^13.6.0
@@ -18,3 +18,6 @@ catalog:
   fast-deep-equal: ^3.1.3
   tailwind-scrollbar-hide: ^2.0.0
   reka-ui: ^2.4.1
+
+overrides:
+  '@aminnausin/cedar-ui': 'link:'

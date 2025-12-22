@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, useTemplateRef, watch } from 'vue';
+import type { MultiSelectItem, MultiSelectProps } from '@aminnausin/cedar-ui';
+
+import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
 import { isInputLikeElement, toast } from '@aminnausin/cedar-ui';
+import { CedarChevronUpDown } from '../icons';
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component.mjs';
 import { MdiLightPlus } from '@/registry/cedar-ui/components/icons';
@@ -8,35 +11,14 @@ import { ButtonIcon } from '../button';
 import { TextInput } from '../input';
 import { BadgeTag } from '../badge';
 
-import useMultiSelect from './useMultiSelect';
+import useMultiSelect from '../../../../../../../packages/cedar-ui/src/components/select/useMultiSelect';
 
-// Why are there three of them :D
-interface SelectItem {
-    id: number;
-    name: string;
-    relationships?: any;
-    disabled?: boolean;
-}
-
-const props = withDefaults(
-    defineProps<{
-        class?: string;
-        rootClass?: string;
-        placeholder?: string;
-        defaultItems?: SelectItem[];
-        options?: SelectItem[];
-        max?: number;
-        disabled?: boolean;
-        title?: string;
-        fieldName?: string;
-    }>(),
-    {
-        placeholder: 'Select Item',
-        defaultItems: () => [],
-        options: () => [],
-        max: 32,
-    },
-);
+const props = withDefaults(defineProps<MultiSelectProps>(), {
+    placeholder: 'Select Item',
+    defaultItems: () => [],
+    options: () => [],
+    max: 32,
+});
 
 const emit = defineEmits(['createAction', 'selectItems', 'removeAction']);
 const selectButton = useTemplateRef('selectButton');
@@ -48,10 +30,10 @@ const lastActiveItemId = ref(-1);
 
 const filteredItemsList = computed(() => {
     return (
-        select.selectableItems.filter((selectable: SelectItem) => {
+        select.selectableItems.filter((selectable: MultiSelectItem) => {
             return (
-                !select.selectedItems?.find((selected: SelectItem) => selectable.name === selected.name) &&
-                selectable.name.includes(newValue.value.toLocaleLowerCase())
+                !select.selectedItems?.find((selected: MultiSelectItem) => selectable.name === selected.name) &&
+                selectable.name?.includes(newValue.value.toLocaleLowerCase())
             );
         }) ?? []
     );
@@ -90,8 +72,8 @@ const handleListFocus = () => {
 };
 
 const handleRemoveChip = (name: string) => {
-    const item = select.selectedItems.find((item: SelectItem) => item.name === name);
-    select.selectedItems = select.selectedItems.filter((item: SelectItem) => item.name !== name);
+    const item = select.selectedItems.find((item: MultiSelectItem) => item.name === name);
+    select.selectedItems = select.selectedItems.filter((item: MultiSelectItem) => item.name !== name);
 
     emit('removeAction', item);
 };
@@ -103,17 +85,17 @@ const handleCreate = (e: Event) => {
     const parsedValue = newValue.value?.toLocaleLowerCase().trim();
     if (!parsedValue) return;
 
-    if (select.selectableItemActive && (select.selectableItemActive as unknown as SelectItem).name === parsedValue) {
+    if (select.selectableItemActive && (select.selectableItemActive as unknown as MultiSelectItem).name === parsedValue) {
         handleItemClick(select.selectableItemActive);
         return;
     }
 
-    if (select.selectedItems.some((item: SelectItem) => item.name === parsedValue)) {
+    if (select.selectedItems.some((item: MultiSelectItem) => item.name === parsedValue)) {
         toast.info('This tag was already added');
         return;
     }
 
-    const selectableFound = select.selectableItems.find((item: SelectItem) => item.name === parsedValue);
+    const selectableFound = select.selectableItems.find((item: MultiSelectItem) => item.name === parsedValue);
     if (selectableFound) {
         handleItemClick(selectableFound);
         return;
@@ -179,54 +161,47 @@ watch(
 );
 </script>
 <template>
-    <div class="relative">
+    <div class="group relative text-sm">
         <button
-            ref="selectButton"
             @click="select.toggleSelect(true)"
+            :id="fieldName"
+            :title="title ?? 'Make Selection'"
+            :disabled="disabled"
             :class="[
-                'relative h-10 py-2 pl-3 pr-10 rounded-md shadow-xs mt-1 w-full flex items-center justify-between text-sm',
-                'focus:outline-hidden border-none cursor-pointer',
-                'disabled:cursor-not-allowed disabled:opacity-50',
-                'text-left text-gray-900 dark:text-neutral-100 bg-white dark:bg-primary-dark-800 placeholder:text-neutral-400',
-                'ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-                `${select.selectOpen ? 'hocus:ring-0' : 'hocus:ring-2'} hover:ring-violet-400 dark:hover:ring-violet-700 focus:ring-purple-400 dark:focus:ring-purple-500 focus:outline-hidden`,
+                'transition duration-200 ease-in-out focus:outline-hidden', // Animation
+                'disabled:button-disabled disabled:button-disabled-pointer', // Disabled
+                'relative flex items-center justify-between gap-2', // Layout
+                'cursor-pointer rounded-md shadow-xs', // Style
+                'h-10 max-h-full w-full py-2 pr-10 pl-3', // Size
+                'bg-surface-2 hover:bg-surface-3',
+                'ring-r-button hocus:ring-2 ring-1',
+                { 'hocus:ring-0': select.selectOpen },
+                'hover:ring-primary-muted focus:ring-primary focus-within:ring-primary-muted',
                 props.class,
             ]"
-            :disabled="disabled"
+            ref="selectButton"
             type="button"
-            :title="title ?? 'Make Selection'"
-            :id="fieldName"
         >
             <span class="truncate">{{ placeholder }}</span>
-            <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    class="w-5 h-5 text-gray-400"
-                >
-                    <path
-                        fill-rule="evenodd"
-                        d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                        clip-rule="evenodd"
-                    ></path>
-                </svg>
+            <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                <slot name="selectButtonIcon">
+                    <CedarChevronUpDown :class="['text-foreground-2 size-5']" />
+                </slot>
             </span>
         </button>
-        <Transition
-            enter-active-class="transition ease-out duration-50"
-            enter-from-class="opacity-0 -translate-y-1"
-            enter-to-class="opacity-100"
-        >
+        <Transition enter-from-class="opacity-0" enter-to-class="opacity-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
             <UseFocusTrap
                 v-if="select.selectOpen"
                 :class="{
                     'bottom-0 mb-11': select.selectDropdownPosition == 'top',
                     'top-0 mt-11': select.selectDropdownPosition == 'bottom',
                 }"
-                class="z-30 absolute w-full mt-1 text-sm rounded-md shadow-md focus:outline-hidden ring-1 ring-opacity-5 ring-black dark:ring-neutral-700 bg-white dark:bg-neutral-800/70 backdrop-blur-lg"
-                :options="{ allowOutsideClick: true, initialFocus: selectInput?.$el, returnFocusOnDeactivate: false }"
+                class="bg-overlay-t ring-r-button absolute z-30 mt-1 max-h-56 w-full overflow-clip rounded-md shadow-md ring-1 backdrop-blur-lg transition duration-200 ease-in-out"
+                :options="{
+                    allowOutsideClick: true,
+                    initialFocus: () => selectInput?.el,
+                    returnFocusOnDeactivate: true,
+                }"
             >
                 <OnClickOutside
                     @trigger="select.toggleSelect(false)"
@@ -238,7 +213,7 @@ watch(
                             }
                         }
                     "
-                    @keydown.down.stop="
+                    @keydown.down.stop.prevent="
                         (event: Event) => {
                             if (select.selectOpen) {
                                 selectableItemActiveNext();
@@ -248,7 +223,7 @@ watch(
                             event.preventDefault();
                         }
                     "
-                    @keydown.up.stop="
+                    @keydown.up.stop.prevent="
                         (event: Event) => {
                             if (select.selectOpen) {
                                 selectableItemActivePrevious();
@@ -261,38 +236,44 @@ watch(
                     @keydown="select.selectKeydown($event)"
                     v-cloak
                 >
-                    <section class="p-2 flex gap-2 w-full" @focusin="lastActiveItemId = -1">
+                    <section class="flex w-full gap-2 p-2" @focusin="lastActiveItemId = -1">
                         <TextInput
-                            :placeholder="'Search for a tag'"
                             v-model="newValue"
-                            :maxlength="props.max"
-                            ref="selectInput"
-                            role="combobox"
-                            aria-autocomplete="list"
-                            aria-controls="selectableItemsList"
-                            :aria-expanded="select.selectOpen ? 'true' : 'false'"
-                            :aria-activedescendant="lastActiveItemId ? `${lastActiveItemId}-${select.selectId}` : null"
-                            class="scroll-m-4"
+                            @focus="selectButton?.scrollIntoView({ behavior: 'smooth', block: 'center' })"
+                            @change="selectInput?.$el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
                             @keydown.enter.stop="handleCreate"
                             @keydown.space.stop=""
-                            @change="selectInput?.$el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
-                            @focus="selectButton?.scrollIntoView({ behavior: 'smooth', block: 'center' })"
+                            ref="selectInput"
+                            role="combobox"
+                            class="scroll-m-4"
+                            aria-autocomplete="list"
+                            aria-controls="selectableItemsList"
+                            :placeholder="'Search for a tag'"
+                            :aria-expanded="select.selectOpen ? 'true' : 'false'"
+                            :aria-activedescendant="lastActiveItemId ? `${lastActiveItemId}-${select.selectId}` : null"
+                            :maxlength="props.max"
                         />
-                        <ButtonIcon :type="'button'" :disabled="!newValue" @click="handleCreate" class="ring-inset" title="Add a new tag">
+                        <ButtonIcon
+                            :type="'button'"
+                            :disabled="!newValue"
+                            @click="handleCreate"
+                            class="inline-flex h-full ring-inset"
+                            title="Add a new tag"
+                        >
                             <template #icon>
-                                <MdiLightPlus class="w-6 h-6" />
+                                <MdiLightPlus class="size-6" />
                             </template>
                         </ButtonIcon>
                     </section>
                     <section
                         v-show="filteredItemsList.length == 0"
-                        class="text-gray-700 dark:text-neutral-300 relative flex items-center h-full py-2 pl-8 select-none"
+                        class="text-foreground-6 p-2 pl-8 select-none"
                         @focusin="lastActiveItemId = -1"
                     >
-                        <span class="block truncate">No Results... Add New?</span>
+                        <p class="block truncate">No Results... Add New?</p>
                     </section>
                     <ul
-                        class="max-h-48 overflow-auto scrollbar-thin last:rounded-b-md"
+                        class="scrollbar-thin max-h-48 overflow-auto last:rounded-b-md"
                         aria-describedby="selectable-items-list"
                         ref="selectableItemsList"
                         role="listbox"
@@ -307,13 +288,14 @@ watch(
                                 @focus="handleItemFocus(item)"
                                 :id="item.id + '-' + select.selectId"
                                 :data-disabled="item.disabled ? item.disabled : ''"
-                                :class="{
-                                    'bg-neutral-100 dark:bg-neutral-900/70 text-gray-900 dark:text-neutral-100':
-                                        select.selectableItemActive === item,
-                                    'text-gray-700 dark:text-neutral-300': !select.selectableItemActive === item,
-                                }"
+                                :class="[
+                                    {
+                                        'bg-overlay-accent dark:bg-overlay-accent/70': select.selectableItemActive === item,
+                                        'text-foreground-6': !select.selectableItemActive === item,
+                                    },
+                                    'data-[disabled=true]:button-disabled data-[disabled=true]:button-disabled-pointer relative flex h-full cursor-pointer items-center py-2 pl-8 focus:rounded-md',
+                                ]"
                                 :tabindex="'0'"
-                                class="relative flex items-center focus:rounded-md h-full py-2 pl-8 cursor-pointer select-none data-[disabled=true]:opacity-50 data-[disabled=true]:pointer-events-none"
                                 role="option"
                                 :aria-selected="select.selectableItemActive === item ? 'true' : 'false'"
                             >

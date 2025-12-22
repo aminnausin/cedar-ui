@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// OLD UNUSED
 import { ref, useTemplateRef, watch } from 'vue';
 import { ButtonForm, ButtonCorner } from '../button';
 import { OnClickOutside } from '@vueuse/components';
@@ -45,7 +46,7 @@ watch(
     <Teleport to="body">
         <dialog
             v-show="modalData.modalOpen || modalData.isAnimating"
-            class="modal fixed top-0 left-0 z-300 flex items-center justify-center w-screen h-screen text-gray-900 dark:text-neutral-200 bg-transparent"
+            class="modal fixed top-0 left-0 z-300 flex h-screen w-screen items-center justify-center bg-transparent text-gray-900 dark:text-neutral-200"
             v-cloak
             aria-modal="true"
             aria-labelledby="modalTitle"
@@ -59,7 +60,7 @@ watch(
                 leave-from-class="opacity-100"
                 leave-to-class="opacity-0"
             >
-                <div v-if="modalData.modalOpen" class="absolute inset-0 w-full h-full backdrop-blur-xs bg-opacity-70"></div>
+                <div v-if="modalData.modalOpen" class="bg-opacity-70 absolute inset-0 h-full w-full backdrop-blur-xs"></div>
             </Transition>
             <Transition
                 enter-active-class="ease-out duration-300"
@@ -71,21 +72,21 @@ watch(
             >
                 <UseFocusTrap
                     v-if="modalData.modalOpen"
-                    class="relative w-full px-6 py-10 sm:py-6 max-h-screen h-full overflow-y-scroll scrollbar-hide flex items-center"
+                    class="scrollbar-hide relative flex h-full max-h-screen w-full items-center overflow-y-scroll px-6 py-10 sm:py-6"
                 >
                     <OnClickOutside
                         @trigger="closeModal"
                         @keydown.esc="closeModal"
-                        class="gap-4 flex flex-col drop-shadow-md m-auto w-full p-6 bg-white dark:bg-neutral-800/90 backdrop-blur-lg border shadow-lg border-neutral-200 dark:border-neutral-700 sm:max-w-lg xl:max-w-xl 3xl:max-w-2xl rounded-md sm:rounded-lg"
+                        class="3xl:max-w-2xl m-auto flex w-full flex-col gap-4 rounded-md border border-neutral-200 bg-white p-6 shadow-lg drop-shadow-md backdrop-blur-lg sm:max-w-lg sm:rounded-lg xl:max-w-xl dark:border-neutral-700 dark:bg-neutral-800/90"
                         tabindex="-1"
                     >
-                        <section class="flex flex-wrap gap-2 items-center">
-                            <h3 ref="modalTitle" id="modalTitle" class="text-xl font-semibold scroll-mt-16 sm:scroll-mt-12 flex-1">
+                        <section class="flex flex-wrap items-center gap-2">
+                            <h3 ref="modalTitle" id="modalTitle" class="flex-1 scroll-mt-16 text-xl font-semibold sm:scroll-mt-12">
                                 {{ modalData?.title ?? 'Modal Title' }}
                             </h3>
-                            <ButtonCorner @click="closeModal" class="m-0! static!" />
+                            <ButtonCorner @click="closeModal" class="static! m-0!" />
                             <p
-                                class="text-neutral-500 dark:text-neutral-400 text-sm w-full"
+                                class="w-full text-sm text-neutral-500 dark:text-neutral-400"
                                 v-if="$slots.description"
                                 id="modalDescription"
                             >
@@ -94,7 +95,7 @@ watch(
                         </section>
                         <slot name="content"> </slot>
                         <slot v-if="useControls" name="controls">
-                            <section class="relative flex flex-col-reverse sm:flex-row sm:justify-end gap-2">
+                            <section class="relative flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
                                 <ButtonForm type="button" variant="reset" @click="closeModal" :disabled="processing || isProcessing">
                                     Cancel
                                 </ButtonForm>

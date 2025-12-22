@@ -56,20 +56,18 @@ onUnmounted(() => {
         >
             <div
                 v-show="props.dropdownOpen"
-                :class="`absolute top-0 z-50 mt-12 w-56 max-w-[80vw] mx-auto ${manualPosition ? '' : '-right-1'} `"
+                :class="[`absolute top-0 z-50 mx-auto mt-12 w-56 max-w-[80vw]`, { '-right-1': !manualPosition }]"
                 v-cloak
                 id="user-dropdown"
                 role="menu"
                 :style="manualPosition ? `left: ${manualPosition}px;` : ''"
                 ref="dropdown"
             >
-                <div
-                    class="p-1 mt-1 bg-white dark:bg-neutral-800/70 backdrop-blur-lg border rounded-md shadow-md border-neutral-200/70 dark:border-neutral-700 text-neutral-700 dark:text-neutral-100"
-                >
+                <div class="bg-overlay-t border-overlay-border text-foreground-0 mt-1 rounded-md border p-1 shadow-md backdrop-blur-lg">
                     <section v-for="(group, groupIndex) in dropDownItems" :key="groupIndex">
                         <div
                             v-if="groupIndex !== 0 && groupIndex !== group.length && group.some((item) => !item.hidden)"
-                            class="h-px my-1 -mx-1 bg-neutral-200 dark:bg-neutral-500"
+                            class="bg-hr -mx-1 my-1 h-px"
                         ></div>
                         <DropdownItem
                             v-for="(item, index) in group.filter((item) => !item.hidden)"
@@ -81,13 +79,14 @@ onUnmounted(() => {
                             @click="
                                 () => {
                                     $emit('toggleDropdown', false);
+                                    if (item.action) item.action();
                                 }
                             "
                         >
                             <template #icon>
                                 <component
                                     :is="item.icon"
-                                    :class="['w-4 h-4 mr-2', item.iconStrokeWidth ? `[&>*]:stroke-[${item.iconStrokeWidth}]` : '']"
+                                    :class="['mr-2 size-4', item.iconStrokeWidth ? `[&>*]:stroke-[${item.iconStrokeWidth}]` : '']"
                                 />
                             </template>
                         </DropdownItem>

@@ -2,7 +2,7 @@
 import type { TabsProps } from '@aminnausin/cedar-ui';
 
 import { onMounted, onUnmounted, provide, ref, useTemplateRef } from 'vue';
-import { TabsMarkerBlock, TabsMarkerLine, TabsTrigger } from '.';
+import { TabsMarkerBlock, TabsTrigger } from '.';
 
 const props = withDefaults(defineProps<TabsProps>(), { defaultValue: 'account', orientation: 'horizontal' });
 
@@ -67,8 +67,8 @@ onUnmounted(async () => {
             <div
                 ref="tabsTriggers"
                 :class="[
-                    'relative flex items-center justify-center bg-gray-100 dark:bg-primary-dark-900 dark:text-white rounded-lg select-none',
-                    orientation === 'horizontal' ? 'flex-row w-full' : 'flex-col h-auto w-full',
+                    'dark:bg-primary-dark-900 bg-surface-1 relative flex items-center justify-center overflow-clip rounded-lg select-none dark:text-white',
+                    orientation === 'horizontal' ? 'w-full flex-row' : 'h-auto w-full flex-col',
                 ]"
                 role="tablist"
                 :aria-orientation="orientation"
@@ -77,10 +77,11 @@ onUnmounted(async () => {
                     <TabsTrigger @tabsTrigger="selectTab" value="Account" />
                     <TabsTrigger @tabsTrigger="selectTab" value="Password" />
                 </slot>
+
                 <div
                     ref="tabsMarker"
                     :class="[
-                        'absolute z-10 duration-300 ease-out flex p-1',
+                        'pointer-events-none absolute z-10 flex p-1 duration-300 ease-out',
                         orientation === 'horizontal' ? 'left-0 h-full' : 'top-0 w-full',
                     ]"
                 >
@@ -90,7 +91,7 @@ onUnmounted(async () => {
                 </div>
             </div>
         </div>
-        <div class="relative w-full mt-2">
+        <div class="relative mt-2 w-full">
             <slot name="content"> </slot>
         </div>
     </div>

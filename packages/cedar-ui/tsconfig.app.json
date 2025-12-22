@@ -4,7 +4,8 @@
     "env.d.ts",
     "src/**/*.ts",
     "src/**/*.js",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/components/select/useSelectNew.ts"
   ],
   "exclude": [
     "src/**/__tests__/*"

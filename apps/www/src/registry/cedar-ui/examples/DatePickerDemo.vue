@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { FormInputLabel } from '@/registry/cedar-ui/components/form';
 import { DatePicker } from '@/registry/cedar-ui/components/date-picker';
+import { FormLabel } from '@/registry/cedar-ui/components/form';
 import { ref } from 'vue';
 
 const field = ref<FormField>({
@@ -17,8 +17,8 @@ const field = ref<FormField>({
 const releaseDate = ref(null);
 </script>
 <template>
-    <form class="flex flex-col gap-1 w-full">
-        <FormInputLabel :field="field" />
+    <form class="flex w-full flex-col gap-1">
+        <FormLabel :for="field.name" :text="field.text" :subtext="field.subtext" />
         <DatePicker v-model="releaseDate" :field="field" class="mt-1" />
     </form>
 </template>

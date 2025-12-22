@@ -1,29 +1,31 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
+import { InputShell } from '../input';
+import { cn } from '@aminnausin/cedar-ui';
+
 defineProps<{ field: FormField }>();
 const model = defineModel();
 </script>
 
 <template>
-    <input
-        :class="[
-            'rounded-md shadow-xs block mt-1 w-full text-sm',
-            'focus:outline-hidden border-none',
-            'disabled:cursor-not-allowed disabled:opacity-50',
-            'text-gray-900 dark:text-neutral-100 bg-white dark:bg-primary-dark-800 placeholder:text-neutral-400',
-            'ring-inset focus:ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-            'focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500',
-        ]"
-        :name="field.name"
-        :title="field.text ?? field.name"
-        :type="field.type"
-        :required="field.required ? 'true' : 'false'"
-        :placeholder="field.placeholder"
-        :autocomplete="field.autocomplete"
-        :aria-autocomplete="field.ariaAutocomplete ?? (field.autocomplete ? 'list' : 'none')"
-        :min="field.min ?? ''"
-        :max="field.max ?? ''"
-        v-model="model"
-    />
+    <InputShell>
+        <template #input="{ class: inputClass }">
+            <input
+                v-model="model"
+                :type="field.type"
+                :id="field.name"
+                :name="field.name"
+                :title="field.text ?? field.name"
+                :required="field.required"
+                :disabled="field.disabled"
+                :placeholder="field.placeholder"
+                :autocomplete="field.autocomplete"
+                :aria-autocomplete="field.ariaAutocomplete ?? (field.autocomplete ? 'list' : 'none')"
+                :class="cn(inputClass, 'mt-1')"
+                :min="field.min"
+                :max="field.max"
+            />
+        </template>
+    </InputShell>
 </template>

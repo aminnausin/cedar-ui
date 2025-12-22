@@ -1,6 +1,6 @@
 ---
 title: Context Menu
-description: Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+description: Displays a menu to the user with a set buttons.
 source: apps/www/src/registry/cedar-ui/components/context-menu
 ---
 
