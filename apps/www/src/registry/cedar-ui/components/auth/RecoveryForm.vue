@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../form';
+import { BaseForm, FormInput, FormItem, FormErrorList, FormLabel } from '../form';
 import { toast, useForm } from '@aminnausin/cedar-ui';
 import { RouterLink } from 'vue-router';
 import { ButtonForm } from '../button';
@@ -35,7 +35,7 @@ const handleSubmit = async () => {
 <template>
     <BaseForm @submit.prevent="handleSubmit">
         <FormItem v-for="(field, index) in fields" :key="index">
-            <FormInputLabel :field="field" />
+            <FormLabel :for="field.name" :text="field.text" :subtext="field.subtext" />
             <FormInput v-model="form.fields[field.name]" :field="field" class="mt-0!" />
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>
@@ -45,14 +45,14 @@ const handleSubmit = async () => {
             type="button"
             @click="handleSubmit"
             :disabled="form.processing"
-            class="justify-center! capitalize! w-full"
+            class="w-full justify-center! capitalize!"
             >Email password reset link</ButtonForm
         >
     </BaseForm>
     <span class="mx-auto text-gray-600 dark:text-gray-400">
         Or, return to
         <RouterLink
-            class="underline hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
+            class="rounded-md underline hover:text-gray-900 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-hidden dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
             to="/login"
         >
             log in

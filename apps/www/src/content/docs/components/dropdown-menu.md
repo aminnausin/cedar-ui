@@ -1,6 +1,6 @@
 ---
 title: Dropdown Menu
-description: A simple dropdown menu element..
+description: A simple dropdown menu element.
 source: apps/www/src/registry/cedar-ui/components/dropdown-menu
 ---
 

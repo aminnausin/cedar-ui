@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import { computed, nextTick, ref } from 'vue';
+import type { TablePaginationProps } from '@aminnausin/cedar-ui';
 
 import { ProiconsChevronRight, ProiconsChevronLeft } from '../icons';
+import { computed, nextTick, ref } from 'vue';
 
 import TablePaginationButton from './TablePaginationButton.vue';
 
-const props = withDefaults(
-    defineProps<{
-        listLength: number;
-        currentPage: number;
-        itemsPerPage: number;
-        useIcons: boolean;
-        maxVisiblePages?: number;
-    }>(),
-    {
-        maxVisiblePages: 5,
-    },
-);
+const props = withDefaults(defineProps<TablePaginationProps>(), {
+    maxVisiblePages: 5,
+});
 const $element = ref<null | HTMLElement>(null);
 
 const emit = defineEmits(['setPage']);

@@ -39,7 +39,7 @@ const clipboard = useClipboard(toRef(props.text));
             @click="clipboard.copyToClipboard()"
             :class="
                 cn(
-                    'group hover:bg-surface-3 hover:text-foreground-0 text-foreground-1 bg-inherit text-xs',
+                    'group hover:bg-surface-3 hover:text-foreground-0 text-foreground-1 text-xs',
                     { 'ring-green-600/50': clipboard.copyNotification.value },
                     buttonStyle,
                 )

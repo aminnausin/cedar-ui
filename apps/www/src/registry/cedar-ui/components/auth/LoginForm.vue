@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../form';
+import { BaseForm, FormInput, FormItem, FormErrorList, FormLabel } from '../form';
 import { useRouter, useRoute, RouterLink } from 'vue-router';
 import { ButtonForm } from '../button';
 import { useForm } from '@aminnausin/cedar-ui';
@@ -42,30 +42,30 @@ const handleLogin = async () => {
     <BaseForm @submit.prevent="handleLogin">
         <FormItem v-for="(field, index) in fields" :key="index">
             <span v-if="field.name === 'password'" class="flex flex-wrap">
-                <FormInputLabel :field="field" class="me-auto" />
+                <FormLabel :field="field" class="me-auto" />
                 <RouterLink
                     to="/recovery"
-                    class="underline leading-none text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
+                    class="rounded-md leading-none text-gray-600 underline hover:text-gray-900 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-hidden dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                 >
                     Forgot password?
                 </RouterLink>
             </span>
-            <FormInputLabel v-else :field="field" />
+            <FormLabel v-else :field="field" />
             <FormInput v-model="form.fields[field.name]" :field="field" class="mt-0!" />
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>
 
         <!-- Remember Me -->
-        <label for="remember-me" class="w-full flex items-center gap-2">
+        <label for="remember-me" class="flex w-full items-center gap-2">
             <input
                 v-model="form.fields.remember"
                 id="remember-me"
                 type="checkbox"
                 class=""
                 :class="[
-                    'rounded dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 shadow-xs',
+                    'rounded border-neutral-300 shadow-xs dark:border-neutral-700 dark:bg-neutral-900',
                     'appearance-none',
-                    'focus:ring-purple-500 focus:ring-2! ring-offset-0!',
+                    'ring-offset-0! focus:ring-2! focus:ring-purple-500',
                     'checked:text-purple-600',
                 ]"
                 name="remember_me"
@@ -73,9 +73,9 @@ const handleLogin = async () => {
             <span class="text-sm text-gray-600 dark:text-gray-400">Remember me</span>
         </label>
 
-        <div class="flex flex-wrap gap-2 gap-x-4 items-center justify-end text-center">
+        <div class="flex flex-wrap items-center justify-end gap-2 gap-x-4 text-center">
             <RouterLink
-                class="underline text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
+                class="rounded-md text-gray-600 underline hover:text-gray-900 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-hidden dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                 to="/register"
             >
                 Not Registered?

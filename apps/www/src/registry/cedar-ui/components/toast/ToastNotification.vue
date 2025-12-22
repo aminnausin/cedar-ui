@@ -2,9 +2,9 @@
 import type { SwipeDirection, ToastProps } from '@aminnausin/cedar-ui';
 
 import { useToastTimer, useSwipeHandler, SWIPE_THRESHOLD, TOAST_LIFE, VISIBLE_TOASTS_AMOUNT } from '@aminnausin/cedar-ui';
+import { CedarDanger, CedarInfo, CedarSuccess, CedarWarning } from '../icons';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { ButtonCorner } from '../button';
-import { CedarDanger, CedarInfo, CedarSuccess, CedarWarning } from '../icons';
 
 const emit = defineEmits<(e: 'close', id: string) => void>(); // removeToast
 

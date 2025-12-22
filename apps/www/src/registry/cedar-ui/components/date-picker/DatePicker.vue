@@ -13,7 +13,7 @@ const props = defineProps<{ field: any; disabled?: boolean }>();
 const datePickerInput = useTemplateRef('datePickerInput');
 const datePickerCalendar = useTemplateRef('datePickerCalendar');
 
-const model = defineModel<string>();
+const model = defineModel<string | null>();
 
 const {
     datePickerOpen,

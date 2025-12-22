@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { MultiSelectItem } from '@aminnausin/cedar-ui';
+import type { MultiSelectItem, MultiSelectProps } from '@aminnausin/cedar-ui';
 
-import { computed, onMounted, ref, useTemplateRef, watch } from 'vue';
-import { isInputLikeElement, toast, useMultiSelect } from '@aminnausin/cedar-ui';
-import { CedarCheckMark, CedarChevronUpDown } from '../icons';
+import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
+import { isInputLikeElement, toast } from '@aminnausin/cedar-ui';
+import { CedarChevronUpDown } from '../icons';
 import { OnClickOutside } from '@vueuse/components';
 import { UseFocusTrap } from '@vueuse/integrations/useFocusTrap/component.mjs';
 import { MdiLightPlus } from '@/registry/cedar-ui/components/icons';
@@ -11,25 +11,14 @@ import { ButtonIcon } from '../button';
 import { TextInput } from '../input';
 import { BadgeTag } from '../badge';
 
-const props = withDefaults(
-    defineProps<{
-        class?: string;
-        rootClass?: string;
-        placeholder?: string;
-        defaultItems?: MultiSelectItem[];
-        options?: MultiSelectItem[];
-        max?: number;
-        disabled?: boolean;
-        title?: string;
-        fieldName?: string;
-    }>(),
-    {
-        placeholder: 'Select Item',
-        defaultItems: () => [],
-        options: () => [],
-        max: 32,
-    },
-);
+import useMultiSelect from '../../../../../../../packages/cedar-ui/src/components/select/useMultiSelect';
+
+const props = withDefaults(defineProps<MultiSelectProps>(), {
+    placeholder: 'Select Item',
+    defaultItems: () => [],
+    options: () => [],
+    max: 32,
+});
 
 const emit = defineEmits(['createAction', 'selectItems', 'removeAction']);
 const selectButton = useTemplateRef('selectButton');
@@ -208,7 +197,11 @@ watch(
                     'top-0 mt-11': select.selectDropdownPosition == 'bottom',
                 }"
                 class="bg-overlay-t ring-r-button absolute z-30 mt-1 max-h-56 w-full overflow-clip rounded-md shadow-md ring-1 backdrop-blur-lg transition duration-200 ease-in-out"
-                :options="{ allowOutsideClick: true, initialFocus: selectInput?.$el, returnFocusOnDeactivate: true }"
+                :options="{
+                    allowOutsideClick: true,
+                    initialFocus: () => selectInput?.el,
+                    returnFocusOnDeactivate: true,
+                }"
             >
                 <OnClickOutside
                     @trigger="select.toggleSelect(false)"
@@ -245,20 +238,20 @@ watch(
                 >
                     <section class="flex w-full gap-2 p-2" @focusin="lastActiveItemId = -1">
                         <TextInput
-                            :placeholder="'Search for a tag'"
                             v-model="newValue"
-                            :maxlength="props.max"
-                            ref="selectInput"
-                            role="combobox"
-                            aria-autocomplete="list"
-                            aria-controls="selectableItemsList"
-                            :aria-expanded="select.selectOpen ? 'true' : 'false'"
-                            :aria-activedescendant="lastActiveItemId ? `${lastActiveItemId}-${select.selectId}` : null"
-                            class="scroll-m-4"
+                            @focus="selectButton?.scrollIntoView({ behavior: 'smooth', block: 'center' })"
+                            @change="selectInput?.$el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
                             @keydown.enter.stop="handleCreate"
                             @keydown.space.stop=""
-                            @change="selectInput?.$el.scrollIntoView({ behavior: 'smooth', block: 'center' })"
-                            @focus="selectButton?.scrollIntoView({ behavior: 'smooth', block: 'center' })"
+                            ref="selectInput"
+                            role="combobox"
+                            class="scroll-m-4"
+                            aria-autocomplete="list"
+                            aria-controls="selectableItemsList"
+                            :placeholder="'Search for a tag'"
+                            :aria-expanded="select.selectOpen ? 'true' : 'false'"
+                            :aria-activedescendant="lastActiveItemId ? `${lastActiveItemId}-${select.selectId}` : null"
+                            :maxlength="props.max"
                         />
                         <ButtonIcon
                             :type="'button'"

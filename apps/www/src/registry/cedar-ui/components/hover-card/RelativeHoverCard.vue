@@ -1,24 +1,15 @@
 <script setup lang="ts">
-import type { Component } from 'vue';
+import type { RelativeHoverCardProps } from '@aminnausin/cedar-ui';
 
 import { ProiconsCommentExclamation } from '../icons';
 import { ref } from 'vue';
+import { cn } from '@aminnausin/cedar-ui';
 
-const props = withDefaults(
-    defineProps<{
-        content?: string;
-        positionClasses?: string;
-        hoverCardDelay?: number;
-        hoverCardLeaveDelay?: number;
-        iconHidden?: boolean;
-        icon?: Component;
-    }>(),
-    {
-        hoverCardDelay: 600,
-        hoverCardLeaveDelay: 500,
-        icon: ProiconsCommentExclamation,
-    },
-);
+const props = withDefaults(defineProps<RelativeHoverCardProps>(), {
+    hoverCardDelay: 600,
+    hoverCardLeaveDelay: 500,
+    icon: ProiconsCommentExclamation,
+});
 
 const hoverCardHovered = ref<boolean>(false);
 const hoverCardTimout = ref<number | null>(null);
@@ -59,7 +50,7 @@ const hoverCardLeave = () => {
 <template>
     <div class="relative" @mouseover="hoverCardEnter" @mouseleave="hoverCardLeave">
         <slot name="trigger">
-            <a href="#_" class="hover:underline">@thedevdojo</a>
+            <a href="#_" class="hover:underline">@aminnausin</a>
         </slot>
         <Transition enter-from-class="opacity-0" enter-to-class="opacity-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
             <div
@@ -67,17 +58,28 @@ const hoverCardLeave = () => {
                 @mouseleave="hoverCardLeave"
                 v-show="hoverCardHovered"
                 v-cloak
-                :class="`${positionClasses ?? ''} z-30 flex absolute overflow-auto transition-opacity ease-in-out duration-200 md:max-w-xl xl:max-w-3xl text-sm p-3 h-fit bg-white dark:odd:bg-primary-dark-600/70 dark:bg-neutral-800/70 backdrop-blur-lg border dark:border-none rounded-md shadow-md border-neutral-200/70 gap-2 items-center`"
+                :class="
+                    cn(
+                        'absolute z-30',
+                        'transition-opacity duration-200 ease-in-out',
+                        'flex h-fit items-center gap-2 overflow-auto p-3',
+                        'border-overlay-2-t border dark:border-none',
+                        'bg-overlay-t text-foreground-0',
+                        'rounded-md text-sm shadow-md backdrop-blur-lg',
+                        'md:max-w-xl xl:max-w-3xl',
+                        positionClasses,
+                    )
+                "
                 :style="tooltipStyles"
                 v-if="init"
             >
                 <slot name="icon">
                     <template v-if="!iconHidden">
-                        <component class="h-5 w-5 mb-auto shrink-0" :is="icon" />
+                        <component class="mb-auto size-5 shrink-0" :is="icon" />
                     </template>
                 </slot>
                 <slot name="content">
-                    <p class="text-pretty h-fit w-full wrap-break-word whitespace-pre-wrap">
+                    <p class="h-fit w-full text-pretty wrap-break-word whitespace-pre-wrap">
                         {{ content }}
                     </p>
                 </slot>

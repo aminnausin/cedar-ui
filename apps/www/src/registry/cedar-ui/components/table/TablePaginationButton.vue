@@ -1,21 +1,13 @@
 <script setup lang="ts">
+import type { TablePaginationButtonProps } from '@aminnausin/cedar-ui';
+
 import { ButtonBase } from '../button';
 
-const props = withDefaults(
-    defineProps<{
-        currentPage?: number;
-        pageNumber?: number;
-        text?: string;
-        underline?: boolean;
-        sticky?: boolean;
-        disabled?: boolean;
-    }>(),
-    {
-        underline: false,
-        sticky: false,
-        disabled: false,
-    },
-);
+const props = withDefaults(defineProps<TablePaginationButtonProps>(), {
+    underline: false,
+    sticky: false,
+    disabled: false,
+});
 </script>
 
 <template>

@@ -1,59 +1,45 @@
 <script setup lang="ts">
 // Needs to be converted to TypeScript and use library elements but this is a lot of work
-import type { SelectItem } from '@aminnausin/cedar-ui';
+import type { SelectItem, SelectProps } from '@aminnausin/cedar-ui';
 
 import { onMounted, ref, useTemplateRef, watch } from 'vue';
 import { CedarCheckMark, CedarChevronUpDown } from '../icons';
 import { OnClickOutside } from '@vueuse/components';
 import { useSelect } from '@aminnausin/cedar-ui';
 
-const props = withDefaults(
-    defineProps<{
-        name?: string;
-        class?: string;
-        rootClass?: string;
-        placeholder?: string;
-        defaultItem?: number | null;
-        options?: SelectItem[];
-        disabled?: boolean;
-        title?: string;
-        prefix?: string;
-        menuMargin?: { top: string; bottom: string };
-    }>(),
-    {
-        class: '',
-        rootClass: '',
-        prefix: '',
-        defaultItem: null,
-        options: () => [
-            {
-                title: 'Title',
-                value: 'title',
-                disabled: false,
-            },
-            {
-                title: 'Date Uploaded',
-                value: 'date',
-                disabled: false,
-            },
-            {
-                title: 'Date released',
-                value: 'date_released',
-                disabled: false,
-            },
-            {
-                title: 'Episode',
-                value: 'episode',
-                disabled: true,
-            },
-            {
-                title: 'Season',
-                value: 'season',
-                disabled: true,
-            },
-        ],
-    },
-);
+const props = withDefaults(defineProps<SelectProps>(), {
+    class: '',
+    rootClass: '',
+    prefix: '',
+    defaultItem: null,
+    options: () => [
+        {
+            title: 'Title',
+            value: 'title',
+            disabled: false,
+        },
+        {
+            title: 'Date Uploaded',
+            value: 'date',
+            disabled: false,
+        },
+        {
+            title: 'Date released',
+            value: 'date_released',
+            disabled: false,
+        },
+        {
+            title: 'Episode',
+            value: 'episode',
+            disabled: true,
+        },
+        {
+            title: 'Season',
+            value: 'season',
+            disabled: true,
+        },
+    ],
+});
 
 const emit = defineEmits(['selectItem']);
 const selectButton = useTemplateRef('selectButton');

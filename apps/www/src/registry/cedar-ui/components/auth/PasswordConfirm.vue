@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../form';
+import { BaseForm, FormInput, FormItem, FormErrorList, FormLabel } from '../form';
 import { toast, useForm } from '@aminnausin/cedar-ui';
 import { ButtonForm } from '../button';
 
@@ -60,7 +60,7 @@ const handleSubmit = async () => {
 <template>
     <BaseForm @submit.prevent="handleSubmit" :footer-class="`flex flex-col-reverse sm:flex-row sm:justify-end gap-2 text-sm`">
         <FormItem v-for="(field, index) in fields" :key="index">
-            <FormInputLabel v-if="passwordLabel" :field="{ ...field, text: passwordLabel }" />
+            <FormLabel v-if="passwordLabel" :for="field.name" :text="passwordLabel" :subtext="field.subtext" />
             <FormInput v-model="form.fields[field.name]" :field="field" class="mt-0!" />
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>
@@ -74,7 +74,7 @@ const handleSubmit = async () => {
                 type="button"
                 @click="handleSubmit"
                 :disabled="form.processing"
-                class="capitalize! bg-rose-600! hover:bg-rose-500!"
+                class="bg-rose-600! capitalize! hover:bg-rose-500!"
             >
                 {{ confirmText }}
             </ButtonForm>

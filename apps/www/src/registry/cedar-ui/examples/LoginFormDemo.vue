@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { BaseForm, FormInput, FormItem, FormErrorList, FormInputLabel } from '../components/form';
+import { BaseForm, FormInput, FormItem, FormErrorList, FormLabel } from '../components/form';
 import { ButtonForm } from '../components/button';
 import { useForm } from '@aminnausin/cedar-ui';
 import { ref } from 'vue';
@@ -39,7 +39,7 @@ const handleLogin = async () => {
     <BaseForm @submit.prevent="handleLogin" class="w-sm text-xs">
         <FormItem v-for="(field, index) in fields" :key="index">
             <span v-if="field.name === 'password'" class="flex flex-wrap">
-                <FormInputLabel :field="field" class="me-auto" />
+                <FormLabel :for="field.name" :text="field.text" :subtext="field.subtext" class="me-auto" />
                 <a
                     href=""
                     class="rounded-md leading-none text-gray-600 underline hover:text-gray-900 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-hidden dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
@@ -47,7 +47,7 @@ const handleLogin = async () => {
                     Forgot password?
                 </a>
             </span>
-            <FormInputLabel v-else :field="field" />
+            <FormLabel v-else :for="field.name" :text="field.text" :subtext="field.subtext" />
             <FormInput v-model="form.fields[field.name]" :field="field" class="mt-0!" />
             <FormErrorList :errors="form.errors" :field-name="field.name" />
         </FormItem>

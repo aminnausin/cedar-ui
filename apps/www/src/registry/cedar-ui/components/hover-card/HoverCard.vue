@@ -1,33 +1,19 @@
 <script setup lang="ts">
-import type { Component } from 'vue';
+import type { HoverCardProps } from '@aminnausin/cedar-ui';
 
 import { ProiconsCommentExclamation } from '../icons';
 import { ref, watch } from 'vue';
+import { cn } from '@aminnausin/cedar-ui';
 
-const props = withDefaults(
-    defineProps<{
-        content?: string;
-        contentTitle?: string;
-        positionClasses?: string;
-        hoverCardDelay?: number;
-        hoverCardLeaveDelay?: number;
-        margin?: number;
-        iconHidden?: boolean;
-        paddingLeft?: number;
-        scrollContainer?: 'body' | 'window';
-        disabled?: boolean;
-        icon?: Component;
-    }>(),
-    {
-        hoverCardDelay: 600,
-        hoverCardLeaveDelay: 500,
-        margin: 0,
-        paddingLeft: 0,
-        scrollContainer: 'body',
-        disabled: false,
-        icon: ProiconsCommentExclamation,
-    },
-);
+const props = withDefaults(defineProps<HoverCardProps>(), {
+    hoverCardDelay: 600,
+    hoverCardLeaveDelay: 500,
+    margin: 0,
+    paddingLeft: 0,
+    scrollContainer: 'body',
+    disabled: false,
+    icon: ProiconsCommentExclamation,
+});
 
 const hoverCardHovered = ref<boolean>(false);
 const hoverCardTimout = ref<number | null>(null);
@@ -101,10 +87,18 @@ watch(
                     @mouseleave="hoverCardLeave"
                     v-show="hoverCardHovered"
                     v-cloak
-                    :class="[
-                        positionClasses,
-                        `scrollbar-minimal dark:odd:bg-primary-dark-600/70 absolute z-30 flex h-fit max-h-[50vh] items-center gap-2 overflow-auto rounded-md border border-neutral-200/70 bg-white p-3 text-sm shadow-md backdrop-blur-lg transition-opacity duration-200 ease-in-out md:max-w-xl xl:max-w-3xl dark:border-none dark:bg-neutral-800/70`,
-                    ]"
+                    :class="
+                        cn(
+                            'absolute z-30',
+                            'transition-opacity duration-200 ease-in-out',
+                            'flex h-fit max-h-[50vh] items-center gap-2 overflow-auto p-3',
+                            'border border-neutral-200/70 dark:border-none',
+                            'dark:odd:bg-primary-dark-600/70 bg-white dark:bg-neutral-800/70',
+                            'scrollbar-minimal rounded-md text-sm shadow-md backdrop-blur-lg',
+                            'md:max-w-xl xl:max-w-3xl',
+                            positionClasses,
+                        )
+                    "
                     :style="tooltipStyles"
                 >
                     <slot name="icon">

@@ -50,8 +50,8 @@ defineExpose({
         :class="
             cn(
                 'transition duration-200 ease-in-out focus:outline-hidden', // Animation
-                { 'data-[disabled=true]:button-disabled-pointer': wrapper === 'button' }, // Disabled Button
-                'data-[disabled=true]:button-disabled', // Disabled
+                { 'button-disabled-pointer': wrapper === 'button' && disabled }, // Disabled Button
+                { 'button-disabled': disabled }, // Disabled
                 'flex items-center justify-center gap-2', // Layout
                 'cursor-pointer', // Style
                 { 'h-8 max-h-full p-2': useSize }, // Size

@@ -2,7 +2,7 @@
 import type { TableSortOption, TableProps } from '@aminnausin/cedar-ui';
 
 import { PhSortDescendingLight, PhSortAscendingLight, SvgSpinners90RingWithBg } from '../icons';
-import { TextInputLabelled } from '../input';
+import { LabelledTextInput } from '../input';
 import { onMounted, ref } from 'vue';
 import { InputSelect } from '../select';
 import { ButtonIcon } from '../button';
@@ -52,7 +52,7 @@ onMounted(() => {
 <template>
     <section class="flex w-full flex-col gap-3">
         <section v-if="props.useToolbar" class="flex flex-col justify-center gap-2 sm:flex-row sm:justify-between">
-            <TextInputLabelled
+            <LabelledTextInput
                 v-if="model !== undefined"
                 v-model="model"
                 :placeholder="`Search ${props.itemName ? `${props.itemName}...` : ''}`"

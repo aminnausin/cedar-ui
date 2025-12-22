@@ -26,8 +26,25 @@ export interface TableProps<T> {
     noResultsMessage?: string;
 }
 
-export declare type TableSortOption = {
+export type TableSortOption = {
     title: string;
     value: string;
     disabled?: boolean;
 };
+
+export interface TablePaginationProps {
+    listLength: number;
+    currentPage: number;
+    itemsPerPage: number;
+    useIcons: boolean;
+    maxVisiblePages?: number;
+}
+
+export interface TablePaginationButtonProps {
+    currentPage?: number;
+    pageNumber?: number;
+    text?: string;
+    underline?: boolean;
+    sticky?: boolean;
+    disabled?: boolean;
+}

@@ -2,8 +2,8 @@
 import { cn, type SelectItem } from '@aminnausin/cedar-ui';
 
 import { computed, onMounted, ref, useTemplateRef, watch } from 'vue';
-import { OnClickOutside } from '@vueuse/components';
 import { ButtonBase, ButtonText } from '../button';
+import { OnClickOutside } from '@vueuse/components';
 
 import useSelect from '../../../../../../../packages/cedar-ui/src/components/select/useSelectNew';
 

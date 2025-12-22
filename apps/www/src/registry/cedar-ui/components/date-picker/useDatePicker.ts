@@ -1,7 +1,7 @@
 import { computed, nextTick, onMounted, ref, watch, type ModelRef, type Ref } from 'vue';
 
 interface DatePickerProps {
-    model?: ModelRef<string | undefined>;
+    model?: ModelRef<string | undefined | null>;
     defaultDate?: string;
     useDefaultDate?: boolean;
 }

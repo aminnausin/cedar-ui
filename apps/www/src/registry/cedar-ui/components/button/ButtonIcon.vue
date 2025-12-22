@@ -41,7 +41,6 @@ const wrapperProps = computed(() => {
         href: props.href,
         target: props.target ?? '_blank',
         type: props.type,
-        disabled: props.disabled,
         ...wProps,
     };
 });
@@ -52,6 +51,7 @@ const wrapperProps = computed(() => {
         v-bind="wrapperProps"
         :class="['focus:bg-surface-3 hover:bg-surface-3 aspect-square', ...variantClass]"
         :aria-label="$slots.text ? undefined : title"
+        :disabled="disabled"
     >
         <!-- Should remove (only have icon but that should be the default not named) -->
         <slot name="text"> </slot>

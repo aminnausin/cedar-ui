@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { FormField } from '@aminnausin/cedar-ui';
+import type { FormTextAreaProps } from '@aminnausin/cedar-ui';
 
 import { onMounted, useTemplateRef } from 'vue';
+import { InputShell } from '../input';
 
-const props = withDefaults(defineProps<{ field: FormField; maxHeight?: number }>(), { maxHeight: 240 });
+const props = withDefaults(defineProps<FormTextAreaProps>(), { maxHeight: 240 });
 const model = defineModel<any>();
 const textArea = useTemplateRef('textArea');
 
 const resize = () => {
     if (!textArea.value) return;
-    textArea.value.style.height = '0px';
     textArea.value.style.height = Math.min(props.maxHeight, textArea.value.scrollHeight) + 'px';
 };
 
@@ -19,26 +19,27 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="block mt-1 w-full">
-        <textarea
-            @input="resize()"
-            type="text"
-            ref="textArea"
-            :class="[
-                'flex w-full h-auto min-h-10 px-3 py-2 text-sm rounded-md focus:outline-hidden border-none',
-                'disabled:cursor-not-allowed disabled:opacity-50',
-                'text-gray-900 dark:text-neutral-100 bg-white dark:bg-neutral-700 placeholder:text-neutral-400',
-                'ring-inset focus:ring-inset ring-1 ring-neutral-200 dark:ring-neutral-700',
-                'focus:ring-2 focus:ring-purple-400 dark:focus:ring-purple-500',
-                'scrollbar-minimal scrollbar-track:bg-neutral-300 scrollbar-track:dark:bg-neutral-800',
-            ]"
-            :style="`max-height: ${maxHeight}px;`"
-            :name="field.name"
-            :title="field.text ?? field.name"
-            :required="field.required"
-            :placeholder="field.placeholder ?? 'Type your message here. I will resize based on the height content.'"
-            v-model="model"
-        >
-        </textarea>
+    <div class="group mt-1 block w-full">
+        <InputShell :clamp-text="false">
+            <template #input="{ class: inputClass }">
+                <textarea
+                    @input="resize()"
+                    v-model="model"
+                    ref="textArea"
+                    type="text"
+                    :id="field.name"
+                    :name="field.name"
+                    :title="field.text ?? field.name"
+                    :disabled="field.disabled"
+                    :required="field.required"
+                    :placeholder="field.placeholder"
+                    :class="[inputClass, 'scrollbar-minimal flex h-10']"
+                    :style="{
+                        'max-height': `${maxHeight}px`,
+                        'text-overflow': 'unset',
+                    }"
+                />
+            </template>
+        </InputShell>
     </div>
 </template>

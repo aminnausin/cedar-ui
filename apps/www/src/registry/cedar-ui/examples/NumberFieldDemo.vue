@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { FormField } from '@aminnausin/cedar-ui';
 
-import { FormInputNumber, FormInputLabel } from '@/registry/cedar-ui/components/form';
+import { FormNumberField } from '../components/number-field';
+import { FormLabel } from '@/registry/cedar-ui/components/form';
 import { ref } from 'vue';
 
 const rating = ref(88);
@@ -18,8 +19,8 @@ const field = ref<FormField>({
 });
 </script>
 <template>
-    <form class="flex flex-col gap-1 w-full">
-        <FormInputLabel :field="field" />
-        <FormInputNumber v-model="rating" :field="field" />
+    <form class="flex w-full flex-col gap-1">
+        <FormLabel :for="field.name" :text="field.text" :subtext="field.subtext" />
+        <FormNumberField v-model="rating" :field="field" />
     </form>
 </template>

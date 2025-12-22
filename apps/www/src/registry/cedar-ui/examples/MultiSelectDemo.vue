@@ -2,9 +2,9 @@
 import type { FormField } from '@aminnausin/cedar-ui';
 
 import { InputMultiChip } from '@/registry/cedar-ui/components/multi-select';
-import { FormInputLabel } from '@/registry/cedar-ui/components/form';
+import { FormLabel } from '@/registry/cedar-ui/components/form';
 import { toast } from '@aminnausin/cedar-ui';
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 
 interface VideoTagResource {
     id: number;
@@ -62,8 +62,8 @@ const handleRemoveTag = (tag: VideoTagResource) => {
 };
 </script>
 <template>
-    <form class="flex flex-col gap-1 w-full">
-        <FormInputLabel :field="field" />
+    <form class="flex w-full flex-col gap-1">
+        <FormLabel :for="field.name" :text="field.text" :subtext="field.subtext" />
         <InputMultiChip
             :fieldName="field.name"
             :placeholder="'Add tags'"
