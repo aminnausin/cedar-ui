@@ -39,7 +39,7 @@ The `@` alias is a preference. You can use other aliases if you want.
 
 ### Configure styles
 
-Import the following to your main or global .css file. You can learn more about using CSS variables for theming in the [theming section](/docs/theming).
+Import the following to your main or global .css file.
 
 ```css:line-numbers title="src/styles/main.css"
 /* <-- Rest of file --> */
