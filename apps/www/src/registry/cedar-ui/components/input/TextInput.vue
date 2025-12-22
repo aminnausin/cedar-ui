@@ -3,10 +3,11 @@ import type { TextInputProps } from '@aminnausin/cedar-ui';
 
 import { InputShell } from '.';
 import { ref } from 'vue';
+import { cn } from '@aminnausin/cedar-ui';
 
 const model = defineModel();
 
-defineProps<TextInputProps>();
+const props = defineProps<TextInputProps>();
 const el = ref<HTMLInputElement | null>(null);
 
 defineExpose({ el });
@@ -22,7 +23,7 @@ defineExpose({ el });
                 :minlength="minlength"
                 :maxlength="maxlength"
                 :placeholder="placeholder"
-                :class="[inputClass]"
+                :class="cn(inputClass, props.class)"
                 :disabled="disabled"
             />
         </template>
