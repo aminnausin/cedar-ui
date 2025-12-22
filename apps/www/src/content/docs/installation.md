@@ -39,140 +39,294 @@ The `@` alias is a preference. You can use other aliases if you want.
 
 ### Configure styles
 
-```css:line-numbers title="src/styles/globals.css"
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+Import the following to your main or global .css file. You can learn more about using CSS variables for theming in the [theming section](/docs/theming).
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+```css:line-numbers title="src/styles/main.css"
+/* <-- Rest of file --> */
+@import './cedar-base.css';
+@import './cedar-theme';
+
+```
+
+Add the following files to your styles folder.
+
+```css:line-numbers title="src/styles/cedar-base.css"
+@import 'tailwindcss';
+
+@config '../../../tailwind.config.js';
+
+/* Global Defaults */
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        @apply border-border;
+        /* border-color: var(--color-gray-200, currentcolor); */
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type='number'] {
+        appearance: textfield;
+    }
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+/* Custom Base Themes */
+@layer base {
+    @theme {
+        /* Border radius */
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-lg: var(--radius);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-sm: calc(var(--radius) - 4px);
+
+        /* Aspect ratios */
+        --aspect-video: 16 / 9;
+        --aspect-square: 1 / 1;
+        --aspect-portrait: 9 / 16;
+        --aspect-1-2: 1 / 2;
+        --aspect-2-3: 2 / 3;
+        --aspect-3-4: 3 / 4;
+
+        /* Breakpoints */
+        --breakpoint-xs: 20rem; /* 320px */
+        --breakpoint-xms: 25rem; /* 400px */
+        --breakpoint-3xl: 125rem; /* 2000px */
+
+        /* Container */
+        --container-center: true;
+        --container-padding: 2rem;
+        --container-2xl: 1536px;
+    }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+/* Scrollbar */
+
+@layer base {
+    ::-webkit-scrollbar {
+        width: var(--scrollbar-width);
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--color-scrollbar-track);
+        border-radius: var(--radius-scrollbar-thumb);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-scrollbar-thumb);
+        border-radius: var(--radius-scrollbar-thumb);
+    }
+
+    * {
+        scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+    }
 }
 
 @layer utilities {
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+    .scrollbar-thin {
+        --width-scrollbar: thin;
+        scrollbar-width: var(--width-scrollbar);
+    }
 
-  input[type='number'] {
-    appearance: textfield;
-  }
+    /* Hide until hover */
+    .scrollbar-hover {
+        scrollbar-width: none;
+        /* scrollbar-color: color-mix(in oklab, oklch(26.9% 0 0) 10%, transparent) color-mix(in oklab, oklch(26.9% 0 0) 00%, transparent); */
+    }
+
+    .group:hover .scrollbar-hover {
+        scrollbar-width: var(--width-scrollbar);
+        /* scrollbar-color: color-mix(in oklab, var(--color-scrollbar-thumb) 100%, transparent)
+            color-mix(in oklab, var(--color-scrollbar-track) 00%, transparent); */
+    }
+
+    .scrollable-input {
+        --color-scrollbar-thumb: var(--color-scrollbar-thumb-2);
+        --color-scrollbar-track: var(--color-scrollbar-track-2);
+        /* scrollbar-color: var(--color-scrollbar-thumb-2) var(--color-scrollbar-track-2); */
+    }
+
+    @supports selector(::-webkit-scrollbar) {
+        .scrollbar-thin::-webkit-scrollbar {
+            width: var(--default-scrollbar-width);
+            height: var(--default-scrollbar-width);
+        }
+
+        .scrollbar-hover::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        .group:hover .scrollbar-hover::-webkit-scrollbar {
+            width: var(--default-scrollbar-width);
+            height: var(--default-scrollbar-width);
+        }
+    }
 }
 
+/* Other Classes */
+
+@layer utilities {
+    .antialised {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .opacity-disabled {
+        opacity: var(--opacity-disabled);
+    }
+
+    .button-disabled {
+        @apply opacity-disabled cursor-not-allowed;
+    }
+
+    .button-disabled-pointer {
+        @apply pointer-events-none;
+    }
+}
+```
+
+```css:line-numbers title="src/styles/cedar-base.css"
+@import 'tailwindcss';
+
+@config '../../../tailwind.config.js';
+
+/* Custom Colour Themes */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+    @theme {
+        /* Custom */
+
+        /* Surfaces (0 is page) */
+        --color-surface-i: oklch(0.1749 0.0082 285.52); /* primary-dark-950 #101014 */
+        --color-surface-0: oklch(0.9841 0.0035 39.48); /* primary-950 #fcf9f8 */
+        --color-surface-1: oklch(0.9851 0 129.63); /* primary-900 #fafafa */
+        --color-surface-2: var(--color-white); /* white */
+        --color-surface-3: oklch(0.9674 0.0013 286.35); /* primary-800 #f4f4f5 */
+        --color-surface-4: oklch(0.9841 0.0035 39.48);
+
+        /* Toasts Menus Popovers Dropdowns */
+        --color-overlay: var(--color-white);
+        --color-overlay-t: var(--color-overlay);
+        --color-overlay-2: var(--color-white);
+        --color-overlay-2-t: var(--color-overlay-2);
+        --color-overlay-border: var(--color-neutral-200);
+        --color-overlay-accent: var(--color-neutral-100);
+
+        /* Text (0 is brightest) */
+        --foreground-0: oklch(0.1405 0.0044 285.82); /* this is zinc-950 */
+        --color-foreground-i: var(--color-white); /* white inverse of dark-0 */
+        --color-foreground-0: var(--color-gray-900); /* In my code I used gray-900 which is oklch(21% 0.034 264.665) = #101828 */
+        --color-foreground-1: var(--color-neutral-600); /* neutral-600 (to 400) */
+        --color-foreground-2: var(--color-neutral-500); /* neutral-500 (to 400)*/
+        --color-foreground-3: var(--color-neutral-400); /* neutral-400 (to 500)*/
+        --color-foreground-4: var(--color-neutral-100); /* neutral-100 (to 300) #f5f5f5 */
+        --color-foreground-4-hover: var(--color-neutral-100); /* neutral-100 (to 400) #f5f5f5 */
+        --color-foreground-6: var(--color-neutral-700); /* to neutral-300 */
+        --color-foreground-7: var(--color-neutral-500); /* to neutral-300 */
+
+        /* Main Colours */
+        --color-primary: var(--color-purple-600); /* purple-600 */
+        --color-primary-muted: var(--color-purple-500); /* purple-500 */
+        --color-primary-active: var(--color-purple-700); /* purple-700 */
+        --color-primary-dark: var(--color-purple-900); /* purple-900 */
+        --color-primary-foreground: var(--color-white); /* purple-600 */
+
+        /* Ring */
+        --color-r-disabled: var(--color-neutral-200) /* neutral-200 #e5e5e5 */;
+        --color-r-button: var(--color-neutral-200) /* neutral-200 #e5e5e5 */;
+        --color-r-input: var(--color-neutral-200) /* to transparent */;
+        --color-r-default: var(--color-gray-900) /* gray-900 #101828 */;
+        --color-r-card: color-mix(in oklab, oklch(21% 0.034 264.665) 5%, transparent) /* gray-900/70 #101828 */;
+        --color-r-inverse: var(--color-neutral-100); /* neutral-100 inverse (toasts) */
+
+        /* Border Divide */
+        --color-b: var(--color-gray-200); /* gray-200 #e5e7eb */
+        --color-border-1: oklch(92% 0.004 286.32); /*zinc-200 or oklch(92.2% 0 0); /* neutral-200 #e5e5e5 */
+        --color-d: var(--color-gray-200); /* gray-200 #e5e7eb */
+        --color-hr: var(--color-neutral-200);
+
+        /* Primary dark shades */
+        --color-primary-dark-600: #2a2a2d;
+        --color-primary-dark-700: #26262a;
+        --color-primary-dark-800: #27272a;
+        --color-primary-dark-900: #18181b;
+        --color-primary-dark-950: #101014;
+
+        /* Indicator Colors */
+        --color-success: oklch(72.3% 0.219 149.579); /* green-500 */
+        --color-info: oklch(62.3% 0.214 259.815); /* blue-500 */
+        --color-warning: oklch(75% 0.183 55.934); /* orange-500 */
+        --color-danger: oklch(64.5% 0.246 16.439); /* rose-500 */
+        --color-danger-2: oklch(58.6% 0.253 17.585); /* rose-600 */
+        --color-danger-3: oklch(51.4% 0.222 16.935); /* rose-700 */
+
+        /* Opacity */
+        --opacity-disabled: 0.6;
+
+        /* Scrollbar */
+        --color-scrollbar-thumb: var(--color-surface-2); /* Window */
+        --color-scrollbar-track: transparent;
+        --color-scrollbar-thumb-2: var(--color-foreground-3); /* Components */
+        --color-scrollbar-track-2: transparent;
+        --radius-scrollbar-thumb: 5px;
+        --default-scrollbar-width: 0.35rem;
+    }
+
+    .dark {
+        /* Surfaces (0 is page) */
+        --color-surface-i: oklch(0.9841 0.0035 39.48); /* primary-950 #fcf9f8 */
+        --color-surface-0: oklch(0.1749 0.0082 285.52); /* primary-dark-950 #101014 */
+        --color-surface-1: oklch(0.2103 0.0059 285.89); /* primary-dark-900 zinc-900 #18181b */
+        --color-surface-2: oklch(0.2739 0.0055 286.03); /* primary-dark-800 zinc-800 #27272a */
+        --color-surface-3: #26262a; /* primary-dark-700 #26262a */
+        --color-surface-4: #2a2a2d; /* primary-dark-600 #2a2a2d ?? this is darker */
+
+        /* Text (0 is brightest) This is a mess */
+        --foreground-0: hsl(0 0% 98%); /* zinc-50 and neutral-50 */
+        --color-foreground-i: var(--color-gray-900); /* gray-900 inverse of light-0 */
+        --color-foreground-0: var(--color-white); /* white */
+        --color-foreground-1: var(--color-neutral-400); /* neutral-400 */
+        --color-foreground-2: var(--color-neutral-400); /* neutral-400 */
+        --color-foreground-3: var(--color-neutral-500); /* neutral-500 */
+        --color-foreground-4: var(--color-neutral-300); /* neutral-300 #d4d4d4 */
+        --color-foreground-4-hover: var(--color-neutral-400); /* neutral-400 #a1a1a1 */
+        --color-foreground-5: var(--color-neutral-100); /* neutral-100 */
+        --color-foreground-6: var(--color-neutral-300); /* from neutral-700 */
+        --color-foreground-7: var(--color-neutral-300); /* from neutral-500 */
+
+        /* Ring */
+        --color-r-disabled: var(--color-neutral-700) /* neutral-700 #404040 */;
+        --color-r-button: var(--color-neutral-600); /* neutral-600 #525252 */
+        --color-r-input: transparent /* to transparent */;
+        --color-r-default: var(--color-gray-900) /* gray-900 #101828 */;
+        --color-r-inverse: color-mix(in oklab, oklch(26.9% 0 0) 50%, transparent); /* neutral-800/50 */
+
+        /* Border Divide */
+        --color-b: oklch(92.8% 0.006 264.531); /* gray-200 #e5e7eb */
+        --color-border-1: oklch(43.9% 0 0); /* neutral-600 #525252 */
+        --color-d: oklch(37.1% 0 0); /* neutral-700 #404040 */
+        --color-hr: var(--color-neutral-500);
+
+        /* Indicator Colors */
+        --color-success: oklch(62.7% 0.194 149.214); /* green-600 */
+        --color-danger: oklch(58.6% 0.253 17.585); /* rose-600 */
+
+        /* Toasts Menus Popovers Dropdowns */
+        --color-overlay: oklch(0.2739 0.0055 286.03) /* #26262a */; /* surface-3/70 */
+        --color-overlay-t: color-mix(in oklab, var(--color-overlay) 70%, transparent); /* surface-3/70 */
+        --color-overlay-2: var(--color-neutral-800);
+        --color-overlay-2-t: color-mix(in oklab, var(--color-neutral-800) 90%, transparent); /* neutral-800/90 */
+        --color-overlay-border: var(--color-neutral-700);
+        --color-overlay-accent: var(--color-neutral-900);
+    }
 }
 ```
 
@@ -217,5 +371,6 @@ export default {
 ### That's it
 
 You can now start adding components to your project.
+They must be downloaded manually by folder.
 
 </Steps>
