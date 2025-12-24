@@ -1,4 +1,4 @@
-import type { DrawerProps } from './drawer.types';
+import type { DrawerCloseReason, DrawerProps } from './drawer.types';
 import type { Component } from 'vue';
 
 import { shallowRef, ref, readonly } from 'vue';
@@ -15,6 +15,7 @@ export function createDrawerCore() {
     const component = shallowRef<Component | null>(null);
 
     function open(drawerComponent: Component, drawerProps: DrawerProps = {}) {
+        if (isOpen.value) close('programmatic');
         if (timeoutId.value) clearTimeout(timeoutId.value);
 
         props.value = drawerProps;
@@ -23,20 +24,34 @@ export function createDrawerCore() {
         isOpen.value = true;
         isAnimating.value = true;
 
+        props.value?.onOpen?.();
+
         timeoutId.value = window.setTimeout(() => {
             isAnimating.value = false;
         }, animationTime.value);
+
+        // Can Implement onAfterOpen
     }
 
-    function close() {
+    function close(reason: DrawerCloseReason) {
         if (timeoutId.value) clearTimeout(timeoutId.value);
+
+        if (reason !== 'programmatic' && props.value.preventClose) return; // Disallow Swipe and Keyboard close
+        if (reason === 'escape' && !(props.value.closeOnEsc ?? true)) return; // Disallow Keyboard close
+        if (reason === 'user' && !(props.value.closeOnBackdrop ?? true)) return; // Disallow Swipe and Backdrop close
 
         isOpen.value = false;
         isAnimating.value = true;
 
+        props.value?.onClose?.();
+
         timeoutId.value = window.setTimeout(() => {
             isAnimating.value = false;
+            component.value = null;
+            props.value = {};
         }, animationTime.value);
+
+        // Can Implement onAfterClose
     }
 
     return { isOpen: readonly(isOpen), isAnimating: readonly(isAnimating), animationTime, props, component, open, close };

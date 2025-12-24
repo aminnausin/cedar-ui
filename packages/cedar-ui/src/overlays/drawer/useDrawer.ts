@@ -1,4 +1,4 @@
-import type { DrawerProps } from './drawer.types';
+import type { DrawerCloseReason, DrawerProps } from './drawer.types';
 import type { Component } from 'vue';
 
 import { useDrawerCore } from './useDrawerCore';
@@ -8,6 +8,6 @@ export function useDrawer() {
 }
 
 export const drawer = {
-    open: (comp: Component, props: DrawerProps) => useDrawerCore().open(comp, props),
-    close: () => useDrawerCore().close(),
+    open: (comp: Component, props?: DrawerProps) => useDrawerCore().open(comp, props),
+    close: (reason: DrawerCloseReason) => useDrawerCore().close(reason),
 };
