@@ -1,6 +1,6 @@
 import type { SwipeDirection } from '@/gestures';
 
-export type DrawerCloseReason = 'user' | 'escape' | 'programmatic';
+export type DrawerCloseReason = 'backdrop' | 'swipe' | 'escape' | 'programmatic'; // Backdrop, swipe, escape, code
 
 export interface DrawerControllerProps {
     teleportTarget?: string;
@@ -19,10 +19,11 @@ export interface DrawerProps {
 
     closeOnEsc?: boolean; // OnEsc
     closeOnBackdrop?: boolean; // OnClickOutside
+    closeOnSwipe?: boolean; // OnSwipe
     preventClose?: boolean; // Disable non programmatic close
 
     payload?: unknown;
 
     onOpen?: () => void;
-    onClose?: () => void;
+    onClose?: (reason: DrawerCloseReason) => void;
 }

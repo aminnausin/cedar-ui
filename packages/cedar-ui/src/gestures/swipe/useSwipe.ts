@@ -123,8 +123,8 @@ export function useSwipeHandler({ directions, swipeThreshold, velocityThreshold,
      * Evaluates swipe
      * Only takes into account the swipe delta of the active axis
      */
-    function onPointerUp() {
-        if (!isSwiping.value) return;
+    function onPointerUp(): boolean {
+        if (!isSwiping.value) return false;
 
         const timeTaken = Date.now() - (dragStartTime.value ?? 0);
         const swipeAmount = activeAxis.value ? offset.value[activeAxis.value] : 0;
@@ -137,6 +137,8 @@ export function useSwipeHandler({ directions, swipeThreshold, velocityThreshold,
         isSwiping.value = false;
         activeAxis.value = null;
         offset.value = { x: 0, y: 0 };
+
+        return shouldDismiss;
     }
 
     function onPointerCancel() {

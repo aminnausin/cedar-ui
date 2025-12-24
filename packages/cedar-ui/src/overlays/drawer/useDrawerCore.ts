@@ -15,7 +15,10 @@ export function createDrawerCore() {
     const component = shallowRef<Component | null>(null);
 
     function open(drawerComponent: Component, drawerProps: DrawerProps = {}) {
-        if (isOpen.value) close('programmatic');
+        if (isOpen.value) {
+            close('programmatic');
+            return;
+        }
         if (timeoutId.value) clearTimeout(timeoutId.value);
 
         props.value = drawerProps;
@@ -34,16 +37,18 @@ export function createDrawerCore() {
     }
 
     function close(reason: DrawerCloseReason) {
+        if (!isOpen.value) return;
         if (timeoutId.value) clearTimeout(timeoutId.value);
 
         if (reason !== 'programmatic' && props.value.preventClose) return; // Disallow Swipe and Keyboard close
         if (reason === 'escape' && !(props.value.closeOnEsc ?? true)) return; // Disallow Keyboard close
-        if (reason === 'user' && !(props.value.closeOnBackdrop ?? true)) return; // Disallow Swipe and Backdrop close
+        if (reason === 'backdrop' && !(props.value.closeOnBackdrop ?? true)) return; // Disallow Backdrop close
+        if (reason === 'swipe' && !(props.value.closeOnSwipe ?? true)) return; // Disallow Swipe close
 
         isOpen.value = false;
         isAnimating.value = true;
 
-        props.value?.onClose?.();
+        props.value?.onClose?.(reason);
 
         timeoutId.value = window.setTimeout(() => {
             isAnimating.value = false;
