@@ -7,8 +7,6 @@ const props = defineProps<{
     colour?: string;
     active: boolean;
 }>();
-
-const oldClass = `${props.active ? `bg-white ring-3 ring-[0.1rem] ring-violet-500 ring-inset dark:bg-violet-700 dark:ring-0` : `dark:bg-primary-dark-800 bg-white`} flex h-8 w-8 shrink-0 items-center justify-center rounded-lg shadow-lg hover:bg-neutral-100 dark:text-neutral-100 dark:hover:bg-violet-700`;
 </script>
 <template>
     <button-icon

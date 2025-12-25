@@ -13,7 +13,7 @@ const props = defineProps<{
 
 <template>
     <button-icon
-        :id="'btn-nav-' + label"
+        :id="'link-nav-' + label"
         :to="url"
         :href="href"
         :variant="'transparent'"
