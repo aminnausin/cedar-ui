@@ -61,7 +61,7 @@ const handleSetPage = async (page: number) => {
             <!-- Results -->
         </p>
         <ul
-            class="bg-overlay-t divide-d text-foreground-7 border-overlay-border flex h-9 items-center divide-x overflow-clip rounded-md border leading-tight"
+            class="bg-overlay-t divide-d text-foreground-7 border-overlay-border flex h-9 items-center divide-x rounded-md border leading-tight"
         >
             <TablePaginationButton
                 :pageNumber="-1"
