@@ -1,13 +1,15 @@
-<script setup lang="ts" generic="T">
-import type { TableSortOption, TableProps } from '@aminnausin/cedar-ui';
+<script setup lang="ts" generic="T extends TableRow">
+import type { TableSortOption, TableProps, TableRow } from '@aminnausin/cedar-ui';
 
-import { PhSortDescendingLight, PhSortAscendingLight, SvgSpinners90RingWithBg } from '../icons';
-import { LabelledTextInput, TextInput } from '../input';
+import { PhSortDescendingLight, PhSortAscendingLight } from '../icons';
 import { onMounted, ref } from 'vue';
 import { InputSelect } from '../select';
 import { ButtonIcon } from '../button';
+import { TextInput } from '../input';
 import { useTable } from '@aminnausin/cedar-ui';
+import { cn } from '@aminnausin/cedar-ui';
 
+import TableLoadingSpinner from './TableLoadingSpinner.vue';
 import TablePagination from './TablePagination.vue';
 
 const props = withDefaults(defineProps<TableProps<T>>(), {
@@ -21,7 +23,8 @@ const props = withDefaults(defineProps<TableProps<T>>(), {
     noResultsMessage: 'No Results',
 });
 
-const tableData = useTable(props);
+const { currentPage, itemsPerPage, pageData, setPage } = useTable<T>(props);
+
 const sortAscending = ref(props.startAscending);
 const lastSortKey = ref('');
 
@@ -51,7 +54,7 @@ onMounted(() => {
 
 <template>
     <section class="flex w-full flex-col gap-3">
-        <section v-if="props.useToolbar" class="flex h-10 flex-col justify-center gap-2 sm:flex-row sm:justify-between">
+        <section v-if="props.useToolbar" class="flex flex-col justify-center gap-2 sm:flex-row sm:justify-between">
             <TextInput
                 v-if="model !== undefined"
                 v-model="model"
@@ -61,7 +64,7 @@ onMounted(() => {
                 title="Search with..."
             />
 
-            <span :class="['flex flex-wrap items-end gap-2', { 'flex-1': model === undefined }]">
+            <span :class="['flex flex-wrap items-end gap-2 sm:flex-nowrap', { 'flex-1': model === undefined }]">
                 <div class="flex w-full flex-1 flex-col gap-2 sm:w-40">
                     <InputSelect
                         :name="'sort'"
@@ -81,7 +84,7 @@ onMounted(() => {
                     "
                     :title="`Reorder Results...`"
                     :aria-label="`Reorder Results`"
-                    class="inline-flex h-full ring-inset"
+                    class="inline-flex h-full"
                 >
                     <template #icon>
                         <!-- Arrow Pointing Down if ascending and then Up otherwise (arrow shows what to change to ?? idk descending points up actually)-->
@@ -91,16 +94,15 @@ onMounted(() => {
                 </ButtonIcon>
             </span>
         </section>
-        <section :class="[useGrid || `flex w-full flex-wrap gap-2 ${tableStyles ?? ''}`]">
-            <div
-                v-if="loading || tableData.filteredPage.length === 0"
-                class="text-foreground-2 col-span-full flex w-full items-center justify-center gap-2 text-center text-lg tracking-wider uppercase"
-            >
-                <p>{{ loading ? '...Loading' : noResultsMessage }}</p>
-                <SvgSpinners90RingWithBg v-show="loading" />
-            </div>
+        <section :class="cn(useGrid || 'flex w-full flex-wrap gap-2', tableStyles)">
+            <TableLoadingSpinner
+                v-if="loading || pageData.length === 0"
+                :is-loading="loading"
+                :data-length="pageData.length"
+                :no-results-message="noResultsMessage"
+            />
             <template v-else>
-                <template v-for="(row, index) in tableData.filteredPage" :key="row?.id ?? index">
+                <template v-for="(row, index) in pageData" :key="row?.id ?? index">
                     <slot name="row" :row="row" :index="index" :selectedID="props.selectedID">
                         <component
                             :is="props.row"
@@ -119,11 +121,11 @@ onMounted(() => {
             v-if="usePagination"
             :class="paginationClass"
             :listLength="props.data?.length ?? 0"
-            :itemsPerPage="tableData.fields.itemsPerPage"
-            :currentPage="tableData.fields.currentPage"
+            :itemsPerPage="itemsPerPage"
+            :currentPage="currentPage"
             :useIcons="props.usePaginationIcons"
             :max-visible-pages="props.maxVisiblePages"
-            @setPage="tableData.handlePageChange"
+            @setPage="setPage"
         />
     </section>
 </template>
