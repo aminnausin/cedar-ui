@@ -2,7 +2,17 @@
 
 import type { Component, DefineComponent } from 'vue';
 
-export interface TableProps<T> {
+export type TableRow = {
+    id: number;
+};
+
+export interface UseTableOptions<T> {
+    data: T[];
+    itemsPerPage?: number;
+    resetOnDataChange?: boolean;
+}
+
+export interface TableProps<T extends TableRow> {
     useToolbar?: boolean;
     usePagination?: boolean;
     usePaginationIcons?: boolean;
@@ -24,6 +34,7 @@ export interface TableProps<T> {
     paginationClass?: string;
     maxVisiblePages?: number;
     noResultsMessage?: string;
+    resetOnDataChange?: boolean;
 }
 
 export type TableSortOption = {
