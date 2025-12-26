@@ -1,13 +1,13 @@
 // Table
 
-import type { Component, DefineComponent } from 'vue';
+import type { Component, DefineComponent, Ref } from 'vue';
 
 export type TableRow = {
     id: number;
 };
 
 export interface UseTableOptions<T> {
-    data: T[];
+    data: Ref<T[]>;
     itemsPerPage?: number;
     resetOnDataChange?: boolean;
 }

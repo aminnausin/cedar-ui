@@ -1,16 +1,15 @@
 import type { UseTableOptions } from './table.types';
 
-import { computed, ref, toRef, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 export default function useTable<T>(options: UseTableOptions<T>) {
     const itemsPerPage = ref(options.itemsPerPage ?? 10);
     const currentPage = ref(1);
-    const data = toRef(options, 'data');
 
-    const pageCount = computed(() => Math.ceil(data.value.length / itemsPerPage.value));
+    const pageCount = computed(() => Math.ceil(options.data.value.length / itemsPerPage.value));
     const pageData = computed(() => {
         const start = (currentPage.value - 1) * itemsPerPage.value;
-        return data.value.slice(start, start + itemsPerPage.value);
+        return options.data.value.slice(start, start + itemsPerPage.value);
     });
 
     function setPage(page: number) {
@@ -22,11 +21,11 @@ export default function useTable<T>(options: UseTableOptions<T>) {
     }
 
     watch(
-        () => data,
+        () => options.data.value,
         () => {
             if (options.resetOnDataChange !== false) resetPage();
         },
-        { immediate: true, deep: true },
+        { immediate: true },
     );
 
     return {
