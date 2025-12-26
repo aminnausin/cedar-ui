@@ -2,7 +2,7 @@
 import type { TableSortOption, TableProps, TableRow } from '@aminnausin/cedar-ui';
 
 import { PhSortDescendingLight, PhSortAscendingLight } from '../icons';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, toRef } from 'vue';
 import { InputSelect } from '../select';
 import { ButtonIcon } from '../button';
 import { TextInput } from '../input';
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<TableProps<T>>(), {
     noResultsMessage: 'No Results',
 });
 
-const { currentPage, itemsPerPage, pageData, setPage } = useTable<T>(props);
+const { currentPage, itemsPerPage, pageData, setPage } = useTable<T>({ itemsPerPage: props.itemsPerPage, data: toRef(props, 'data') });
 
 const sortAscending = ref(props.startAscending);
 const lastSortKey = ref('');
