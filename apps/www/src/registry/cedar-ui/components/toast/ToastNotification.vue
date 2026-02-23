@@ -181,11 +181,11 @@ onBeforeUnmount(() => {
                     <p class="text-[13px] leading-none font-medium" :title="title">{{ title }}</p>
                 </div>
                 <p
-                    v-show="true"
+                    v-show="description"
                     :class="{ 'pl-5': type !== 'default' }"
                     class="scrollbar-minimal mt-1.5 max-h-32 min-h-3 w-full overflow-y-auto pe-2 text-xs leading-tight wrap-break-word whitespace-pre-wrap opacity-70"
                 >
-                    {{ life }}
+                    {{ description }}
                 </p>
                 <template v-if="!html">
                     <ButtonCorner
