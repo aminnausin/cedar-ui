@@ -2,7 +2,7 @@
 import type { SwipeDirection, ToastProps } from '@aminnausin/cedar-ui';
 
 import { useToastTimer, useSwipeHandler, SWIPE_THRESHOLD, TOAST_LIFE, VISIBLE_TOASTS_AMOUNT } from '@aminnausin/cedar-ui';
-import { CedarDanger, CedarInfo, CedarSuccess, CedarWarning } from '../icons';
+import { CedarDanger, CedarInfo, CedarSuccess, CedarWarning, SvgSpinners90RingWithBg } from '../icons';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { ButtonCorner } from '../button';
 
@@ -58,8 +58,8 @@ const { offset, isSwiping, onPointerDown, onPointerMove, onPointerUp } = useSwip
 });
 
 const { cancel: cancelToastTimer } = useToastTimer({
-    duration: props.life || TOAST_LIFE,
-    isPaused: () => props.expanded || props.type === 'loading' || !props.life || props.life === Infinity || toastHovered.value,
+    duration: () => props.life || TOAST_LIFE,
+    isPaused: () => props.expanded || !props.life || props.life === Infinity || toastHovered.value,
     onTimeout: onClose,
 });
 
@@ -177,14 +177,15 @@ onBeforeUnmount(() => {
                     <CedarInfo v-show="type === 'info'" class="mr-1 -ml-1 size-4" />
                     <CedarWarning v-show="type === 'warning'" class="mr-1 -ml-1 size-4" />
                     <CedarDanger v-show="type === 'danger'" class="mr-1 -ml-1 size-4" />
+                    <SvgSpinners90RingWithBg v-show="type === 'promise'" class="mr-1 -ml-1 size-4" />
                     <p class="text-[13px] leading-none font-medium" :title="title">{{ title }}</p>
                 </div>
                 <p
-                    v-show="description"
+                    v-show="true"
                     :class="{ 'pl-5': type !== 'default' }"
                     class="scrollbar-minimal mt-1.5 max-h-32 min-h-3 w-full overflow-y-auto pe-2 text-xs leading-tight wrap-break-word whitespace-pre-wrap opacity-70"
                 >
-                    {{ description }}
+                    {{ life }}
                 </p>
                 <template v-if="!html">
                     <ButtonCorner

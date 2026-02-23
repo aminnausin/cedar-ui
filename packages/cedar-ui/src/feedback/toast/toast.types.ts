@@ -3,7 +3,7 @@
 import type { SwipeDirection } from '@/gestures';
 import type { Component } from 'vue';
 
-export type ToastType = 'success' | 'info' | 'warning' | 'danger' | 'default' | 'loading';
+export type ToastType = 'success' | 'info' | 'warning' | 'danger' | 'default' | 'promise';
 export type ToastPostion = 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';
 export type ToastLayout = 'default' | 'expanded';
 
@@ -14,7 +14,7 @@ export interface ToastIcons {
     info?: Component;
     warning?: Component;
     error?: Component;
-    loading?: Component;
+    promise?: Component;
     close?: Component;
 }
 
@@ -40,6 +40,12 @@ export interface ToastProps extends Message {
     maxVisibleToasts?: number;
     swipeDirections?: SwipeDirection[];
     style?: string;
+}
+
+export interface ToastPromiseMessages<T> {
+    loading: string;
+    success: string | ((data: T) => string);
+    error: string | ((err: unknown) => string);
 }
 
 export interface Message<T extends Component = Component> {
@@ -80,7 +86,7 @@ export interface ToastToDismiss {
 }
 
 export interface UseToastTimerOptions {
-    duration: number;
+    duration: () => number;
     isPaused: () => boolean;
     onTimeout: () => void;
     immediate?: boolean;

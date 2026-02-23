@@ -5,10 +5,12 @@ import { ref, watch, onBeforeUnmount } from 'vue';
 export function useToastTimer({ duration, isPaused, onTimeout, immediate = true }: UseToastTimerOptions) {
     const timeoutId = ref<number | null>();
     const startTime = ref(0);
-    const remainingTime = ref(duration);
+    const remainingTime = ref(duration());
 
     function start() {
-        if (remainingTime.value === Infinity || isPaused()) return;
+        if (isPaused()) return;
+        if (remainingTime.value === Infinity && duration() === Infinity) return;
+        if (remainingTime.value === Infinity) remainingTime.value = duration();
         startTime.value = Date.now();
         timeoutId.value = window.setTimeout(() => {
             onTimeout();
@@ -16,8 +18,8 @@ export function useToastTimer({ duration, isPaused, onTimeout, immediate = true 
     }
 
     function pause() {
+        if (!timeoutId.value) return;
         cancel();
-
         const elapsed = Date.now() - startTime.value;
         remainingTime.value -= elapsed;
     }
@@ -28,7 +30,6 @@ export function useToastTimer({ duration, isPaused, onTimeout, immediate = true 
             timeoutId.value = null;
         }
     }
-
     watch(
         isPaused,
         (paused) => {

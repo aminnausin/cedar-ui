@@ -1,4 +1,4 @@
-import type { Message, ToastOptions, ToastToDismiss } from '.';
+import type { Message, ToastOptions, ToastPromiseMessages, ToastToDismiss } from '.';
 
 function UniqueComponentId(prefix = 'pv_id_') {
     return prefix + Math.random().toString(16).slice(2);
@@ -92,6 +92,34 @@ class Observer {
     warning = (message: string, options?: ToastOptions) => {
         return this.create(message, { type: 'warning', ...options });
     };
+
+    promise = <T>(promise: Promise<T>, messages: ToastPromiseMessages<T>, options?: ToastOptions): Promise<T> => {
+        const id = this.create(messages.loading, {
+            ...options,
+            type: 'promise',
+            life: Infinity,
+        });
+
+        promise
+            .then((data) => {
+                this.create(typeof messages.success === 'function' ? messages.success(data) : messages.success, {
+                    ...options,
+                    id,
+                    type: 'success',
+                    life: options?.life ?? 3000,
+                });
+            })
+            .catch((err) => {
+                this.create(typeof messages.error === 'function' ? messages.error(err) : messages.error, {
+                    ...options,
+                    id,
+                    type: 'danger',
+                    life: options?.life ?? 3000,
+                });
+            });
+
+        return promise;
+    };
 }
 
 export const ToastState = new Observer();
@@ -109,4 +137,5 @@ export const toast = Object.assign(toastFunction, {
     info: ToastState.info,
     warning: ToastState.warning,
     dismiss: ToastState.dismiss,
+    promise: ToastState.promise,
 });
