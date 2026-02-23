@@ -6,9 +6,6 @@ on:
     - main
     paths:
     - 'packages/**'
-    paths-ignore:
-    - 'README.md'
-    - '.github/**'
 
 jobs:
   test:
