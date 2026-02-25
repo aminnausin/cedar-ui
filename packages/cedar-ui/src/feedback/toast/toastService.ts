@@ -1,4 +1,4 @@
-import type { Message, ToastOptions, ToastPromiseMessages, ToastToDismiss } from '.';
+import type { Message, ToastOptions, ToastPromiseMessages, ToastToDismiss, ToastType } from '.';
 
 function UniqueComponentId(prefix = 'pv_id_') {
     return prefix + Math.random().toString(16).slice(2);
@@ -95,27 +95,29 @@ class Observer {
 
     promise = <T>(promise: Promise<T>, messages: ToastPromiseMessages<T>, options?: ToastOptions): Promise<T> => {
         const id = this.create(messages.loading, {
+            description: messages.loadingDescription,
             ...options,
             type: 'promise',
             life: Infinity,
         });
 
+        const updateToast = (title: string, description: string | undefined, type: ToastType) => {
+            this.create(title, { description, ...options, id, type, life: options?.life ?? 3000 });
+        };
+
+        const resolveText = (value: string | ((arg: T) => string), arg: T): string => (typeof value === 'function' ? value(arg) : value);
+
+        const resolveOptionalText = (value: string | ((arg: T) => string) | undefined, arg: T): string | undefined =>
+            typeof value === 'function' ? value(arg) : value;
+
         promise
             .then((data) => {
-                this.create(typeof messages.success === 'function' ? messages.success(data) : messages.success, {
-                    ...options,
-                    id,
-                    type: 'success',
-                    life: options?.life ?? 3000,
-                });
+                updateToast(resolveText(messages.success, data), resolveOptionalText(messages.successDescription, data), 'success');
+                return data;
             })
             .catch((err) => {
-                this.create(typeof messages.error === 'function' ? messages.error(err) : messages.error, {
-                    ...options,
-                    id,
-                    type: 'danger',
-                    life: options?.life ?? 3000,
-                });
+                updateToast(resolveText(messages.error, err), resolveOptionalText(messages.errorDescription, err), 'danger');
+                throw err;
             });
 
         return promise;

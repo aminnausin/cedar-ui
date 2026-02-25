@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SwipeDirection, ToastProps } from '@aminnausin/cedar-ui';
 
-import { useToastTimer, useSwipeHandler, SWIPE_THRESHOLD, TOAST_LIFE, VISIBLE_TOASTS_AMOUNT } from '@aminnausin/cedar-ui';
+import { useToastTimer, useSwipeHandler, SWIPE_THRESHOLD, TOAST_LIFE, VISIBLE_TOASTS_AMOUNT, cn } from '@aminnausin/cedar-ui';
 import { CedarDanger, CedarInfo, CedarSuccess, CedarWarning, SvgSpinners90RingWithBg } from '../icons';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { ButtonCorner } from '../button';
@@ -45,8 +45,8 @@ const isBottom = computed(() => {
     return props.position.includes('bottom');
 });
 
-const closeTimeout = ref<null | number>(null);
-const stackTimeout = ref<null | number>(null);
+const closeTimeout = ref<NodeJS.Timeout | null>(null);
+const stackTimeout = ref<NodeJS.Timeout | null>(null);
 
 const toastHovered = ref(false);
 const isMounted = ref(false);
@@ -84,7 +84,7 @@ function onClose() {
     leaveDirection.value = getLeaveDirection();
     isMounted.value = false;
     cancelToastTimer();
-    closeTimeout.value = window.setTimeout(() => {
+    closeTimeout.value = globalThis.setTimeout(() => {
         emit('close', props.id);
     }, 350);
 }
@@ -109,7 +109,7 @@ onMounted(() => {
 
     if (stackTimeout.value) clearTimeout(stackTimeout.value);
 
-    stackTimeout.value = window.setTimeout(() => {
+    stackTimeout.value = globalThis.setTimeout(() => {
         props.stack();
     });
 });
@@ -151,10 +151,10 @@ onBeforeUnmount(() => {
             :leave-from-class="`opacity-100 translate-y-0`"
             :leave-to-class="`opacity-0 ${leaveDirection}`"
         >
-            <span
+            <div
                 :class="[
-                    { 'p-4': !html, 'p-0': html },
-                    'flex flex-col items-start rounded-md backdrop-blur-lg',
+                    { 'p-3 py-4': !html, 'p-0': html },
+                    'flex items-start gap-1 rounded-md backdrop-blur-lg',
                     'group relative select-text',
                     'transition-all duration-300 ease-out',
                     'bg-overlay-t text-foreground-0 shadow-[0_5px_15px_-3px_rgb(0_0_0/0.08)]',
@@ -164,51 +164,73 @@ onBeforeUnmount(() => {
             >
                 <div
                     v-if="!html"
-                    class="flex items-center"
-                    :class="{
-                        'text-success': type === 'success',
-                        'text-info': type === 'info',
-                        'text-warning': type === 'warning',
-                        'text-danger': type === 'danger',
-                        'text-foreground-0': type === 'default',
-                    }"
+                    :class="[
+                        {
+                            'text-success': type === 'success',
+                            'text-info': type === 'info',
+                            'text-warning': type === 'warning',
+                            'text-danger-1': type === 'danger',
+                            'text-foreground-0': type === 'default' || type === 'promise',
+                        },
+                    ]"
                 >
-                    <CedarSuccess v-show="type === 'success'" class="mr-1 -ml-1 size-4" />
-                    <CedarInfo v-show="type === 'info'" class="mr-1 -ml-1 size-4" />
-                    <CedarWarning v-show="type === 'warning'" class="mr-1 -ml-1 size-4" />
-                    <CedarDanger v-show="type === 'danger'" class="mr-1 -ml-1 size-4" />
-                    <SvgSpinners90RingWithBg v-show="type === 'promise'" class="mr-1 -ml-1 size-4" />
-                    <p class="text-[13px] leading-none font-medium" :title="title">{{ title }}</p>
+                    <CedarSuccess v-if="type === 'success'" class="toast-icon" />
+                    <CedarInfo v-if="type === 'info'" class="toast-icon" />
+                    <CedarWarning v-if="type === 'warning'" class="toast-icon" />
+                    <CedarDanger v-if="type === 'danger'" class="toast-icon" />
+                    <SvgSpinners90RingWithBg v-if="type === 'promise'" class="toast-icon" />
                 </div>
-                <p
-                    v-show="description"
-                    :class="{ 'pl-5': type !== 'default' }"
-                    class="scrollbar-minimal mt-1.5 max-h-32 min-h-3 w-full overflow-y-auto pe-2 text-xs leading-tight wrap-break-word whitespace-pre-wrap opacity-70"
-                >
-                    {{ description }}
-                </p>
+                <div class="space-y-1.5">
+                    <h6
+                        :class="[
+                            'line-clamp-1 overflow-clip pe-6 text-[13px] leading-none font-medium [overflow-clip-margin:4px]',
+                            {
+                                'text-success': type === 'success',
+                                'text-info': type === 'info',
+                                'text-warning': type === 'warning',
+                                'text-danger-1': type === 'danger',
+                                'text-foreground-0': type === 'default' || type === 'promise',
+                            },
+                        ]"
+                        :title="title"
+                    >
+                        {{ title }}
+                    </h6>
+                    <p
+                        v-if="description"
+                        class="scrollbar-minimal max-h-32 w-full overflow-y-auto pe-2 text-xs leading-tight break-all whitespace-pre-wrap opacity-70"
+                    >
+                        {{ description }}
+                    </p>
+                </div>
+
                 <template v-if="!html">
                     <ButtonCorner
                         @click="onClose"
-                        class="text-foreground-2 hover:text-foreground-1 dark:text-danger-3 hover:bg-surface-1 dark:bg-surface-1/50 dark:hover:bg-surface-1 dark:hover:text-danger absolute right-0 mr-2.5 p-1.5"
+                        class="text-foreground-2 hover:text-foreground-1 dark:text-danger-3 hover:bg-surface-1 dark:bg-surface-1/50 dark:hover:bg-surface-1 dark:hover:text-danger-1 absolute right-0 mr-2.5 size-6 p-1.5"
                         label="Close Toast"
-                        :class="[
-                            'cursor-pointer rounded-full opacity-0',
-                            {
+                        :class="
+                            cn('cursor-pointer rounded-full opacity-0', {
                                 'top-1/2 -translate-y-1/2': !description && !html,
                                 'top-0 mt-2.5': description || html,
                                 'opacity-100': toastHovered,
                                 'opacity-0': !toastHovered,
-                            },
-                        ]"
+                            })
+                        "
                         :use-default-style="false"
                     />
                 </template>
-            </span>
+            </div>
         </Transition>
     </li>
 </template>
 <style lang="css" scoped>
+@reference '@css/app.css';
+
+.toast-icon {
+    @apply -mt-0.5 size-4 shrink-0;
+}
+
 .toast {
     transform: translateY(var(--offset-y, 0px)) translateX(var(--offset-x, 0px)) scale(var(--scale, 1));
     z-index: var(--z-index, 200);

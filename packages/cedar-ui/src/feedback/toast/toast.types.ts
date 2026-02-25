@@ -44,8 +44,11 @@ export interface ToastProps extends Message {
 
 export interface ToastPromiseMessages<T> {
     loading: string;
+    loadingDescription?: string;
     success: string | ((data: T) => string);
+    successDescription?: string | ((data: T) => string);
     error: string | ((err: unknown) => string);
+    errorDescription?: string | ((err: unknown) => string);
 }
 
 export interface Message<T extends Component = Component> {
