@@ -174,11 +174,11 @@ onBeforeUnmount(() => {
                         },
                     ]"
                 >
-                    <CedarSuccess v-if="type === 'success'" class="toast-icon" />
-                    <CedarInfo v-if="type === 'info'" class="toast-icon" />
-                    <CedarWarning v-if="type === 'warning'" class="toast-icon" />
-                    <CedarDanger v-if="type === 'danger'" class="toast-icon" />
-                    <SvgSpinners90RingWithBg v-if="type === 'promise'" class="toast-icon" />
+                    <CedarSuccess v-if="type === 'success'" class="-mt-0.5 size-4 shrink-0" />
+                    <CedarInfo v-if="type === 'info'" class="-mt-0.5 size-4 shrink-0" />
+                    <CedarWarning v-if="type === 'warning'" class="-mt-0.5 size-4 shrink-0" />
+                    <CedarDanger v-if="type === 'danger'" class="-mt-0.5 size-4 shrink-0" />
+                    <SvgSpinners90RingWithBg v-if="type === 'promise'" class="-mt-0.5 size-4 shrink-0" />
                 </div>
                 <div class="space-y-1.5">
                     <h6
@@ -225,12 +225,6 @@ onBeforeUnmount(() => {
     </li>
 </template>
 <style lang="css" scoped>
-@reference '@css/app.css';
-
-.toast-icon {
-    @apply -mt-0.5 size-4 shrink-0;
-}
-
 .toast {
     transform: translateY(var(--offset-y, 0px)) translateX(var(--offset-x, 0px)) scale(var(--scale, 1));
     z-index: var(--z-index, 200);
