@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@aminnausin/cedar-ui':
-      specifier: ^0.0.17
-      version: 0.0.17
+      specifier: ^0.0.18
+      version: 0.0.18
     '@tailwindcss/aspect-ratio':
       specifier: ^0.4.2
       version: 0.4.2
@@ -135,7 +135,7 @@ importers:
     dependencies:
       '@aminnausin/cedar-ui':
         specifier: 'catalog:'
-        version: 0.0.17(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@4.1.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
+        version: 0.0.18(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@4.1.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))
       '@tailwindcss/aspect-ratio':
         specifier: 'catalog:'
         version: 0.4.2(tailwindcss@4.1.17)
@@ -400,8 +400,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@aminnausin/cedar-ui@0.0.17':
-    resolution: {integrity: sha512-/VwVgtoN/oAcLpTpDpVdd7/sSrc4jHAQ+PW+ntQ/EX0tpW+6OwnEPBwuRjHdDndZpdhPbWYAmzhzuQks756+oQ==}
+  '@aminnausin/cedar-ui@0.0.18':
+    resolution: {integrity: sha512-NEwmXHpKqmfvH9Jz3NysE5r1taJZYfuQvEWVWyAk5ZzVkdUhDgxsNHyUE2qRY7gc1a8O20ikK/NQ5hZ9O4tJhA==}
     peerDependencies:
       '@vueuse/components': '>=10.11.1 <14.0.0'
       '@vueuse/core': '>=10.11.1 <14.0.0'
@@ -4548,7 +4548,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@aminnausin/cedar-ui@0.0.17(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@4.1.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
+  '@aminnausin/cedar-ui@0.0.18(@vueuse/components@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/core@13.6.0(vue@3.5.18(typescript@5.9.2)))(@vueuse/integrations@13.6.0(change-case@5.4.4)(focus-trap@7.6.5)(vue@3.5.18(typescript@5.9.2)))(tailwindcss@4.1.17)(vue-router@4.5.1(vue@3.5.18(typescript@5.9.2)))(vue@3.5.18(typescript@5.9.2))':
     dependencies:
       '@vueuse/components': 13.6.0(vue@3.5.18(typescript@5.9.2))
       '@vueuse/core': 13.6.0(vue@3.5.18(typescript@5.9.2))
