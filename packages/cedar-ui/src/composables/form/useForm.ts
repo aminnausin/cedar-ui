@@ -1,6 +1,5 @@
 import type { FormFields, FormState } from '..';
-
-import { reactive, watch } from 'vue';
+import { reactive, toRaw, watch } from 'vue';
 
 import deepEqual from 'fast-deep-equal';
 
@@ -34,13 +33,13 @@ export default function useForm<T extends Record<string, any>>(fields: FormField
                     this.wasSuccessful = true;
                     this.recentlySuccessful = true;
 
-                    recentlySuccessfulTimeoutId = window.setTimeout(() => {
+                    recentlySuccessfulTimeoutId = globalThis.setTimeout(() => {
                         this.recentlySuccessful = false;
                     }, 2000);
 
                     if (hooks.onSuccess) await hooks.onSuccess(response);
 
-                    defaults = structuredClone(this.fields);
+                    defaults = structuredClone(toRaw(this.fields));
                 },
                 onError: async (error: any) => {
                     this.hasErrors = true;
