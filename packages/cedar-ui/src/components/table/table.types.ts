@@ -1,6 +1,6 @@
 // Table
 
-import type { Component, DefineComponent, Ref } from 'vue';
+import type { Component, DefineComponent, MaybeRefOrGetter, Ref } from 'vue';
 
 export type TableRow = {
     id: number;
@@ -8,8 +8,8 @@ export type TableRow = {
 
 export interface UseTableOptions<T> {
     data: Ref<T[]>;
-    itemsPerPage?: number;
-    resetOnDataChange?: boolean;
+    itemsPerPage?: MaybeRefOrGetter<number>;
+    resetOnDataChange?: MaybeRefOrGetter<boolean>;
 }
 
 export interface TableProps<T extends TableRow> {

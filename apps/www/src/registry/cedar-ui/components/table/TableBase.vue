@@ -23,7 +23,10 @@ const props = withDefaults(defineProps<TableProps<T>>(), {
     noResultsMessage: 'No Results',
 });
 
-const { currentPage, itemsPerPage, pageData, setPage } = useTable<T>({ itemsPerPage: props.itemsPerPage, data: toRef(props, 'data') });
+const { currentPage, itemsPerPage, pageData, setPage } = useTable<T>({
+    itemsPerPage: () => props.itemsPerPage,
+    data: toRef(props, 'data'),
+});
 
 const sortAscending = ref(props.startAscending);
 const lastSortKey = ref('');

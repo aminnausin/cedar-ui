@@ -1,9 +1,9 @@
 import type { TableRow, UseTableOptions } from './table.types';
 
-import { computed, ref, watch } from 'vue';
+import { computed, ref, toValue, watch } from 'vue';
 
 export default function useTable<T extends TableRow>(options: UseTableOptions<T>) {
-    const itemsPerPage = computed(() => options.itemsPerPage ?? 10);
+    const itemsPerPage = computed(() => toValue(options.itemsPerPage) ?? 10);
     const currentPage = ref(1);
 
     const pageCount = computed(() => Math.ceil(options.data.value.length / itemsPerPage.value));
@@ -13,17 +13,19 @@ export default function useTable<T extends TableRow>(options: UseTableOptions<T>
     });
 
     function setPage(page: number) {
-        currentPage.value = Math.min(Math.max(1, page), pageCount.value);
+        currentPage.value = Math.min(Math.max(1, page), Math.max(1, pageCount.value));
     }
 
     function resetPage() {
         currentPage.value = 1;
     }
 
+    watch(itemsPerPage, () => resetPage());
+
     watch(
-        () => options.data.value,
+        options.data,
         (next, prev) => {
-            if (options.resetOnDataChange === false) return;
+            if (toValue(options.resetOnDataChange) === false) return;
 
             if (!prev) return resetPage(); // On first load
             if (!next.length || !prev.length) return resetPage(); // Handles empty datasets ?
