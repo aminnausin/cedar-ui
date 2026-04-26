@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<TableProps<T>>(), {
 });
 
 const { currentPage, itemsPerPage, pageData, setPage } = useTable<T>({
-    itemsPerPage: () => props.itemsPerPage,
+    itemsPerPage: props.itemsPerPage,
     data: toRef(props, 'data'),
 });
 
