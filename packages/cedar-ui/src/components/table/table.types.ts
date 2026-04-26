@@ -10,6 +10,7 @@ export interface UseTableOptions<T> {
     data: Ref<T[]>;
     itemsPerPage?: MaybeRefOrGetter<number>;
     resetOnDataChange?: MaybeRefOrGetter<boolean>;
+    dataKey?: keyof T;
 }
 
 export interface TableProps<T extends TableRow> {
