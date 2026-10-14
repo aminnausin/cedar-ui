@@ -11,7 +11,7 @@ export default defineConfig({
             include: ['src'],
             insertTypesEntry: true,
             tsconfigPath: './tsconfig.app.json',
-            rollupTypes: true,
+            bundleTypes: true,
             cleanVueFileName: true,
             staticImport: true,
         }),
